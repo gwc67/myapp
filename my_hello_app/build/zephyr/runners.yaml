@@ -1,0 +1,43 @@
+# Available runners configured by board.cmake.
+runners:
+- stm32cubeprogrammer
+- openocd
+- jlink
+- stlink_gdbserver
+
+# Default flash runner if --runner is not given.
+flash-runner: stm32cubeprogrammer
+
+# Default debug runner if --runner is not given.
+debug-runner: openocd
+
+# Common runner configuration values.
+config:
+  board_dir: D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/boards/st/stm32f4_disco
+  # Build outputs:
+  elf_file: zephyr.elf
+  hex_file: zephyr.hex
+  bin_file: zephyr.bin
+  # Host tools:
+  gdb: D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe
+  openocd: D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/bin/openocd.exe
+  openocd_search:
+    - D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/share/openocd/scripts
+
+# Runner specific arguments
+args:
+  stm32cubeprogrammer:
+    - --port=swd
+  openocd:
+    - --cmd-load
+    - flash write_image erase
+    - --cmd-verify
+    - verify_image
+    - --cmd-erase=stm32f2x mass_erase 0
+  jlink:
+    - --dt-flash=y
+    - --device=STM32F407VG
+    - --speed=4000
+  stlink_gdbserver:
+    []
+
