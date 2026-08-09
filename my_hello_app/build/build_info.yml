@@ -13,6 +13,7 @@ cmake:
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings'
     files:
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/boards/st/stm32f4_disco/stm32f4_disco.dts'
+     - 'D:/Downloads/zephyr_new/myapp/my_hello_app/app.overlay'
     include-dirs:
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/ambiq/dts'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/atmel/include'
@@ -40,6 +41,8 @@ cmake:
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arc'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts'
+    user-files:
+     - 'D:/Downloads/zephyr_new/myapp/my_hello_app/app.overlay'
   kconfig:
     files:
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/boards/st/stm32f4_disco/stm32f4_disco_defconfig'
@@ -54,6 +57,6 @@ cmake:
     zephyr-base: 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr'
 version: '0.1.0'
 west:
-  command: 'D:\Downloads\zephyr_new\.zephyr\Scripts\west build -p auto -b stm32f4_disco'
+  command: 'D:\Downloads\zephyr_new\.zephyr\Scripts\west build -b stm32f4_disco'
   topdir: 'D:\Downloads\zephyr_new\zephyr_guanfang'
   version: '1.5.0'

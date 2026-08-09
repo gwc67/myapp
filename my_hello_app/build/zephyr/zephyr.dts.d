@@ -34,4 +34,5 @@ empty_file.o: \
  D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/dts/st/f4/stm32f407v(e-g)tx-pinctrl.dtsi \
  D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/pinctrl/stm32-pinctrl.h \
  D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/pinctrl/stm32-pinctrl-common.h \
- D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h \
+ D:/Downloads/zephyr_new/myapp/my_hello_app/app.overlay

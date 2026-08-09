@@ -3236,4 +3236,21 @@ zephyr_udc0: &usbotg_fs {
  };
 };
 # 0 "<command-line>" 2
+# 1 "D:/Downloads/zephyr_new/myapp/my_hello_app/app.overlay" 1
+
+
+/ {
+ chosen {
+  zephyr,console = &usart1;
+  zephyr,shell-uart = &usart1;
+ };
+};
+
+&usart1 {
+ pinctrl-0 = <&usart1_tx_pa9 &usart1_rx_pa10>;
+ pinctrl-names = "default";
+ current-speed = <115200>;
+ status = "okay";
+};
+# 0 "<command-line>" 2
 # 1 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/misc/empty_file.c"
