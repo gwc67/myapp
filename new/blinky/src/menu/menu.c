@@ -89,6 +89,33 @@ static void s_adjust_minus(struct menu_node_t *n)
     }
 }
 
+/*
+ * 手动格式化浮点数 (避免 %f — picolibc 默认不支持浮点 printf)
+ * 用法: format_fixed(buf, size, 3.14f, 2) → "3.14"
+ */
+static void format_fixed(char *buf, int bufsize, float v, int decimals)
+{
+    bool neg = (v < 0.0f);
+    if (neg) v = -v;
+
+    int int_part = (int)v;
+    int multiplier = 1;
+    for (int i = 0; i < decimals; i++) multiplier *= 10;
+    int frac_part = (int)((v - (float)int_part) * (float)multiplier + 0.5f);
+
+    /* 处理四舍五入进位 (e.g. 0.996 → 1.00) */
+    if (frac_part >= multiplier) {
+        int_part++;
+        frac_part -= multiplier;
+    }
+
+    if (neg) {
+        snprintf(buf, bufsize, "-%d.%0*d", int_part, decimals, frac_part);
+    } else {
+        snprintf(buf, bufsize, "%d.%0*d", int_part, decimals, frac_part);
+    }
+}
+
 static void s_format_value(struct menu_node_t *n, char *buf, uint8_t bufsize)
 {
     if (n->data_type == DATA_INT && n->data) {
@@ -98,7 +125,7 @@ static void s_format_value(struct menu_node_t *n, char *buf, uint8_t bufsize)
         if (v == (int)v)
             snprintf(buf, bufsize, "%d", (int)v);
         else
-            snprintf(buf, bufsize, "%.2f", (double)v);
+            format_fixed(buf, bufsize, v, 2);
     } else {
         buf[0] = '-'; buf[1] = '-'; buf[2] = '\0';
     }
@@ -389,13 +416,16 @@ void menu_task_v(void)
             cfb_print(s_display, buf, 0, 48);
 
             if (s_editing) {
-                char step_buf[10];
+                char step_buf[12];
                 float step = s_get_step(s_current_pst);
                 if (step == (int)step)
                     snprintf(step_buf, sizeof(step_buf), "s:%d", (int)step);
-                else
-                    snprintf(step_buf, sizeof(step_buf), "s:%.2f",
-                             (double)step);
+                else {
+                    /* 用 format_fixed 避免 %f */
+                    char val_buf[8];
+                    format_fixed(val_buf, sizeof(val_buf), step, 2);
+                    snprintf(step_buf, sizeof(step_buf), "s:%s", val_buf);
+                }
                 cfb_print(s_display, step_buf, 60, 48);
                 cfb_print(s_display, "EDIT", 100, 48);
             } else {

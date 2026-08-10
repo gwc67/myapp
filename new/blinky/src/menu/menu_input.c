@@ -1,12 +1,16 @@
 /*
- * 菜单输入中间层 — 实现
+ * 菜单输入中间层 — 实现 (全中断驱动, 零轮询)
+ *
+ * ── 与 Linux input 子系统的对应 ──
+ *   Zephyr INPUT_CALLBACK_DEFINE  →  Linux evdev 原始事件
+ *   k_work_delayable              →  Linux timer + workqueue
+ *   notify(action)                →  应用层消费语义事件
  *
  * 手势识别:
- *   - 单击: 按键按下时立即触发 (无延迟)
- *   - 双击: 同一键在 400ms 内再次按下 → 触发双击动作 (对应按键的 TOGGLE)
- *   - 长按: 按住超过 800ms → 在 menu_input_poll() 中触发 (对应按键的 RESET)
- *
- * 按键 → 动作映射表 (key_map[]), 改按键布局只改这一个表
+ *   - 单击: 无双击动作的键 → 按下立即触发
+ *          有双击动作的键 → 延迟 400ms (用 k_work), 窗口内无第二次按下才触发
+ *   - 双击: 窗口内同键再按 → 取消延迟单击, 触发双击
+ *   - 长按: 按下后 800ms 仍按住 → k_work 触发长按动作; 提前释放则取消
  */
 
 #include "menu_input.h"
@@ -18,15 +22,15 @@
 #define DOUBLE_CLICK_MS  400
 #define LONG_PRESS_MS    800
 
-/* ---- 按键到动作的映射 ---- */
+/* ---- 按键 → 动作映射 ---- */
 struct key_mapping_t {
-	uint16_t code_us;                     /* Zephyr input code, e.g. INPUT_KEY_0 */
-	enum menu_action_e single_em;         /* 单击动作 */
-	enum menu_action_e dbl_em;            /* 双击动作 (0xFF = 无) */
-	enum menu_action_e lng_em;            /* 长按动作 (0xFF = 无) */
+	uint16_t code_us;
+	enum menu_action_e single_em;
+	enum menu_action_e dbl_em;
+	enum menu_action_e lng_em;
 };
 
-#define NO_ACTION  0xFF                /* 哨兵: 该手势无对应动作 */
+#define NO_ACTION  ((enum menu_action_e)0xFF)
 
 static const struct key_mapping_t s_key_map_pst[] = {
 	{ INPUT_KEY_0,  MENU_ACTION_UP_em,      NO_ACTION,       NO_ACTION },
@@ -38,17 +42,15 @@ static const struct key_mapping_t s_key_map_pst[] = {
 /* ---- 状态 ---- */
 static menu_action_handler_t s_handler_st;
 
-/* 双击检测 */
-static uint32_t s_last_press_time_ul;
-static uint16_t s_last_press_code_us;
+/* 延迟单击 work — 等价于 Linux timer */
+static struct k_work_delayable s_single_dwork;
+static const struct key_mapping_t *s_single_map_pst;
 
-/* 长按检测 */
-static bool     s_is_holding_b;
-static uint32_t s_held_start_time_ul;
-static uint16_t s_held_code_us;
-static bool     s_long_fired_b;
+/* 长按 work */
+static struct k_work_delayable s_long_dwork;
+static const struct key_mapping_t *s_long_map_pst;
 
-/* ---- 内部: 按键码 → 动作查找 ---- */
+/* ---- 内部 ---- */
 static const struct key_mapping_t *find_mapping(uint16_t code)
 {
 	for (int i = 0; i < sizeof(s_key_map_pst) / sizeof(s_key_map_pst[0]); i++) {
@@ -58,48 +60,73 @@ static const struct key_mapping_t *find_mapping(uint16_t code)
 	return NULL;
 }
 
-/* ---- 内部: 向 menu.c 发送动作 ---- */
 static void notify(enum menu_action_e action)
 {
 	if (action != NO_ACTION && s_handler_st)
 		s_handler_st(action);
 }
 
-/* ---- Zephyr input 原始回调 ---- */
+/* ---- work 回调 (系统 workqueue 上下文, 非中断) ---- */
+
+static void single_work_cb(struct k_work *work)
+{
+
+	//单击事件在这里产生
+	notify(s_single_map_pst->single_em);
+}
+
+static void long_work_cb(struct k_work *work)
+{
+	notify(s_long_map_pst->lng_em);
+}
+
+/* ---- Zephyr input 原始回调 (中断上下文) ---- */
+
 static void raw_input_cb(struct input_event *evt, void *user_data)
 {
 	bool pressed_b = (evt->value == 1);
-	uint32_t now_ul = k_uptime_get_32();
+	const struct key_mapping_t *c_map_pst = find_mapping(evt->code);
+
+	if (!c_map_pst) return;
 
 	if (pressed_b) {
-		const struct key_mapping_t *c_map_pst = find_mapping(evt->code);
-		if (!c_map_pst) return;
 
-		/* 双击检测: 同键 400ms 内再按 */
-		if (evt->code == s_last_press_code_us
-		    && (now_ul - s_last_press_time_ul) < DOUBLE_CLICK_MS) {
+		/* ── 双击检测: 延迟单击尚未触发, 同键再次按下 ── */
+		if (s_single_map_pst == c_map_pst
+		    && k_work_cancel_delayable(&s_single_dwork) == 0) {
+			/* 取消延迟单击成功 → 这是双击 */
+			k_work_cancel_delayable(&s_long_dwork);						//
 			notify(c_map_pst->dbl_em);
-			s_last_press_time_ul = 0;   /* 清零防三击 */
-			s_is_holding_b = false;     /* 双击不触发长按 */
+			/* 双击后重新开始长按计时 */
+			if (c_map_pst->lng_em != NO_ACTION) {
+				s_long_map_pst = c_map_pst;
+				k_work_schedule(&s_long_dwork,
+				                K_MSEC(LONG_PRESS_MS));					//计时LONG_PRESS_MS 后执行s_long_dwork函数 这个函数和 long_work_cb 是绑定在一起的
+			}
 			return;
 		}
 
-		/* 单击: 立即触发 */
-		notify(c_map_pst->single_em);
+		/* ── 单击: 有双击动作 → 延迟; 无 → 立即 ── */
+		if (c_map_pst->dbl_em != NO_ACTION) {
+			/* 取消上一个挂起的单击 (不同键快速先后按下) */
+			k_work_cancel_delayable(&s_single_dwork);
+			s_single_map_pst = c_map_pst;
+			k_work_schedule(&s_single_dwork,
+			                K_MSEC(DOUBLE_CLICK_MS));					//等待DOUBLE_CLICK_MS 后 触发单击，如果双击检测成功，就会取消单击事件，从而触发双击事件
+		} else {
+			notify(c_map_pst->single_em);
+		}
 
-		/* 记录, 等双击 */
-		s_last_press_time_ul = now_ul;
-		s_last_press_code_us = evt->code;
-
-		/* 开始长按计时 */
-		s_is_holding_b = true;
-		s_held_start_time_ul = now_ul;
-		s_held_code_us = evt->code;
-		s_long_fired_b = false;
+		/* ── 长按计时 ── */
+		if (c_map_pst->lng_em != NO_ACTION) {
+			s_long_map_pst = c_map_pst;
+			k_work_schedule(&s_long_dwork,
+			                K_MSEC(LONG_PRESS_MS));
+		}
 
 	} else {
-		/* 释放: 清除长按状态 */
-		s_is_holding_b = false;
+		/* 释放: 取消长按计时 */
+		k_work_cancel_delayable(&s_long_dwork);
 	}
 }
 
@@ -109,25 +136,11 @@ INPUT_CALLBACK_DEFINE(NULL, raw_input_cb, NULL);
 
 void menu_input_init(void)
 {
-	/* INPUT_CALLBACK_DEFINE 是编译期注册, 无需运行时初始化 */
+	k_work_init_delayable(&s_single_dwork, single_work_cb);
+	k_work_init_delayable(&s_long_dwork, long_work_cb);
 }
 
 void menu_input_register_handler(menu_action_handler_t handler)
 {
 	s_handler_st = handler;
-}
-
-void menu_input_poll(void)
-{
-	if (!s_is_holding_b || s_long_fired_b) return;
-
-	uint32_t now = k_uptime_get_32();
-	if ((now - s_held_start_time_ul) < LONG_PRESS_MS) return;
-
-	/* 长按触发 */
-	const struct key_mapping_t *map = find_mapping(s_held_code_us);
-	if (map) {
-		notify(map->lng_em);
-	}
-	s_long_fired_b = true;
 }

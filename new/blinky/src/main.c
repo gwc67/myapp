@@ -29,6 +29,9 @@ int main(void)
 	cfb_print(s_oled_pst, "hello zephyr", 0, 0);
 	cfb_framebuffer_finalize(s_oled_pst);
 
+	/* 菜单输入初始化: 初始化 k_work (延迟单击 + 长按定时器) */
+	menu_input_init();
+
 	/* 菜单初始化: 注册动作处理器 + 构建菜单树 */
 	menu_init_v();
 	menu_oled_init_v();
@@ -36,10 +39,6 @@ int main(void)
 	while (1) {
 		/* 菜单显示 (脏标记驱动, 无变化时不刷新) */
 		menu_task_v();
-
-		/* 长按检测 (每 30ms 查询一次) */
-		menu_input_poll();
-
 		k_sleep(K_MSEC(30));
 	}
 	return 0;

@@ -27,13 +27,10 @@ enum menu_action_e {
 
 typedef void (*menu_action_handler_t)(enum menu_action_e action);
 
-/* 初始化: 注册 Zephyr input 回调 (编译期 INPUT_CALLBACK_DEFINE 已完成) */
+/* 初始化: 初始化 k_work (长按/延迟单击定时器) */
 void menu_input_init(void);
 
 /* 注册菜单动作处理函数 (menu.c 在 menu_init_v 里调用) */
 void menu_input_register_handler(menu_action_handler_t handler);
-
-/* 主循环每 ~30ms 调用一次, 用于检测长按 */
-void menu_input_poll(void);
 
 #endif /* __MENU_INPUT_H */
