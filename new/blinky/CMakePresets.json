@@ -7,14 +7,14 @@
       "generator": "Ninja",
       "cacheVariables": {
         "BOARD": "stm32f407_balance_car",
-        "Python3_EXECUTABLE": "D:\\Downloads\\zephyr_new\\.zephyr\\Scripts\\python.exe",
+        "Python3_EXECUTABLE": "D:/Downloads/zephyr_new/.zephyr/Scripts/python.exe",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
         "NO_BUILD_TYPE_WARNING": "ON",
-        "CMAKE_C_COMPILER": "D:\\Downloads\\setup\\zephyr-sdk-1.0.1\\gnu\\arm-zephyr-eabi\\bin\\arm-zephyr-eabi-gcc",
-        "CMAKE_CXX_COMPILER": "D:\\Downloads\\setup\\zephyr-sdk-1.0.1\\gnu\\arm-zephyr-eabi\\bin\\arm-zephyr-eabi-g++"
+        "CMAKE_C_COMPILER": "D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe",
+        "CMAKE_CXX_COMPILER": "D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++.exe"
       },
       "environment": {
-        "ZEPHYR_BASE": "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr"
+        "ZEPHYR_BASE": "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr"
       }
     },
     {

@@ -1,0 +1,4 @@
+west:
+  command: D:\Downloads\zephyr_new\.zephyr\Scripts\west build -b stm32f407_balance_car
+  topdir: D:\Downloads\zephyr_new\zephyr_guanfang
+  version: 1.5.0

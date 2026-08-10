@@ -1,0 +1,2 @@
+# Load Zephyr board defconfig descriptions.
+osource "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/Kconfig.defconfig"

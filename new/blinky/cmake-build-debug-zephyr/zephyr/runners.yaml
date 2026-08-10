@@ -1,0 +1,25 @@
+# Available runners configured by board.cmake.
+runners:
+- stm32cubeprogrammer
+
+# Default flash runner if --runner is not given.
+flash-runner: stm32cubeprogrammer
+
+# Common runner configuration values.
+config:
+  board_dir: D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car
+  # Build outputs:
+  elf_file: zephyr.elf
+  hex_file: zephyr.hex
+  bin_file: zephyr.bin
+  # Host tools:
+  gdb: D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe
+  openocd: D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/bin/openocd.exe
+  openocd_search:
+    - D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/share/openocd/scripts
+
+# Runner specific arguments
+args:
+  stm32cubeprogrammer:
+    - --port=swd
+    - --reset-mode=hw

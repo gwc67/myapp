@@ -25,14 +25,6 @@
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 	};
-
-	clocks {
-		/* 定义HSI时钟源 */
-		clk_hsi: clk_hsi {
-			status = "okay";
-			clocks-frequency = <DT_FREQ_M(16)>; /* HSI 固定16MHZ */
-		};
-	};
 };
 
 /* 引用标签& */
@@ -42,29 +34,32 @@
 };
 
 
+&clk_lsi {
+	status = "okay";
+};
+
+&clk_hse {
+	clock-frequency = <DT_FREQ_M(8)>;
+	status = "okay";
+};
+
+&pll {
+	div-m = <8>;
+	mul-n = <336>;
+	div-p = <2>;
+	div-q = <7>;	//这是给USB使用的吧
+	clocks = <&clk_hse>;
+	status = "okay";
+};
 
 &rcc {
-	clocks = <&clk_hsi>;
-
-	/* 启用主PLL */
-	plls = <&pll_main>;
-
-	/* 总线分频*/
-
-	hpre = <RCC_HPRE_DIV1>;		/* AHB = 168MHZ*/
-	ppre1 = <RCC_PPRE1_DIV4>;	/* APB1 = 42MHZ */
-	ppre2 = <RCC_PPRE2_DIV2>;	/* APB2 = 84MHZ */
+	clocks = <&pll>;
+	clock-frequency = <DT_FREQ_M(168)>;
+	ahb-prescaler = <1>;
+	apb1-prescaler = <4>;
+	apb2-prescaler = <2>;
 };
 
-&pll_main {
-	/* PLL 参数 */
-	/* 公式 16MHZ /8 * 168 /2 = 168MHZ */
-
-	div-m = <8>;
-	mul-n = <168>;
-	div-p = <2>;
-	div-q = <4>;
-};
 
 
 
