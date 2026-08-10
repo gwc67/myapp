@@ -19,7 +19,9 @@
             ],
             "svdFile": "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\boards\\arm\\stm32f407_balance_car\\stm32f407xx.svd",
             "runToEntryPoint": "main",
-            "showDevDebugOutput": "raw"
+            "showDevDebugOutput": "raw",
+
+            // "preLaunchTask": "Zephyr Build and Flash",
         }
     ]
 }
