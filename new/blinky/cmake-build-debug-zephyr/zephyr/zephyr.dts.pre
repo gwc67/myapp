@@ -4,7 +4,6 @@
 # 1 "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car.dts" 1
 /dts-v1/;
 
-
 # 1 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/st/f4/stm32f407Xe.dtsi" 1 3 4
 
 
@@ -1257,22 +1256,82 @@
   };
  };
 };
+# 4 "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car.dts" 2
+# 1 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/armv7-m.dtsi" 1 3 4
+
+
+# 1 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/common/skeleton.dtsi" 1 3 4
+# 9 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/common/skeleton.dtsi" 3 4
+/ {
+ #address-cells = <1>;
+ #size-cells = <1>;
+
+ chosen {};
+
+ aliases {};
+};
+# 4 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/armv7-m.dtsi" 2 3 4
+
+/ {
+ soc {
+  #address-cells = <1>;
+  #size-cells = <1>;
+  compatible = "simple-bus";
+  interrupt-parent = <&nvic>;
+  ranges;
+
+  nvic: interrupt-controller@e000e100 {
+   #address-cells = <1>;
+   compatible = "arm,v7m-nvic";
+   reg = <0xe000e100 0xc00>;
+   interrupt-controller;
+   #interrupt-cells = <2>;
+  };
+
+  systick: timer@e000e010 {
+   compatible = "arm,armv7m-systick";
+   reg = <0xe000e010 0x10>;
+  };
+ };
+};
 # 5 "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car.dts" 2
-
-
-
-
-
-
-
+# 23 "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car.dts"
 / {
 
  leds {
   compatible = "gpio-leds";
   led0: led_0 {
-   gpios = <&gpiob 6 (0 << 0)>;
+   gpios = <&gpiob 8 (0 << 0)>;
   };
  };
+
+ keys {
+  compatible = "gpio-keys";
+  key0: key_0{
+   gpios = <&gpioe 0 (1 << 4) (1 << 0)>;
+   label = "KEY0";
+   zephyr,code = <INPUT_KEY_0>;
+  };
+
+  key1: key_1{
+   gpios = <&gpioe 1 (1 << 4) (1 << 0)>;
+   label = "KEY1";
+   zephyr,code = <INPUT_KEY_1>;
+  };
+
+  key2: key_2{
+   gpios = <&gpioe 2 (1 << 4) (1 << 0)>;
+   label = "KEY2";
+   zephyr,code = <INPUT_KEY_2>;
+  };
+
+  key3: key_3{
+   gpios = <&gpioe 3 (1 << 4) (1 << 0)>;
+   label = "KEY3";
+   zephyr,code = <INPUT_KEY_3>;
+  };
+ };
+
 
  aliases {
   led0 = &led0;
@@ -1314,6 +1373,48 @@
  ahb-prescaler = <1>;
  apb1-prescaler = <4>;
  apb2-prescaler = <2>;
+};
+
+
+&i2c1 {
+ clock-frequency = <400000>;
+ pinctrl-0 = <&i2c1_scl_pb6 &i2c1_sda_pb7>;
+ pinctrl-names = "default";
+ scl-gpios = <&gpiob 6 (0 << 0)>;
+ sda-gpios = <&gpiob 7 (0 << 0)>;
+ status = "okay";
+
+ ssd1306: ssd1306@3c {
+  compatible = "solomon,ssd1306fb";
+  reg = <0x3c>;
+  label = "SSD1306";
+
+
+  width = <128>;
+  height = <64>;
+
+  segment-offset = <0>;
+  page-offset = <0>;
+  display-offset = <0>;
+  multiplex-ratio = <63>;
+
+
+  segment-remap;
+  com-invdir;
+
+
+
+
+  prechargep = <0x22>;
+
+
+
+
+
+
+
+ };
+
 };
 # 0 "<command-line>" 2
 # 1 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/misc/empty_file.c"
