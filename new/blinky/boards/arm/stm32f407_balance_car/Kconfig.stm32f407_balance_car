@@ -1,0 +1,5 @@
+config BOARD_STM32F407_BALANCE_CAR 
+    bool "STM32F407_BALANCE_CAR_F"
+    select SOC_STM32F4X
+    help
+        My Board is baka.

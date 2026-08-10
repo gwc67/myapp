@@ -1,0 +1,70 @@
+/dts-v1/;
+
+
+#include <st/f4/stm32f407Xe.dtsi>
+
+// 根节点 设备树
+// 硬件对象节点
+// 容器节点
+// /leds/led_0
+// led0 节点标签
+// 属性
+/ {
+	//隶属于根节点
+	leds {
+		compatible = "gpio-leds";
+		led0: led_0 {
+			gpios = <&gpiob 6 GPIO_ACTIVE_HIGH>;
+		};
+	};
+	/* 容器节点 */
+	aliases {
+		led0 = &led0;
+	};
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+	};
+
+	clocks {
+		/* 定义HSI时钟源 */
+		clk_hsi: clk_hsi {
+			status = "okay";
+			clocks-frequency = <DT_FREQ_M(16)>; /* HSI 固定16MHZ */
+		};
+	};
+};
+
+/* 引用标签& */
+
+&led0 {
+	status = "okay";
+};
+
+
+
+&rcc {
+	clocks = <&clk_hsi>;
+
+	/* 启用主PLL */
+	plls = <&pll_main>;
+
+	/* 总线分频*/
+
+	hpre = <RCC_HPRE_DIV1>;		/* AHB = 168MHZ*/
+	ppre1 = <RCC_PPRE1_DIV4>;	/* APB1 = 42MHZ */
+	ppre2 = <RCC_PPRE2_DIV2>;	/* APB2 = 84MHZ */
+};
+
+&pll_main {
+	/* PLL 参数 */
+	/* 公式 16MHZ /8 * 168 /2 = 168MHZ */
+
+	div-m = <8>;
+	mul-n = <168>;
+	div-p = <2>;
+	div-q = <4>;
+};
+
+
+

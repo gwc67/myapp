@@ -1,0 +1,2 @@
+# Load board Kconfig descriptions.
+osource "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/Kconfig.stm32f407_balance_car"

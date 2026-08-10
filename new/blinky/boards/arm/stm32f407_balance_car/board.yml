@@ -1,0 +1,6 @@
+board:
+  name: stm32f407_balance_car
+  full_name: STM32F407_BALANCE_CAR_F
+  vendor: st
+  socs:
+    - name: stm32f407xx

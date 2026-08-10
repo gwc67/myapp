@@ -1,0 +1,33 @@
+empty_file.o: \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/misc/empty_file.c \
+ D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car.dts \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/st/f4/stm32f407Xe.dtsi \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/st/f4/stm32f407.dtsi \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/st/f4/stm32f405.dtsi \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/st/f4/stm32f401.dtsi \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/st/f4/stm32f4.dtsi \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm/armv7-m.dtsi \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/common/skeleton.dtsi \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/adc/adc.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/dt-util.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/sys/util_macro.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/sys/util_internal.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/sys/util_loops.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/sys/util_listify.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/sys/util_internal_is_eq.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/sys/util_internal_util_inc.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/sys/util_internal_util_dec.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/sys/util_internal_util_x2.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/clock/stm32f4_clock.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/clock/stm32_common_clocks.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/i2c/i2c.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/gpio/gpio.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/pwm/pwm.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/pwm/stm32_pwm.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/dma/stm32_dma.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/reset/stm32f2_4_7_reset.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/reset/stm32-common.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/sensor/qdec_stm32.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/dt-bindings/power/stm32_pwr.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/common/freq.h \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/common/mem.h
