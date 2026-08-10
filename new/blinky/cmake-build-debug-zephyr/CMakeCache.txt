@@ -352,7 +352,7 @@ OPENOCD:FILEPATH=D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/bin/openo
 PAHOLE:FILEPATH=PAHOLE-NOTFOUND
 
 //Path to a program.
-PTY_INTERFACE:FILEPATH=PTY_INTERFACE-NOTFOUND
+PTY_INTERFACE:FILEPATH=D:/Downloads/app/Git/usr/bin/winpty.exe
 
 //Path to a program.
 PUNCOVER:FILEPATH=PUNCOVER-NOTFOUND

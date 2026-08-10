@@ -165,6 +165,30 @@ build CMakeFiles/app.dir/src/main.c.obj: C_COMPILER__app_unscanned_Debug D$:/Dow
   OBJECT_DIR = CMakeFiles\app.dir
   OBJECT_FILE_DIR = CMakeFiles\app.dir\src
 
+build CMakeFiles/app.dir/src/menu/menu_input.c.obj: C_COMPILER__app_unscanned_Debug D$:/Downloads/zephyr_new/myapp/new/blinky/src/menu/menu_input.c || cmake_object_order_depends_target_app
+  DEFINES = -DCORE_CM4 -DHSE_VALUE=8000000 -DK_HEAP_MEM_POOL_SIZE=2048 -DPICOLIBC_LONG_LONG_PRINTF_SCANF -DSTM32F407xx -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -D_POSIX_THREAD_SAFE_FUNCTIONS=200809L -D__LINUX_ERRNO_EXTENSIONS__ -D__PROGRAM_START -D__ZEPHYR__=1
+  DEP_FILE = CMakeFiles\app.dir\src\menu\menu_input.c.obj.d
+  FLAGS = -g -fno-strict-aliasing -Og -imacros D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/include/generated/zephyr/autoconf.h -fno-printf-return-value -fno-common -g -gdwarf-4 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mabi=aapcs -mfp16-format=ieee -mtp=soft --sysroot=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/arm-zephyr-eabi -imacros D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -ftls-model=local-exec -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=D:/Downloads/zephyr_new/myapp/new/blinky=CMAKE_SOURCE_DIR -fmacro-prefix-map=D:/Downloads/zephyr_new/zephyr_guanfang/zephyr=ZEPHYR_BASE -fmacro-prefix-map=D:/Downloads/zephyr_new/zephyr_guanfang=WEST_TOPDIR -ffunction-sections -fdata-sections -specs=picolibc.specs -std=c17
+  INCLUDES = -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include -ID:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/include/generated -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32 -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/lib/libc/picolibc/include -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/common/. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/drivers -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/stm32f4x/. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/subsys/portability/posix/c_lib_ext/getopt -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/subsys/shell/modules/kernel_service/thread/.. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/modules/cmsis_6/. -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/cmsis_6/CMSIS/Core/Include -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/stm32f4xx/soc -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/stm32f4xx/drivers/include -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/common_ll/include -isystem D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/lib/libc/common/include
+  OBJECT_DIR = CMakeFiles\app.dir
+  OBJECT_FILE_DIR = CMakeFiles\app.dir\src\menu
+
+build CMakeFiles/app.dir/src/menu/menu.c.obj: C_COMPILER__app_unscanned_Debug D$:/Downloads/zephyr_new/myapp/new/blinky/src/menu/menu.c || cmake_object_order_depends_target_app
+  DEFINES = -DCORE_CM4 -DHSE_VALUE=8000000 -DK_HEAP_MEM_POOL_SIZE=2048 -DPICOLIBC_LONG_LONG_PRINTF_SCANF -DSTM32F407xx -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -D_POSIX_THREAD_SAFE_FUNCTIONS=200809L -D__LINUX_ERRNO_EXTENSIONS__ -D__PROGRAM_START -D__ZEPHYR__=1
+  DEP_FILE = CMakeFiles\app.dir\src\menu\menu.c.obj.d
+  FLAGS = -g -fno-strict-aliasing -Og -imacros D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/include/generated/zephyr/autoconf.h -fno-printf-return-value -fno-common -g -gdwarf-4 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mabi=aapcs -mfp16-format=ieee -mtp=soft --sysroot=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/arm-zephyr-eabi -imacros D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -ftls-model=local-exec -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=D:/Downloads/zephyr_new/myapp/new/blinky=CMAKE_SOURCE_DIR -fmacro-prefix-map=D:/Downloads/zephyr_new/zephyr_guanfang/zephyr=ZEPHYR_BASE -fmacro-prefix-map=D:/Downloads/zephyr_new/zephyr_guanfang=WEST_TOPDIR -ffunction-sections -fdata-sections -specs=picolibc.specs -std=c17
+  INCLUDES = -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include -ID:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/include/generated -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32 -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/lib/libc/picolibc/include -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/common/. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/drivers -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/stm32f4x/. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/subsys/portability/posix/c_lib_ext/getopt -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/subsys/shell/modules/kernel_service/thread/.. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/modules/cmsis_6/. -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/cmsis_6/CMSIS/Core/Include -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/stm32f4xx/soc -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/stm32f4xx/drivers/include -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/common_ll/include -isystem D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/lib/libc/common/include
+  OBJECT_DIR = CMakeFiles\app.dir
+  OBJECT_FILE_DIR = CMakeFiles\app.dir\src\menu
+
+build CMakeFiles/app.dir/src/menu/OLED_Menu.c.obj: C_COMPILER__app_unscanned_Debug D$:/Downloads/zephyr_new/myapp/new/blinky/src/menu/OLED_Menu.c || cmake_object_order_depends_target_app
+  DEFINES = -DCORE_CM4 -DHSE_VALUE=8000000 -DK_HEAP_MEM_POOL_SIZE=2048 -DPICOLIBC_LONG_LONG_PRINTF_SCANF -DSTM32F407xx -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -D_POSIX_THREAD_SAFE_FUNCTIONS=200809L -D__LINUX_ERRNO_EXTENSIONS__ -D__PROGRAM_START -D__ZEPHYR__=1
+  DEP_FILE = CMakeFiles\app.dir\src\menu\OLED_Menu.c.obj.d
+  FLAGS = -g -fno-strict-aliasing -Og -imacros D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/include/generated/zephyr/autoconf.h -fno-printf-return-value -fno-common -g -gdwarf-4 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mabi=aapcs -mfp16-format=ieee -mtp=soft --sysroot=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/arm-zephyr-eabi -imacros D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wdouble-promotion -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror=implicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -ftls-model=local-exec -fno-reorder-functions --param=min-pagesize=0 -fno-defer-pop -fmacro-prefix-map=D:/Downloads/zephyr_new/myapp/new/blinky=CMAKE_SOURCE_DIR -fmacro-prefix-map=D:/Downloads/zephyr_new/zephyr_guanfang/zephyr=ZEPHYR_BASE -fmacro-prefix-map=D:/Downloads/zephyr_new/zephyr_guanfang=WEST_TOPDIR -ffunction-sections -fdata-sections -specs=picolibc.specs -std=c17
+  INCLUDES = -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include -ID:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/include/generated -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32 -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/lib/libc/picolibc/include -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/common/. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/drivers -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/stm32f4x/. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/subsys/portability/posix/c_lib_ext/getopt -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/subsys/shell/modules/kernel_service/thread/.. -ID:/Downloads/zephyr_new/zephyr_guanfang/zephyr/modules/cmsis_6/. -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/cmsis_6/CMSIS/Core/Include -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/stm32f4xx/soc -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/stm32f4xx/drivers/include -ID:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/stm32cube/common_ll/include -isystem D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/lib/libc/common/include
+  OBJECT_DIR = CMakeFiles\app.dir
+  OBJECT_FILE_DIR = CMakeFiles\app.dir\src\menu
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target app
@@ -173,7 +197,7 @@ build CMakeFiles/app.dir/src/main.c.obj: C_COMPILER__app_unscanned_Debug D$:/Dow
 #############################################
 # Link the static library app\libapp.a
 
-build app/libapp.a: C_STATIC_LIBRARY_LINKER__app_Debug CMakeFiles/app.dir/src/main.c.obj || zephyr/device_api_ld_target zephyr/driver_validation_h_target zephyr/kobj_types_h_target zephyr/lib/heap/heap_constants_h zephyr/offsets_h zephyr/syscall_list_h_target zephyr/version_h
+build app/libapp.a: C_STATIC_LIBRARY_LINKER__app_Debug CMakeFiles/app.dir/src/main.c.obj CMakeFiles/app.dir/src/menu/menu_input.c.obj CMakeFiles/app.dir/src/menu/menu.c.obj CMakeFiles/app.dir/src/menu/OLED_Menu.c.obj || zephyr/device_api_ld_target zephyr/driver_validation_h_target zephyr/kobj_types_h_target zephyr/lib/heap/heap_constants_h zephyr/offsets_h zephyr/syscall_list_h_target zephyr/version_h
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\app.dir
   POST_BUILD = cd .
@@ -234,7 +258,7 @@ build CMakeFiles/snippets | ${cmake_ninja_workdir}CMakeFiles/snippets: CUSTOM_CO
 # Custom command for CMakeFiles\menuconfig
 
 build CMakeFiles/menuconfig | ${cmake_ninja_workdir}CMakeFiles/menuconfig: CUSTOM_COMMAND
-  COMMAND = CMakeFiles\menuconfig-5f29641.bat 46884307894075bb
+  COMMAND = CMakeFiles\menuconfig-5f29641.bat 20e973b80473c288
   pool = console
 
 
@@ -242,7 +266,7 @@ build CMakeFiles/menuconfig | ${cmake_ninja_workdir}CMakeFiles/menuconfig: CUSTO
 # Custom command for CMakeFiles\guiconfig
 
 build CMakeFiles/guiconfig | ${cmake_ninja_workdir}CMakeFiles/guiconfig: CUSTOM_COMMAND
-  COMMAND = CMakeFiles\guiconfig-0b59bc5.bat 599dc0331eb7cb28
+  COMMAND = CMakeFiles\guiconfig-0b59bc5.bat af82b5fab959993f
   pool = console
 
 
@@ -250,7 +274,7 @@ build CMakeFiles/guiconfig | ${cmake_ninja_workdir}CMakeFiles/guiconfig: CUSTOM_
 # Custom command for CMakeFiles\hardenconfig
 
 build CMakeFiles/hardenconfig | ${cmake_ninja_workdir}CMakeFiles/hardenconfig: CUSTOM_COMMAND
-  COMMAND = CMakeFiles\hardenconfig-9a95698.bat c7a9a8e6fd4dbe3c
+  COMMAND = CMakeFiles\hardenconfig-9a95698.bat 5ebd836d52f7fbf4
   pool = console
 
 
@@ -258,7 +282,7 @@ build CMakeFiles/hardenconfig | ${cmake_ninja_workdir}CMakeFiles/hardenconfig: C
 # Custom command for CMakeFiles\traceconfig
 
 build CMakeFiles/traceconfig | ${cmake_ninja_workdir}CMakeFiles/traceconfig: CUSTOM_COMMAND
-  COMMAND = CMakeFiles\traceconfig-e7d6fc9.bat fb759f0d71b06f03
+  COMMAND = CMakeFiles\traceconfig-e7d6fc9.bat 84c24919c8d2f0b3
   pool = console
 
 
