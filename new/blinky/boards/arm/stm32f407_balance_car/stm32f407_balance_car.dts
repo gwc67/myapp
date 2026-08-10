@@ -1,27 +1,21 @@
 /dts-v1/;
 
-#include <st/f4/stm32f407Xe.dtsi>
 #include <arm/armv7-m.dtsi>
-#include <zephyr/dt-bindings/adc/adc.h>
-#include <zephyr/dt-bindings/clock/stm32f4_clock.h>
-#include <zephyr/dt-bindings/i2c/i2c.h>
-#include <zephyr/dt-bindings/gpio/gpio.h>
-#include <zephyr/dt-bindings/pwm/pwm.h>
-#include <zephyr/dt-bindings/pwm/stm32_pwm.h>
-#include <zephyr/dt-bindings/dma/stm32_dma.h>
-#include <zephyr/dt-bindings/reset/stm32f2_4_7_reset.h>
-#include <zephyr/dt-bindings/sensor/qdec_stm32.h>
-#include <zephyr/dt-bindings/power/stm32_pwr.h>
-#include <freq.h>
-#include <mem.h>
-// 根节点 设备树
-// 硬件对象节点
-// 容器节点
-// /leds/led_0
-// led0 节点标签
-// 属性
+#include <st/f4/stm32f407Xe.dtsi>
+#include <st/f4/stm32f407z(e-g)tx-pinctrl.dtsi>
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/i2c/i2c.h>
+#include <dt-bindings/input/input-event-codes.h>
+#include <dt-bindings/clock/stm32f4_clock.h>
+#include <dt-bindings/pwm/pwm.h>
+#include <dt-bindings/pwm/stm32_pwm.h>
+#include <dt-bindings/dma/stm32_dma.h>
+#include <dt-bindings/reset/stm32f2_4_7_reset.h>
+#include <dt-bindings/sensor/qdec_stm32.h>
+#include <dt-bindings/power/stm32_pwr.h>
+
 / {
-	//隶属于根节点
 	leds {
 		compatible = "gpio-leds";
 		led0: led_0 {
@@ -32,46 +26,43 @@
 	keys {
 		compatible = "gpio-keys";
 		key0: key_0{
-			gpios = <&gpioe 0 GPIO_PULL_UP  GPIO_ACTIVE_LOW>;
+			gpios = <&gpioe 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 			label = "KEY0";
-			zephyr,code = <INPUT_KEY_0>; 	//可选 ，子系统键码？
+			zephyr,code = <INPUT_KEY_0>;
 		};
 
 		key1: key_1{
-			gpios = <&gpioe 1 GPIO_PULL_UP  GPIO_ACTIVE_LOW>;
+			gpios = <&gpioe 1 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 			label = "KEY1";
-			zephyr,code = <INPUT_KEY_1>; 	//可选 ，子系统键码？
+			zephyr,code = <INPUT_KEY_1>;
 		};
 
 		key2: key_2{
-			gpios = <&gpioe 2 GPIO_PULL_UP  GPIO_ACTIVE_LOW>;
+			gpios = <&gpioe 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 			label = "KEY2";
-			zephyr,code = <INPUT_KEY_2>; 	//可选 ，子系统键码？
+			zephyr,code = <INPUT_KEY_2>;
 		};
 
 		key3: key_3{
-			gpios = <&gpioe 3 GPIO_PULL_UP  GPIO_ACTIVE_LOW>;
+			gpios = <&gpioe 3 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 			label = "KEY3";
-			zephyr,code = <INPUT_KEY_3>; 	//可选 ，子系统键码？
+			zephyr,code = <INPUT_KEY_3>;
 		};
 	};
 
-	/* 容器节点 */
 	aliases {
 		led0 = &led0;
 	};
 	chosen {
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
+		zephyr,display = &ssd1306;
 	};
 };
-
-/* 引用标签& */
 
 &led0 {
 	status = "okay";
 };
-
 
 &clk_lsi {
 	status = "okay";
@@ -86,7 +77,7 @@
 	div-m = <8>;
 	mul-n = <336>;
 	div-p = <2>;
-	div-q = <7>;	/* //这是给USB使用的吧 */
+	div-q = <7>;
 	clocks = <&clk_hse>;
 	status = "okay";
 };
@@ -99,45 +90,25 @@
 	apb2-prescaler = <2>;
 };
 
-
 &i2c1 {
-	clock-frequency = <I2C_BITRATE_FAST>; /* 400KHZ */
+	clock-frequency = <I2C_BITRATE_FAST>;
 	pinctrl-0 = <&i2c1_scl_pb6 &i2c1_sda_pb7>;
 	pinctrl-names = "default";
-	scl-gpios = <&gpiob 6 GPIO_ACTIVE_HIGH>;
-	sda-gpios = <&gpiob 7 GPIO_ACTIVE_HIGH>;
 	status = "okay";
 
 	ssd1306: ssd1306@3c {
-		compatible = "solomon,ssd1306fb";
+		compatible = "solomon,ssd1306";
 		reg = <0x3c>;
-		label = "SSD1306";
-		/* 显示尺寸 */
-
 		width = <128>;
 		height = <64>;
 
-		segment-offset = <0>;		/* //列偏移 */
-		page-offset = <0>;		/* //页偏移 */
-		display-offset = <0>;		/* //COM偏移 */
-		multiplex-ratio = <63>;		/* //mux 比 height - 1 */
+		segment-offset = <0>;
+		page-offset = <0>;
+		display-offset = <0>;
+		multiplex-ratio = <63>;
 
-		//显示控制方向
-		segment-remap;			/* //水平翻转 */
-		com-invdir;			/* //垂直翻转 */
-		/* com-normal; */			/* // */
-		/* //segment-no-remap */		/* // */
-
-		//预充电
-		prechargep = <0x22>;		//预充电周期
-		/* //charge-pump = <1>; */  		//启用内部电荷泵
-
-		//对比度 / 刷新率
-		/* //contrast = <127>; */
-		/* //refresh-rate = <2>; */
-
-
+		segment-remap;
+		com-invdir;
+		prechargep = <0x22>;
 	};
-
 };
-

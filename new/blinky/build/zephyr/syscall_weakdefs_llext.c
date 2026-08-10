@@ -40,6 +40,12 @@ extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_gpio_port_set_clr_bi
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_gpio_port_set_masked;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_gpio_port_set_masked_raw;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_gpio_port_toggle_bits;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_i2c_configure;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_i2c_get_config;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_i2c_recover_bus;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_i2c_target_driver_register;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_i2c_target_driver_unregister;
+extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_i2c_transfer;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_busy_wait;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_condvar_broadcast;
 extern __weak ALIAS_OF(no_syscall_impl) void * const z_impl_k_condvar_init;

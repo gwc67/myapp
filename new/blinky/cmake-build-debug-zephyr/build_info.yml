@@ -41,6 +41,9 @@ cmake:
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arc'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts'
   kconfig:
+    files:
+     - 'D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car_defconfig'
+     - 'D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf'
     user-files:
      - 'D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf'
   toolchain:

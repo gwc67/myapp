@@ -79,7 +79,27 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/display/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/gpio/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/i2c/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/input/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pinctrl/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

@@ -1,9 +1,13 @@
 # Available runners configured by board.cmake.
 runners:
 - stm32cubeprogrammer
+- openocd
 
 # Default flash runner if --runner is not given.
 flash-runner: stm32cubeprogrammer
+
+# Default debug runner if --runner is not given.
+debug-runner: openocd
 
 # Common runner configuration values.
 config:
@@ -23,3 +27,12 @@ args:
   stm32cubeprogrammer:
     - --port=swd
     - --reset-mode=hw
+  openocd:
+    - --cmd-load
+    - flash write_image erase
+    - --cmd-verify
+    - verify_image
+    - --cmd-pre-init
+    - source [find interface/stlink.cfg]
+    - --cmd-pre-init
+    - source [find target/stm32f4x.cfg]
