@@ -314,65 +314,74 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      31
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      35
     ]
   ],
   [
     "CONFIG_WIFI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      36
+    ]
   ],
   [
     "CONFIG_MAIN_STACK_SIZE",
     "y",
     "int",
     "1024",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      129
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      37
     ]
   ],
   [
     "CONFIG_REGULATOR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      38
+    ]
   ],
   [
     "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE",
     "y",
     "int",
     "1024",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      502
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      39
     ]
   ],
   [
     "CONFIG_FPU",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      40
+    ]
   ],
   [
     "CONFIG_SHELL_STACK_SIZE",
     "y",
     "int",
     "2048",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      58
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      41
     ]
   ],
   [
@@ -392,60 +401,75 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car_defconfig",
-      12
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      43
     ]
   ],
   [
     "CONFIG_SPI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      44
+    ]
   ],
   [
     "CONFIG_MIPI_DSI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      45
+    ]
   ],
   [
     "CONFIG_MEMC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      46
+    ]
   ],
   [
     "CONFIG_INPUT_INIT_PRIORITY",
     "y",
     "int",
     "90",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\input\\Kconfig",
-      17
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      47
     ]
   ],
   [
     "CONFIG_MODEM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      48
+    ]
   ],
   [
     "CONFIG_GNSS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      49
+    ]
   ],
   [
     "CONFIG_NUM_IRQS",
@@ -463,10 +487,10 @@
     "y",
     "int",
     "168000000",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/Kconfig.defconfig",
-      99
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      51
     ]
   ],
   [
@@ -474,10 +498,10 @@
     "y",
     "int",
     "512",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      303
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      52
     ]
   ],
   [
@@ -485,10 +509,10 @@
     "y",
     "hex",
     "0x8000000",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/Kconfig.defconfig",
-      143
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      53
     ]
   ],
   [
@@ -496,29 +520,32 @@
     "y",
     "int",
     "1",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\smp\\Kconfig",
-      15
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      54
     ]
   ],
   [
     "CONFIG_SOC_RESET_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      55
+    ]
   ],
   [
     "CONFIG_CLOCK_CONTROL",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/Kconfig.defconfig",
-      18
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      56
     ]
   ],
   [
@@ -526,10 +553,10 @@
     "y",
     "int",
     "320",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      143
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      57
     ]
   ],
   [
@@ -537,10 +564,10 @@
     "y",
     "int",
     "2048",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      153
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      58
     ]
   ],
   [
@@ -548,10 +575,10 @@
     "y",
     "int",
     "10000",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      700
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      59
     ]
   ],
   [
@@ -559,10 +586,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      807
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      60
     ]
   ],
   [
@@ -570,10 +597,10 @@
     "y",
     "hex",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      165
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      61
     ]
   ],
   [
@@ -581,10 +608,10 @@
     "y",
     "string",
     "__start",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      237
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      62
     ]
   ],
   [
@@ -594,26 +621,30 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car_defconfig",
-      10
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      63
     ]
   ],
   [
     "CONFIG_CPU_HAS_CUSTOM_FIXED_SOC_MPU_REGIONS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      64
+    ]
   ],
   [
     "CONFIG_XIP",
     "y",
     "bool",
     "y",
-    "imply",
+    "assign",
     [
-      "CPU_CORTEX_M && ARM"
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      65
     ]
   ],
   [
@@ -630,25 +661,34 @@
     "CONFIG_COUNTER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      67
+    ]
   ],
   [
     "CONFIG_SHARED_INTERRUPTS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      68
+    ]
   ],
   [
     "CONFIG_SRAM_VECTOR_TABLE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      69
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_UF2_FAMILY_ID",
@@ -676,45 +716,54 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/Kconfig",
-      42
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      72
     ]
   ],
   [
     "CONFIG_PM_DEVICE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      73
+    ]
   ],
   [
     "CONFIG_OTP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      74
+    ]
   ],
   [
     "CONFIG_NVMEM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      75
+    ]
   ],
   [
     "CONFIG_TICKLESS_KERNEL",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      1045
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      76
     ]
   ],
   [
@@ -722,10 +771,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\timer\\Kconfig.cortex_m_systick",
-      9
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      77
     ]
   ],
   [
@@ -733,91 +782,109 @@
     "y",
     "int",
     "1",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/Kconfig.defconfig",
-      130
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      78
     ]
   ],
   [
     "CONFIG_USE_DT_CODE_PARTITION",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      79
+    ]
   ],
   [
     "CONFIG_STM32_BACKUP_PROTECTION",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/Kconfig.defconfig",
-      165
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      80
     ]
   ],
   [
     "CONFIG_DYNAMIC_THREAD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      81
+    ]
   ],
   [
     "CONFIG_MULTI_LEVEL_INTERRUPTS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      82
+    ]
   ],
   [
     "CONFIG_PM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      83
+    ]
   ],
   [
     "CONFIG_ZERO_LATENCY_IRQS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      84
+    ]
   ],
   [
     "CONFIG_NUM_METAIRQ_PRIORITIES",
     "y",
     "int",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      97
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      85
     ]
   ],
   [
     "CONFIG_POWER_DOMAIN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      86
+    ]
   ],
   [
     "CONFIG_NUM_PREEMPT_PRIORITIES",
     "y",
     "int",
     "15",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      55
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      87
     ]
   ],
   [
@@ -835,29 +902,32 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      592
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      89
     ]
   ],
   [
     "CONFIG_DYNAMIC_INTERRUPTS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      90
+    ]
   ],
   [
     "CONFIG_GEN_ISR_TABLES",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/arch/arm/core/cortex_m/Kconfig",
-      328
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      91
     ]
   ],
   [
@@ -865,9 +935,10 @@
     "y",
     "bool",
     "y",
-    "imply",
+    "assign",
     [
-      "KERNEL_SHELL && SHELL"
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      92
     ]
   ],
   [
@@ -875,10 +946,10 @@
     "y",
     "int",
     "20",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      560
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      93
     ]
   ],
   [
@@ -886,10 +957,10 @@
     "y",
     "hex",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      135
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      94
     ]
   ],
   [
@@ -899,49 +970,64 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      3
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      95
     ]
   ],
   [
     "CONFIG_INIT_ARCH_HW_AT_BOOT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      96
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_S19",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      97
+    ]
   ],
   [
     "CONFIG_ROMSTART_RELOCATION_ROM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      98
+    ]
   ],
   [
     "CONFIG_FLASH",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      99
+    ]
   ],
   [
     "CONFIG_CODE_DATA_RELOCATION",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      100
+    ]
   ],
   [
     "CONFIG_HW_STACK_PROTECTION",
@@ -950,135 +1036,174 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car_defconfig",
-      11
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      101
     ]
   ],
   [
     "CONFIG_RESET",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      102
+    ]
   ],
   [
     "CONFIG_WUC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      103
+    ]
   ],
   [
     "CONFIG_SYSTEM_CLOCK_HW_CYCLES_PER_SEC_RUNTIME_UPDATE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      104
+    ]
   ],
   [
     "CONFIG_MFD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      105
+    ]
   ],
   [
     "CONFIG_CODE_DATA_RELOCATION_SRAM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      106
+    ]
   ],
   [
     "CONFIG_CACHE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      107
+    ]
   ],
   [
     "CONFIG_LOG",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      108
+    ]
   ],
   [
     "CONFIG_PM_CPU_OPS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      109
+    ]
   ],
   [
     "CONFIG_ARCH_SW_ISR_TABLE_ALIGN",
     "y",
     "int",
     "4",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      677
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      110
     ]
   ],
   [
     "CONFIG_SHELL_BACKEND_SERIAL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      111
+    ]
   ],
   [
     "CONFIG_ASSERT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      112
+    ]
   ],
   [
     "CONFIG_DEVICE_DEPS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      113
+    ]
   ],
   [
     "CONFIG_UART_USE_RUNTIME_CONFIGURE",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\serial\\Kconfig",
-      59
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      114
     ]
   ],
   [
     "CONFIG_PINCTRL_KEEP_SLEEP_STATE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      115
+    ]
   ],
   [
     "CONFIG_SYSCON",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      116
+    ]
   ],
   [
     "CONFIG_SOC_EARLY_INIT_HOOK",
@@ -1097,27 +1222,30 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car_defconfig",
-      16
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      118
     ]
   ],
   [
     "CONFIG_WINSTREAM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      119
+    ]
   ],
   [
     "CONFIG_COMMON_LIBC_MALLOC_ARENA_SIZE",
     "y",
     "int",
     "-1",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\libc\\common\\Kconfig",
-      64
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      120
     ]
   ],
   [
@@ -1125,19 +1253,22 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      639
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      121
     ]
   ],
   [
     "CONFIG_REBOOT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      122
+    ]
   ],
   [
     "CONFIG_GEN_IRQ_START_VECTOR",
@@ -1166,10 +1297,10 @@
     "y",
     "int",
     "4",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      604
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      125
     ]
   ],
   [
@@ -1187,19 +1318,22 @@
     "CONFIG_BOOTLOADER_MCUBOOT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      127
+    ]
   ],
   [
     "CONFIG_KERNEL_MEM_POOL",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      642
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      128
     ]
   ],
   [
@@ -1207,73 +1341,88 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      14
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      129
     ]
   ],
   [
     "CONFIG_OUTPUT_DISASSEMBLY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      130
+    ]
   ],
   [
     "CONFIG_LINKER_USE_RELAX",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      323
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      131
     ]
   ],
   [
     "CONFIG_WATCHDOG",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      132
+    ]
   ],
   [
     "CONFIG_STATIC_INIT_GNU",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      133
+    ]
   ],
   [
     "CONFIG_BUILD_GAP_FILL_PATTERN",
     "y",
     "hex",
     "0xFF",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      779
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      134
     ]
   ],
   [
     "CONFIG_BUILD_ONLY_NO_BLOBS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      139
+    ]
   ],
   [
     "CONFIG_ACPI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      152
+    ]
   ],
   [
     "CONFIG_ZEPHYR_ACPICA_MODULE",
@@ -1323,9 +1472,12 @@
     "CONFIG_CMSIS_DSP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      169
+    ]
   ],
   [
     "CONFIG_ZEPHYR_CMSIS_NN_MODULE",
@@ -1342,9 +1494,12 @@
     "CONFIG_CMSIS_NN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      176
+    ]
   ],
   [
     "CONFIG_ZEPHYR_CMSIS_6_MODULE",
@@ -1371,9 +1526,12 @@
     "CONFIG_CMSIS_M_CHECK_DEVICE_DEFINES",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      184
+    ]
   ],
   [
     "CONFIG_ZEPHYR_DHARA_MODULE",
@@ -1467,9 +1625,12 @@
     "CONFIG_ETHOS_U",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      230
+    ]
   ],
   [
     "CONFIG_ZEPHYR_HAL_ETHOS_U_MODULE",
@@ -1508,9 +1669,12 @@
     "CONFIG_USE_INFINEON_ABSTRACTION_RTOS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      244
+    ]
   ],
   [
     "CONFIG_ZEPHYR_HAL_INTEL_MODULE",
@@ -1571,17 +1735,23 @@
     "CONFIG_NXP_MULTICORE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      267
+    ]
   ],
   [
     "CONFIG_RPMSGLITE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      268
+    ]
   ],
   [
     "CONFIG_ZEPHYR_OPENISA_MODULE",
@@ -1620,9 +1790,12 @@
     "CONFIG_BT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      278
+    ]
   ],
   [
     "CONFIG_ZEPHYR_HAL_RENESAS_MODULE",
@@ -1705,9 +1878,12 @@
     "CONFIG_TDK_HAL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      317
+    ]
   ],
   [
     "CONFIG_ZEPHYR_HAL_TELINK_MODULE",
@@ -1768,9 +1944,12 @@
     "CONFIG_WIFI_NM_WPA_SUPPLICANT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      341
+    ]
   ],
   [
     "CONFIG_ZEPHYR_HOSTAP_MODULE",
@@ -1831,9 +2010,12 @@
     "CONFIG_LIBSBC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      358
+    ]
   ],
   [
     "CONFIG_ZEPHYR_LITTLEFS_MODULE",
@@ -1872,9 +2054,12 @@
     "CONFIG_HAS_SEMTECH_RADIO_DRIVERS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      377
+    ]
   ],
   [
     "CONFIG_ZEPHYR_LVGL_MODULE",
@@ -1924,9 +2109,12 @@
     "CONFIG_PSA_CRYPTO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      392
+    ]
   ],
   [
     "CONFIG_ZEPHYR_MCUBOOT_MODULE",
@@ -1976,9 +2164,12 @@
     "CONFIG_NANOPB",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      403
+    ]
   ],
   [
     "CONFIG_ZEPHYR_NRF_WIFI_MODULE",
@@ -1995,9 +2186,12 @@
     "CONFIG_NRF70_BUSLIB",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      410
+    ]
   ],
   [
     "CONFIG_ZEPHYR_OPEN_AMP_MODULE",
@@ -2014,9 +2208,12 @@
     "CONFIG_OPENTHREAD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      418
+    ]
   ],
   [
     "CONFIG_ZEPHYR_OPENTHREAD_MODULE",
@@ -2033,9 +2230,12 @@
     "CONFIG_PERCEPIO_DFM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      429
+    ]
   ],
   [
     "CONFIG_ZEPHYR_PERCEPIO_MODULE",
@@ -2052,9 +2252,12 @@
     "CONFIG_PICOLIBC_MODULE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      436
+    ]
   ],
   [
     "CONFIG_ZEPHYR_PICOLIBC_MODULE",
@@ -2103,9 +2306,12 @@
     "CONFIG_USE_SEGGER_RTT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      447
+    ]
   ],
   [
     "CONFIG_ZEPHYR_TF_M_TESTS_MODULE",
@@ -2144,9 +2350,12 @@
     "CONFIG_BUILD_WITH_TFA",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      457
+    ]
   ],
   [
     "CONFIG_ZEPHYR_TRUSTED_FIRMWARE_M_MODULE",
@@ -2185,9 +2394,12 @@
     "CONFIG_ZCBOR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      476
+    ]
   ],
   [
     "CONFIG_ZEPHYR_XENLIB_MODULE",
@@ -2215,49 +2427,67 @@
     "CONFIG_LIBMETAL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      486
+    ]
   ],
   [
     "CONFIG_LVGL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      487
+    ]
   ],
   [
     "CONFIG_HAS_MEC_HAL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      488
+    ]
   ],
   [
     "CONFIG_HAS_MPFS_HAL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      489
+    ]
   ],
   [
     "CONFIG_HAS_MEC5_HAL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      490
+    ]
   ],
   [
     "CONFIG_OPENAMP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      491
+    ]
   ],
   [
     "CONFIG_HAS_STM32CUBE",
@@ -2293,25 +2523,34 @@
     "CONFIG_MIPI_SYST_LIB",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      495
+    ]
   ],
   [
     "CONFIG_HAS_TELINK_DRIVERS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      496
+    ]
   ],
   [
     "CONFIG_MCUBOOT_BOOTUTIL_LIB",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      497
+    ]
   ],
   [
     "CONFIG_BOARD",
@@ -2350,19 +2589,22 @@
     "CONFIG_NET_DRIVERS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      511
+    ]
   ],
   [
     "CONFIG_BOARD_STM32F407_BALANCE_CAR",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\boards\\Kconfig.v2",
-      9
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      512
     ]
   ],
   [
@@ -2454,19 +2696,22 @@
     "CONFIG_HWINFO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      530
+    ]
   ],
   [
     "CONFIG_STM32_ENABLE_DEBUG_SLEEP_STOP",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/common/Kconfig",
-      27
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      531
     ]
   ],
   [
@@ -2474,19 +2719,22 @@
     "y",
     "int",
     "49",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/stm32/common/Kconfig",
-      37
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      532
     ]
   ],
   [
     "CONFIG_STM32_XSPIM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      533
+    ]
   ],
   [
     "CONFIG_HAS_STM32_FLASH_PREFETCH",
@@ -2502,19 +2750,22 @@
     "CONFIG_BUILD_OUTPUT_INFO_HEADER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      535
+    ]
   ],
   [
     "CONFIG_GPIO_INIT_PRIORITY",
     "y",
     "int",
     "40",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\gpio\\Kconfig",
-      50
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      536
     ]
   ],
   [
@@ -2532,9 +2783,12 @@
     "CONFIG_EXTRA_EXCEPTION_INFO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      540
+    ]
   ],
   [
     "CONFIG_ARCH_HAS_SINGLE_THREAD_SUPPORT",
@@ -2571,9 +2825,12 @@
     "CONFIG_MPU_ALLOW_FLASH_WRITE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      544
+    ]
   ],
   [
     "CONFIG_CPU_CORTEX_M",
@@ -2589,9 +2846,12 @@
     "CONFIG_ARM_ZIMAGE_HEADER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      550
+    ]
   ],
   [
     "CONFIG_ISA_THUMB2",
@@ -2619,10 +2879,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/arch/arm/core/Kconfig",
-      143
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      553
     ]
   ],
   [
@@ -2630,37 +2890,43 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/arch/arm/core/Kconfig",
-      161
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      554
     ]
   ],
   [
     "CONFIG_RUNTIME_NMI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      555
+    ]
   ],
   [
     "CONFIG_PLATFORM_SPECIFIC_INIT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      556
+    ]
   ],
   [
     "CONFIG_FAULT_DUMP",
     "y",
     "int",
     "2",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/arch/arm/core/Kconfig",
-      205
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      557
     ]
   ],
   [
@@ -2679,10 +2945,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/arch/arm/core/Kconfig",
-      336
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      559
     ]
   ],
   [
@@ -2690,11 +2956,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/arch/arm/core/Kconfig",
-      344
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_FP16_ALT",
@@ -2788,44 +3051,53 @@
     "CONFIG_SW_VECTOR_RELAY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      574
+    ]
   ],
   [
     "CONFIG_CORTEX_M_DWT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      575
+    ]
   ],
   [
     "CONFIG_CORTEX_M_DEBUG_MONITOR_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      576
+    ]
   ],
   [
     "CONFIG_TRAP_UNALIGNED_ACCESS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      577
+    ]
   ],
   [
     "CONFIG_NULL_POINTER_EXCEPTION_DETECTION_NONE",
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/arch/arm/core/cortex_m/Kconfig",
-      422
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_NULL_POINTER_EXCEPTION_DETECTION_DWT",
@@ -2847,9 +3119,12 @@
     "CONFIG_ARM_GCC_FP_WORKAROUND",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      583
+    ]
   ],
   [
     "CONFIG_MPU_STACK_GUARD",
@@ -2865,44 +3140,56 @@
     "CONFIG_MPU_DISABLE_BACKGROUND_MAP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      585
+    ]
   ],
   [
     "CONFIG_CUSTOM_SECTION_ALIGN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      586
+    ]
   ],
   [
     "CONFIG_CUSTOM_SECTION_MIN_ALIGN_SIZE",
     "y",
     "int",
     "32",
-    "default",
+    "assign",
     [
-      "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/arch/arm/core/mpu/Kconfig",
-      88
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      587
     ]
   ],
   [
     "CONFIG_ARM_MPU_SRAM_WRITE_THROUGH",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      588
+    ]
   ],
   [
     "CONFIG_ARM_MPU_SKIP_ARCH_INIT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      589
+    ]
   ],
   [
     "CONFIG_HAS_SWO",
@@ -2948,25 +3235,34 @@
     "CONFIG_SEMIHOST",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      600
+    ]
   ],
   [
     "CONFIG_ISR_TABLE_SHELL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      601
+    ]
   ],
   [
     "CONFIG_ARCH_HAS_WORD_GRANULAR_ACCESS_INSTR_MEM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      602
+    ]
   ],
   [
     "CONFIG_ARCH_SUPPORTS_ROM_OFFSET",
@@ -2982,9 +3278,12 @@
     "CONFIG_EXCEPTION_DUMP_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      604
+    ]
   ],
   [
     "CONFIG_LITTLE_ENDIAN",
@@ -3002,10 +3301,10 @@
     "y",
     "int",
     "128",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      270
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      606
     ]
   ],
   [
@@ -3013,27 +3312,33 @@
     "y",
     "hex",
     "0x20000000",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      279
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      607
     ]
   ],
   [
     "CONFIG_USERSPACE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      608
+    ]
   ],
   [
     "CONFIG_NOINIT_SNIPPET_FIRST",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      609
+    ]
   ],
   [
     "CONFIG_GEN_PRIV_STACKS",
@@ -3049,35 +3354,44 @@
     "CONFIG_STACK_GROWS_UP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      611
+    ]
   ],
   [
     "CONFIG_FRAME_POINTER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      612
+    ]
   ],
   [
     "CONFIG_ISR_TABLES_LOCAL_DECLARATION",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      617
+    ]
   ],
   [
     "CONFIG_ARCH_DEVICE_STATE_ALIGN",
     "y",
     "int",
     "4",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      614
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      618
     ]
   ],
   [
@@ -3085,11 +3399,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      622
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_IRQ_VECTOR_TABLE_JUMP_BY_CODE",
@@ -3104,11 +3415,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      650
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_GEN_SW_ISR_TABLE_SWITCH",
@@ -3122,28 +3430,34 @@
     "CONFIG_SRAM_SW_ISR_TABLE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      623
+    ]
   ],
   [
     "CONFIG_EXCEPTION_DEBUG",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\arch\\Kconfig",
-      732
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      624
     ]
   ],
   [
     "CONFIG_SIMPLIFIED_EXCEPTION_CODES",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      625
+    ]
   ],
   [
     "CONFIG_ARCH_MEM_DOMAIN_SUPPORTS_ISOLATED_STACKS",
@@ -3409,9 +3723,12 @@
     "CONFIG_CACHE_DOUBLEMAP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      669
+    ]
   ],
   [
     "CONFIG_TOOLCHAIN_HAS_BUILTIN_FFS",
@@ -3439,10 +3756,10 @@
     "y",
     "int",
     "16",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      30
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      678
     ]
   ],
   [
@@ -3450,10 +3767,10 @@
     "y",
     "int",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      73
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      679
     ]
   ],
   [
@@ -3483,19 +3800,22 @@
     "y",
     "int",
     "-128",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      86
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      682
     ]
   ],
   [
     "CONFIG_SCHED_DEADLINE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      683
+    ]
   ],
   [
     "CONFIG_THREAD_STACK_INFO",
@@ -3511,20 +3831,20 @@
     "CONFIG_THREAD_CUSTOM_DATA",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      685
+    ]
   ],
   [
     "CONFIG_SCHED_SIMPLE",
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      258
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_SCHED_SCALABLE",
@@ -3555,39 +3875,40 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      310
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_CURRENT_THREAD_USE_TLS",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      349
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      695
     ]
   ],
   [
     "CONFIG_NONZERO_SPINLOCK_SIZE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      696
+    ]
   ],
   [
     "CONFIG_THREAD_MONITOR",
     "y",
     "bool",
     "y",
-    "imply",
+    "assign",
     [
-      "KERNEL_SHELL && SHELL"
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      702
     ]
   ],
   [
@@ -3595,9 +3916,10 @@
     "y",
     "bool",
     "y",
-    "imply",
+    "assign",
     [
-      "KERNEL_SHELL && SHELL"
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      703
     ]
   ],
   [
@@ -3605,72 +3927,87 @@
     "y",
     "int",
     "32",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      397
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      704
     ]
   ],
   [
     "CONFIG_THREAD_RUNTIME_STATS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      705
+    ]
   ],
   [
     "CONFIG_THREAD_RUNTIME_STACK_SAFETY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      706
+    ]
   ],
   [
     "CONFIG_OBJ_CORE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      709
+    ]
   ],
   [
     "CONFIG_WORKQUEUE_WORK_TIMEOUT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      710
+    ]
   ],
   [
     "CONFIG_SYSTEM_WORKQUEUE_PRIORITY",
     "y",
     "int",
     "-1",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      508
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      715
     ]
   ],
   [
     "CONFIG_SYSTEM_WORKQUEUE_NO_YIELD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      716
+    ]
   ],
   [
     "CONFIG_SYSTEM_WORKQUEUE_WORK_TIMEOUT_MS",
     "y",
     "int",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      526
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      717
     ]
   ],
   [
@@ -3688,10 +4025,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      552
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      729
     ]
   ],
   [
@@ -3699,61 +4036,76 @@
     "y",
     "int",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      571
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      730
     ]
   ],
   [
     "CONFIG_TIMESLICE_PER_THREAD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      731
+    ]
   ],
   [
     "CONFIG_TIMER_OBSERVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      732
+    ]
   ],
   [
     "CONFIG_POLL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      738
+    ]
   ],
   [
     "CONFIG_MEM_SLAB_POINTER_VALIDATE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      739
+    ]
   ],
   [
     "CONFIG_MEM_SLAB_TRACE_MAX_UTILIZATION",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      740
+    ]
   ],
   [
     "CONFIG_NUM_MBOX_ASYNC_MSGS",
     "y",
     "int",
     "10",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      620
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      741
     ]
   ],
   [
@@ -3773,17 +4125,20 @@
     "2048",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      21
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      743
     ]
   ],
   [
     "CONFIG_HEAP_MEM_POOL_IGNORE_MIN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      744
+    ]
   ],
   [
     "CONFIG_SWAP_NONATOMIC",
@@ -3800,10 +4155,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      746
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      748
     ]
   ],
   [
@@ -3811,11 +4166,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      757
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_TIMEOUT_BACKEND_MINHEAP",
@@ -3846,19 +4198,22 @@
     "y",
     "int",
     "365",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig",
-      840
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      753
     ]
   ],
   [
     "CONFIG_USE_SWITCH",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      760
+    ]
   ],
   [
     "CONFIG_USE_SWITCH_SUPPORTED",
@@ -3905,37 +4260,44 @@
     "CONFIG_DEVICE_MUTABLE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      776
+    ]
   ],
   [
     "CONFIG_DEVICE_DT_METADATA",
     "y",
     "bool",
     "y",
-    "imply",
+    "assign",
     [
-      "SHELL_DEVICE_HELPERS && SHELL"
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      777
     ]
   ],
   [
     "CONFIG_DEVICE_DEINIT_SUPPORT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      778
+    ]
   ],
   [
     "CONFIG_KERNEL_INIT_PRIORITY_OBJECTS",
     "y",
     "int",
     "30",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig.device",
-      50
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      784
     ]
   ],
   [
@@ -3943,10 +4305,10 @@
     "y",
     "int",
     "35",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig.device",
-      58
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      785
     ]
   ],
   [
@@ -3954,10 +4316,10 @@
     "y",
     "int",
     "40",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig.device",
-      66
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      786
     ]
   ],
   [
@@ -3965,10 +4327,10 @@
     "y",
     "int",
     "50",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig.device",
-      72
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      787
     ]
   ],
   [
@@ -3976,141 +4338,186 @@
     "y",
     "int",
     "90",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\kernel\\Kconfig.device",
-      80
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      788
     ]
   ],
   [
     "CONFIG_SOC_EARLY_RESET_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      804
+    ]
   ],
   [
     "CONFIG_SOC_PREP_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      805
+    ]
   ],
   [
     "CONFIG_SOC_LATE_INIT_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      806
+    ]
   ],
   [
     "CONFIG_SOC_PER_CORE_INIT_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      807
+    ]
   ],
   [
     "CONFIG_BOARD_EARLY_INIT_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      808
+    ]
   ],
   [
     "CONFIG_BOARD_LATE_INIT_HOOK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      809
+    ]
   ],
   [
     "CONFIG_ADC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      815
+    ]
   ],
   [
     "CONFIG_AUDIO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      816
+    ]
   ],
   [
     "CONFIG_AUXDISPLAY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      817
+    ]
   ],
   [
     "CONFIG_BBRAM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      818
+    ]
   ],
   [
     "CONFIG_BIOMETRICS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      819
+    ]
   ],
   [
     "CONFIG_BUZZER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      820
+    ]
   ],
   [
     "CONFIG_CAN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      821
+    ]
   ],
   [
     "CONFIG_CHARGER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      822
+    ]
   ],
   [
     "CONFIG_CLOCK_CONTROL_FIXED_RATE_CLOCK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      823
+    ]
   ],
   [
     "CONFIG_CLOCK_CONTROL_STM32_CUBE",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\clock_control\\Kconfig.stm32",
-      11
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      824
     ]
   ],
   [
@@ -4128,27 +4535,33 @@
     "CONFIG_CLOCK_MONITOR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      826
+    ]
   ],
   [
     "CONFIG_COMPARATOR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      827
+    ]
   ],
   [
     "CONFIG_CONSOLE_INPUT_MAX_LINE_LEN",
     "y",
     "int",
     "128",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\console\\Kconfig",
-      16
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      828
     ]
   ],
   [
@@ -4156,115 +4569,154 @@
     "y",
     "int",
     "40",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\console\\Kconfig",
-      38
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      829
     ]
   ],
   [
     "CONFIG_RAM_CONSOLE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      830
+    ]
   ],
   [
     "CONFIG_IPM_CONSOLE_SENDER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      831
+    ]
   ],
   [
     "CONFIG_IPM_CONSOLE_RECEIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      832
+    ]
   ],
   [
     "CONFIG_UART_MCUMGR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      833
+    ]
   ],
   [
     "CONFIG_EFI_CONSOLE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      834
+    ]
   ],
   [
     "CONFIG_COREDUMP_DEVICE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      835
+    ]
   ],
   [
     "CONFIG_CRC_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      836
+    ]
   ],
   [
     "CONFIG_CRYPTO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      837
+    ]
   ],
   [
     "CONFIG_DAC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      838
+    ]
   ],
   [
     "CONFIG_DAI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      839
+    ]
   ],
   [
     "CONFIG_DALI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      840
+    ]
   ],
   [
     "CONFIG_DEBUG_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      841
+    ]
   ],
   [
     "CONFIG_DISK_DRIVERS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      842
+    ]
   ],
   [
     "CONFIG_DISPLAY",
@@ -4273,8 +4725,8 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      15
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      843
     ]
   ],
   [
@@ -4282,19 +4734,22 @@
     "y",
     "int",
     "85",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\display\\Kconfig",
-      15
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      844
     ]
   ],
   [
     "CONFIG_DISPLAY_COLOR_PALETTE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      845
+    ]
   ],
   [
     "CONFIG_SSD1306",
@@ -4303,8 +4758,8 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      12
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      846
     ]
   ],
   [
@@ -4312,169 +4767,220 @@
     "y",
     "int",
     "128",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\display\\Kconfig.ssd1306",
-      39
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      847
     ]
   ],
   [
     "CONFIG_DMA",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      848
+    ]
   ],
   [
     "CONFIG_DP_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      849
+    ]
   ],
   [
     "CONFIG_EDAC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      850
+    ]
   ],
   [
     "CONFIG_EEPROM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      851
+    ]
   ],
   [
     "CONFIG_ENTROPY_GENERATOR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      852
+    ]
   ],
   [
     "CONFIG_ESPI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      853
+    ]
   ],
   [
     "CONFIG_MDIO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      854
+    ]
   ],
   [
     "CONFIG_ARM_SCMI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      859
+    ]
   ],
   [
     "CONFIG_FLASH_FILL_GENERIC_IMPLEMENTATION",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\flash\\Kconfig",
-      72
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      862
     ]
   ],
   [
     "CONFIG_FPGA",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      863
+    ]
   ],
   [
     "CONFIG_FUEL_GAUGE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      864
+    ]
   ],
   [
     "CONFIG_GPIO_SHELL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      865
+    ]
   ],
   [
     "CONFIG_GPIO_GET_DIRECTION",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      866
+    ]
   ],
   [
     "CONFIG_GPIO_GET_CONFIG",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      867
+    ]
   ],
   [
     "CONFIG_GPIO_HOGS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      868
+    ]
   ],
   [
     "CONFIG_GPIO_ENABLE_DISABLE_INTERRUPT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      869
+    ]
   ],
   [
     "CONFIG_GPIO_STM32",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\gpio\\Kconfig.stm32",
-      9
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      870
     ]
   ],
   [
     "CONFIG_HAPTICS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      871
+    ]
   ],
   [
     "CONFIG_HWSPINLOCK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      872
+    ]
   ],
   [
     "CONFIG_I2C",
@@ -4493,8 +4999,8 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      36
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      874
     ]
   ],
   [
@@ -4502,10 +5008,10 @@
     "y",
     "int",
     "16",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\i2c\\Kconfig",
-      27
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      875
     ]
   ],
   [
@@ -4523,69 +5029,87 @@
     "y",
     "int",
     "500",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\i2c\\Kconfig",
-      41
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      877
     ]
   ],
   [
     "CONFIG_I2C_CALLBACK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      878
+    ]
   ],
   [
     "CONFIG_I2C_BUS_RECOVERY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      879
+    ]
   ],
   [
     "CONFIG_I2C_RTIO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      880
+    ]
   ],
   [
     "CONFIG_I2C_TARGET",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      881
+    ]
   ],
   [
     "CONFIG_I2C_DW_EXTENDED_SUPPORT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      882
+    ]
   ],
   [
     "CONFIG_I2C_DW_PM_POLICY_STATE_LOCK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      883
+    ]
   ],
   [
     "CONFIG_I2C_STM32",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\i2c\\Kconfig.stm32",
-      6
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      884
     ]
   ],
   [
@@ -4604,29 +5128,32 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\i2c\\Kconfig.stm32",
-      36
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      886
     ]
   ],
   [
     "CONFIG_I2C_STM32_BUS_RECOVERY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      887
+    ]
   ],
   [
     "CONFIG_I2C_STM32_WAIT_BUS_IDLE_TIMEOUT_USEC",
     "y",
     "int",
     "2000",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\i2c\\Kconfig.stm32",
-      74
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      888
     ]
   ],
   [
@@ -4634,27 +5161,33 @@
     "y",
     "int",
     "50",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\i2c\\Kconfig",
-      208
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      889
     ]
   ],
   [
     "CONFIG_I2S",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      890
+    ]
   ],
   [
     "CONFIG_I3C",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      891
+    ]
   ],
   [
     "CONFIG_INPUT_GPIO_KEYS",
@@ -4663,8 +5196,8 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      32
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      896
     ]
   ],
   [
@@ -4672,10 +5205,10 @@
     "y",
     "int",
     "40",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\interrupt_controller\\Kconfig",
-      45
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      902
     ]
   ],
   [
@@ -4683,10 +5216,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\interrupt_controller\\Kconfig.stm32",
-      11
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      903
     ]
   ],
   [
@@ -4694,115 +5227,154 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\interrupt_controller\\Kconfig.stm32",
-      18
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      904
     ]
   ],
   [
     "CONFIG_IPM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      907
+    ]
   ],
   [
     "CONFIG_LED",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      908
+    ]
   ],
   [
     "CONFIG_LED_STRIP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      909
+    ]
   ],
   [
     "CONFIG_LORA",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      910
+    ]
   ],
   [
     "CONFIG_MBOX",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      911
+    ]
   ],
   [
     "CONFIG_MIPI_DBI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      912
+    ]
   ],
   [
     "CONFIG_MM_DRV",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      924
+    ]
   ],
   [
     "CONFIG_MSPI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      925
+    ]
   ],
   [
     "CONFIG_MUX",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      926
+    ]
   ],
   [
     "CONFIG_OPAMP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      927
+    ]
   ],
   [
     "CONFIG_PCIE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      928
+    ]
   ],
   [
     "CONFIG_PCIE_ENDPOINT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      929
+    ]
   ],
   [
     "CONFIG_PECI",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      930
+    ]
   ],
   [
     "CONFIG_PINCTRL",
@@ -4818,35 +5390,44 @@
     "CONFIG_PINCTRL_DYNAMIC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      932
+    ]
   ],
   [
     "CONFIG_PINCTRL_MCHP_COMMON",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      933
+    ]
   ],
   [
     "CONFIG_PINCTRL_NPCX_EX",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      934
+    ]
   ],
   [
     "CONFIG_PINCTRL_STM32",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\pinctrl\\Kconfig.stm32",
-      6
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      935
     ]
   ],
   [
@@ -4854,166 +5435,220 @@
     "y",
     "int",
     "2",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\pinctrl\\Kconfig.stm32",
-      14
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      936
     ]
   ],
   [
     "CONFIG_PS2",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      937
+    ]
   ],
   [
     "CONFIG_PSI5",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      938
+    ]
   ],
   [
     "CONFIG_PTP_CLOCK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      939
+    ]
   ],
   [
     "CONFIG_PWM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      940
+    ]
   ],
   [
     "CONFIG_RETAINED_MEM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      941
+    ]
   ],
   [
     "CONFIG_RTC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      942
+    ]
   ],
   [
     "CONFIG_SDHC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      943
+    ]
   ],
   [
     "CONFIG_SENSOR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      944
+    ]
   ],
   [
     "CONFIG_SENT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      945
+    ]
   ],
   [
     "CONFIG_SERIAL_INIT_PRIORITY",
     "y",
     "int",
     "50",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\serial\\Kconfig",
-      36
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      950
     ]
   ],
   [
     "CONFIG_UART_LINE_CTRL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      951
+    ]
   ],
   [
     "CONFIG_UART_DRV_CMD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      952
+    ]
   ],
   [
     "CONFIG_UART_WIDE_DATA",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      953
+    ]
   ],
   [
     "CONFIG_UART_ASYNC_RX_HELPER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      954
+    ]
   ],
   [
     "CONFIG_UART_SHELL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      955
+    ]
   ],
   [
     "CONFIG_UART_NPCX_FIFO_EX",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      960
+    ]
   ],
   [
     "CONFIG_SMBUS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      961
+    ]
   ],
   [
     "CONFIG_STEPPER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      962
+    ]
   ],
   [
     "CONFIG_TIMEAWARE_GPIO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      963
+    ]
   ],
   [
     "CONFIG_TIMER_HAS_64BIT_CYCLE_COUNTER",
@@ -5029,27 +5664,33 @@
     "CONFIG_TIMER_READS_ITS_FREQUENCY_AT_RUNTIME",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      969
+    ]
   ],
   [
     "CONFIG_SYSTEM_CLOCK_SLOPPY_IDLE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      970
+    ]
   ],
   [
     "CONFIG_SYSTEM_CLOCK_INIT_PRIORITY",
     "y",
     "int",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\timer\\Kconfig",
-      55
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      971
     ]
   ],
   [
@@ -5087,43 +5728,55 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\timer\\Kconfig.cortex_m_systick",
-      32
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      975
     ]
   ],
   [
     "CONFIG_CORTEX_M_SYSTICK_LPM_TIMER_NONE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      976
+    ]
   ],
   [
     "CONFIG_CORTEX_M_SYSTICK_LPM_TIMER_COUNTER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      977
+    ]
   ],
   [
     "CONFIG_CORTEX_M_SYSTICK_LPM_TIMER_HOOKS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      978
+    ]
   ],
   [
     "CONFIG_CORTEX_M_SYSTICK_RESET_BY_LPM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      979
+    ]
   ],
   [
     "CONFIG_SYSTEM_TIMER_HAS_LPM_COMPANION_SUPPORT",
@@ -5140,144 +5793,195 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     null
   ],
   [
     "CONFIG_UAOL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      984
+    ]
   ],
   [
     "CONFIG_USB_BC12",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      985
+    ]
   ],
   [
     "CONFIG_UDC_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      986
+    ]
   ],
   [
     "CONFIG_UHC_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      987
+    ]
   ],
   [
     "CONFIG_UVB",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      988
+    ]
   ],
   [
     "CONFIG_USB_DEVICE_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      989
+    ]
   ],
   [
     "CONFIG_USBC_TCPC_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      996
+    ]
   ],
   [
     "CONFIG_USBC_VBUS_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      997
+    ]
   ],
   [
     "CONFIG_USBC_PPC_DRIVER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      998
+    ]
   ],
   [
     "CONFIG_VIDEO_DRIVERS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      999
+    ]
   ],
   [
     "CONFIG_VIRTIO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1000
+    ]
   ],
   [
     "CONFIG_VIRTUALIZATION",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1001
+    ]
   ],
   [
     "CONFIG_W1",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1002
+    ]
   ],
   [
     "CONFIG_TEE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1003
+    ]
   ],
   [
     "CONFIG_REQUIRES_FULL_LIBC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1006
+    ]
   ],
   [
     "CONFIG_REQUIRES_FLOAT_PRINTF",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1007
+    ]
   ],
   [
     "CONFIG_LIBC_ALLOW_LESS_THAN_64BIT_TIME",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1008
+    ]
   ],
   [
     "CONFIG_FULL_LIBC_SUPPORTED",
@@ -5324,11 +6028,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\libc\\Kconfig",
-      81
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_EXTERNAL_LIBC",
@@ -5352,17 +6053,23 @@
     "CONFIG_COMMON_LIBC_ASCTIME_R",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1020
+    ]
   ],
   [
     "CONFIG_COMMON_LIBC_CTIME_R",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1021
+    ]
   ],
   [
     "CONFIG_COMMON_LIBC_TIME",
@@ -5379,9 +6086,10 @@
     "y",
     "bool",
     "y",
-    "imply",
+    "assign",
     [
-      "PICOLIBC && PICOLIBC_SUPPORTED && <choice LIBC_IMPLEMENTATION>"
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1023
     ]
   ],
   [
@@ -5389,10 +6097,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\libc\\common\\Kconfig",
-      88
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1024
     ]
   ],
   [
@@ -5400,19 +6108,22 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\libc\\common\\Kconfig",
-      97
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1025
     ]
   ],
   [
     "CONFIG_COMMON_LIBC_REMOVE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1026
+    ]
   ],
   [
     "CONFIG_LIBC_ERRNO",
@@ -5429,10 +6140,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\libc\\common\\Kconfig",
-      132
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1028
     ]
   ],
   [
@@ -5448,11 +6159,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\libc\\picolibc\\Kconfig",
-      8
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_PICOLIBC_IO_FLOAT",
@@ -5467,11 +6175,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\libc\\picolibc\\Kconfig",
-      34
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_NEED_LIBC_MEM_PARTITION",
@@ -5488,87 +6193,111 @@
     "CONFIG_CPP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1039
+    ]
   ],
   [
     "CONFIG_SYS_HASH_FUNC32",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1049
+    ]
   ],
   [
     "CONFIG_SYS_HASH_MAP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1055
+    ]
   ],
   [
     "CONFIG_SYS_HEAP_VALIDATE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1061
+    ]
   ],
   [
     "CONFIG_SYS_HEAP_STRESS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1062
+    ]
   ],
   [
     "CONFIG_SYS_HEAP_INFO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1063
+    ]
   ],
   [
     "CONFIG_SYS_HEAP_ALLOC_LOOPS",
     "y",
     "int",
     "3",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\heap\\Kconfig",
-      35
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1064
     ]
   ],
   [
     "CONFIG_SYS_HEAP_RUNTIME_STATS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1065
+    ]
   ],
   [
     "CONFIG_SYS_HEAP_ARRAY_SIZE",
     "y",
     "int",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\heap\\Kconfig",
-      56
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1066
     ]
   ],
   [
     "CONFIG_SYS_HEAP_LISTENER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1067
+    ]
   ],
   [
     "CONFIG_SYS_HEAP_HARDENING_NONE",
@@ -5583,11 +6312,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\heap\\Kconfig",
-      83
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_SYS_HEAP_HARDENING_MODERATE",
@@ -5628,20 +6354,20 @@
     "CONFIG_SYS_HEAP_KASAN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1074
+    ]
   ],
   [
     "CONFIG_SYS_HEAP_SMALL_ONLY",
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\heap\\Kconfig",
-      320
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_SYS_HEAP_BIG_ONLY",
@@ -5663,81 +6389,111 @@
     "CONFIG_MULTI_HEAP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1078
+    ]
   ],
   [
     "CONFIG_SHARED_MULTI_HEAP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1079
+    ]
   ],
   [
     "CONFIG_SYS_MEM_BLOCKS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1085
+    ]
   ],
   [
     "CONFIG_MIDI2_UMP_STREAM_RESPONDER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1091
+    ]
   ],
   [
     "CONFIG_NET_BUF",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1094
+    ]
   ],
   [
     "CONFIG_ZVFS_OPEN_IGNORE_MIN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1099
+    ]
   ],
   [
     "CONFIG_PRINTK_SYNC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1100
+    ]
   ],
   [
     "CONFIG_MPSC_PBUF",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1101
+    ]
   ],
   [
     "CONFIG_SPSC_PBUF",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1102
+    ]
   ],
   [
     "CONFIG_RESET_ON_FATAL_ERROR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1103
+    ]
   ],
   [
     "CONFIG_HAS_POWEROFF",
@@ -5753,19 +6509,22 @@
     "CONFIG_POWEROFF",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1105
+    ]
   ],
   [
     "CONFIG_BOOT_BANNER",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\os\\Kconfig",
-      154
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1106
     ]
   ],
   [
@@ -5773,10 +6532,10 @@
     "y",
     "string",
     "Booting Zephyr OS build",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\os\\Kconfig",
-      162
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1107
     ]
   ],
   [
@@ -5784,27 +6543,33 @@
     "y",
     "int",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\os\\Kconfig",
-      169
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1108
     ]
   ],
   [
     "CONFIG_BOOT_CLEAR_SCREEN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1109
+    ]
   ],
   [
     "CONFIG_BOOTARGS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1110
+    ]
   ],
   [
     "CONFIG_ATOMIC_OPERATIONS_BUILTIN",
@@ -5821,11 +6586,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\os\\Kconfig.cbprintf",
-      6
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_CBPRINTF_NANO",
@@ -5840,11 +6602,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\os\\Kconfig.cbprintf",
-      29
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_CBPRINTF_REDUCED_INTEGRAL",
@@ -5858,41 +6617,56 @@
     "CONFIG_CBPRINTF_FP_SUPPORT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1122
+    ]
   ],
   [
     "CONFIG_CBPRINTF_FP_A_SUPPORT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1123
+    ]
   ],
   [
     "CONFIG_CBPRINTF_LIBC_SUBSTS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1124
+    ]
   ],
   [
     "CONFIG_CBPRINTF_PACKAGE_LONGDOUBLE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1125
+    ]
   ],
   [
     "CONFIG_CBPRINTF_STATIC_PACKAGE_CHECK_ALIGNMENT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1126
+    ]
   ],
   [
     "CONFIG_CBPRINTF_CONVERT_CHECK_PTR",
@@ -5909,52 +6683,64 @@
     "CONFIG_ZVFS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1128
+    ]
   ],
   [
     "CONFIG_CPU_LOAD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1129
+    ]
   ],
   [
     "CONFIG_CPU_LOAD_METRIC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1130
+    ]
   ],
   [
     "CONFIG_SMF",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1133
+    ]
   ],
   [
     "CONFIG_LIBGCC_RTLIB",
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\runtime\\Kconfig",
-      13
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_JSON_LIBRARY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1139
+    ]
   ],
   [
     "CONFIG_RING_BUFFER",
@@ -5970,49 +6756,67 @@
     "CONFIG_RING_BUFFER_LARGE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1141
+    ]
   ],
   [
     "CONFIG_NOTIFY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1142
+    ]
   ],
   [
     "CONFIG_BASE64",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1143
+    ]
   ],
   [
     "CONFIG_ONOFF",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1144
+    ]
   ],
   [
     "CONFIG_UTF8",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1145
+    ]
   ],
   [
     "CONFIG_COBS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1146
+    ]
   ],
   [
     "CONFIG_GETOPT",
@@ -6029,100 +6833,133 @@
     "CONFIG_GETOPT_LONG",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1148
+    ]
   ],
   [
     "CONFIG_TIMEUTIL_APPLY_SKEW",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\lib\\utils\\Kconfig",
-      118
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1149
     ]
   ],
   [
     "CONFIG_UUID",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1152
+    ]
   ],
   [
     "CONFIG_WORD_GRANULAR_ACCESS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1153
+    ]
   ],
   [
     "CONFIG_MIN_HEAP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1154
+    ]
   ],
   [
     "CONFIG_FIDO2",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1164
+    ]
   ],
   [
     "CONFIG_BINDESC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1167
+    ]
   ],
   [
     "CONFIG_CONSOLE_SUBSYS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1174
+    ]
   ],
   [
     "CONFIG_CPU_FREQ",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1175
+    ]
   ],
   [
     "CONFIG_CRC",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1176
+    ]
   ],
   [
     "CONFIG_DAP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1177
+    ]
   ],
   [
     "CONFIG_THREAD_ANALYZER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1182
+    ]
   ],
   [
     "CONFIG_DEBUG",
@@ -6131,33 +6968,42 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      4
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1188
     ]
   ],
   [
     "CONFIG_UBSAN",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1189
+    ]
   ],
   [
     "CONFIG_STACK_USAGE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1190
+    ]
   ],
   [
     "CONFIG_CALLGRAPH_INFO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1191
+    ]
   ],
   [
     "CONFIG_PRINTK",
@@ -6174,134 +7020,176 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\debug\\Kconfig",
-      173
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1193
     ]
   ],
   [
     "CONFIG_FORCE_NO_ASSERT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1194
+    ]
   ],
   [
     "CONFIG_ASSERT_VERBOSE",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\debug\\Kconfig",
-      249
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1195
     ]
   ],
   [
     "CONFIG_ASSERT_NO_FILE_INFO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1196
+    ]
   ],
   [
     "CONFIG_ASSERT_NO_COND_INFO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1197
+    ]
   ],
   [
     "CONFIG_ASSERT_NO_MSG_INFO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1198
+    ]
   ],
   [
     "CONFIG_ASSERT_TEST",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1199
+    ]
   ],
   [
     "CONFIG_OVERRIDE_FRAME_POINTER_DEFAULT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1200
+    ]
   ],
   [
     "CONFIG_DEBUG_THREAD_INFO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1201
+    ]
   ],
   [
     "CONFIG_DEBUG_COREDUMP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1202
+    ]
   ],
   [
     "CONFIG_SYMTAB",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1203
+    ]
   ],
   [
     "CONFIG_MIPI_STP_DECODER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1206
+    ]
   ],
   [
     "CONFIG_CS_TRACE_DEFMT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1207
+    ]
   ],
   [
     "CONFIG_DISK_ACCESS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1208
+    ]
   ],
   [
     "CONFIG_DSP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1209
+    ]
   ],
   [
     "CONFIG_EMUL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1210
+    ]
   ],
   [
     "CONFIG_CHARACTER_FRAMEBUFFER",
@@ -6310,8 +7198,8 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      18
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1211
     ]
   ],
   [
@@ -6319,43 +7207,55 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\fb\\Kconfig",
-      15
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1212
     ]
   ],
   [
     "CONFIG_CHARACTER_FRAMEBUFFER_SHELL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1213
+    ]
   ],
   [
     "CONFIG_FILE_SYSTEM_LIB_LINK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1218
+    ]
   ],
   [
     "CONFIG_FILE_SYSTEM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1219
+    ]
   ],
   [
     "CONFIG_GNSS_RTK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1222
+    ]
   ],
   [
     "CONFIG_INPUT_MODE_SYNCHRONOUS",
@@ -6370,29 +7270,29 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\input\\Kconfig",
-      23
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_INPUT_THREAD_PRIORITY_OVERRIDE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1225
+    ]
   ],
   [
     "CONFIG_INPUT_QUEUE_MAX_MSGS",
     "y",
     "int",
     "16",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\input\\Kconfig",
-      57
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1226
     ]
   ],
   [
@@ -6400,150 +7300,198 @@
     "y",
     "int",
     "1024",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\input\\Kconfig",
-      64
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1227
     ]
   ],
   [
     "CONFIG_INPUT_SHELL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1228
+    ]
   ],
   [
     "CONFIG_INSTRUMENTATION",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1229
+    ]
   ],
   [
     "CONFIG_RPMSG_SERVICE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1234
+    ]
   ],
   [
     "CONFIG_IPC_SERVICE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1235
+    ]
   ],
   [
     "CONFIG_OPENAMP_RSC_TABLE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1236
+    ]
   ],
   [
     "CONFIG_JWT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1239
+    ]
   ],
   [
     "CONFIG_ZMS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1244
+    ]
   ],
   [
     "CONFIG_LLEXT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1247
+    ]
   ],
   [
     "CONFIG_LLEXT_EDK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1248
+    ]
   ],
   [
     "CONFIG_LOG_OUTPUT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1253
+    ]
   ],
   [
     "CONFIG_MEM_ATTR",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\mem_mgmt\\Kconfig",
-      8
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1256
     ]
   ],
   [
     "CONFIG_MEM_ATTR_HEAP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1257
+    ]
   ],
   [
     "CONFIG_EC_HOST_CMD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1266
+    ]
   ],
   [
     "CONFIG_OSDP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1269
+    ]
   ],
   [
     "CONFIG_MODBUS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1272
+    ]
   ],
   [
     "CONFIG_MODEM_MODULES",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1273
+    ]
   ],
   [
     "CONFIG_NETWORKING",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1278
+    ]
   ],
   [
     "CONFIG_HAS_PM",
@@ -6569,41 +7517,56 @@
     "CONFIG_PM_POLICY_LATENCY_STANDALONE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1286
+    ]
   ],
   [
     "CONFIG_PM_CPU_SHELL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1287
+    ]
   ],
   [
     "CONFIG_MCTP",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1293
+    ]
   ],
   [
     "CONFIG_POSIX_SYSTEM_INTERFACES",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1303
+    ]
   ],
   [
     "CONFIG_POSIX_API",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1304
+    ]
   ],
   [
     "CONFIG_POSIX_AEP_CHOICE_NONE",
@@ -6618,11 +7581,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\portability\\posix\\Kconfig.profile",
-      29
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_POSIX_AEP_CHOICE_BASE",
@@ -6691,92 +7651,122 @@
     "CONFIG_EVENTFD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1321
+    ]
   ],
   [
     "CONFIG_PROFILING",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1324
+    ]
   ],
   [
     "CONFIG_TEST_RANDOM_GENERATOR",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1329
+    ]
   ],
   [
     "CONFIG_TIMER_RANDOM_INITIAL_STATE",
     "y",
     "int",
     "123456789",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\random\\Kconfig",
-      33
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1330
     ]
   ],
   [
     "CONFIG_CSPRNG_NEEDED",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1331
+    ]
   ],
   [
     "CONFIG_RTIO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1334
+    ]
   ],
   [
     "CONFIG_MMC_STACK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1339
+    ]
   ],
   [
     "CONFIG_SDMMC_STACK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1340
+    ]
   ],
   [
     "CONFIG_SDIO_STACK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1341
+    ]
   ],
   [
     "CONFIG_SECURE_STORAGE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1344
+    ]
   ],
   [
     "CONFIG_SETTINGS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1345
+    ]
   ],
   [
     "CONFIG_SHELL",
@@ -6785,8 +7775,8 @@
     "y",
     "assign",
     [
-      "D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf",
-      35
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1346
     ]
   ],
   [
@@ -6794,19 +7784,22 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\backends\\Kconfig.backends",
-      8
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1347
     ]
   ],
   [
     "CONFIG_SHELL_BACKEND_DUMMY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1348
+    ]
   ],
   [
     "CONFIG_SHELL_LOCAL",
@@ -6823,38 +7816,44 @@
     "CONFIG_SHELL_MINIMAL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1350
+    ]
   ],
   [
     "CONFIG_SHELL_DEVICE_HELPERS",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      38
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1351
     ]
   ],
   [
     "CONFIG_SHELL_THREAD_PRIORITY_OVERRIDE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1352
+    ]
   ],
   [
     "CONFIG_SHELL_BACKSPACE_MODE_DELETE",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      65
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1353
     ]
   ],
   [
@@ -6862,10 +7861,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      73
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1354
     ]
   ],
   [
@@ -6873,10 +7872,10 @@
     "y",
     "int",
     "20",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      84
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1355
     ]
   ],
   [
@@ -6884,10 +7883,10 @@
     "y",
     "int",
     "256",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      92
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1356
     ]
   ],
   [
@@ -6895,10 +7894,10 @@
     "y",
     "int",
     "30",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      99
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1357
     ]
   ],
   [
@@ -6906,10 +7905,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      107
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1358
     ]
   ],
   [
@@ -6917,10 +7916,10 @@
     "y",
     "int",
     "80",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      115
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1359
     ]
   ],
   [
@@ -6928,10 +7927,10 @@
     "y",
     "int",
     "24",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      121
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1360
     ]
   ],
   [
@@ -6939,10 +7938,10 @@
     "y",
     "int",
     "20",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      128
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1361
     ]
   ],
   [
@@ -6950,10 +7949,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      134
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1362
     ]
   ],
   [
@@ -6961,10 +7960,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      143
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1363
     ]
   ],
   [
@@ -6972,10 +7971,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      150
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1364
     ]
   ],
   [
@@ -6983,10 +7982,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      159
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1365
     ]
   ],
   [
@@ -6994,10 +7993,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      165
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1366
     ]
   ],
   [
@@ -7005,10 +8004,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      171
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1367
     ]
   ],
   [
@@ -7016,29 +8015,32 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      177
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1368
     ]
   ],
   [
     "CONFIG_SHELL_START_OBSCURED",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1369
+    ]
   ],
   [
     "CONFIG_SHELL_VT100_COMMANDS",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      189
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1370
     ]
   ],
   [
@@ -7046,29 +8048,32 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      196
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1371
     ]
   ],
   [
     "CONFIG_SHELL_GETOPT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1372
+    ]
   ],
   [
     "CONFIG_SHELL_METAKEYS",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      211
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1373
     ]
   ],
   [
@@ -7076,10 +8081,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      219
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1374
     ]
   ],
   [
@@ -7087,10 +8092,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      227
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1375
     ]
   ],
   [
@@ -7098,10 +8103,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      236
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1376
     ]
   ],
   [
@@ -7109,10 +8114,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      240
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1377
     ]
   ],
   [
@@ -7120,10 +8125,10 @@
     "y",
     "int",
     "512",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      248
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1378
     ]
   ],
   [
@@ -7131,10 +8136,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      255
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1379
     ]
   ],
   [
@@ -7142,10 +8147,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      259
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1380
     ]
   ],
   [
@@ -7153,45 +8158,54 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      268
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1381
     ]
   ],
   [
     "CONFIG_SHELL_CMDS_SELECT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1382
+    ]
   ],
   [
     "CONFIG_SHELL_CMD_ROOT",
     "y",
     "string",
-    null,
-    "unset",
-    null
+    "",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1383
+    ]
   ],
   [
     "CONFIG_SHELL_LOG_BACKEND_CUSTOM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1384
+    ]
   ],
   [
     "CONFIG_SHELL_AUTOSTART",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      354
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1385
     ]
   ],
   [
@@ -7199,29 +8213,32 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      361
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1386
     ]
   ],
   [
     "CONFIG_SHELL_CUSTOM_HEADER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1387
+    ]
   ],
   [
     "CONFIG_SHELL_TX_TIMEOUT_MS",
     "y",
     "int",
     "50",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      378
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1388
     ]
   ],
   [
@@ -7229,10 +8246,10 @@
     "y",
     "int",
     "16",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      389
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1389
     ]
   ],
   [
@@ -7240,29 +8257,32 @@
     "y",
     "int",
     "100",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\Kconfig",
-      437
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1390
     ]
   ],
   [
     "CONFIG_SHELL_ALIASES",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1391
+    ]
   ],
   [
     "CONFIG_DEVICE_SHELL",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\modules\\Kconfig",
-      8
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1392
     ]
   ],
   [
@@ -7270,10 +8290,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\modules\\Kconfig",
-      15
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1393
     ]
   ],
   [
@@ -7281,10 +8301,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\modules\\Kconfig",
-      25
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1394
     ]
   ],
   [
@@ -7292,29 +8312,32 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\modules\\Kconfig",
-      31
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1395
     ]
   ],
   [
     "CONFIG_ZYCLICTEST_SHELL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1396
+    ]
   ],
   [
     "CONFIG_KERNEL_SHELL",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\shell\\modules\\kernel_service\\Kconfig",
-      8
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1397
     ]
   ],
   [
@@ -7390,172 +8413,232 @@
     "CONFIG_KERNEL_SHELL_PANIC_CMD",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1404
+    ]
   ],
   [
     "CONFIG_STATS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1405
+    ]
   ],
   [
     "CONFIG_STREAM_FLASH",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1410
+    ]
   ],
   [
     "CONFIG_TASK_WDT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1413
+    ]
   ],
   [
     "CONFIG_ZTEST",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1418
+    ]
   ],
   [
     "CONFIG_ZTEST_MOCKING",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1419
+    ]
   ],
   [
     "CONFIG_ZTRESS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1420
+    ]
   ],
   [
     "CONFIG_ZTEST_BENCHMARK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1425
+    ]
   ],
   [
     "CONFIG_TEST",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1428
+    ]
   ],
   [
     "CONFIG_TEST_USERSPACE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1429
+    ]
   ],
   [
     "CONFIG_FORCE_COVERAGE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1435
+    ]
   ],
   [
     "CONFIG_COVERAGE_DUMP_PATH_EXCLUDE",
     "y",
     "string",
     "",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\testsuite\\Kconfig.coverage",
-      96
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1436
     ]
   ],
   [
     "CONFIG_TIMING_FUNCTIONS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1439
+    ]
   ],
   [
     "CONFIG_TRACING",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1440
+    ]
   ],
   [
     "CONFIG_USB_DEVICE_STACK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1441
+    ]
   ],
   [
     "CONFIG_USB_DEVICE_STACK_NEXT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1442
+    ]
   ],
   [
     "CONFIG_USB_HOST_STACK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1443
+    ]
   ],
   [
     "CONFIG_USBC_STACK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1444
+    ]
   ],
   [
     "CONFIG_VIDEO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1445
+    ]
   ],
   [
     "CONFIG_ZBUS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1446
+    ]
   ],
   [
     "CONFIG_MODULES",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1447
+    ]
   ],
   [
     "CONFIG_TOOLCHAIN_ZEPHYR_1_0",
@@ -7614,11 +8697,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      62
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_LINKER_ORPHAN_SECTION_ERROR",
@@ -7633,10 +8713,10 @@
     "y",
     "hex",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      148
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1465
     ]
   ],
   [
@@ -7644,10 +8724,10 @@
     "y",
     "hex",
     "0",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      178
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1466
     ]
   ],
   [
@@ -7666,11 +8746,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      193
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_CMAKE_LINKER_GENERATOR",
@@ -7684,38 +8761,44 @@
     "CONFIG_HAVE_CUSTOM_LINKER_SCRIPT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1470
+    ]
   ],
   [
     "CONFIG_LINKER_SORT_BY_ALIGNMENT",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      243
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1471
     ]
   ],
   [
     "CONFIG_LINKER_USE_BOOT_SECTION",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1476
+    ]
   ],
   [
     "CONFIG_LINKER_LAST_SECTION_ID",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      291
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1477
     ]
   ],
   [
@@ -7723,10 +8806,10 @@
     "y",
     "hex",
     "0xE015E015",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      307
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1478
     ]
   ],
   [
@@ -7755,9 +8838,12 @@
     "CONFIG_LINKER_DEVNULL_MEMORY",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1483
+    ]
   ],
   [
     "CONFIG_STD_C90",
@@ -7788,11 +8874,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      390
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_STD_C23",
@@ -7816,25 +8899,34 @@
     "CONFIG_GNU_C_EXTENSIONS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1495
+    ]
   ],
   [
     "CONFIG_CODING_GUIDELINE_CHECK",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1496
+    ]
   ],
   [
     "CONFIG_COMPILER_FREESTANDING",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1497
+    ]
   ],
   [
     "CONFIG_SIZE_OPTIMIZATIONS",
@@ -7865,11 +8957,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      489
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_NO_OPTIMIZATIONS",
@@ -7883,35 +8972,44 @@
     "CONFIG_COMPILER_WARNINGS_AS_ERRORS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1503
+    ]
   ],
   [
     "CONFIG_DEPRECATION_TEST",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1504
+    ]
   ],
   [
     "CONFIG_COMPILER_SAVE_TEMPS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1505
+    ]
   ],
   [
     "CONFIG_COMPILER_TRACK_MACRO_EXPANSION",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      568
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1506
     ]
   ],
   [
@@ -7919,10 +9017,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      576
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1507
     ]
   ],
   [
@@ -7938,11 +9036,8 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      583
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_FORTIFY_SOURCE_RUN_TIME",
@@ -7956,17 +9051,23 @@
     "CONFIG_COMPILER_OPT",
     "y",
     "string",
-    null,
-    "unset",
-    null
+    "",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1511
+    ]
   ],
   [
     "CONFIG_MISRA_SANE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1512
+    ]
   ],
   [
     "CONFIG_TOOLCHAIN_SUPPORTS_VLA_IN_STATEMENTS",
@@ -7994,20 +9095,20 @@
     "CONFIG_SCOPE_CLEANUP_HELPERS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1515
+    ]
   ],
   [
     "CONFIG_COMPILER_CODEGEN_VLIW_AUTO",
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      655
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_COMPILER_CODEGEN_VLIW_ENABLED",
@@ -8046,21 +9147,18 @@
     "y",
     "bool",
     "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      686
-    ]
+    "assign",
+    null
   ],
   [
     "CONFIG_KERNEL_BIN_NAME",
     "y",
     "string",
     "zephyr",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      710
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1533
     ]
   ],
   [
@@ -8068,152 +9166,197 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      716
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1534
     ]
   ],
   [
     "CONFIG_OUTPUT_SYMBOLS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1535
+    ]
   ],
   [
     "CONFIG_OUTPUT_PRINT_MEMORY_USAGE",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      758
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1536
     ]
   ],
   [
     "CONFIG_CLEANUP_INTERMEDIATE_FILES",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1537
+    ]
   ],
   [
     "CONFIG_BUILD_NO_GAP_FILL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1538
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_HEX_GAP_FILL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1539
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_EXE",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1540
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_S19_GAP_FILL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1541
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_VERILOG",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1542
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_UF2",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1543
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_MOT",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1544
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_STRIPPED",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1545
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_COMPRESS_DEBUG_SECTIONS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1546
+    ]
   ],
   [
     "CONFIG_BUILD_ALIGN_LMA",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1547
+    ]
   ],
   [
     "CONFIG_APPLICATION_DEFINED_SYSCALL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1548
+    ]
   ],
   [
     "CONFIG_MAKEFILE_EXPORTS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1549
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_META",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1550
+    ]
   ],
   [
     "CONFIG_BUILD_OUTPUT_STRIP_PATHS",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      1014
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1551
     ]
   ],
   [
@@ -8221,72 +9364,87 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      1028
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1552
     ]
   ],
   [
     "CONFIG_EMIT_ALL_SYSCALLS",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1553
+    ]
   ],
   [
     "CONFIG_WARN_DEPRECATED",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      1060
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1556
     ]
   ],
   [
     "CONFIG_WARN_EXPERIMENTAL",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1557
+    ]
   ],
   [
     "CONFIG_ENFORCE_ZEPHYR_STDINT",
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\Kconfig.zephyr",
-      1096
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1558
     ]
   ],
   [
     "CONFIG_IS_BOOTLOADER",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1564
+    ]
   ],
   [
     "CONFIG_BOOTLOADER_BOSSA",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1565
+    ]
   ],
   [
     "CONFIG_LEGACY_GENERATED_INCLUDE_PATH",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "n",
+    "assign",
+    [
+      "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/.config",
+      1571
+    ]
   ]
 ]

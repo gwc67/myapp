@@ -1,7 +1,4 @@
 {
-    "C_Cpp.default.compileCommands": [
-        "build/compile_commands.json"
-    ],
     // --- Zephyr SDK & Toolchain ---
     // These ensure west build / cmake can find the ARM cross-compiler
     "terminal.integrated.env.windows": {
@@ -22,4 +19,6 @@
         }
     },
     "terminal.integrated.defaultProfile.windows": "PowerShell Zephyr",
+
+    
 }
