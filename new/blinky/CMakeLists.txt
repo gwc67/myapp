@@ -10,4 +10,5 @@ target_sources(app PRIVATE
     src/menu/menu_input.c
     src/menu/menu.c
     src/menu/OLED_Menu.c
+    src/menu/font.c
 )

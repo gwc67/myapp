@@ -1,202 +1,201 @@
-# Menu — 树形菜单系统（Linux menuconfig 风格）
+# Menu — 树形菜单系统（Zephyr 移植版）
 
-## 概述
+## 分层架构
 
-OLED 菜单系统，采用 Linux `menuconfig` 风格的树形结构。**框架负责导航和显示，用户只负责声明树结构和写叶子 draw 函数。**
+```
+Zephyr input (原始 press/release)
+    │
+    ▼
+menu_input.c/h  ──  手势识别 + 动作映射  ──  6 个语义动作
+                       (单击/双击/长按)       (UP/DOWN/ENTER/BACK/TOGGLE/RESET)
+    │
+    ▼
+menu.c/h  ──  纯菜单状态机
+              导航、光标滚动、滚动列表、编辑模式、值增减、显示
+    │
+    ▼
+OLED_Menu.c/h  ──  菜单树定义 + 叶子 draw 函数
+                   用户只负责声明树结构和写叶子画法
+```
 
-- **显示**: 128×64 OLED (I2C 非阻塞)
-- **输入**: 4 按键 (KEY1~KEY4) → keyfunc subscriber 机制
-- **架构**: `menu_base_t` 基类 + `menu_node_t` 派生类，`container_of` 下转型
-- **刷新**: 事件驱动 (dirty flag)，非轮询
-- **初始化**: `DRIVER_INIT(menu_oled_init_v)` 自动注册
+**核心原则**：每层只做自己的事。menu.c 不知道物理按键和毫秒阈值，OLED_Menu.c 不知道导航逻辑，menu_input.c 不知道菜单树结构。
 
-## 架构设计
+## 文件清单
 
-### 两层 struct 继承 — 与 Linux `struct device` 一致
+| 文件 | 层 | 职责 |
+|------|-----|------|
+| `menu_input.h` | 输入中间层 | 定义 `enum menu_action_e`（6 个动作）、handler typedef、3 个 API |
+| `menu_input.c` | 输入中间层 | `INPUT_CALLBACK_DEFINE` 订阅原始事件 → 手势识别 → `key_map[]` 映射为动作 → 通知 menu.c |
+| `menu.h` | 菜单核心 | `menu_base_t`/`menu_node_t` 数据结构、`container_of` 下转型、`Create_Menu_*` 构建宏、框架 API |
+| `menu.c` | 菜单核心 | 树构建、动作处理（`s_menu_action_handler`）、光标滚动、编辑模式、cfb 显示 |
+| `OLED_Menu.h` | 用户层 | `g_root` extern、`menu_oled_init_v()` 声明 |
+| `OLED_Menu.c` | 用户层 | 菜单树构建（`Create_Menu_*`）+ 叶子 draw 函数（cfb API） |
+
+## menu_input — 按键映射与手势
+
+### 手势阈值
+
+- 双击：同一键 400ms 内再次按下
+- 长按：按住超过 800ms（在 `menu_input_poll()` 中检测，主循环每 30ms 调用一次）
+
+### 按键 → 动作映射表 (`s_key_map_pst[]`)
+
+改按键布局只改这个表：
 
 ```c
-struct menu_base_t {              /* 基类 — 对外暴露的最小接口 */
+static const struct key_mapping_t s_key_map_pst[] = {
+    { INPUT_KEY_0,  MENU_ACTION_UP_em,      NO_ACTION,       NO_ACTION },
+    { INPUT_KEY_1,  MENU_ACTION_DOWN_em,    NO_ACTION,       NO_ACTION },
+    { INPUT_KEY_2,  MENU_ACTION_ENTER_em,   MENU_ACTION_TOGGLE_em, MENU_ACTION_RESET_em },
+    { INPUT_KEY_3,  MENU_ACTION_BACK_em,    NO_ACTION,       NO_ACTION },
+};
+```
+
+三列依次是：单击动作、双击动作、长按动作。`NO_ACTION`（0xFF）= 该手势无动作。
+
+### `menu_input_poll()` 的必要性
+
+单击和双击可以纯在中断回调里判断，但长按需要"按住不放且持续 800ms"——这需要周期检查。所以主循环里必须周期性调用 `menu_input_poll()`。当前主循环用 `k_sleep(K_MSEC(30))`，每秒约 33 次轮询，长按响应延迟 ≤ 30ms。
+
+## menu — 树形菜单核心
+
+### 数据结构
+
+两层 struct 继承，与 Linux 内核 `struct device` 同款模式：
+
+```c
+struct menu_base_t {              // 基类 — 对外暴露的最小接口
     const char *name;
 };
 
-struct menu_node_t {              /* 派生类 — 框架内部完整实现 */
-    struct menu_base_t base;      /* 基类嵌入 (必须是第一个成员) */
+struct menu_node_t {              // 派生类 — 框架内部完整实现
+    struct menu_base_t base;      // 基类嵌入（必须是第一个成员）
     enum menu_kind_e kind;
     void (*draw)(struct menu_node_t *self);
     struct menu_node_t *parent, *first_child, *next;
     uint8_t cursor, view_offset;
     int32_t *data;  float *data_f;
-    /* ... 更多字段 ... */
+    // ...
 };
 ```
 
-与 Linux 内核的对应关系：
+`container_of` 下转型：`to_menu_node(base_ptr)` 从基类指针恢复完整节点指针。
 
-| Linux 内核 | 本菜单系统 | 说明 |
-|-----------|-----------|------|
-| `struct device` | `struct menu_base_t` | 对外暴露的基类 |
-| `struct gpio_device` | `struct menu_node_t` | 内部完整实现 |
-| `to_gpio_device(dev)` | `to_menu_node(base)` | `container_of` 下转型 |
-| `device_create()` 返回 `struct device *` | `menu_create_item()` 返回 `struct menu_base_t *` | 工厂函数返回基类指针 |
-
-**关键原则**：外部模块（如电池电压刷新）只持有 `struct menu_base_t *`，无法直接访问 `menu_node_t` 内部字段。需要操作完整节点时通过 `to_menu_node()` 下转型。
-
-### container_of 下转型
-
-```c
-/* menu.h 中定义 */
-#define to_menu_node(base_ptr) \
-    container_of((base_ptr), struct menu_node_t, base)
-
-/* 使用示例: menu_request_refresh 接收 base 指针, 内部下转型 */
-void menu_request_refresh(struct menu_base_t *base)
-{
-    struct menu_node_t *me = to_menu_node(base);
-    if (base && s_current_pst == me)
-        s_dirty_b = true;
-}
-```
-
-`container_of` 宏由 `Key_func.h` 提供（通过 `menu.h → Key_func.h` 包含链可用）。
-
-## 节点类型
+### 节点类型
 
 | 类型 | 特征 | 显示方式 |
 |------|------|---------|
-| `MENU_FOLDER` | 有子节点 (`first_child != NULL`) | 框架自动显示子项列表 + 光标 `>>` |
-| `MENU_LEAF` | 无子节点 (`first_child == NULL`) | 调用 `draw()` 自定义显示 |
+| `MENU_FOLDER` | `first_child != NULL` | 框架自动显示子项列表 + 光标 `>>` |
+| `MENU_LEAF` | `first_child == NULL` | 调用 `draw()` 自定义显示 |
 
-文件夹通用显示布局 (64px 高度):
-```
-(0, 0)   标题 (8×16 字体, 16px)
-(0, 20)  子项 view_offset+0  (6×8 字体, 14px 行距)
-(0, 34)  子项 view_offset+1
-(0, 48)  子项 view_offset+2
-```
-子项类型标记: `[+]` 文件夹, `[#]` 可编辑叶子, ` > ` 普通叶子。
-超过 `MENU_VISIBLE_ROWS` (3) 项时自动滚动, 右侧显示 `^`/`v` 指示器。
-
-## 文件清单
-
-| 文件 | 职责 |
-|------|------|
-| `menu.h` | 基类/派生类定义, 构建宏, 框架 API |
-| `menu.c` | 核心实现: 导航, 编辑模式, 滚动, 显示 |
-| `OLED_Menu.h` | 根节点 extern + 外部可见的 base 指针 |
-| `OLED_Menu.c` | 用户侧: 菜单树构建 + 叶子 draw 函数 |
-
-## 构建 API — Create_Menu_* 宏
-
-**约定**: `me` 传结构体本身 (不是指针), 宏内部用 `&(me)` 取地址传给函数, 用 `(me).field` 设置字段。
-
-```c
-/* 文件夹 */
-Create_Menu_Folder(parent, me, name)
-
-/* 普通叶子 (只读显示) */
-Create_Menu_Leaf(parent, me, name, draw_fn)
-
-/* int32 可编辑叶子 */
-Create_Menu_Leaf_Int(parent, me, name, draw_fn, data_ptr)
-
-/* int32 可编辑 + 范围限制 */
-Create_Menu_Leaf_Range(parent, me, name, draw_fn, data_ptr, min, max)
-
-/* float 可编辑叶子 */
-Create_Menu_Leaf_Float(parent, me, name, draw_fn, data_ptr)
-
-/* float 可编辑 + 范围限制 */
-Create_Menu_Leaf_Float_Range(parent, me, name, draw_fn, data_ptr, min, max)
-```
-
-`menu_create_item()` 返回 `struct menu_base_t *` — 外部模块可保存此返回值用于 `menu_request_refresh()`。
-
-## 按键映射与操作
-
-| 按键 | 功能 (浏览模式) | 功能 (编辑模式) |
-|------|---------------|---------------|
-| KEY4 | UP — 光标上移 | UP — 增加值 |
-| KEY2 | DOWN — 光标下移 | DOWN — 减小值 |
-| KEY3 单击 | ENTER — 进入子项 / 进入编辑 | 退出编辑 |
-| KEY3 双击 | — | 循环切换步进值 |
-| KEY3 长按 | — | 恢复默认值 |
-| KEY1 | BACK — 退出编辑 / 返回上级 | BACK — 退出编辑 |
-
-步进值表: `{0.1, 1, 10, 100}` — 双击 ENTER 在这 4 个值之间循环。
-
-## 编辑模式
+### 文件夹通用显示布局（128×64 OLED）
 
 ```
-叶子页面 → 单击 ENTER → 进入编辑模式
-  → UP/DOWN 修改 *data 或 *data_f
-  → 双击 ENTER 切换步进 (s:1 → s:10 → s:100 → s:0.1)
-  → 长按 ENTER 恢复默认值 (menu_set_default_int/float 预设)
-  → 单击 BACK 退出编辑 (不导航)
+(0, 0)   标题 (font 0: 10×16)
+(0, 18)  子项 row 0  (font 0: 10×16, 行距 16)
+(0, 34)  子项 row 1
+(0, 50)  子项 row 2
 ```
 
-屏幕底部显示: 当前值 + 步进 (`s:1`) + 模式 (`EDIT` / `[ENT]`)。
+子项标记：`[+]` 文件夹，`[#]` 可编辑叶子，` > ` 普通叶子。
+超过 `MENU_VISIBLE_ROWS`（3）项时自动滚动，右侧显示 `^` / `v`。
 
-## 外部数据源实时刷新
+### 编辑模式
 
-```c
-/* OLED_Menu.c — 创建菜单时保存 base 指针 */
-struct menu_base_t *g_battery_oled_pst;
-g_battery_oled_pst = Create_Menu_Leaf(&g_menu_select, g_battery_st,
-                                       "battery", s_draw_battery_v);
-
-/* 外部模块 — 数据更新后请求刷新 */
-void v_Bat_Voltage_Data_Handle(void)
-{
-    /* ... 计算电压电流 ... */
-    menu_request_refresh(g_battery_oled_pst);  /* 只在电池页面显示时触发重绘 */
-}
+```
+叶子页面 → 单击 ENTER → 进入编辑
+  → UP/DOWN 修改值
+  → 双击 ENTER 切换步进（s:0.1 → s:1 → s:10 → s:100 → s:0.01 循环）
+  → 长按 ENTER 恢复默认值
+  → BACK 退出编辑
 ```
 
-**隔离原理**: `menu_request_refresh(base)` 内部检查 `s_current_pst == to_menu_node(base)`，只有当前页面匹配时才设置 dirty flag。不同数据源传不同 base 指针，互不干扰。
+屏幕底部显示：当前值 + 步进（如 `s:1`）+ 模式（`EDIT` / `[ENT]`）。
 
-## 导航模型
+### 导航模型
 
 ```
 s_current_pst = 当前视图节点
-  有子节点 → s_menu_folder_draw() 自动显示子项列表, cursor 控制高亮
+  有子节点 → s_menu_folder_draw() 自动显示子项列表
   无子节点 → draw() 自定义显示
 
-UP/DOWN → cursor ± 1 (循环), 自动更新 view_offset (滚动)
-ENTER   → 进入第 cursor 个子项 (压入导航栈)
-BACK    → 弹出导航栈, 恢复父节点 cursor
-
-s_nav_stack[8] — 保存导航路径, BACK 时逐层返回
+UP/DOWN → cursor ± 1（循环），自动更新 view_offset（滚动）
+ENTER   → 进入第 cursor 个子项（压入 s_nav_stack）
+BACK    → 弹出导航栈 / 返回父节点
 ```
 
-## 使用示例
+### 刷新机制
+
+事件驱动，无轮询。两个触发源：
+1. 按键动作 → `s_dirty_b = true`
+2. 外部数据更新 → `menu_request_refresh(base)` → 只有当前显示那个节点时才置脏
+
+## OLED_Menu — 菜单树定义
+
+### 构建 API（`Create_Menu_*` 宏）
+
+约定：`me` 传结构体本身（不传指针），宏内部 `&(me)` 取地址。
+
+| 宏 | 用途 |
+|----|------|
+| `Create_Menu_Folder(parent, me, name)` | 文件夹 |
+| `Create_Menu_Leaf(parent, me, name, draw_fn)` | 普通叶子 |
+| `Create_Menu_Leaf_Int(parent, me, name, draw_fn, ptr)` | int32 可编辑 |
+| `Create_Menu_Leaf_Range(parent, me, name, draw_fn, ptr, min, max)` | int32 可编辑 + 范围 |
+| `Create_Menu_Leaf_Float(parent, me, name, draw_fn, ptr)` | float 可编辑 |
+| `Create_Menu_Leaf_Float_Range(parent, me, name, draw_fn, ptr, min, max)` | float 可编辑 + 范围 |
+
+`menu_create_item()` 返回 `struct menu_base_t *`，保存此指针用于 `menu_request_refresh()`。
+
+### 叶子 draw 函数规范
+
+- 使用 `cfb_print()` / `cfb_framebuffer_set_font()`（Zephyr cfb API）
+- draw 函数内不要调用 `cfb_framebuffer_clear()` 或 `cfb_framebuffer_finalize()`（由 `menu_task_v` 统一管理）
+- 底部值 + 编辑状态由 `menu_task_v` 在 draw 之后自动绘制
+- 函数内不要有阻塞操作或 `k_sleep`
+
+### 外部数据源实时刷新
 
 ```c
-/* 1. 声明节点 */
-struct menu_node_t g_root;
-static struct menu_node_t g_folder_pid;
-static struct menu_node_t g_item_kp;
-static int32_t s_pid_kp = 100;
+// 创建时保存 base 指针
+g_battery_pst = Create_Menu_Leaf(&g_select, g_battery, "Battery", s_draw_battery);
 
-/* 2. 构建树 */
-Create_Menu_Folder(NULL, g_root, "Main");
-Create_Menu_Folder(&g_root, g_folder_pid, "PID");
-Create_Menu_Leaf_Range(&g_folder_pid, g_item_kp, "Kp", NULL,
-                       &s_pid_kp, 0, 1000);
-menu_set_default_int(&g_item_kp, 100);
-
-/* 3. 自动初始化 */
-void menu_oled_init_v(void) {
-    menu_init_v();
-    s_build_menu_tree();
+// 数据更新后请求刷新（只在当前页面匹配时才触发）
+void on_battery_data_ready(void) {
+    menu_request_refresh(g_battery_pst);
 }
-DRIVER_INIT(menu_oled_init_v);
 ```
+
+## 初始化流程（main.c）
+
+```c
+cfb_framebuffer_init(dev);     // 分配帧缓冲
+menu_init_v();                  // 注册菜单动作处理器
+menu_oled_init_v();             // 构建菜单树
+
+while (1) {
+    menu_task_v();              // 脏标记驱动刷新显示
+    menu_input_poll();          // 长按检测
+    k_sleep(K_MSEC(30));
+}
+```
+
+## 添加新菜单项的步骤
+
+1. 在 `OLED_Menu.c` 声明 `static struct menu_node_t g_xxx;`
+2. 写 `static void s_draw_xxx(struct menu_node_t *self)` —— 用 cfb API
+3. 在 `s_build_menu_tree()` 里用 `Create_Menu_*` 挂到树上
+4. 如果是可编辑数据：声明 `static int32_t/float s_xxx = 默认值;`，用 `Create_Menu_Leaf_Range/Float` 绑定
+
+## 改按键布局
+
+只改 `menu_input.c` 里的 `s_key_map_pst[]` 表。DTS 里 `zephyr,code` 对应 `INPUT_KEY_N`，映射到此表的 `code_us` 字段。
 
 ## 注意事项
 
-1. **`me` 传结构体, 不传指针** — 所有 `Create_Menu_*` 宏的第二个参数传结构体本身 (如 `g_root`), 不是 `&g_root`。`parent` 参数仍然传指针。
-2. **`draw()` 函数通过 `self->base.name` 访问名称** — 不要直接访问 `self->name`。
-3. **`menu_request_refresh()` 接收 `struct menu_base_t *`** — 保存 `Create_Menu_*` 的返回值，外部模块通过此指针触发刷新。
-4. **无轮询** — 所有刷新由事件驱动: 按键 (dirty flag) 或外部数据 (`menu_request_refresh`)。
-5. **`s_dirty_b` 是全局的** — 同一时刻只有一个页面可以触发重绘，但 `menu_request_refresh` 的 node 匹配保证了只有正确的页面会响应。
-6. **OLED_Menu.c 的 draw 函数中不要有 `delay` 或阻塞操作** — draw 在 `menu_task_v()` 上下文中执行，阻塞会影响整个控制循环。
+1. **`cfb_framebuffer_set_font` 是全局的** — 切换字体会影响后续所有 `cfb_print`。`s_menu_folder_draw` 统一用 font 0（10×16）。
+2. **`cfb_print` 的 x,y 是像素坐标** — cfb 内部处理了 tile 偏移，不需要对齐到 8 的倍数。
+3. **`INIT_LIST_HEAD(&me->list)` 已注释** — `list` 字段在 Zephyr 移植中暂未使用，后续如需链表操作可用 `<zephyr/sys/slist.h>`。
+4. **`__int32_t` / `__uint8_t` 已替换为 `int32_t` / `uint8_t`** — 旧代码是 Keil/ARMCC 扩展，Zephyr gcc 用标准 `<stdint.h>`。
+5. **`DRIVER_INIT()` 已移除** — Zephyr 下改为 main() 中手动调用 `menu_oled_init_v()`。
+6. **draw 函数中不要阻塞** — 叶子 draw 在 `menu_task_v()` 上下文中执行，阻塞会影响按键响应和显示刷新。
