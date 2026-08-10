@@ -85,6 +85,7 @@ linker_zephyr_pre0.cmd: \
  D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/linker/kobject-data.ld \
  D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/linker/cplusplus-ram.ld \
  D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/include/generated/snippets-data-sections.ld \
+ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/subsys/fb/check_cfb_fonts.ld \
  D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/include/generated/snippets-sections.ld \
  D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/linker/intlist.ld \
  D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/linker/debug-sections.ld \
