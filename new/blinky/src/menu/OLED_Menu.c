@@ -14,7 +14,7 @@
 #include <zephyr/display/cfb.h>
 
 /* OLED 设备 (与 menu.c 共用同一个) */
-static const struct device *s_display =
+static const struct device *s_oled_pst =
     DEVICE_DT_GET(DT_NODELABEL(ssd1306));
 
 /* ================================================================
@@ -23,15 +23,15 @@ static const struct device *s_display =
 
 static void s_draw_hello(struct menu_node_t *self)
 {
-    cfb_framebuffer_set_font(s_display, 0);
-    cfb_print(s_display, self->base.name, 0, 0);
-    cfb_print(s_display, "Hello World!", 0, 20);
+    cfb_framebuffer_set_font(s_oled_pst, 0);
+    cfb_print(s_oled_pst, self->base.name, 0, 0);
+    cfb_print(s_oled_pst, "Hello World!", 0, 20);
 }
 
 static void s_draw_value(struct menu_node_t *self)
 {
-    cfb_framebuffer_set_font(s_display, 0);
-    cfb_print(s_display, self->base.name, 0, 0);
+    cfb_framebuffer_set_font(s_oled_pst, 0);
+    cfb_print(s_oled_pst, self->base.name, 0, 0);
     /* 底部值 + 编辑状态由 menu_task_v 统一绘制 */
 }
 

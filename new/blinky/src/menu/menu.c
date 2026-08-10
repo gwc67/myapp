@@ -20,6 +20,7 @@
 #include <zephyr/display/cfb.h>
 
 #include "menu.h"
+#include "menu_input.h"
 
 /* ================================================================
  * 静态变量
@@ -167,7 +168,7 @@ static void s_menu_action_handler(enum menu_action_e action)
 
     switch (action) {
 
-    case MENU_ACTION_DOWN:
+    case MENU_ACTION_DOWN_em:
         if (s_editing && s_has_data(s_current_pst)) {
             s_adjust_minus(s_current_pst);
             s_dirty_b = true;
@@ -187,7 +188,7 @@ static void s_menu_action_handler(enum menu_action_e action)
         }
         break;
 
-    case MENU_ACTION_UP:
+    case MENU_ACTION_UP_em:
         if (s_editing && s_has_data(s_current_pst)) {
             s_adjust_plus(s_current_pst);
             s_dirty_b = true;
@@ -208,7 +209,7 @@ static void s_menu_action_handler(enum menu_action_e action)
         }
         break;
 
-    case MENU_ACTION_ENTER:
+    case MENU_ACTION_ENTER_em:
         if (s_current_pst->first_child) {
             target = s_current_pst->first_child;
             for (uint8_t i = 0; i < s_current_pst->cursor && target; i++)
@@ -226,7 +227,7 @@ static void s_menu_action_handler(enum menu_action_e action)
         }
         break;
 
-    case MENU_ACTION_BACK:
+    case MENU_ACTION_BACK_em:
         if (s_editing) {
             s_editing = false;
             s_dirty_b = true;
@@ -239,7 +240,7 @@ static void s_menu_action_handler(enum menu_action_e action)
         }
         break;
 
-    case MENU_ACTION_TOGGLE:
+    case MENU_ACTION_TOGGLE_em:
         if (s_editing && s_has_data(s_current_pst)) {
             s_current_pst->step_idx =
                 (s_current_pst->step_idx + 1) % MENU_STEP_COUNT;
@@ -247,7 +248,7 @@ static void s_menu_action_handler(enum menu_action_e action)
         }
         break;
 
-    case MENU_ACTION_RESET:
+    case MENU_ACTION_RESET_em:
         if (s_has_data(s_current_pst)) {
             menu_reset_to_default(s_current_pst);
             s_dirty_b = true;

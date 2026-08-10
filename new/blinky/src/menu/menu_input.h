@@ -17,12 +17,12 @@
 
 /* 菜单语义动作 — menu.c 只认识这 6 个, 不关心物理按键或手势细节 */
 enum menu_action_e {
-	MENU_ACTION_UP,      /* 上移光标 / 增加值 */
-	MENU_ACTION_DOWN,    /* 下移光标 / 减小值 */
-	MENU_ACTION_ENTER,   /* 进入子项 / 切换编辑模式 */
-	MENU_ACTION_BACK,    /* 退出编辑 / 返回上级 */
-	MENU_ACTION_TOGGLE,  /* 双击 ENTER → 循环切换步进值 */
-	MENU_ACTION_RESET,   /* 长按 ENTER → 恢复默认值 */
+	MENU_ACTION_UP_em,      /* 上移光标 / 增加值 */
+	MENU_ACTION_DOWN_em,    /* 下移光标 / 减小值 */
+	MENU_ACTION_ENTER_em,   /* 进入子项 / 切换编辑模式 */
+	MENU_ACTION_BACK_em,    /* 退出编辑 / 返回上级 */
+	MENU_ACTION_TOGGLE_em,  /* 双击 ENTER → 循环切换步进值 */
+	MENU_ACTION_RESET_em,   /* 长按 ENTER → 恢复默认值 */
 };
 
 typedef void (*menu_action_handler_t)(enum menu_action_e action);
