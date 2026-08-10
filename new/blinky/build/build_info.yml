@@ -1,4 +1,59 @@
+cmake:
+  application:
+    configuration-dir: 'D:/Downloads/zephyr_new/myapp/new/blinky'
+    source-dir: 'D:/Downloads/zephyr_new/myapp/new/blinky'
+  board:
+    name: 'stm32f407_balance_car'
+    path:
+     - 'D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car'
+    qualifiers: 'stm32f407xx'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings'
+    files:
+     - 'D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car.dts'
+    include-dirs:
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/ambiq/dts'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/atmel/include'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/bouffalolab/include'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/bouffalolab/include/zephyr'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/gigadevice/include'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/infineon/dts'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/microchip/include'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/microchip/dts'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/nuvoton/dts'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/nxp/dts'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/dts'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/ti/dts'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/common'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/vendor'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/rx'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/x86'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/xtensa'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/sparc'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/riscv'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/posix'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm64'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arm'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/arc'
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts'
+  kconfig:
+    files:
+     - 'D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car_defconfig'
+     - 'D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf'
+    user-files:
+     - 'D:/Downloads/zephyr_new/myapp/new/blinky/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: 'D:/Downloads/setup/zephyr-sdk-1.0.1'
+  zephyr:
+    version: '4.4.99'
+    zephyr-base: 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr'
+version: '0.1.0'
 west:
-  command: D:\Downloads\zephyr_new\.zephyr\Scripts\west build -b stm32f407_balance_car
-  topdir: D:\Downloads\zephyr_new\zephyr_guanfang
-  version: 1.5.0
+  command: 'D:\Downloads\zephyr_new\.zephyr\Scripts\west build -b stm32f407_balance_car'
+  topdir: 'D:\Downloads\zephyr_new\zephyr_guanfang'
+  version: '1.5.0'
