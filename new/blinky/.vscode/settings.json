@@ -1,0 +1,25 @@
+{
+    "C_Cpp.default.compileCommands": [
+        "build/compile_commands.json"
+    ],
+    // --- Zephyr SDK & Toolchain ---
+    // These ensure west build / cmake can find the ARM cross-compiler
+    "terminal.integrated.env.windows": {
+        "ZEPHYR_TOOLCHAIN_VARIANT": "zephyr",
+        "ZEPHYR_SDK_INSTALL_DIR": "D:/Downloads/setup/zephyr-sdk-1.0.1",
+        "PATH": "D:/Downloads/msys2/mingw64/bin;D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools;${env:PATH}"
+    },
+
+    // --- 终端自动激活 Python venv (.zephyr) 环境 ---
+    "terminal.integrated.profiles.windows": {
+        "PowerShell Zephyr": {
+            "source": "PowerShell",
+            "args": [
+                "-NoExit",
+                "-Command",
+                "& 'D:/Downloads/zephyr_new/.zephyr/Scripts/Activate.ps1'"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell Zephyr",
+}

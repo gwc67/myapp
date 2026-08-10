@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Zephyr Debug (OpenOCD)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky",
+            "executable": "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/zephyr.elf",
+            "gdbPath": "D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe",
+            
+            "serverpath": "D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/bin/openocd.exe",
+            "searchDir": ["D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/share/openocd/scripts"],
+            
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f4x.cfg"
+            ],
+            "svdFile": "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\boards\\arm\\stm32f407_balance_car\\stm32f407xx.svd",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "raw"
+        }
+    ]
+}
