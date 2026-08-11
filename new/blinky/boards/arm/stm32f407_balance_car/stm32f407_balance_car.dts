@@ -15,6 +15,8 @@
 #include <dt-bindings/sensor/qdec_stm32.h>
 #include <dt-bindings/power/stm32_pwr.h>
 
+#include <zephyr/dt-bindings/dma/stm32_dma.h>
+
 / {
 	leds {
 		compatible = "gpio-leds";
