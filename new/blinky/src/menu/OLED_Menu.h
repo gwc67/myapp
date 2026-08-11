@@ -17,7 +17,4 @@
 /* 根节点 */
 extern struct menu_node_t g_root;
 
-/* 初始化: 构建菜单树 */
-void menu_oled_init_v(void);
-
 #endif /* OLED_MENU_H */

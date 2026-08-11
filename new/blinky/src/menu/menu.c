@@ -288,11 +288,15 @@ static void s_menu_action_handler(enum menu_action_e action)
  * 初始化 + API
  * ================================================================ */
 
-void menu_init_v(void)
+int menu_init_v(void)
 {
     menu_input_register_handler(s_menu_action_handler);
     s_dirty_b = true;
+    return 0;
 }
+
+SYS_INIT(menu_init_v, APPLICATION, 5);
+
 
 void menu_navigate_v(struct menu_node_t *target)
 {

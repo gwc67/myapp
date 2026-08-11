@@ -14,6 +14,7 @@
 #define __MENU_INPUT_H
 
 #include <stdint.h>
+#include <sys/_intsup.h>
 
 /* 菜单语义动作 — menu.c 只认识这 6 个, 不关心物理按键或手势细节 */
 enum menu_action_e {
@@ -28,7 +29,6 @@ enum menu_action_e {
 typedef void (*menu_action_handler_t)(enum menu_action_e action);
 
 /* 初始化: 初始化 k_work (长按/延迟单击定时器) */
-void menu_input_init(void);
 
 /* 注册菜单动作处理函数 (menu.c 在 menu_init_v 里调用) */
 void menu_input_register_handler(menu_action_handler_t handler);

@@ -14,7 +14,10 @@
  */
 
 #include "menu_input.h"
+#include "system_stm32f4xx.h"
+#include "zephyr/init.h"
 
+#include <sys/_intsup.h>
 #include <zephyr/input/input.h>
 #include <zephyr/kernel.h>
 
@@ -134,11 +137,16 @@ INPUT_CALLBACK_DEFINE(NULL, raw_input_cb, NULL);
 
 /* ---- 公开 API ---- */
 
-void menu_input_init(void)
+int menu_input_init(void)
 {
 	k_work_init_delayable(&s_single_dwork, single_work_cb);
 	k_work_init_delayable(&s_long_dwork, long_work_cb);
+	return 0;
+	
 }
+
+//OLED 底层初始化
+SYS_INIT(menu_input_init, APPLICATION, 5);
 
 void menu_input_register_handler(menu_action_handler_t handler)
 {

@@ -141,7 +141,6 @@ struct menu_base_t *menu_create_item(struct menu_node_t *parent,
  * 框架 API
  * ================================================================ */
 
-void menu_init_v(void);
 void menu_navigate_v(struct menu_node_t *target);
 void menu_task_v(void);
 struct menu_node_t *menu_current_get_pst(void);

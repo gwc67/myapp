@@ -54,7 +54,7 @@ static struct menu_node_t g_item_value;
  * 构建菜单树
  * ================================================================ */
 
-static void s_build_menu_tree(void)
+static int s_build_menu_tree(void)
 {
     Create_Menu_Folder(NULL, g_root, "Main");
     Create_Menu_Folder(&g_root, g_menu_test, "Test");
@@ -64,13 +64,17 @@ static void s_build_menu_tree(void)
                            "Value", s_draw_value,
                            &s_test_value, 0, 100);
     menu_set_default_int(&g_item_value, 50);
+
+    return 0;
 }
 
 /* ================================================================
  * 初始化 (menu_init_v 已由 menu.c 处理动作注册)
  * ================================================================ */
 
-void menu_oled_init_v(void)
-{
-    s_build_menu_tree();
-}
+// void menu_oled_init_v(void)
+// {
+//     s_build_menu_tree();
+// }
+SYS_INIT(s_build_menu_tree, APPLICATION, 6);
+
