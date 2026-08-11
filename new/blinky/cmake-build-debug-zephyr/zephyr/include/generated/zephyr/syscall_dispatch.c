@@ -187,6 +187,22 @@ uintptr_t z_mrsh_i2c_target_driver_unregister(uintptr_t arg1, uintptr_t arg2, ui
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
 __weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_reset_status(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_reset_line_assert(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_reset_line_deassert(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_reset_line_toggle(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
 uintptr_t z_mrsh_uart_err_check(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
@@ -735,6 +751,10 @@ const _k_syscall_handler_t _k_syscall_table[K_SYSCALL_LIMIT] = {
 	[K_SYSCALL_I2C_RECOVER_BUS] = z_mrsh_i2c_recover_bus,
 	[K_SYSCALL_I2C_TARGET_DRIVER_REGISTER] = z_mrsh_i2c_target_driver_register,
 	[K_SYSCALL_I2C_TARGET_DRIVER_UNREGISTER] = z_mrsh_i2c_target_driver_unregister,
+	[K_SYSCALL_RESET_STATUS] = z_mrsh_reset_status,
+	[K_SYSCALL_RESET_LINE_ASSERT] = z_mrsh_reset_line_assert,
+	[K_SYSCALL_RESET_LINE_DEASSERT] = z_mrsh_reset_line_deassert,
+	[K_SYSCALL_RESET_LINE_TOGGLE] = z_mrsh_reset_line_toggle,
 	[K_SYSCALL_UART_ERR_CHECK] = z_mrsh_uart_err_check,
 	[K_SYSCALL_UART_POLL_IN] = z_mrsh_uart_poll_in,
 	[K_SYSCALL_UART_POLL_IN_U16] = z_mrsh_uart_poll_in_u16,

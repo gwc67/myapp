@@ -199,6 +199,9 @@ D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/drivers__display.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/rebuild_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/dma/CMakeFiles/drivers__dma.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/dma/CMakeFiles/edit_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/dma/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/gpio/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/gpio/CMakeFiles/rebuild_cache.dir
@@ -213,6 +216,9 @@ D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pinctrl/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pinctrl/renesas/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pinctrl/renesas/CMakeFiles/rebuild_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/reset/CMakeFiles/drivers__reset.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/reset/CMakeFiles/edit_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/reset/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/serial/CMakeFiles/drivers__serial.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/serial/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/serial/CMakeFiles/rebuild_cache.dir

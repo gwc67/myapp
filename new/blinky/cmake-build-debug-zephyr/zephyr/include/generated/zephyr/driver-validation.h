@@ -4,11 +4,15 @@
 		(K_SYSCALL_OBJ(ptr, K_OBJ_DRIVER_##driver_upper_case) || \
 		 K_SYSCALL_DRIVER_OP(ptr, driver_lower_case##_driver_api, op))
                 
+#define K_SYSCALL_DRIVER_DMA(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, dma, DMA)
+
 #define K_SYSCALL_DRIVER_GPIO(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, gpio, GPIO)
 
 #define K_SYSCALL_DRIVER_I2C(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, i2c, I2C)
 
 #define K_SYSCALL_DRIVER_I2C_TARGET(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, i2c_target, I2C_TARGET)
+
+#define K_SYSCALL_DRIVER_RESET(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, reset, RESET)
 
 #define K_SYSCALL_DRIVER_SHARED_IRQ(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, shared_irq, SHARED_IRQ)
 
@@ -55,8 +59,6 @@
 #define K_SYSCALL_DRIVER_DALI(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, dali, DALI)
 
 #define K_SYSCALL_DRIVER_DISPLAY(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, display, DISPLAY)
-
-#define K_SYSCALL_DRIVER_DMA(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, dma, DMA)
 
 #define K_SYSCALL_DRIVER_EDAC(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, edac, EDAC)
 
@@ -131,8 +133,6 @@
 #define K_SYSCALL_DRIVER_REGULATOR_PARENT(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, regulator_parent, REGULATOR_PARENT)
 
 #define K_SYSCALL_DRIVER_REGULATOR(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, regulator, REGULATOR)
-
-#define K_SYSCALL_DRIVER_RESET(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, reset, RESET)
 
 #define K_SYSCALL_DRIVER_RETAINED_MEM(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, retained_mem, RETAINED_MEM)
 

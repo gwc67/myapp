@@ -11,9 +11,11 @@
         "websocket_context"
     ],
     "__subsystem": [
+        "dma_driver_api",
         "gpio_driver_api",
         "i2c_driver_api",
         "i2c_target_driver_api",
+        "reset_driver_api",
         "shared_irq_driver_api",
         "audio_codec_driver_api",
         "dmic_driver_api",
@@ -37,7 +39,6 @@
         "dai_driver_api",
         "dali_driver_api",
         "display_driver_api",
-        "dma_driver_api",
         "edac_driver_api",
         "eeprom_driver_api",
         "emul_bbram_driver_api",
@@ -84,7 +85,6 @@
         "pwm_driver_api",
         "regulator_parent_driver_api",
         "regulator_driver_api",
-        "reset_driver_api",
         "retained_mem_driver_api",
         "rtc_driver_api",
         "sdhc_driver_api",

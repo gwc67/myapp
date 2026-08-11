@@ -361,6 +361,38 @@
     ],
     [
         [
+            "int reset_status",
+            "const struct device *dev, uint32_t id, uint8_t *status"
+        ],
+        "reset.h",
+        true
+    ],
+    [
+        [
+            "int reset_line_assert",
+            "const struct device *dev, uint32_t id"
+        ],
+        "reset.h",
+        true
+    ],
+    [
+        [
+            "int reset_line_deassert",
+            "const struct device *dev, uint32_t id"
+        ],
+        "reset.h",
+        true
+    ],
+    [
+        [
+            "int reset_line_toggle",
+            "const struct device *dev, uint32_t id"
+        ],
+        "reset.h",
+        true
+    ],
+    [
+        [
             "int uart_err_check",
             "const struct device *dev"
         ],
@@ -3613,38 +3645,6 @@
             "const struct device *dev, uint32_t channel, pwm_flags_t flags, uint32_t *period, uint32_t *pulse, k_timeout_t timeout"
         ],
         "pwm.h",
-        false
-    ],
-    [
-        [
-            "int reset_status",
-            "const struct device *dev, uint32_t id, uint8_t *status"
-        ],
-        "reset.h",
-        false
-    ],
-    [
-        [
-            "int reset_line_assert",
-            "const struct device *dev, uint32_t id"
-        ],
-        "reset.h",
-        false
-    ],
-    [
-        [
-            "int reset_line_deassert",
-            "const struct device *dev, uint32_t id"
-        ],
-        "reset.h",
-        false
-    ],
-    [
-        [
-            "int reset_line_toggle",
-            "const struct device *dev, uint32_t id"
-        ],
-        "reset.h",
         false
     ],
     [

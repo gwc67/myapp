@@ -1,12 +1,12 @@
 #ifndef  __ANO_TRUE_H
 #define  __ANO_TRUE_H
 
-#include <sys/_intsup.h>
-#define FRAME_NUM_LEN 256       //0~0xff 一个256个数字主要
-#define FRAME_MAX_LENGTH 64
-
 #include <stdint.h>
 #include "ano_base.h"
+
+#define FRAME_NUM_LEN 256       /* 0~0xff 共256个帧ID */
+#define FRAME_MAX_LENGTH 64
+
 struct frame_t
 {
     uint8_t address_uc;

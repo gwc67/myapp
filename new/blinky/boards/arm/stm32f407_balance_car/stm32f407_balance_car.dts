@@ -57,6 +57,7 @@
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 		zephyr,display = &ssd1306;
+		zephyr,console = &usart2;
 	};
 };
 
@@ -113,9 +114,16 @@
 	};
 };
 
+&dma1 {
+	status = "okay";
+};
+
 &usart2 {
 	pinctrl-0 = <&usart2_tx_pa2 &usart2_rx_pa3>;
 	pinctrl-names = "default";
 	current-speed = <115200>;
+	dmas = <&dma1 6 4 STM32_DMA_PERIPH_TX STM32_DMA_FIFO_FULL>,
+	       <&dma1 5 4 STM32_DMA_PERIPH_RX STM32_DMA_FIFO_FULL>;
+	dma-names = "tx", "rx";
 	status = "okay";
-}
+};

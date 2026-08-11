@@ -95,8 +95,8 @@ CMAKE_ASM_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 // MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=Debug
 
-//Path to a program.
-CMAKE_CXX_COMPILER:FILEPATH=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++.exe
+//CXX compiler
+CMAKE_CXX_COMPILER:STRING=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -352,7 +352,7 @@ OPENOCD:FILEPATH=D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/bin/openo
 PAHOLE:FILEPATH=PAHOLE-NOTFOUND
 
 //Path to a program.
-PTY_INTERFACE:FILEPATH=D:/Downloads/app/Git/usr/bin/winpty.exe
+PTY_INTERFACE:FILEPATH=PTY_INTERFACE-NOTFOUND
 
 //Path to a program.
 PUNCOVER:FILEPATH=PUNCOVER-NOTFOUND
@@ -503,7 +503,7 @@ CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
-CMAKE_EDIT_COMMAND:INTERNAL=D:/Downloads/app/cmake-4.2.1-windows-x86_64/bin/cmake-gui.exe
+CMAKE_EDIT_COMMAND:INTERNAL=C:/Program Files/CMake/bin/cmake-gui.exe
 //Executable file format
 CMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
@@ -531,8 +531,6 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=D:/Downloads/zephyr_new/myapp/new/blinky
-//Name of CMakeLists files to read
-CMAKE_LIST_FILE_NAME:INTERNAL=CMakeLists.txt
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM
 CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
@@ -548,7 +546,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=165
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=167
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -624,6 +622,4 @@ _Python3_INTERPRETER_SIGNATURE:INTERNAL=e3c563434e71a395a7865e8a80e67913
 _Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
-//Test check_fmacro_prefix_map_D__Downloads_zephyr_new_myapp_new_blinky_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__D__Downloads_setup_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___isystem__D__Downloads_setup_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__fuse_ld_bfd
-check_fmacro_prefix_map_D__Downloads_zephyr_new_myapp_new_blinky_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__D__Downloads_setup_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___isystem__D__Downloads_setup_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__fuse_ld_bfd:INTERNAL=1
 

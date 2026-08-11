@@ -95,6 +95,7 @@ static int s_frame_send(struct ano_device_t* me,uint8_t frame_num_uc)
 
     me->private_pst->ano_send_buffer(tx_buffer_puc,cnt_uc);
 
+    return 0;
 
 }
 

@@ -3360,6 +3360,7 @@
   zephyr,sram = &sram0;
   zephyr,flash = &flash0;
   zephyr,display = &ssd1306;
+  zephyr,console = &usart2;
  };
 };
 
@@ -3414,6 +3415,20 @@
   com-invdir;
   prechargep = <0x22>;
  };
+};
+
+&dma1 {
+ status = "okay";
+};
+
+&usart2 {
+ pinctrl-0 = <&usart2_tx_pa2 &usart2_rx_pa3>;
+ pinctrl-names = "default";
+ current-speed = <115200>;
+ dmas = <&dma1 6 4 (((1 & 0x3) << 6) | ((1 & 0x1) << 10)) 3U>,
+        <&dma1 5 4 (((2 & 0x3) << 6) | ((1 & 0x1) << 10)) 3U>;
+ dma-names = "tx", "rx";
+ status = "okay";
 };
 # 0 "<command-line>" 2
 # 1 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/misc/empty_file.c"

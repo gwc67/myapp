@@ -28,7 +28,7 @@ int ano_set_par(ano_base_t*me, struct par_t* par_pst)
     return me->ops->set_par(me, par_pst);
 }
 
-int ano_set_send_id(ano_base_t*me,int8_t frame_num_c,uint16_t freq_us)
+int ano_set_send_id(ano_base_t*me,uint8_t frame_num_c,uint16_t freq_us)
 {
     CHECKIF(me == NULL || me->ops == NULL || me->ops->set_send_id == NULL ) {
         return  -EINVAL;                    //  Invalid argument
@@ -36,7 +36,7 @@ int ano_set_send_id(ano_base_t*me,int8_t frame_num_c,uint16_t freq_us)
     return me->ops->set_send_id(me, frame_num_c,freq_us);
 }
 
-int ano_check_to_send(ano_base_t* me,int8_t frame_num_c)
+int ano_check_to_send(ano_base_t* me,uint8_t frame_num_c)
 {
   CHECKIF(me == NULL || me->ops == NULL || me->ops->check_to_send == NULL) {
     return -EINVAL; //  Invalid argument
@@ -44,7 +44,7 @@ int ano_check_to_send(ano_base_t* me,int8_t frame_num_c)
     return me->ops->check_to_send(me, frame_num_c);
 }
 
-int ano_set_wts(ano_base_t* me,int8_t frame_num_c)
+int ano_set_wts(ano_base_t* me,uint8_t frame_num_c)
 {
     CHECKIF(me == NULL || me->ops == NULL || me->ops->set_wts == NULL) {
     return -EINVAL; //  Invalid argument

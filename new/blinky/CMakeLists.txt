@@ -11,14 +11,15 @@ target_sources(app PRIVATE
     src/menu/menu.c
     src/menu/OLED_Menu.c
     src/menu/font.c
-    src/menu/ano_true.c
-    src/menu/ano_base.c
-    src/menu/ano_board_init.c
+    src/ano/ano_true.c
+    src/ano/ano_base.c
+    src/ano/ano_board_init.c
+    src/uart/uart_xfer.c
 )
 
 target_include_directories(app PRIVATE
     src
     src/menu
     src/ano
-    src/ano/ano_device
+    src/uart
 )
