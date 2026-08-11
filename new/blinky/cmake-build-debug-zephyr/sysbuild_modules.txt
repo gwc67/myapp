@@ -1,1 +1,0 @@
-"mcuboot":"D:/Downloads/zephyr_new/zephyr_guanfang/bootloader/mcuboot":"D:/Downloads/zephyr_new/zephyr_guanfang/bootloader/mcuboot/boot/zephyr/sysbuild"

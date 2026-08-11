@@ -74,7 +74,7 @@ int main(void)
 
 
 	if (!device_is_ready(uart_dev_pst)) {
-		printk("UART device not ready\n");
+		// printk("UART device not ready\n");
 		return -1;
 	}
 
@@ -82,12 +82,16 @@ int main(void)
 	int ret = uart_callback_set(uart_dev_pst, uart_async_cb, NULL);
 
 	if (ret ) {
-		printk("uart_callback_failed: %d\r\n",ret);
+		// printk("uart_callback_failed: %d\r\n",ret);
 		return ret;
 	}
 
-	uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE,SYS_FOREVER_US);
+	ret = uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE,SYS_FOREVER_US);
 	
+	if (ret ) {
+		// printk("uart_callback_failed: %d\r\n",ret);
+		return ret;
+	}
 	
 	/* ── IT 中断驱动模式 ── */
 	/* 1. 注册 ISR 回调 (不是 uart_callback_set!) */
