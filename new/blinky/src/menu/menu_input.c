@@ -70,9 +70,8 @@ static void notify(enum menu_action_e action)
 
 static void single_work_cb(struct k_work *work)
 {
-
-	//单击事件在这里产生
 	notify(s_single_map_pst->single_em);
+	s_single_map_pst = NULL;  /* 清除, 否则下次按下会误判为双击 */
 }
 
 static void long_work_cb(struct k_work *work)
@@ -95,7 +94,8 @@ static void raw_input_cb(struct input_event *evt, void *user_data)
 		if (s_single_map_pst == c_map_pst
 		    && k_work_cancel_delayable(&s_single_dwork) == 0) {
 			/* 取消延迟单击成功 → 这是双击 */
-			k_work_cancel_delayable(&s_long_dwork);						//
+			k_work_cancel_delayable(&s_long_dwork);
+			s_single_map_pst = NULL;
 			notify(c_map_pst->dbl_em);
 			/* 双击后重新开始长按计时 */
 			if (c_map_pst->lng_em != NO_ACTION) {
