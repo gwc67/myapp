@@ -36,7 +36,7 @@ static int                 s_nav_top      = -1;
 static bool                s_editing      = false;
 
 /* OLED 显示设备 (cfb) */
-static const struct device *s_display =
+static const struct device *s_oled_pst =
     DEVICE_DT_GET(DT_NODELABEL(ssd1306));
 
 /* 前向声明 */
@@ -290,6 +290,7 @@ static void s_menu_action_handler(enum menu_action_e action)
 
 int menu_init_v(void)
 {
+    cfb_framebuffer_init(s_oled_pst);                           //初始化OLED设备  
     menu_input_register_handler(s_menu_action_handler);
     s_dirty_b = true;
     return 0;
@@ -340,7 +341,7 @@ void menu_request_refresh(struct menu_base_t *base)
 static void s_cfb_char(uint8_t x, uint8_t y, char ch)
 {
     char buf[2] = { ch, '\0' };
-    cfb_print(s_display, buf, x, y);
+    cfb_print(s_oled_pst, buf, x, y);
 }
 
 static void s_menu_folder_draw(struct menu_node_t *node)
@@ -350,8 +351,8 @@ static void s_menu_folder_draw(struct menu_node_t *node)
     uint8_t total;
 
     /* 标题 (font 0: 10x16) */
-    cfb_framebuffer_set_font(s_display, 0);
-    cfb_print(s_display, node->base.name, 0, 0);
+    cfb_framebuffer_set_font(s_oled_pst, 0);
+    cfb_print(s_oled_pst, node->base.name, 0, 0);
 
     /* 定位到 view_offset */
     child = node->first_child;
@@ -367,19 +368,19 @@ static void s_menu_folder_draw(struct menu_node_t *node)
 
         /* 光标 */
         if (item_idx == node->cursor)
-            cfb_print(s_display, ">>", 0, y);
+            cfb_print(s_oled_pst, ">>", 0, y);
         else
-            cfb_print(s_display, "  ", 0, y);
+            cfb_print(s_oled_pst, "  ", 0, y);
 
         /* 类型指示 */
         if (child->first_child)
-            cfb_print(s_display, "[+]", 14, y);
+            cfb_print(s_oled_pst, "[+]", 14, y);
         else if (s_has_data(child))
-            cfb_print(s_display, "[#]", 14, y);
+            cfb_print(s_oled_pst, "[#]", 14, y);
         else
-            cfb_print(s_display, " > ", 14, y);
+            cfb_print(s_oled_pst, " > ", 14, y);
 
-        cfb_print(s_display, child->base.name, 32, y);
+        cfb_print(s_oled_pst, child->base.name, 32, y);
 
         child = child->next;
         row++;
@@ -399,7 +400,7 @@ void menu_task_v(void)
     if (!s_dirty_b || !s_current_pst) return;
     s_dirty_b = false;
 
-    cfb_framebuffer_clear(s_display, false);
+    cfb_framebuffer_clear(s_oled_pst, false);
 
     if (s_current_pst->first_child) {
         s_menu_folder_draw(s_current_pst);
@@ -407,17 +408,17 @@ void menu_task_v(void)
         if (s_current_pst->draw) {
             s_current_pst->draw(s_current_pst);
         } else {
-            cfb_framebuffer_set_font(s_display, 0);
-            cfb_print(s_display, s_current_pst->base.name, 0, 24);
+            cfb_framebuffer_set_font(s_oled_pst, 0);
+            cfb_print(s_oled_pst, s_current_pst->base.name, 0, 24);
         }
 
         /* 底部: 值 + 步进 + 模式 */
         if (s_has_data(s_current_pst)) {
-            cfb_framebuffer_set_font(s_display, 0);
+            cfb_framebuffer_set_font(s_oled_pst, 0);
 
             char buf[20];
             s_format_value(s_current_pst, buf, sizeof(buf));
-            cfb_print(s_display, buf, 0, 48);
+            cfb_print(s_oled_pst, buf, 0, 48);
 
             if (s_editing) {
                 char step_buf[12];
@@ -430,13 +431,13 @@ void menu_task_v(void)
                     format_fixed(val_buf, sizeof(val_buf), step, 2);
                     snprintf(step_buf, sizeof(step_buf), "s:%s", val_buf);
                 }
-                cfb_print(s_display, step_buf, 60, 48);
-                cfb_print(s_display, "EDIT", 100, 48);
+                cfb_print(s_oled_pst, step_buf, 60, 48);
+                cfb_print(s_oled_pst, "EDIT", 100, 48);
             } else {
-                cfb_print(s_display, "[ENT]", 72, 48);
+                cfb_print(s_oled_pst, "[ENT]", 72, 48);
             }
         }
     }
 
-    cfb_framebuffer_finalize(s_display);
+    cfb_framebuffer_finalize(s_oled_pst);
 }
