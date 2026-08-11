@@ -50,6 +50,9 @@ int main(void)
 
 	/* 2. 使能 RX 中断 (不是 uart_rx_enable!) */
 	uart_irq_rx_enable(uart_dev_pst);
+	// 使能tx中断
+
+	// uart_irq_tx_enable(uart_dev_pst);
 
 	printk("UART IT mode started, waiting for data...\n");
 
@@ -70,11 +73,22 @@ int main(void)
 
 static void send_next_data(void)
 {
-	uint8_t ch;
-	if (ring_buf_get(&tx_ring, &ch, 1) == 1) {
-		/* IT 模式发送用 polling，ISR 会处理 TX 中断 */
-		uart_poll_out(uart_dev_pst, ch);
-	}
+	 uint8_t ch;
+
+    // 尝试填充 FIFO
+    while (ring_buf_peek(&tx_ring, &ch, 1) == 1) {
+        if (uart_fifo_fill(uart_dev_pst, &ch, 1) == 1) {
+            ring_buf_get(&tx_ring, &ch, 1); // 成功才消费
+        } else {
+            break; // FIFO 满，等下次 TX 中断
+        }
+    }
+
+	if (ring_buf_is_empty(&tx_ring)) {
+        uart_irq_tx_disable(uart_dev_pst);   // 没数据了，关中断防止空转
+    } else {
+        uart_irq_tx_enable(uart_dev_pst);    // 还有数据但 FIFO 满，保持中断等待排水
+    }
 }
 
 /* ── IT 中断驱动 ISR ──
@@ -94,4 +108,8 @@ static void uart_isr(const struct device *dev, void *user_data)
 			ring_buf_put(&rx_ring, &ch, 1);
 		}
 	}
+
+	if (uart_irq_tx_ready(dev)) {
+        send_next_data();
+    }
 }
