@@ -53,6 +53,13 @@ static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *
 		case UART_RX_BUF_RELEASED:
 			uart_rx_buf_rsp(dev, evt->data.rx_buf.buf, RX_BUF_SIZE);
 			break;
+		case UART_RX_DISABLED:
+			/* 缓冲区写满 / 出错时驱动会停掉 DMA 接收.
+			 * 单缓冲方案必须在这里重新使能, 否则收一次 128 字节就永久停了.
+			 * (该事件在线程/工作队列上下文发出, 这里可以直接调用)
+			 */
+			uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE, 1000);
+			break;
 		case UART_TX_DONE:
 			tx_busy = false;
 			break;
@@ -86,8 +93,14 @@ int main(void)
 		return ret;
 	}
 
-	ret = uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE,SYS_FOREVER_US);
-	
+	/* timeout 单位是微秒, 是"行空闲多久算一包"的判定时间.
+	 * 不能传 SYS_FOREVER_US(-1) !!
+	 * 传 -1 时 STM32 驱动的 IDLE 中断不会触发 dma_rx_flush,
+	 * 缓冲区永远不生成 UART_RX_RDY 事件, 数据进 DMA 但取不出来.
+	 * 传一个具体值(如 1000us), IDLE 后 1ms 无新数据就会 flush 并上报.
+	 */
+	ret = uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE, 1000);
+
 	if (ret ) {
 		// printk("uart_callback_failed: %d\r\n",ret);
 		return ret;

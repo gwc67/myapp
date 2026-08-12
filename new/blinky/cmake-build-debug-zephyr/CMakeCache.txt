@@ -91,11 +91,12 @@ CMAKE_ASM_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the ASM compiler during RELWITHDEBINFO builds.
 CMAKE_ASM_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//No help, variable specified on the command line.
-CMAKE_BUILD_TYPE:UNINITIALIZED=Debug
+//Choose the type of build, options are: None Debug Release RelWithDebInfo
+// MinSizeRel ...
+CMAKE_BUILD_TYPE:STRING=Debug
 
-//No help, variable specified on the command line.
-CMAKE_CXX_COMPILER:UNINITIALIZED=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++.exe
+//Path to a program.
+CMAKE_CXX_COMPILER:FILEPATH=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -167,8 +168,9 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Enable/Disable output of build database during the build.
 CMAKE_EXPORT_BUILD_DATABASE:BOOL=
 
-//No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:UNINITIALIZED=ON
+//Export CMake compile commands. Used by gen_app_partitions.py
+// script
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/CMakeFiles/pkgRedirects
@@ -350,7 +352,7 @@ OPENOCD:FILEPATH=D:/Downloads/setup/zephyr-sdk-1.0.1/hosttools/openocd/bin/openo
 PAHOLE:FILEPATH=PAHOLE-NOTFOUND
 
 //Path to a program.
-PTY_INTERFACE:FILEPATH=D:/Downloads/app/Git/usr/bin/winpty.exe
+PTY_INTERFACE:FILEPATH=PTY_INTERFACE-NOTFOUND
 
 //Path to a program.
 PUNCOVER:FILEPATH=PUNCOVER-NOTFOUND
@@ -544,7 +546,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=162
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -603,8 +605,6 @@ SOC_DIRECTORIES:INTERNAL=D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/soc/st/s
 SOC_LINKER_SCRIPT:INTERNAL=D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr/arch/arm/cortex_m/scripts/linker.ld
 //West
 WEST:INTERNAL=D:/Downloads/zephyr_new/.zephyr/Scripts/python.exe;-m;west
-//Cached environment variable ZEPHYR_MODULES
-ZEPHYR_MODULES:INTERNAL=D:\Downloads\zephyr_new\zephyr_guanfang\modules
 //Cached environment variable ZEPHYR_SDK_INSTALL_DIR
 ZEPHYR_SDK_INSTALL_DIR:INTERNAL=D:/Downloads/setup/zephyr-sdk-1.0.1
 ZEPHYR_SHARED_TARGETS:INTERNAL=menuconfig;guiconfig;hardenconfig;traceconfig

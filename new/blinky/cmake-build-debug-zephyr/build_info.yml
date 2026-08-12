@@ -14,6 +14,7 @@ cmake:
     files:
      - 'D:/Downloads/zephyr_new/myapp/new/blinky/boards/arm/stm32f407_balance_car/stm32f407_balance_car.dts'
     include-dirs:
+     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/dts'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/ambiq/dts'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/atmel/include'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/bouffalolab/include'
@@ -24,7 +25,6 @@ cmake:
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/microchip/dts'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/nuvoton/dts'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/nxp/dts'
-     - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/stm32/dts'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/modules/hal/ti/dts'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include'
      - 'D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/include/zephyr'

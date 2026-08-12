@@ -149,6 +149,7 @@ static int s_set_wts(struct ano_base_t* base,uint8_t frame_num_uc)
 {
     struct ano_device_t *me = CONTAINER_OF(base,struct ano_device_t,base);
     me->ano_frame_pst->frame_pst[frame_num_uc].wts_uc = 1;
+    return 0;
 }
 
 static int s_check_to_send(struct ano_base_t* base,uint8_t frame_num_uc)
