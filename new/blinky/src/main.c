@@ -24,25 +24,26 @@
 static const struct device *uart_dev_pst = DEVICE_DT_GET(UART_NODE);
 
 /* 环形缓冲区 */
-#define RX_BUF_SIZE 128
-#define TX_BUF_SIZE 128
+#define RX_BUF_SIZE 32
+#define TX_BUF_SIZE 32
 
 /* RX 双缓冲轮转 */
 static uint8_t rx_buf_a[RX_BUF_SIZE];
 // static uint8_t rx_buf_b[RX_BUF_SIZE];
 
 /* TX 线性缓冲 DMA需要连续内存，这个决定DMA发送下，无法使用tx环形缓冲区 */
-static uint8_t tx_buf[TX_BUF_SIZE];
 static volatile bool tx_busy;  //DMA正在发送标志位
-
-
-
 
 /* ISR -> main 传递 */
 static uint8_t rx_ring_buf_puc[RX_BUF_SIZE];
 static struct ring_buf rx_ring;
-static uint8_t tx_ring_buf_puc[RX_BUF_SIZE];
+static uint8_t tx_ring_buf_puc[TX_BUF_SIZE];  //2的次方
 static struct ring_buf tx_ring;
+
+static uint32_t tx_claimed_len = 0; 
+
+
+
 
 //异步回调函数
 static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *user_data)
@@ -65,11 +66,15 @@ static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *
 			uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE, 1000);
 			break;
 		case UART_TX_DONE:
+			ring_buf_get_finish(&tx_ring, evt->data.tx.len);
+			tx_claimed_len = 0;
 			tx_busy = false;
 			break;
 			//中断被中止
 		case UART_TX_ABORTED:
 			tx_busy = false;
+			ring_buf_get_finish(&tx_ring, evt->data.tx.len);
+			tx_claimed_len = 0;
 			printk("TX aborted %d bytes\n",evt->data.tx.len);
 		default:
 			break;
@@ -123,6 +128,7 @@ int main(void)
 
 	// printk("UART IT mode started, waiting for data...\n");
 	uint8_t data_buf[100] = {0};
+	
 
 	while (1) {
 
@@ -135,22 +141,33 @@ int main(void)
 		// 	}
 		// }
 
+		uint32_t actual = ring_buf_get(&rx_ring, data_buf, RX_BUF_SIZE);
+		if (actual > 0) {
+			ring_buf_put(&tx_ring, data_buf, actual);
+		
+		}
+
+
 		if (!tx_busy) {
 
-			uint32_t actual = ring_buf_get(&rx_ring, data_buf, 100);
-			if (actual > 0) {
-				tx_busy = true;
-				int ret = uart_tx(uart_dev_pst, data_buf, actual, SYS_FOREVER_US);
+			uint32_t len = 0;
+			uint8_t *dma_ptr = NULL;
+			len = ring_buf_get_claim(&tx_ring, &dma_ptr, TX_BUF_SIZE);
 
+			if (len > 0) {
+				tx_claimed_len = len ;
+				tx_busy = true;
+				
+				int ret = uart_tx(uart_dev_pst, dma_ptr, len, 0);
+				len = 0;
+				
 				if (ret != 0) {
+					ring_buf_get_finish(&tx_ring, 0);
+					tx_claimed_len  = 0;
 					tx_busy = false;
 				}
 			}
 		}
-		
-
-		
-		
 		
 		
 		menu_task_v();
