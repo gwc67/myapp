@@ -69,7 +69,20 @@ static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *
 			ring_buf_get_finish(&tx_ring, evt->data.tx.len);
 			tx_claimed_len = 0;
 			tx_busy = false;
+
+			uint32_t next_len = 0;
+			uint8_t *next_ptr = NULL;
+
+			
+			
+			next_len  = ring_buf_get_claim(&tx_ring, &next_ptr, TX_BUF_SIZE);
+			if(next_len > 0)
+			{
+				tx_busy = true;
+				uart_tx(uart_dev_pst, next_ptr,next_len, 0);
+			}
 			break;
+
 			//中断被中止
 		case UART_TX_ABORTED:
 			tx_busy = false;
@@ -127,10 +140,9 @@ int main(void)
 	// uart_irq_tx_enable(uart_dev_pst);
 
 	// printk("UART IT mode started, waiting for data...\n");
-	uint8_t data_buf[100] = {0};
-	
+        uint8_t data_buf[100] = {0};
 
-	while (1) {
+        while (1) {
 
 		/* 从 RX ring_buf 取出字节 → 回显到 TX */
 		// while (ring_buf_get(&rx_ring, &ch, 1) == 1) {
@@ -143,31 +155,35 @@ int main(void)
 
 		uint32_t actual = ring_buf_get(&rx_ring, data_buf, RX_BUF_SIZE);
 		if (actual > 0) {
+
 			ring_buf_put(&tx_ring, data_buf, actual);
-		
-		}
 
+			if (!tx_busy) {
+				uint32_t len = 0;
+				uint8_t *dma_ptr = NULL;
+				len = ring_buf_get_claim(&tx_ring, &dma_ptr, TX_BUF_SIZE);
 
-		if (!tx_busy) {
-
-			uint32_t len = 0;
-			uint8_t *dma_ptr = NULL;
-			len = ring_buf_get_claim(&tx_ring, &dma_ptr, TX_BUF_SIZE);
-
-			if (len > 0) {
-				tx_claimed_len = len ;
-				tx_busy = true;
-				
-				int ret = uart_tx(uart_dev_pst, dma_ptr, len, 0);
-				len = 0;
-				
-				if (ret != 0) {
-					ring_buf_get_finish(&tx_ring, 0);
-					tx_claimed_len  = 0;
-					tx_busy = false;
-				}
+				if (len > 0) {
+					int ret = uart_tx(uart_dev_pst, dma_ptr, len, 0);
+					if (ret != 0) {
+						ring_buf_get_finish(&tx_ring, 0);
+						tx_claimed_len  = 0;
+						tx_busy = false;
+					}
+				}	
 			}
 		}
+
+
+		// if (!tx_busy) {
+
+
+
+		// 	if (len > 0) {
+		// 		tx_claimed_len = len ;
+		// 		tx_busy = true;
+		// 	}
+		// }
 		
 		
 		menu_task_v();
