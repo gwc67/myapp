@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/display/cfb.h>
@@ -15,9 +16,13 @@
 
 #include "menu/menu.h"
 #include "zephyr/drivers/uart.h"
+#include "zephyr/kernel/thread.h"
+#include "zephyr/kernel/thread_stack.h"
+#include "zephyr/posix/sys/stat.h"
 #include "zephyr/sys/ring_buffer.h"
 #include "zephyr/sys/time_units.h"
 #include "zephyr/syscalls/uart.h"
+#include "zephyr/toolchain.h"
 
 #define UART_NODE DT_NODELABEL(usart2)
 
@@ -29,10 +34,7 @@ static const struct device *uart_dev_pst = DEVICE_DT_GET(UART_NODE);
 
 /* RX 双缓冲轮转 */
 static uint8_t rx_buf_a[RX_BUF_SIZE];
-// static uint8_t rx_buf_b[RX_BUF_SIZE];
-
-/* TX 线性缓冲 DMA需要连续内存，这个决定DMA发送下，无法使用tx环形缓冲区 */
-static volatile bool tx_busy;  //DMA正在发送标志位
+static uint8_t rx_buf_b[RX_BUF_SIZE];
 
 /* ISR -> main 传递 */
 static uint8_t rx_ring_buf_puc[RX_BUF_SIZE];
@@ -40,9 +42,16 @@ static struct ring_buf rx_ring;
 static uint8_t tx_ring_buf_puc[TX_BUF_SIZE];  //2的次方
 static struct ring_buf tx_ring;
 
-static uint32_t tx_claimed_len = 0; 
+struct tx_msg_t {
+	uint8_t* data_puc;
+	uint32_t len_ul;
+};
 
+K_MSGQ_DEFINE(tx_msgq, sizeof(struct tx_msg_t), 16,4);
 
+static K_SEM_DEFINE(tx_done_sem, 0, 1);
+
+static volatile uint8_t *free_buf = NULL; 
 
 
 //异步回调函数
@@ -56,8 +65,21 @@ static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *
 			break;
 			//当前缓冲区已满，启动下一个缓冲区
 		case UART_RX_BUF_RELEASED:
-			uart_rx_buf_rsp(dev, evt->data.rx_buf.buf, RX_BUF_SIZE);
+
+			free_buf = evt->data.rx_buf.buf;
+		
 			break;
+		case UART_RX_BUF_REQUEST:
+
+			if (free_buf != NULL) {
+				int ret =  uart_rx_buf_rsp(uart_dev_pst, (uint8_t*)free_buf, RX_BUF_SIZE);
+				if (ret == 0) {
+					free_buf = NULL;
+				}
+			}
+		
+			break;
+
 		case UART_RX_DISABLED:
 			/* 缓冲区写满 / 出错时驱动会停掉 DMA 接收.
 			 * 单缓冲方案必须在这里重新使能, 否则收一次 128 字节就永久停了.
@@ -66,33 +88,50 @@ static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *
 			uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE, 1000);
 			break;
 		case UART_TX_DONE:
-			ring_buf_get_finish(&tx_ring, evt->data.tx.len);
-			tx_claimed_len = 0;
-			tx_busy = false;
-
-			uint32_t next_len = 0;
-			uint8_t *next_ptr = NULL;
-
-			
-			
-			next_len  = ring_buf_get_claim(&tx_ring, &next_ptr, TX_BUF_SIZE);
-			if(next_len > 0)
-			{
-				tx_busy = true;
-				uart_tx(uart_dev_pst, next_ptr,next_len, 0);
-			}
+			k_sem_give(&tx_done_sem);
 			break;
 
 			//中断被中止
 		case UART_TX_ABORTED:
-			tx_busy = false;
-			ring_buf_get_finish(&tx_ring, evt->data.tx.len);
-			tx_claimed_len = 0;
-			printk("TX aborted %d bytes\n",evt->data.tx.len);
+			free_buf = NULL;
+        // 重启逻辑...
+        	uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE, 1000);
+        // 注意：重启后，需要重新注册备用缓冲区
+        	uart_rx_buf_rsp(uart_dev_pst, rx_buf_b, RX_BUF_SIZE);
+			break;
 		default:
 			break;
 	}
 }
+
+static void tx_thread_fn(void *p1,void*p2,void* p3)
+{
+	ARG_UNUSED(p1); ARG_UNUSED(p2); ARG_UNUSED(p3);
+
+	struct tx_msg_t tx_msg_st = {0};
+
+	while (1) {
+		k_msgq_get(&tx_msgq, &tx_msg_st, K_FOREVER);
+
+		int ret = uart_tx(uart_dev_pst, tx_msg_st.data_puc, tx_msg_st.len_ul, SYS_FOREVER_US);
+		if (ret != 0) {
+			continue;
+		}
+
+		k_sem_take(&tx_done_sem, K_FOREVER);
+		
+	}
+
+
+}
+
+
+int uart_tx_send(uint8_t *data_puc,uint32_t len_ul)
+{
+	struct tx_msg_t tx_msg_st = {	.data_puc = data_puc,.len_ul = len_ul};
+	return  k_msgq_put(&tx_msgq, &tx_msg_st, K_NO_WAIT);
+}
+
 
 // static void uart_isr(const struct device *dev, void *user_data);
 // static void send_next_data(void);
@@ -100,7 +139,13 @@ static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *
 int main(void)
 {
 	ring_buf_init(&rx_ring, RX_BUF_SIZE, rx_ring_buf_puc);
-	ring_buf_init(&tx_ring, RX_BUF_SIZE, tx_ring_buf_puc);
+	ring_buf_init(&tx_ring, TX_BUF_SIZE, tx_ring_buf_puc);
+
+	//创建TX线程
+	static K_THREAD_STACK_DEFINE(tx_stack,512);			//填栈大小
+	static struct k_thread tx_thread;
+	k_thread_create(&tx_thread, tx_stack, 512, tx_thread_fn, NULL, NULL, NULL, 5, 0, K_NO_WAIT);
+	k_thread_name_set(&tx_thread, "uart_tx");
 
 
 	if (!device_is_ready(uart_dev_pst)) {
@@ -124,6 +169,8 @@ int main(void)
 	 */
 	ret = uart_rx_enable(uart_dev_pst, rx_buf_a, RX_BUF_SIZE, 1000);
 
+	uart_rx_buf_rsp(uart_dev_pst, rx_buf_b, RX_BUF_SIZE);
+	
 	if (ret ) {
 		// printk("uart_callback_failed: %d\r\n",ret);
 		return ret;
@@ -155,23 +202,7 @@ int main(void)
 
 		uint32_t actual = ring_buf_get(&rx_ring, data_buf, RX_BUF_SIZE);
 		if (actual > 0) {
-
-			ring_buf_put(&tx_ring, data_buf, actual);
-
-			if (!tx_busy) {
-				uint32_t len = 0;
-				uint8_t *dma_ptr = NULL;
-				len = ring_buf_get_claim(&tx_ring, &dma_ptr, TX_BUF_SIZE);
-
-				if (len > 0) {
-					int ret = uart_tx(uart_dev_pst, dma_ptr, len, 0);
-					if (ret != 0) {
-						ring_buf_get_finish(&tx_ring, 0);
-						tx_claimed_len  = 0;
-						tx_busy = false;
-					}
-				}	
-			}
+			uart_tx_send(data_buf,actual);
 		}
 
 
