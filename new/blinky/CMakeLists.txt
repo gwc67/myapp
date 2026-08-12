@@ -21,6 +21,7 @@ target_sources(app PRIVATE
     src/ano/ano_base.c
     src/ano/ano_board_init.c
     src/uart/uart_xfer.c
+    src/my_ring/my_ring.c
 )
 
 target_include_directories(app PRIVATE
@@ -28,4 +29,5 @@ target_include_directories(app PRIVATE
     src/menu
     src/ano
     src/uart
+    src/my_ring
 )

@@ -146,7 +146,7 @@ int menu_input_init(void)
 }
 
 //OLED 底层初始化
-SYS_INIT(menu_input_init, APPLICATION, 5);
+SYS_INIT(menu_input_init, APPLICATION, 11);
 
 void menu_input_register_handler(menu_action_handler_t handler)
 {
