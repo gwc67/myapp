@@ -36,9 +36,13 @@ static uint8_t tx_buf[TX_BUF_SIZE];
 static volatile bool tx_busy;  //DMA正在发送标志位
 
 
+
+
 /* ISR -> main 传递 */
 static uint8_t rx_ring_buf_puc[RX_BUF_SIZE];
 static struct ring_buf rx_ring;
+static uint8_t tx_ring_buf_puc[RX_BUF_SIZE];
+static struct ring_buf tx_ring;
 
 //异步回调函数
 static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *user_data)
@@ -78,6 +82,7 @@ static void uart_async_cb(const struct device* dev,struct uart_event* evt,void *
 int main(void)
 {
 	ring_buf_init(&rx_ring, RX_BUF_SIZE, rx_ring_buf_puc);
+	ring_buf_init(&tx_ring, RX_BUF_SIZE, tx_ring_buf_puc);
 
 
 	if (!device_is_ready(uart_dev_pst)) {
@@ -117,19 +122,37 @@ int main(void)
 	// uart_irq_tx_enable(uart_dev_pst);
 
 	// printk("UART IT mode started, waiting for data...\n");
+	uint8_t data_buf[100] = {0};
 
 	while (1) {
-		uint8_t ch;
 
 		/* 从 RX ring_buf 取出字节 → 回显到 TX */
-		while (ring_buf_get(&rx_ring, &ch, 1) == 1) {
-			if (!tx_busy) {
-				tx_buf[0] = ch;
+		// while (ring_buf_get(&rx_ring, &ch, 1) == 1) {
+		// 	if (!tx_busy) {
+		// 		tx_buf[0] = ch;
+		// 		tx_busy = true;
+		// 		uart_tx(uart_dev_pst,tx_buf,1,SYS_FOREVER_US);
+		// 	}
+		// }
+
+		if (!tx_busy) {
+
+			uint32_t actual = ring_buf_get(&rx_ring, data_buf, 100);
+			if (actual > 0) {
 				tx_busy = true;
-				uart_tx(uart_dev_pst,tx_buf,1,SYS_FOREVER_US);
+				int ret = uart_tx(uart_dev_pst, data_buf, actual, SYS_FOREVER_US);
+
+				if (ret != 0) {
+					tx_busy = false;
+				}
 			}
 		}
+		
 
+		
+		
+		
+		
 		menu_task_v();
 		k_sleep(K_MSEC(30));
 	}
