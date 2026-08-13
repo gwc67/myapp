@@ -76,5 +76,5 @@ static int s_build_menu_tree(void)
 // {
 //     s_build_menu_tree();
 // }
-SYS_INIT(s_build_menu_tree, APPLICATION, 11);
+SYS_INIT(s_build_menu_tree, APPLICATION, 10);
 

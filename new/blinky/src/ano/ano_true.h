@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "ano_base.h"
+#include "my_ring.h"
 
 #define FRAME_NUM_LEN 256       /* 0~0xff 共256个帧ID */
 #define FRAME_MAX_LENGTH 64
@@ -40,21 +41,26 @@ typedef struct
     void (*ano_send_buffer)(uint8_t *data_puc,uint8_t len_uc);
 }private_t;
 
+
+struct ano_cfg_t {
+    uint8_t* rx_buffer_puc;
+    struct ring_buf_base_t** ring_buf_base_ppst;
+    const private_t* private_pst;       //不同设备的指针对应的特殊指针
+};
+
+
 struct ano_device_t
 {
     struct ano_base_t base;
     struct ano_frame_t* ano_frame_pst;
+    const struct ano_cfg_t* ano_cfg_pst;
     
-    uint8_t* rx_buffer_puc;
     uint8_t rx_state_uc;
-
     uint8_t data_len_uc;
     uint8_t data_cnt_uc;
-
-    private_t* private_pst;       //不同设备的指针对应的特殊指针
 };
 
-int ano_device_init_noraml(struct ano_device_t* me,struct ano_frame_t* ano_frame_pst,uint8_t* rx_buffer_puc, private_t* private_pst );
+int ano_device_init_noraml(struct ano_device_t* me,struct ano_frame_t* ano_frame_pst,const struct ano_cfg_t* ano_cfg_pst);
 
 
 #endif

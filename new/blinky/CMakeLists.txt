@@ -20,17 +20,20 @@ target_sources(app PRIVATE
     src/ano/ano_true.c
     src/ano/ano_base.c
     src/ano/ano_board_init.c
+    src/ano/ano_device/ano_device_com.c
     src/uart/uart_base.c
     src/uart/uart_it.c
     src/uart/uart_dma.c
     src/uart/uart_board_init.c
     src/my_ring/my_ring.c
+    
 )
 
 target_include_directories(app PRIVATE
     src
     src/menu
     src/ano
+    src/ano/ano_device
     src/uart
     src/my_ring
 )

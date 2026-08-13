@@ -296,7 +296,7 @@ int menu_init_v(void)
     return 0;
 }
 
-SYS_INIT(menu_init_v, APPLICATION, 11);
+SYS_INIT(menu_init_v, APPLICATION, 10);
 
 
 void menu_navigate_v(struct menu_node_t *target)

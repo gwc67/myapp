@@ -10,22 +10,17 @@
 #include <zephyr/device.h>
 #include <zephyr/display/cfb.h>
 #include <zephyr/sys/printk.h>
+#include "ano/ano_base.h"
+#include "ano/ano_device/ano_device_com.h"
 #include "menu/menu.h"
-#include "my_ring/my_ring.h"
-#include "uart/uart_base.h"
-#include "uart/uarts.h"
-
+#include "ano.h"
 
 
 int main(void)
 {
-	uint8_t test_puc[10] = {0};
 	while (1) {
-		// uart_transmit(g_uart2_pst, test_puc, sizeof(test_puc));
-
-		uint32_t actual =  my_ring_buf_get(g_ut3_rx_ring_pst, test_puc, sizeof(test_puc));	
-		uart_transmit(g_uart3_pst, test_puc, actual);
-		
+		ano_check_data(g_com_ano_pst);
+		com_check_to_send();
 		menu_task_v();
 		k_sleep(K_MSEC(30));
 	}

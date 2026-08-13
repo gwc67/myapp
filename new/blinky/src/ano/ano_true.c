@@ -1,8 +1,7 @@
 #include "ano_true.h"
 #include "ano_base.h"
-#include "zephyr/types.h"
+#include "my_ring.h"
 #include <stdint.h>
-#include <string.h>
 #include <sys/_intsup.h>
 #include <zephyr/sys/util.h>
 
@@ -10,35 +9,35 @@
 
 ///转换成ano协议的数据
 
-static int s_data_to_ano(struct ano_device_t* me,uint8_t byte_uc)
+static int s_data_to_ano(struct ano_device_t *me,uint8_t byte_uc)
 {
     if (me->rx_state_uc == 0 && byte_uc == 0xAA)
     {
         me->rx_state_uc = 1;
         me->data_cnt_uc = 0;
         me->data_len_uc = 0;
-        me->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
+        me->ano_cfg_pst->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
     }
     else if (me->rx_state_uc == 1 && byte_uc == 0xFF)
     {
         me->rx_state_uc = 2;
-        me->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
+        me->ano_cfg_pst->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
     }
     else if (me->rx_state_uc == 2)
     {
         me->rx_state_uc = 3;
-        me->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
+        me->ano_cfg_pst->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
     }
     else if (me->rx_state_uc == 3)
     {
         me->rx_state_uc = 4;
-        me->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
+        me->ano_cfg_pst->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
         me->data_len_uc = byte_uc;
     }
     else if (me->rx_state_uc == 4 && me->data_len_uc > 0)
     {
         me->data_len_uc--;
-        me->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
+        me->ano_cfg_pst->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
         if (me->data_len_uc == 0)
         {
             me->rx_state_uc = 5;
@@ -47,13 +46,13 @@ static int s_data_to_ano(struct ano_device_t* me,uint8_t byte_uc)
     else if (me->rx_state_uc == 5)
     {
         me->rx_state_uc = 6;
-        me->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
+        me->ano_cfg_pst->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
     }
     else if (me->rx_state_uc == 6)
     {
         me->rx_state_uc = 0;
-        me->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
-        me->private_pst->ano_receive_anl(me->rx_buffer_puc,me->data_cnt_uc);
+        me->ano_cfg_pst->rx_buffer_puc[me->data_cnt_uc++] = byte_uc;
+        me->ano_cfg_pst->private_pst->ano_receive_anl(me->ano_cfg_pst->rx_buffer_puc,me->data_cnt_uc);
         return 1;  /* 完整帧接收完成 */
     }
     else
@@ -74,7 +73,7 @@ static int s_frame_send(struct ano_device_t* me,uint8_t frame_num_uc)
     tx_buffer_puc[cnt_uc++] = frame_num_uc;
     tx_buffer_puc[cnt_uc++] = 0;
 
-    me->private_pst->ano_add_send_data(frame_num_uc,&cnt_uc,tx_buffer_puc);
+    me->ano_cfg_pst->private_pst->ano_add_send_data(frame_num_uc,&cnt_uc,tx_buffer_puc);
 
     uint8_t check_sum1_uc = 0; 
     uint8_t check_sum2_uc = 0;
@@ -93,7 +92,7 @@ static int s_frame_send(struct ano_device_t* me,uint8_t frame_num_uc)
         me->ano_frame_pst->send_check_st.ac_uc = check_sum2_uc;
     }
 
-    me->private_pst->ano_send_buffer(tx_buffer_puc,cnt_uc);
+    me->ano_cfg_pst->private_pst->ano_send_buffer(tx_buffer_puc,cnt_uc);
 
     return 0;
 
@@ -216,6 +215,28 @@ static int s_set_send_id(struct ano_base_t* base,uint8_t frame_num_uc,uint16_t f
     return 0;
 }
 
+static int s_ano_check_data(struct ano_base_t* base)
+{
+    struct ano_device_t *me = CONTAINER_OF(base,struct ano_device_t,base);
+
+    uint8_t data_puc[64];
+    uint32_t read_ul = 0;
+
+    while ((read_ul = my_ring_buf_get(*me->ano_cfg_pst->ring_buf_base_ppst,data_puc, sizeof(data_puc)) > 0)) {
+        for (int i = 0; i < read_ul ; i++) {
+            s_data_to_ano(me,data_puc[i]);
+        }
+    }
+    return 0;
+
+}
+
+static int s_clear_wait(struct ano_base_t* base)
+{
+    struct ano_device_t *me = CONTAINER_OF(base,struct ano_device_t,base);
+    me->ano_frame_pst->check_repeat_st.wait_ck_uc = 0;
+}
+
 
 
 const ano_ops_t c_ano_normal_st = {
@@ -228,18 +249,21 @@ const ano_ops_t c_ano_normal_st = {
     .set_check_back = s_set_check_back,
     .set_wts = s_set_wts,
     .set_par = s_set_par,
-    .set_send_id  = s_set_send_id,    
+    .set_send_id  = s_set_send_id,   
+    .ano_check_data = s_ano_check_data,
 };
 
 
-int ano_device_init_noraml(struct ano_device_t* me,struct ano_frame_t* ano_frame_pst,uint8_t* rx_buffer_puc, private_t* private_pst )
+int ano_device_init_noraml(struct ano_device_t* me,struct ano_frame_t* ano_frame_pst,const struct ano_cfg_t* ano_cfg_pst)
 {
-
-    if (!me || !ano_frame_pst || !rx_buffer_puc || !private_pst)
+    if (!me || !ano_frame_pst || !ano_cfg_pst->rx_buffer_puc || !ano_cfg_pst->private_pst)
         return -1;
     me->ano_frame_pst = ano_frame_pst;
-    me->private_pst = private_pst;
-    me->rx_buffer_puc = rx_buffer_puc;
+    me->ano_cfg_pst = ano_cfg_pst;
+
+    me->rx_state_uc = 0;
+    me->data_cnt_uc = 0;
+    me->data_len_uc = 0;
     me->base.ops = &c_ano_normal_st;                        //绑定操作表函数
 
     return 0;

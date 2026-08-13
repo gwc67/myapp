@@ -93,7 +93,22 @@ int ano_ck_back_check(ano_base_t*me)
 }
 
 
+int ano_check_data(struct ano_base_t*me)
+{
+    CHECKIF(me == NULL || me->ops == NULL || me->ops->ano_check_data == NULL) {
+    return -EINVAL; //  Invalid argument
+  }
 
+  return me->ops->ano_check_data(me);
+}
+
+int ano_clear_wait(ano_base_t *me)
+{
+  CHECKIF(me == NULL || me->ops == NULL || me->ops->clear_wait == NULL) {
+    return -EINVAL; //  Invalid argument
+  }
+  return me->ops->clear_wait(me);
+}
 
 
 
