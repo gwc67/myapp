@@ -8867,8 +8867,7 @@
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_dma_40026000_SUPPORTS_ORDS \
 	60, /* /soc/i2s@40003800 */ \
-	61, /* /soc/i2s@40003c00 */ \
-	69, /* /soc/serial@40004400 */
+	61, /* /soc/i2s@40003c00 */
 #define DT_N_NODELABEL_DT_N_S_soc_S_dma_40026000_IDX_0_C_TOKEN dma1
 
 /* Existence and alternate IDs: */
@@ -10989,7 +10988,6 @@
 	3, /* /soc */ \
 	4, /* /soc/interrupt-controller@e000e100 */ \
 	8, /* /soc/rcc@40023800 */ \
-	59, /* /soc/dma@40026000 */ \
 	65, /* /soc/rcc@40023800/reset-controller */ \
 	67, /* /soc/pin-controller@40020000/usart2_rx_pa3 */ \
 	68, /* /soc/pin-controller@40020000/usart2_tx_pa2 */
@@ -11209,117 +11207,6 @@
 #define DT_N_S_soc_S_serial_40004400_P_compatible_EXISTS 1
 #define DT_N_S_soc_S_serial_40004400_P_dma_coherent 0
 #define DT_N_S_soc_S_serial_40004400_P_dma_coherent_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_PH DT_N_S_soc_S_dma_40026000
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_channel 6
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_channel_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_slot 4
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_slot_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_channel_config 1088
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_channel_config_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_features 3
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_features_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_FOREACH_CELL(fn) fn(DT_N_S_soc_S_serial_40004400, dmas, 0, channel) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 0, slot) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 0, channel-config) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 0, features)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_FOREACH_CELL_SEP(fn, sep) fn(DT_N_S_soc_S_serial_40004400, dmas, 0, channel) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 0, slot) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 0, channel-config) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 0, features)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_NUM_CELLS 4
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_NAME "tx"
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_IDX 0
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_FOREACH_CELL(fn) fn(DT_N_S_soc_S_serial_40004400, dmas, tx, channel) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, tx, slot) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, tx, channel-config) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, tx, features)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_FOREACH_CELL_SEP(fn, sep) fn(DT_N_S_soc_S_serial_40004400, dmas, tx, channel) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, tx, slot) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, tx, channel-config) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, tx, features)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_NUM_CELLS 4
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_PH DT_N_S_soc_S_dma_40026000
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_VAL_channel DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_channel
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_VAL_channel_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_VAL_slot DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_slot
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_VAL_slot_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_VAL_channel_config DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_channel_config
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_VAL_channel_config_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_VAL_features DT_N_S_soc_S_serial_40004400_P_dmas_IDX_0_VAL_features
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_tx_VAL_features_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_PH DT_N_S_soc_S_dma_40026000
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_channel 5
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_channel_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_slot 4
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_slot_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_channel_config 1152
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_channel_config_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_features 3
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_features_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_FOREACH_CELL(fn) fn(DT_N_S_soc_S_serial_40004400, dmas, 1, channel) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1, slot) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1, channel-config) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1, features)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_FOREACH_CELL_SEP(fn, sep) fn(DT_N_S_soc_S_serial_40004400, dmas, 1, channel) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1, slot) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1, channel-config) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1, features)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_NUM_CELLS 4
-#define DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_NAME "rx"
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_IDX 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_FOREACH_CELL(fn) fn(DT_N_S_soc_S_serial_40004400, dmas, rx, channel) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, rx, slot) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, rx, channel-config) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, rx, features)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_FOREACH_CELL_SEP(fn, sep) fn(DT_N_S_soc_S_serial_40004400, dmas, rx, channel) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, rx, slot) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, rx, channel-config) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, rx, features)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_NUM_CELLS 4
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_PH DT_N_S_soc_S_dma_40026000
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_VAL_channel DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_channel
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_VAL_channel_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_VAL_slot DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_slot
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_VAL_slot_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_VAL_channel_config DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_channel_config
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_VAL_channel_config_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_VAL_features DT_N_S_soc_S_serial_40004400_P_dmas_IDX_1_VAL_features
-#define DT_N_S_soc_S_serial_40004400_P_dmas_NAME_rx_VAL_features_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dmas_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_serial_40004400, dmas, 0) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_serial_40004400, dmas, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_serial_40004400, dmas, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_serial_40004400, dmas, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dmas, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_serial_40004400_P_dmas_LEN 2
-#define DT_N_S_soc_S_serial_40004400_P_dmas_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dma_names {"tx", "rx"}
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_0 "tx"
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_0_STRING_UNQUOTED tx
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_0_STRING_TOKEN tx
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_0_STRING_UPPER_TOKEN TX
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_1 "rx"
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_1_STRING_UNQUOTED rx
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_1_STRING_TOKEN rx
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_IDX_1_STRING_UPPER_TOKEN RX
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_serial_40004400, dma_names, 0) \
-	fn(DT_N_S_soc_S_serial_40004400, dma_names, 1)
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_soc_S_serial_40004400, dma_names, 0) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dma_names, 1)
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_serial_40004400, dma_names, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_serial_40004400, dma_names, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_soc_S_serial_40004400, dma_names, 0, __VA_ARGS__) DT_DEBRACKET_INTERNAL sep \
-	fn(DT_N_S_soc_S_serial_40004400, dma_names, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_LEN 2
-#define DT_N_S_soc_S_serial_40004400_P_dma_names_EXISTS 1
 #define DT_N_S_soc_S_serial_40004400_P_zephyr_deferred_init 0
 #define DT_N_S_soc_S_serial_40004400_P_zephyr_deferred_init_EXISTS 1
 #define DT_N_S_soc_S_serial_40004400_P_wakeup_source 0

@@ -463,7 +463,6 @@ set_target_properties(${DEVICETREE_TARGET}
     "DT_PROP|/soc/serial@40004400|status" "okay"
     "DT_PROP|/soc/serial@40004400|compatible" "st,stm32-usart;st,stm32-uart"
     "DT_PROP|/soc/serial@40004400|dma-coherent" "False"
-    "DT_PROP|/soc/serial@40004400|dma-names" "tx;rx"
     "DT_PROP|/soc/serial@40004400|zephyr,deferred-init" "False"
     "DT_PROP|/soc/serial@40004400|wakeup-source" "False"
     "DT_PROP|/soc/serial@40004400|zephyr,pm-device-runtime-auto" "False"

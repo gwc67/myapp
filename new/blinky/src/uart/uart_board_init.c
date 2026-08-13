@@ -18,6 +18,8 @@ struct uart_base_t* g_uart2_pst;
 
 int uart_board_init(void)
 {
+
+    //dma 下的双缓冲 其实这个pingpong 缓冲还没有开启互斥锁，还不够完善
     static const struct uart_it_cfg_t uart2_it_cfg_st = {
         .uart_device_pst = DEVICE_DT_GET(DT_NODELABEL(usart2)),
         .rx_hw_bufs_puc[0] = s_ut2_rx_hw_a_puc,
