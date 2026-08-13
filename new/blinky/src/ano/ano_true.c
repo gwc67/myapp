@@ -75,6 +75,9 @@ static int s_frame_send(struct ano_device_t* me,uint8_t frame_num_uc)
 
     me->ano_cfg_pst->private_pst->ano_add_send_data(frame_num_uc,&cnt_uc,tx_buffer_puc);
 
+    tx_buffer_puc[3] = cnt_uc - 4;
+    
+
     uint8_t check_sum1_uc = 0; 
     uint8_t check_sum2_uc = 0;
 
