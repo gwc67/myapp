@@ -17,6 +17,9 @@ struct my_ring_t{
 #define UT2_RX_RING_BUF 512
 #define UT2_TX_RING_BUF 512
 
+#define UT3_RX_RING_BUF 512
+#define UT3_TX_RING_BUF 512
+
 
 
 static struct my_ring_t s_ut2_rx_st;
@@ -25,6 +28,16 @@ static uint8_t s_ut2_rx_buf_puc[UT2_RX_RING_BUF];
 static uint8_t s_ut2_tx_buf_puc[UT2_TX_RING_BUF];
 struct ring_buf_base_t* g_ut2_rx_ring_pst;
 struct ring_buf_base_t* g_ut2_tx_ring_pst;
+
+
+static struct my_ring_t s_ut3_rx_st;
+static struct my_ring_t s_ut3_tx_st;
+static uint8_t s_ut3_rx_buf_puc[UT3_RX_RING_BUF];
+static uint8_t s_ut3_tx_buf_puc[UT3_TX_RING_BUF];
+
+struct ring_buf_base_t* g_ut3_rx_ring_pst;
+struct ring_buf_base_t* g_ut3_tx_ring_pst;
+
 
 static void my_ring_buf_init(struct my_ring_t* me, uint8_t* ring_buf_puc,uint32_t size_ul,const char* name)
 {
@@ -40,6 +53,13 @@ int my_ring_buf_board_init(void)
 
     my_ring_buf_init(&s_ut2_tx_st,s_ut2_tx_buf_puc,UT2_TX_RING_BUF, "ut2_tx");
     g_ut2_tx_ring_pst = &s_ut2_tx_st.base;
+
+    my_ring_buf_init(&s_ut3_tx_st,s_ut3_tx_buf_puc,UT3_TX_RING_BUF, "ut3_tx");
+    g_ut3_tx_ring_pst = &s_ut3_tx_st.base;
+
+    my_ring_buf_init(&s_ut3_rx_st,s_ut3_rx_buf_puc,UT3_RX_RING_BUF, "ut3_rx");
+    g_ut3_rx_ring_pst = &s_ut3_rx_st.base;
+
     return 0;
 }
 

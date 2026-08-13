@@ -4,6 +4,7 @@
 #include "uart_base.h"
 
 extern struct uart_base_t* g_uart2_pst;
+extern struct uart_base_t* g_uart3_pst;
 
 #endif
 

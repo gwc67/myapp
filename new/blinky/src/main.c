@@ -23,8 +23,8 @@ int main(void)
 	while (1) {
 		// uart_transmit(g_uart2_pst, test_puc, sizeof(test_puc));
 
-		uint32_t actual =  my_ring_buf_get(g_ut2_rx_ring_pst, test_puc, sizeof(test_puc));	
-		uart_transmit(g_uart2_pst, test_puc, actual);
+		uint32_t actual =  my_ring_buf_get(g_ut3_rx_ring_pst, test_puc, sizeof(test_puc));	
+		uart_transmit(g_uart3_pst, test_puc, actual);
 		
 		menu_task_v();
 		k_sleep(K_MSEC(30));

@@ -19,6 +19,11 @@ static struct uart_it_t s_uart2_st;
 
 struct uart_base_t* g_uart2_pst;
 
+static struct uart_it_t s_uart3_st;
+struct uart_base_t* g_uart3_pst;
+
+
+
 int uart_board_init(void)
 {
 
@@ -38,15 +43,35 @@ int uart_board_init(void)
         .uart_device_pst = DEVICE_DT_GET(DT_NODELABEL(usart2)),
     };
     
-    int ret = uart_it_init_rt(&s_uart2_st,&uart2_it_cfg_st,g_ut2_rx_ring_pst,g_ut2_tx_ring_pst);
-    
-
+    int ret = uart_it_init_rt(&s_uart2_st,&uart2_it_cfg_st,g_ut2_rx_ring_pst,g_ut2_tx_ring_pst);    
     if (ret) {
         return ret;
     }
+
+    static const struct uart_it_cfg_t uart3_it_cfg_st = {
+        .uart_device_pst = DEVICE_DT_GET(DT_NODELABEL(usart3)),
+    };
+    
+    ret = uart_it_init_rt(&s_uart3_st,&uart3_it_cfg_st,g_ut3_rx_ring_pst,g_ut3_tx_ring_pst);    
+    if (ret) {
+        return ret;
+    }
+
+
+    
     g_uart2_pst = &s_uart2_st.base;
+    g_uart3_pst = &s_uart3_st.base;
+    
 
     ret = uart_receive_enable(g_uart2_pst, 1000);  
+    if (ret) {
+        return ret;
+    }
+
+    ret = uart_receive_enable(g_uart3_pst, 1000);  
+    if (ret) {
+        return ret;
+    }
     
     return 0;
     

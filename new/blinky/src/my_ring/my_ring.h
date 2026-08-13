@@ -9,6 +9,9 @@ struct ring_buf_base_t {
 };
 extern struct ring_buf_base_t* g_ut2_rx_ring_pst;
 extern struct ring_buf_base_t* g_ut2_tx_ring_pst;
+extern struct ring_buf_base_t* g_ut3_rx_ring_pst;
+extern struct ring_buf_base_t* g_ut3_tx_ring_pst;
+
 
 uint32_t my_ring_buf_get(struct ring_buf_base_t* base,uint8_t* data_puc,uint32_t size_ul);
 
