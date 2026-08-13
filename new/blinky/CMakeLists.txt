@@ -20,7 +20,9 @@ target_sources(app PRIVATE
     src/ano/ano_true.c
     src/ano/ano_base.c
     src/ano/ano_board_init.c
-    src/uart/uart_xfer.c
+    src/uart/uart_base.c
+    src/uart/uart_it.c
+    src/uart/uart_board_init.c
     src/my_ring/my_ring.c
 )
 

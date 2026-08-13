@@ -24,13 +24,13 @@
 static int s_uart_transmit_it(uart_base_t* base,uint8_t* data_puc ,uint32_t len_ul)
 {
     struct uart_it_t* me = CONTAINER_OF(base, struct uart_it_t, base);
-    if (!me->uart_device_pst || !data_puc || len_ul == 0) {
+    if (!me->cfg_pst->uart_device_pst || !data_puc || len_ul == 0) {
         return  -EINVAL;
     }
     
     if (!me->tx_busy_b) {
         me->tx_busy_b = true;
-        int ret = uart_tx(me->uart_device_pst, data_puc, len_ul, SYS_FOREVER_US);
+        int ret = uart_tx(me->cfg_pst->uart_device_pst, data_puc, len_ul, SYS_FOREVER_US);
 
         if (ret != 0) {
             //启动失败
@@ -51,10 +51,10 @@ static int s_uart_rx_enable_it(uart_base_t* base,uint32_t timeout_ul)
 {
     struct uart_it_t* me = CONTAINER_OF(base, struct uart_it_t, base);
 
-    if (!me->uart_device_pst) {
+    if (!me->cfg_pst->uart_device_pst) {
         return -ENODEV;
     }
-    int ret = uart_rx_enable(me->uart_device_pst, me->rx_hw_puc, sizeof(me->rx_hw_puc), timeout_ul);
+    int ret = uart_rx_enable(me->cfg_pst->uart_device_pst, me->cfg_pst->rx_hw_puc, me->cfg_pst->rx_hw_len_ul, timeout_ul);
 
     if (ret != 0) {
         return ret;
@@ -75,8 +75,8 @@ static void uart_async_isr(const struct device* dev,struct uart_event* evt,void*
         //缓冲发送完成，
             if (!my_ring_buf_is_empty(me->tx_ring_pst)) {
             
-                uint32_t len_ul = my_ring_buf_get(me->tx_ring_pst, me->tx_hw_puc, sizeof(me->tx_hw_puc));
-                int ret = uart_tx(dev,me->tx_hw_puc,len_ul,SYS_FOREVER_US);
+                uint32_t len_ul = my_ring_buf_get(me->tx_ring_pst, me->cfg_pst->tx_hw_puc, me->cfg_pst->tx_hw_len_ul);
+                int ret = uart_tx(dev,me->cfg_pst->tx_hw_puc,len_ul,SYS_FOREVER_US);
                 
                 if (ret != 0) {
                     me->tx_busy_b = false; //启动失败，标记空闲
@@ -94,7 +94,7 @@ static void uart_async_isr(const struct device* dev,struct uart_event* evt,void*
             my_ring_buf_put(me->rx_ring_pst, &evt->data.rx.buf[evt->data.rx.offset], evt->data.rx.len);
             break;
         case UART_RX_BUF_REQUEST:
-            uart_rx_buf_rsp(dev, me->rx_hw_puc,me->rx_hw_len_ul);           //重新以当前rx_hw_buf为起点开启吗？也就是类似之前的重新开启it吗？
+            uart_rx_buf_rsp(dev, me->cfg_pst->rx_hw_puc,me->cfg_pst->rx_hw_len_ul);           //重新以当前rx_hw_buf为起点开启吗？也就是类似之前的重新开启it吗？
             break;
         case UART_RX_BUF_RELEASED:                                                   //IT模式下的释放不需要干任何事情
             break;
@@ -113,7 +113,7 @@ const uart_ops_t uart_it_ops_st = {
 
 
 //同时需要it发送和接受的初始化
-int uart_it_init_rt(struct uart_it_t* me, struct uart_it_cfg_t* cfg_pst, struct ring_buf_base_t* rx_ring_pst,struct ring_buf_base_t* tx_ring_pst)
+int uart_it_init_rt(struct uart_it_t* me, const struct uart_it_cfg_t* cfg_pst, struct ring_buf_base_t* rx_ring_pst,struct ring_buf_base_t* tx_ring_pst)
 {
 
 

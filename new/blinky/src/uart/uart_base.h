@@ -14,7 +14,7 @@ typedef struct {
 
 struct uart_base_t {
    const uart_ops_t* ops;
-}
+};
 
 
 #endif

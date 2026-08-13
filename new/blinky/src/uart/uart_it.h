@@ -27,6 +27,7 @@ struct uart_it_t{
     volatile bool tx_busy_b;
 };
 
+int uart_it_init_rt(struct uart_it_t* me, const struct uart_it_cfg_t* cfg_pst, struct ring_buf_base_t* rx_ring_pst,struct ring_buf_base_t* tx_ring_pst);
 
 
 #endif
