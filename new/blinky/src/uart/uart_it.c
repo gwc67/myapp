@@ -54,7 +54,7 @@ static int s_uart_rx_enable_it(uart_base_t* base,uint32_t timeout_ul)
     if (!me->cfg_pst->uart_device_pst) {
         return -ENODEV;
     }
-    int ret = uart_rx_enable(me->cfg_pst->uart_device_pst, me->cfg_pst->rx_hw_puc, me->cfg_pst->rx_hw_len_ul, timeout_ul);
+    int ret = uart_rx_enable(me->cfg_pst->uart_device_pst, me->cfg_pst->rx_hw_bufs_puc[0], me->cfg_pst->rx_hw_lens_puc[0], timeout_ul);
 
     if (ret != 0) {
         return ret;
@@ -94,7 +94,10 @@ static void uart_async_isr(const struct device* dev,struct uart_event* evt,void*
             my_ring_buf_put(me->rx_ring_pst, &evt->data.rx.buf[evt->data.rx.offset], evt->data.rx.len);
             break;
         case UART_RX_BUF_REQUEST:
-            uart_rx_buf_rsp(dev, me->cfg_pst->rx_hw_puc,me->cfg_pst->rx_hw_len_ul);           //重新以当前rx_hw_buf为起点开启吗？也就是类似之前的重新开启it吗？
+        if (me->cfg_pst->rx_hw_bufs_puc[1]) {
+            me->free_rx_idx_uc ^= 1U; 
+        }
+            uart_rx_buf_rsp(dev, me->cfg_pst->rx_hw_bufs_puc[me->free_rx_idx_uc],me->cfg_pst->rx_hw_lens_puc[me->free_rx_idx_uc]);           //重新以当前rx_hw_buf为起点开启吗？也就是类似之前的重新开启it吗？
             break;
         case UART_RX_BUF_RELEASED:                                                   //IT模式下的释放不需要干任何事情
             break;
@@ -121,6 +124,7 @@ int uart_it_init_rt(struct uart_it_t* me, const struct uart_it_cfg_t* cfg_pst, s
     me->rx_ring_pst = rx_ring_pst;
     me->tx_ring_pst = tx_ring_pst;
     me->tx_busy_b = false;
+    me->free_rx_idx_uc = 0;
     me->base.ops = &uart_it_ops_st;
     int ret = uart_callback_set(me->cfg_pst->uart_device_pst, uart_async_isr, me);
     if (ret != 0) {

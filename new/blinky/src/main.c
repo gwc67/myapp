@@ -19,7 +19,7 @@
 
 int main(void)
 {
-	uint8_t test_puc[10] = {1,2,3,4,5,6,7,8,9,10};
+	uint8_t test_puc[10] = {0};
 	while (1) {
 		// uart_transmit(g_uart2_pst, test_puc, sizeof(test_puc));
 
