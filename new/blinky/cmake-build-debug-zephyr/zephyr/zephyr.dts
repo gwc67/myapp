@@ -858,7 +858,7 @@
 			interrupts = < 0x27 0x0 >;                     /* in zephyr\dts\arm\st\f4\stm32f405.dtsi:56 */
 			pinctrl-0 = < &usart3_tx_pd8 &usart3_rx_pd9 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:134 */
 			pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:135 */
-			current-speed = < 0x1c200 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:136 */
+			current-speed = < 0x7a120 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:136 */
 			status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:137 */
 		};
 
