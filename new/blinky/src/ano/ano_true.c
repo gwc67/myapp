@@ -225,7 +225,7 @@ static int s_ano_check_data(struct ano_base_t* base)
     uint8_t data_puc[64] = {0};
     uint32_t read_ul = 0;
 
-    while ((read_ul = my_ring_buf_get(*me->ano_cfg_pst->ring_buf_base_ppst,data_puc, sizeof(data_puc)) > 0)) {
+    while ((read_ul = my_ring_buf_get(*me->ano_cfg_pst->ring_buf_base_ppst,data_puc, sizeof(data_puc))) > 0) {
         for (int i = 0; i < read_ul ; i++) {
             s_data_to_ano(me,data_puc[i]);
         }
