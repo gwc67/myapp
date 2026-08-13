@@ -4,7 +4,7 @@
 #include <sys/errno.h>
 
 
-int uart_transmit(uart_base_t* me,uint8_t data_puc ,uint32_t len_ul)
+int uart_transmit(uart_base_t* me,uint8_t* data_puc ,uint32_t len_ul)
 {
     CHECKIF(!me)
     {

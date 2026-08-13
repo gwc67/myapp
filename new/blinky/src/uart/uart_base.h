@@ -16,5 +16,7 @@ struct uart_base_t {
    const uart_ops_t* ops;
 };
 
+int uart_transmit(uart_base_t* me,uint8_t* data_puc ,uint32_t len_ul);
+int uart_receive_enable(uart_base_t* me,uint32_t time_out_ul);
 
 #endif

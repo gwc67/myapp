@@ -31,6 +31,10 @@ int uart_board_init(void)
     }
     g_uart2_pst = &s_uart2_st.base;
 
+
+    ret = uart_receive_enable(g_uart2_pst, 1000);  
+    
+    
     return 0;
     
 }
