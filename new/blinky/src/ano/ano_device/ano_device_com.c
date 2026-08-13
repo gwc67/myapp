@@ -12,6 +12,7 @@ static int s_ano_device_com_init(void)
 {
     ano_set_send_id(g_com_ano_pst, 0x00, 0);
     ano_set_send_id(g_com_ano_pst, 0x01, 20);
+    return 0;
 }
 
 SYS_INIT(s_ano_device_com_init, APPLICATION, 14);
@@ -102,5 +103,5 @@ void com_check_to_send(void)
     ano_ck_back_check(g_com_ano_pst);
     ano_check_to_send(g_com_ano_pst, 0x00);
     ano_check_to_send(g_com_ano_pst, 0xe0);
-    ano_check_to_send(g_com_ano_pst, 0x01);
+    // ano_check_to_send(g_com_ano_pst, 0x01);
 }

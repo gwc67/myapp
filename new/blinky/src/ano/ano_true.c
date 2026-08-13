@@ -222,7 +222,7 @@ static int s_ano_check_data(struct ano_base_t* base)
 {
     struct ano_device_t *me = CONTAINER_OF(base,struct ano_device_t,base);
 
-    uint8_t data_puc[64];
+    uint8_t data_puc[64] = {0};
     uint32_t read_ul = 0;
 
     while ((read_ul = my_ring_buf_get(*me->ano_cfg_pst->ring_buf_base_ppst,data_puc, sizeof(data_puc)) > 0)) {
@@ -238,6 +238,7 @@ static int s_clear_wait(struct ano_base_t* base)
 {
     struct ano_device_t *me = CONTAINER_OF(base,struct ano_device_t,base);
     me->ano_frame_pst->check_repeat_st.wait_ck_uc = 0;
+    return 0;
 }
 
 
@@ -254,6 +255,7 @@ const ano_ops_t c_ano_normal_st = {
     .set_par = s_set_par,
     .set_send_id  = s_set_send_id,   
     .ano_check_data = s_ano_check_data,
+    .clear_wait = s_clear_wait,
 };
 
 
