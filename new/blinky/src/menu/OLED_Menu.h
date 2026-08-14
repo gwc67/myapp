@@ -16,5 +16,6 @@
 
 /* 根节点 */
 extern struct menu_node_t g_root;
+extern struct menu_base_t* g_mpu6050_raw_oled_pst;
 
 #endif /* OLED_MENU_H */
