@@ -34,6 +34,8 @@ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/base/power.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/display/display-controller.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/display/solomon,ssd1306-common.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/i2c/i2c-device.yaml
+D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/sensor/invensense,mpu6050.yaml
+D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/sensor/sensor-device.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/spi/st,stm32-spi.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/spi/spi-controller.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/spi/st,stm32-spi-common.yaml
@@ -45,7 +47,6 @@ D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/pwm/st,stm32-pwm.yam
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/pwm/pwm-controller.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/counter/st,stm32-counter.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/sensor/st,stm32-qdec.yaml
-D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/sensor/sensor-device.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/rtc/st,stm32-rtc.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/rtc/rtc-device.yaml
 D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/dts/bindings/rtc/rtc.yaml

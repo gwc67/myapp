@@ -3439,5 +3439,21 @@
  current-speed = <500000>;
  status = "okay";
 };
+
+&i2c2 {
+ status = "okay";
+ clock-frequency = <400000>;
+ pinctrl-0 = <&i2c2_scl_pb10 &i2c2_sda_pb11>;
+ pinctrl-names = "default";
+
+ mpu6050: mpu6050@68 {
+  compatible = "invensense,mpu6050";
+  reg = <0x68>;
+  status = "okay";
+  accel-fs = <2>;
+  gyro-fs = <250>;
+  smplrt-div = <0>;
+ };
+};
 # 0 "<command-line>" 2
 # 1 "D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/misc/empty_file.c"

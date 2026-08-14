@@ -136,3 +136,19 @@
 	current-speed = <500000>;
 	status = "okay";
 };
+
+&i2c2 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	pinctrl-0 = <&i2c2_scl_pb10 &i2c2_sda_pb11>;
+	pinctrl-names = "default";
+
+	mpu6050: mpu6050@68 {
+		compatible = "invensense,mpu6050";
+		reg = <0x68>;
+		status = "okay";
+		accel-fs = <2>;		/* +-2g */
+		gyro-fs = <250>;	/* +-250°/s */
+		smplrt-div = <0>; 	/* 8KHZ (1 + 0) = 8Khz （陀螺仪） 1Khz 加速度计 */
+	};
+};

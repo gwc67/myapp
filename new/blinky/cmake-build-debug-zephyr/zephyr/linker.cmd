@@ -128,6 +128,8 @@ device_api_area : SUBALIGN(4)
  _i2c_target_driver_api_ext_end = .;
  _reset_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._reset_driver_api.static.*))); _reset_driver_api_list_end = .;;
  _reset_driver_api_ext_end = .;
+ _sensor_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._sensor_driver_api.static.*))); _sensor_driver_api_list_end = .;;
+ _sensor_driver_api_ext_end = .;
  _shared_irq_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._shared_irq_driver_api.static.*))); _shared_irq_driver_api_list_end = .;;
  _shared_irq_driver_api_ext_end = .;
  _audio_codec_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._audio_codec_driver_api.static.*))); _audio_codec_driver_api_list_end = .;;
@@ -254,8 +256,6 @@ device_api_area : SUBALIGN(4)
  _rtc_driver_api_ext_end = .;
  _sdhc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._sdhc_driver_api.static.*))); _sdhc_driver_api_list_end = .;;
  _sdhc_driver_api_ext_end = .;
- _sensor_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._sensor_driver_api.static.*))); _sensor_driver_api_list_end = .;;
- _sensor_driver_api_ext_end = .;
  _smbus_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._smbus_driver_api.static.*))); _smbus_driver_api_list_end = .;;
  _smbus_driver_api_ext_end = .;
  _spi_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._spi_driver_api.static.*))); _spi_driver_api_list_end = .;;

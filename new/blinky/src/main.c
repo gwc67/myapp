@@ -15,13 +15,15 @@
 #include "menu/menu.h"
 #include "ano.h"
 
+static const struct device *mpu6050_pst = DEVICE_DT_GET(DT_NODELABEL(mpu6050));
+
 
 int main(void)
 {
 	while (1) {
 		ano_check_data(g_com_ano_pst);
 		com_check_to_send();
-		menu_task_v();
+		// menu_task_v();
 		k_sleep(K_MSEC(30));
 	}
 	return 0;
