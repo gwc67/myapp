@@ -41,7 +41,7 @@ double kalman_get_angle(struct Kalman_t* kalman_pst,double angle_new_db,double r
     double s_db = kalman_pst->P_pdb[0][0] + kalman_pst->r_measure_db;
     double k_pdb[2];
     k_pdb[0] = kalman_pst->P_pdb[0][0] / s_db;
-    k_pdb[1] = kalman_pst->P_pdb[0][0] / s_db;
+    k_pdb[1] = kalman_pst->P_pdb[1][0] / s_db;
 
     double gap_db = angle_new_db - kalman_pst->angle_db;
 
@@ -99,7 +99,7 @@ void euler_update(void)
 
     s_euler_st.roll_db = kalman_get_angle(&s_K_roll_st, roll_db, gyro_st.x_db, dt_db); 
 
-    yaw_db += gyro_st.z_db * dt_db;
+    yaw_db +=  gyro_st.z_db * dt_db;
 
     s_euler_st.yaw_db = yaw_db;
 
