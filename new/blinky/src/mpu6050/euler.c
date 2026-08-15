@@ -27,15 +27,28 @@ static struct Kalman_t s_K_yaw_st = {
     .r_measure_db = 0.03,
 };
 
+
+//rate_new_db : U  输入：陀螺仪测量的角度 
+//angle_new_db : Z 作为观察 即 加速计计算的角度
+//A: 状态转移矩阵 [[1,-d],[0,1]]
+//B: 控制矩阵 [dt,0]^t
+//H: 观测矩阵[1,0];
 double kalman_get_angle(struct Kalman_t* kalman_pst,double angle_new_db,double rate_new_db,double dt_db)
 {
+    //状态预测 
+    // 新的角度 = 旧角度 + 角度变化 = angle + (rate - bias) × dt
+    //估算角度 
+    //  状态预测：用陀螺仪推算下一时刻角度
+    // 对应公式X̂ₖ⁻ = A·X̂ₖ₋₁ + B·Uₖ₋₁
     double rate_db = rate_new_db - kalman_pst->bias_db;
     kalman_pst->angle_db += dt_db* rate_db;
 
-    kalman_pst->P_pdb[0][0] += dt_db * (dt_db * kalman_pst->P_pdb[1][1] - kalman_pst->P_pdb[0][1] - kalman_pst->P_pdb[1][0] + kalman_pst->q_angle_db);
+    // 这是步骤2：协方差预测，对应标准公式：
+    // P_k^- = A \cdot P_{k-1} \cdot A^T + Q
+    kalman_pst->P_pdb[0][0] += dt_db * (dt_db * kalman_pst->P_pdb[1][1] - kalman_pst->P_pdb[0][1] - kalman_pst->P_pdb[1][0] + kalman_pst->q_angle_db);      //angle 的方差（角度估计的不确定性）
     kalman_pst->P_pdb[0][1] -= dt_db * kalman_pst->P_pdb[1][1];
     kalman_pst->P_pdb[1][0] -= dt_db * kalman_pst->P_pdb[1][1];
-    kalman_pst->P_pdb[1][1] += kalman_pst->q_bias_db * dt_db;
+    kalman_pst->P_pdb[1][1] += kalman_pst->q_bias_db * dt_db;  //bias 的方差（零偏估计的不确定性）定值0.003
 
     //卡尔曼增益
     double s_db = kalman_pst->P_pdb[0][0] + kalman_pst->r_measure_db;
@@ -94,6 +107,7 @@ void euler_update(void)
         s_euler_st.pitch_db = pitch_db;
     }
     else {
+        //卡尔曼在这里的本质是为了融合数据，将加速度算出来的 和 陀螺仪 进行融合数据
         s_euler_st.pitch_db = kalman_get_angle(&s_K_pitch_st, pitch_db, gyro_st.y_db, dt_db);
     }
 

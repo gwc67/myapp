@@ -3357,6 +3357,8 @@
 
  aliases {
   led0 = &led0;
+  encode1 = &qdec_e1;
+  encode2 = &qdec_e2;
  };
  chosen {
   zephyr,sram = &sram0;
@@ -3453,6 +3455,42 @@
   accel-fs = <2>;
   gyro-fs = <250>;
   smplrt-div = <0>;
+ };
+};
+
+
+
+&timers3 {
+ status = "okay";
+ st,prescaler = <0>;
+
+ qdec_e1: qdec {
+  compatible = "st,stm32-qdec";
+  status = "okay";
+  pinctrl-0 = <&tim3_ch1_pa6 &tim3_ch2_pa7>;
+  pinctrl-names = "default";
+
+  st,input-filter-level = <15>;
+
+  st,counts-per-revolution = <360>;
+
+  st,encoder-mode = <3>;
+ };
+};
+
+
+
+&timers4 {
+ status = "okay";
+ st,prescaler = <0>;
+ qdec_e2: qdec {
+  compatible = "st,stm32-qdec";
+  status = "okay";
+  pinctrl-0 = <&tim4_ch1_pd12 &tim4_ch2_pd13>;
+  pinctrl-names = "default";
+  st,input-filter-level = <15>;
+  st,counts-per-revolution = <360>;
+  st,encoder-mode = <3>;
  };
 };
 # 0 "<command-line>" 2

@@ -51,9 +51,11 @@
 			zephyr,code = <INPUT_KEY_3>;
 		};
 	};
-
+	/* aliases 是 Device Tree（设备树） 中的一个节点，它的作用是给设备节点起一个简短的别名，方便在代码中引用。 */
 	aliases {
 		led0 = &led0;
+		encode1 = &qdec_e1;
+		encode2 = &qdec_e2;
 	};
 	chosen {
 		zephyr,sram = &sram0;
@@ -150,5 +152,41 @@
 		accel-fs = <2>;		/* +-2g */
 		gyro-fs = <250>;	/* +-250°/s */
 		smplrt-div = <0>; 	/* 8KHZ (1 + 0) = 8Khz （陀螺仪） 1Khz 加速度计 */
+	};
+};
+
+/* 编码器1 ： TIM3 （PA6，PA7） */
+
+&timers3 {
+	status = "okay";
+	st,prescaler = <0>;
+
+	qdec_e1: qdec {
+		compatible = "st,stm32-qdec";  /* mpatible = "st,stm32-qdec" 表示："我是一个 STM32 的 Quadrature Decoder（正交编码器），请用 st,stm32-qdec 这个驱动来初始化我。" */
+		status = "okay";
+		pinctrl-0 = <&tim3_ch1_pa6 &tim3_ch2_pa7>;
+		pinctrl-names = "default";
+		/* 输入滤波 */
+		st,input-filter-level = <FDIV32_N8>;
+		/* 编码器每转脉冲数 */
+		st,counts-per-revolution = <360>;
+		/* 编码器模式: 0x1=模式1，0x2 = 模式2，-x3=模式3 (默认，x4计数) */
+		st,encoder-mode = <3>;
+	};
+};
+
+/* 编码器2 ： TIM4 (PD12 , PD13) */
+
+&timers4 {
+	status = "okay";
+	st,prescaler = <0>;
+	qdec_e2: qdec {
+		compatible = "st,stm32-qdec";
+		status = "okay";
+		pinctrl-0 = <&tim4_ch1_pd12 &tim4_ch2_pd13>;
+		pinctrl-names = "default";
+		st,input-filter-level = <FDIV32_N8>;
+		st,counts-per-revolution = <360>;
+		st,encoder-mode = <3>;
 	};
 };

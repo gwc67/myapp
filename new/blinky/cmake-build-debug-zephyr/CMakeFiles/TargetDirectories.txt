@@ -286,6 +286,9 @@ D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/silabs/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/st/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/st/CMakeFiles/rebuild_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/st/qdec_stm32/CMakeFiles/drivers__sensor__st__qdec_stm32.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/st/qdec_stm32/CMakeFiles/edit_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/st/qdec_stm32/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/tdk/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/tdk/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/tdk/mpu6050/CMakeFiles/drivers__sensor__tdk__mpu6050.dir

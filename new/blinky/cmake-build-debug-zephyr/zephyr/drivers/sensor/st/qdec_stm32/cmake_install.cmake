@@ -1,4 +1,4 @@
-# Install script for directory: D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/drivers/sensor/st
+# Install script for directory: D:/Downloads/zephyr_new/zephyr_guanfang/zephyr/drivers/sensor/st/qdec_stm32
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -37,14 +37,9 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump.exe")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/st/qdec_stm32/cmake_install.cmake")
-endif()
-
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/st/install_local_manifest.txt"
+  file(WRITE "D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/sensor/st/qdec_stm32/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
