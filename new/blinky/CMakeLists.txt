@@ -27,6 +27,7 @@ target_sources(app PRIVATE
     src/uart/uart_board_init.c
     src/my_ring/my_ring.c
     src/mpu6050/mpu6050.c
+    src/mpu6050/euler.c
     src/mess/value_to_str.c
     
 )

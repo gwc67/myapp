@@ -10,12 +10,12 @@
 #include <zephyr/device.h>
 #include <zephyr/display/cfb.h>
 #include <zephyr/sys/printk.h>
-#include "menu/OLED_Menu.h"
-#include "mpu6050/mpu6050.h"
 #include "ano/ano_base.h"
 #include "ano/ano_device/ano_device_com.h"
 #include "menu/menu.h"
 #include "ano.h"
+#include "mpu6050/ahrs_madgwick.h"
+#include "mpu6050/euler.h"
 
 
 int main(void)
@@ -23,9 +23,7 @@ int main(void)
 
 
 	while (1) {
-
-		mpu6050_sample();
-		menu_request_refresh(g_mpu6050_raw_oled_pst);
+		euler_update();
 		ano_check_data(g_com_ano_pst);
 		com_check_to_send();
 		menu_task_v();
