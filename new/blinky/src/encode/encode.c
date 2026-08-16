@@ -63,8 +63,8 @@ int encoder_read(enum encoder_id_e id_em)
     ret = sensor_sample_fetch(s_encoder_device_pst[id_em].encoder_device_pst);
     if (ret != 0) {
         LOG_ERR("Encoder %d sample fetch failed: %d",id_em,ret);
+        return ret;
     }
-    return ret;
 
 
 
@@ -72,6 +72,7 @@ int encoder_read(enum encoder_id_e id_em)
 
     if (ret != 0) {
         LOG_ERR("Encoder %d channel get failed : %d",id_em,ret);
+        return ret;
     }
 
 
@@ -89,6 +90,7 @@ int encoder_read(enum encoder_id_e id_em)
 
     s_encoder_device_pst[id_em].data_st.rpm_f = ((float)s_encoder_device_pst[id_em].delta_l / ENCODE_CPR) * (60000.0f/(current_tick_ul - last_tick_ul));
     s_encoder_device_pst[id_em].last_tick_count_ul = current_tick_ul;
+    return 0;
 }
 
 void encoder_update_all(void)
