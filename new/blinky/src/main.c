@@ -76,6 +76,14 @@ static void s_task_10ms_low(void *p1,void *p2,void *p3)
 {
 	while (1) {
 		menu_task_v();
+
+		struct encoder_data_t encode_a_st;
+		encoder_get_data(ENCODE_ID_A_em, &encode_a_st);
+		char num[10];
+		char buf[50];
+		float_to_str(num, sizeof(num),encode_a_st.rpm_f, 2);
+		snprintf(buf, sizeof(buf),"encode_a : pos %d , rpm = %s \r\n" , encode_a_st.position_l, num);
+
 		k_msleep(10);
 
 	}
@@ -85,11 +93,9 @@ static void s_task_100ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
 		
-		struct encoder_data_t encode_a_st;
-		encoder_get_data(ENCODE_ID_A_em, &encode_a_st);
-		char num[10];
-		float_to_str(num, sizeof(num),encode_a_st.rpm_f, 2);
-		printk("encode_a : pos %d , rpm = %s \r\n",encode_a_st.position_l,num);
+		
+		// printk("encode_a : pos %d , rpm = %s \r\n",encode_a_st.position_l,num);
+		
 		k_msleep(100);
 	}
 }
