@@ -54,14 +54,14 @@
 	/* aliases 是 Device Tree（设备树） 中的一个节点，它的作用是给设备节点起一个简短的别名，方便在代码中引用。 */
 	aliases {
 		led0 = &led0;
-		encode1 = &qdec_e1;
-		encode2 = &qdec_e2;
+		encodera = &qdec_e1;
+		encoderb = &qdec_e2;
 	};
 	chosen {
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 		zephyr,display = &ssd1306;
-		zephyr,console = &usart2;
+		zephyr,console = &usart2;    /* 这里可以修改调试串口是usart2 */
 	};
 };
 
@@ -169,7 +169,7 @@
 		/* 输入滤波 */
 		st,input-filter-level = <FDIV32_N8>;
 		/* 编码器每转脉冲数 */
-		st,counts-per-revolution = <360>;
+		st,counts-per-revolution = <44>;
 		/* 编码器模式: 0x1=模式1，0x2 = 模式2，-x3=模式3 (默认，x4计数) */
 		st,encoder-mode = <3>;
 	};
@@ -186,7 +186,7 @@
 		pinctrl-0 = <&tim4_ch1_pd12 &tim4_ch2_pd13>;
 		pinctrl-names = "default";
 		st,input-filter-level = <FDIV32_N8>;
-		st,counts-per-revolution = <360>;
+		st,counts-per-revolution = <44>;
 		st,encoder-mode = <3>;
 	};
 };

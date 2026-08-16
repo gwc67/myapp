@@ -18,9 +18,9 @@
 
 	/* node '/aliases' defined in zephyr\dts\common\skeleton.dtsi:15 */
 	aliases {
-		led0 = &led0;       /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:56 */
-		encode1 = &qdec_e1; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:57 */
-		encode2 = &qdec_e2; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:58 */
+		led0 = &led0;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:56 */
+		encodera = &qdec_e1; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:57 */
+		encoderb = &qdec_e2; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:58 */
 	};
 
 	/* node '/soc' defined in zephyr\dts\arm\armv7-m.dtsi:6 */
@@ -605,7 +605,7 @@
 				pinctrl-0 = < &tim3_ch1_pa6 &tim3_ch2_pa7 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:167 */
 				pinctrl-names = "default";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:168 */
 				st,input-filter-level = < 0xf >;             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:170 */
-				st,counts-per-revolution = < 0x168 >;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:172 */
+				st,counts-per-revolution = < 0x2c >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:172 */
 				st,encoder-mode = < 0x3 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:174 */
 			};
 		};
@@ -642,7 +642,7 @@
 				pinctrl-0 = < &tim4_ch1_pd12 &tim4_ch2_pd13 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:186 */
 				pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:187 */
 				st,input-filter-level = < 0xf >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:188 */
-				st,counts-per-revolution = < 0x168 >;          /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:189 */
+				st,counts-per-revolution = < 0x2c >;           /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:189 */
 				st,encoder-mode = < 0x3 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:190 */
 			};
 		};

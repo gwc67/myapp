@@ -3357,8 +3357,8 @@
 
  aliases {
   led0 = &led0;
-  encode1 = &qdec_e1;
-  encode2 = &qdec_e2;
+  encodera = &qdec_e1;
+  encoderb = &qdec_e2;
  };
  chosen {
   zephyr,sram = &sram0;
@@ -3472,7 +3472,7 @@
 
   st,input-filter-level = <15>;
 
-  st,counts-per-revolution = <360>;
+  st,counts-per-revolution = <44>;
 
   st,encoder-mode = <3>;
  };
@@ -3489,7 +3489,7 @@
   pinctrl-0 = <&tim4_ch1_pd12 &tim4_ch2_pd13>;
   pinctrl-names = "default";
   st,input-filter-level = <15>;
-  st,counts-per-revolution = <360>;
+  st,counts-per-revolution = <44>;
   st,encoder-mode = <3>;
  };
 };

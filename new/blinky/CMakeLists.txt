@@ -29,6 +29,7 @@ target_sources(app PRIVATE
     src/mpu6050/mpu6050.c
     src/mpu6050/euler.c
     src/mess/value_to_str.c
+    src/encode/encode.c
     
 )
 
@@ -41,4 +42,5 @@ target_include_directories(app PRIVATE
     src/my_ring
     src/mpu6050
     src/mess
+    src/encode
 )

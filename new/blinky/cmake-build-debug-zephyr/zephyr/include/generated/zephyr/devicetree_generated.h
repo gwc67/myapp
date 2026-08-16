@@ -18509,7 +18509,7 @@
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_timers_40000400_S_qdec_EXISTS 1
-#define DT_N_ALIAS_encode1        DT_N_S_soc_S_timers_40000400_S_qdec
+#define DT_N_ALIAS_encodera       DT_N_S_soc_S_timers_40000400_S_qdec
 #define DT_N_INST_0_st_stm32_qdec DT_N_S_soc_S_timers_40000400_S_qdec
 #define DT_N_NODELABEL_qdec_e1    DT_N_S_soc_S_timers_40000400_S_qdec
 
@@ -18579,7 +18579,7 @@
 #define DT_N_S_soc_S_timers_40000400_S_qdec_P_st_input_polarity_inverted_EXISTS 1
 #define DT_N_S_soc_S_timers_40000400_S_qdec_P_st_input_filter_level 15
 #define DT_N_S_soc_S_timers_40000400_S_qdec_P_st_input_filter_level_EXISTS 1
-#define DT_N_S_soc_S_timers_40000400_S_qdec_P_st_counts_per_revolution 360
+#define DT_N_S_soc_S_timers_40000400_S_qdec_P_st_counts_per_revolution 44
 #define DT_N_S_soc_S_timers_40000400_S_qdec_P_st_counts_per_revolution_EXISTS 1
 #define DT_N_S_soc_S_timers_40000400_S_qdec_P_status "okay"
 #define DT_N_S_soc_S_timers_40000400_S_qdec_P_status_STRING_UNQUOTED okay
@@ -19406,7 +19406,7 @@
 
 /* Existence and alternate IDs: */
 #define DT_N_S_soc_S_timers_40000800_S_qdec_EXISTS 1
-#define DT_N_ALIAS_encode2        DT_N_S_soc_S_timers_40000800_S_qdec
+#define DT_N_ALIAS_encoderb       DT_N_S_soc_S_timers_40000800_S_qdec
 #define DT_N_INST_1_st_stm32_qdec DT_N_S_soc_S_timers_40000800_S_qdec
 #define DT_N_NODELABEL_qdec_e2    DT_N_S_soc_S_timers_40000800_S_qdec
 
@@ -19476,7 +19476,7 @@
 #define DT_N_S_soc_S_timers_40000800_S_qdec_P_st_input_polarity_inverted_EXISTS 1
 #define DT_N_S_soc_S_timers_40000800_S_qdec_P_st_input_filter_level 15
 #define DT_N_S_soc_S_timers_40000800_S_qdec_P_st_input_filter_level_EXISTS 1
-#define DT_N_S_soc_S_timers_40000800_S_qdec_P_st_counts_per_revolution 360
+#define DT_N_S_soc_S_timers_40000800_S_qdec_P_st_counts_per_revolution 44
 #define DT_N_S_soc_S_timers_40000800_S_qdec_P_st_counts_per_revolution_EXISTS 1
 #define DT_N_S_soc_S_timers_40000800_S_qdec_P_status "okay"
 #define DT_N_S_soc_S_timers_40000800_S_qdec_P_status_STRING_UNQUOTED okay

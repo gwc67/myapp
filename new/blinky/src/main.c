@@ -6,14 +6,17 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/display/cfb.h>
 #include <zephyr/sys/printk.h>
 #include "ano/ano_base.h"
 #include "ano/ano_device/ano_device_com.h"
+#include "encode/encode.h"
 #include "menu/menu.h"
 #include "ano.h"
+#include "mess/value_to_str.h"
 #include "mpu6050/ahrs_madgwick.h"
 #include "mpu6050/euler.h"
 #include "zephyr/kernel/thread.h"
@@ -33,10 +36,13 @@ static K_THREAD_STACK_DEFINE(s_stack_10ms_high, 1536); /* 1.5KB */
 /* 10ms 低优先级任务 */
 static K_THREAD_STACK_DEFINE(s_stack_10ms_low, 1024);    /* 1KB */
 
+static K_THREAD_STACK_DEFINE(s_stack_100ms_high, 512);    /* 1KB */
+
 static struct k_thread s_thread_1ms_high;
 static struct k_thread s_thread_1ms_low;
 static struct k_thread s_thread_10ms_high;
 static struct k_thread s_thread_10ms_low;
+static struct k_thread s_thread_100ms_high;
 
 static void s_task_1ms_high(void *p1,void *p2,void *p3)
 {
@@ -51,7 +57,7 @@ static void s_task_1ms_low(void *p1,void *p2,void *p3)
 {
 	while (1) {
 		
-		ano_check_data(g_com_ano_pst);
+		com_check_to_send();
 		k_msleep(1);
 	}
 }
@@ -59,7 +65,8 @@ static void s_task_1ms_low(void *p1,void *p2,void *p3)
 static void s_task_10ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
-		com_check_to_send();
+
+		encoder_update_all();
 		k_msleep(10);
 
 	}
@@ -74,6 +81,21 @@ static void s_task_10ms_low(void *p1,void *p2,void *p3)
 	}
 }
 
+static void s_task_100ms_high(void *p1,void *p2,void *p3)
+{
+	while (1) {
+		
+		struct encoder_data_t encode_a_st;
+		encoder_get_data(ENCODE_ID_A_em, &encode_a_st);
+		char num[10];
+		float_to_str(num, sizeof(num),encode_a_st.rpm_f, 2);
+		printk("encode_a : pos %d , rpm = %s \r\n",encode_a_st.position_l,num);
+		k_msleep(100);
+	}
+}
+
+
+
 
 int main(void)
 {
@@ -82,6 +104,7 @@ int main(void)
 	k_thread_create(&s_thread_1ms_low,  s_stack_1ms_low , sizeof(s_stack_1ms_low) , s_task_1ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(5), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_10ms_high, s_stack_10ms_high, sizeof(s_stack_10ms_high), s_task_10ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(4), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_10ms_low,  s_stack_10ms_low , sizeof(s_stack_10ms_low) , s_task_10ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(10), 0, K_NO_WAIT);
+	k_thread_create(&s_thread_100ms_high,  s_stack_100ms_high , sizeof(s_stack_100ms_high) , s_task_100ms_high , NULL, NULL, NULL, K_PRIO_PREEMPT(11), 0, K_NO_WAIT);
 	while (1) {
 		k_sleep(K_MSEC(1000));
 	}
