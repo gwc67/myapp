@@ -3355,6 +3355,39 @@
   };
  };
 
+
+
+
+
+ motor_a_gpios: motor_a_gpios {
+  compatible = "gpio-leds";
+
+
+  ain1: ain1 {
+
+   gpios = <&gpioc 1 (0 << 0)>;
+  };
+
+  ain2: ain2 {
+
+   gpios = <&gpioc 0 (0 << 0)>;
+  };
+ };
+
+ motor_b_gpios: motor_b_gpios {
+  compatible = "gpio-leds";
+  bin1: bin1{
+   gpios = <&gpioc 2 (0 << 0)>;
+  };
+
+  bin2: bin2{
+   gpios = <&gpioc 3 (0 << 0)>;
+  };
+
+ };
+
+
+
  aliases {
   led0 = &led0;
   encodera = &qdec_e1;
@@ -3457,6 +3490,23 @@
   smplrt-div = <0>;
  };
 };
+
+
+&timers2 {
+    status = "okay";
+    st,prescaler = <84>;
+
+    pwm2: pwm {
+
+        compatible = "st,stm32-pwm";
+        status = "okay";
+        pinctrl-0 = <&tim2_ch1_pa0 &tim2_ch2_pa1>;
+        pinctrl-names = "default";
+
+        #pwm-cells = <3>;
+    };
+};
+
 
 
 

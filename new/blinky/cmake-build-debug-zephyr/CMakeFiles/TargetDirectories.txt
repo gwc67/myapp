@@ -206,6 +206,9 @@ D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pinctrl/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pinctrl/renesas/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pinctrl/renesas/CMakeFiles/rebuild_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pwm/CMakeFiles/drivers__pwm.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pwm/CMakeFiles/edit_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/pwm/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/reset/CMakeFiles/drivers__reset.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/reset/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/reset/CMakeFiles/rebuild_cache.dir

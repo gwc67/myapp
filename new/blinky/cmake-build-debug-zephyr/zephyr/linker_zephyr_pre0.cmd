@@ -126,6 +126,8 @@ device_api_area : SUBALIGN(4)
  _i2c_driver_api_ext_end = .;
  _i2c_target_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._i2c_target_driver_api.static.*))); _i2c_target_driver_api_list_end = .;;
  _i2c_target_driver_api_ext_end = .;
+ _pwm_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._pwm_driver_api.static.*))); _pwm_driver_api_list_end = .;;
+ _pwm_driver_api_ext_end = .;
  _reset_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._reset_driver_api.static.*))); _reset_driver_api_list_end = .;;
  _reset_driver_api_ext_end = .;
  _sensor_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._sensor_driver_api.static.*))); _sensor_driver_api_list_end = .;;
@@ -244,8 +246,6 @@ device_api_area : SUBALIGN(4)
  _ps2_driver_api_ext_end = .;
  _ptp_clock_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._ptp_clock_driver_api.static.*))); _ptp_clock_driver_api_list_end = .;;
  _ptp_clock_driver_api_ext_end = .;
- _pwm_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._pwm_driver_api.static.*))); _pwm_driver_api_list_end = .;;
- _pwm_driver_api_ext_end = .;
  _regulator_parent_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._regulator_parent_driver_api.static.*))); _regulator_parent_driver_api_list_end = .;;
  _regulator_parent_driver_api_ext_end = .;
  _regulator_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._regulator_driver_api.static.*))); _regulator_driver_api_list_end = .;;

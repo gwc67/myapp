@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include <arm_acle.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -17,6 +18,7 @@
 #include "menu/menu.h"
 #include "ano.h"
 #include "mess/value_to_str.h"
+#include "motor/tb6612.h"
 #include "mpu6050/ahrs_madgwick.h"
 #include "mpu6050/euler.h"
 #include "zephyr/kernel/thread.h"
@@ -76,14 +78,6 @@ static void s_task_10ms_low(void *p1,void *p2,void *p3)
 {
 	while (1) {
 		menu_task_v();
-
-		struct encoder_data_t encode_a_st;
-		encoder_get_data(ENCODE_ID_A_em, &encode_a_st);
-		char num[10];
-		char buf[50];
-		float_to_str(num, sizeof(num),encode_a_st.rpm_f, 2);
-		snprintf(buf, sizeof(buf),"encode_a : pos %d , rpm = %s \r\n" , encode_a_st.position_l, num);
-
 		k_msleep(10);
 
 	}
@@ -95,8 +89,11 @@ static void s_task_100ms_high(void *p1,void *p2,void *p3)
 		
 		
 		// printk("encode_a : pos %d , rpm = %s \r\n",encode_a_st.position_l,num);
-		
-		k_msleep(100);
+
+		static int16_t s_speed_a_s = 100;
+		motor_set(g_motor_a_pst, s_speed_a_s);
+		motor_set(g_motor_b_pst, s_speed_a_s);
+		k_msleep(1000);
 	}
 }
 

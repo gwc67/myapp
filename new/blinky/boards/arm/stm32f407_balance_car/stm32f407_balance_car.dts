@@ -51,7 +51,40 @@
 			zephyr,code = <INPUT_KEY_3>;
 		};
 	};
+
+	/* motor_a_gpios 是父节点，它只是容器，没有 gpios 属性 */
+	/* ain1、ain2、bin1、bin2 是子节点，它们才有 gpios 属性 */
+	/* 因此需要使用DEVICE_DT_GET DT 指的是DEVICE_TREE的缩写 */
+	/* DEVICE_DT_GET(DT_LABEL(ain1)) */
+	motor_a_gpios: motor_a_gpios {
+		compatible = "gpio-leds";
+		/* ain2: 是节点标签（node label） 用于在其他地方引用这个节点，比如 &ain2 */
+		/* ain2 { ... } 是节点名（node name） */
+		ain1: ain1 {
+			/* PC1 */
+			gpios = <&gpioc 1 GPIO_ACTIVE_HIGH>;
+		};
+
+		ain2: ain2 {
+			/* PC0 */
+			gpios = <&gpioc 0 GPIO_ACTIVE_HIGH>;
+		};
+	};
+
+	motor_b_gpios: motor_b_gpios {
+		compatible = "gpio-leds";
+		bin1: bin1{
+			gpios = <&gpioc 2 GPIO_ACTIVE_HIGH>;
+		};
+
+		bin2: bin2{
+			gpios = <&gpioc 3 GPIO_ACTIVE_HIGH>;
+		};
+
+	};
+
 	/* aliases 是 Device Tree（设备树） 中的一个节点，它的作用是给设备节点起一个简短的别名，方便在代码中引用。 */
+	/* DEVICE_DT_GET(DT_ALIAS(ain1)) 中的 DT_ALIAS */
 	aliases {
 		led0 = &led0;
 		encodera = &qdec_e1;
@@ -154,6 +187,23 @@
 		smplrt-div = <0>; 	/* 8KHZ (1 + 0) = 8Khz （陀螺仪） 1Khz 加速度计 */
 	};
 };
+
+
+&timers2 {
+    status = "okay";
+    st,prescaler = <84>;
+
+    pwm2: pwm {
+		/* compatbile 需要这样写 */
+        compatible = "st,stm32-pwm";
+        status = "okay";
+        pinctrl-0 = <&tim2_ch1_pa0 &tim2_ch2_pa1>;
+        pinctrl-names = "default";
+        /* 4 通道 PWM */
+        #pwm-cells = <3>;
+    };
+};
+
 
 /* 编码器1 ： TIM3 （PA6，PA7） */
 

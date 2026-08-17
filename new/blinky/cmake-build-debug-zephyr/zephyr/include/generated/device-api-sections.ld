@@ -10,6 +10,8 @@ SECTION_PROLOGUE(device_api_area,,SUBALIGN(4))
 	PLACE_SYMBOL_HERE(_i2c_driver_api_ext_end);
 	Z_LINK_ITERABLE(i2c_target_driver_api);
 	PLACE_SYMBOL_HERE(_i2c_target_driver_api_ext_end);
+	Z_LINK_ITERABLE(pwm_driver_api);
+	PLACE_SYMBOL_HERE(_pwm_driver_api_ext_end);
 	Z_LINK_ITERABLE(reset_driver_api);
 	PLACE_SYMBOL_HERE(_reset_driver_api_ext_end);
 	Z_LINK_ITERABLE(sensor_driver_api);
@@ -128,8 +130,6 @@ SECTION_PROLOGUE(device_api_area,,SUBALIGN(4))
 	PLACE_SYMBOL_HERE(_ps2_driver_api_ext_end);
 	Z_LINK_ITERABLE(ptp_clock_driver_api);
 	PLACE_SYMBOL_HERE(_ptp_clock_driver_api_ext_end);
-	Z_LINK_ITERABLE(pwm_driver_api);
-	PLACE_SYMBOL_HERE(_pwm_driver_api_ext_end);
 	Z_LINK_ITERABLE(regulator_parent_driver_api);
 	PLACE_SYMBOL_HERE(_regulator_parent_driver_api_ext_end);
 	Z_LINK_ITERABLE(regulator_driver_api);
