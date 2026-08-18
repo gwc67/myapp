@@ -85,14 +85,16 @@ void euler_update(void)
     mpu6050_get_accel(&acc_st);
     mpu6050_get_gyro(&gyro_st);
 
-    double roll_db,pitch_db,yaw_db = 0;
+    double roll_db,pitch_db;
 
-    double dt_db = (double)(k_uptime_get() - s_last_tick_ul) / 1000;
+    uint32_t now_ms_ul =  k_uptime_get_32();
 
+    double dt_db = (double)(now_ms_ul - s_last_tick_ul) / 1000;
+
+    s_last_tick_ul = now_ms_ul;
     double roll_sqrt_db = sqrt(acc_st.x_db * acc_st.x_db + acc_st.z_db * acc_st.z_db);
 
     //采用ZYX 旋转计算，加速度这个只能够计算静态
-    
     if (roll_sqrt_db != 0.0) {
         roll_db = atan(acc_st.y_db / roll_sqrt_db) * RAD_TO_DEG;
     }
@@ -100,7 +102,7 @@ void euler_update(void)
         roll_db = 0.0;
     }
 
-    pitch_db = atan2(acc_st.x_db , acc_st.z_db) * RAD_TO_DEG;
+    pitch_db = atan2(-acc_st.x_db , acc_st.z_db) * RAD_TO_DEG;
 
     if ((pitch_db < -90 && s_euler_st.pitch_db > 90) || (pitch_db > 90 && s_euler_st.pitch_db < -90)) {
         s_K_pitch_st.angle_db = pitch_db;
@@ -113,9 +115,12 @@ void euler_update(void)
 
     s_euler_st.roll_db = kalman_get_angle(&s_K_roll_st, roll_db, gyro_st.x_db, dt_db); 
 
-    yaw_db +=  gyro_st.z_db * dt_db;
 
-    s_euler_st.yaw_db = yaw_db;
+    if (fabs(gyro_st.z_db) < 0.011) {
+        gyro_st.z_db = 0;
+    }
+    
+    s_euler_st.yaw_db +=  gyro_st.z_db * dt_db * RAD_TO_DEG;
 
     menu_request_refresh(g_mpu6050_euler_oled_pst);
 
