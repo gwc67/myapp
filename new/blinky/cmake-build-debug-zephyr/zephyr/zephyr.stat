@@ -8,7 +8,7 @@ ELF Header:
   Type:                              EXEC (Executable file)
   Machine:                           ARM
   Version:                           0x1
-  Entry point address:               0x8007a09
+  Entry point address:               0x8007a05
   Start of program headers:          52 (bytes into file)
   Start of section headers:          2351020 (bytes into file)
   Flags:                             0x5000200, Version5 EABI, soft-float ABI

@@ -49,7 +49,6 @@ static struct k_thread s_thread_100ms_high;
 static void s_task_1ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
-		euler_update();
 		ano_check_data(g_com_ano_pst);
 		k_msleep(1);
 	}
@@ -68,6 +67,7 @@ static void s_task_10ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
 
+		euler_update();
 		encoder_update_all();
 		k_msleep(10);
 
@@ -79,17 +79,14 @@ static void s_task_10ms_low(void *p1,void *p2,void *p3)
 	while (1) {
 		menu_task_v();
 		k_msleep(10);
-
 	}
 }
 
 static void s_task_100ms_high(void *p1,void *p2,void *p3)
 {
-	while (1) {
-		
-		
-		// printk("encode_a : pos %d , rpm = %s \r\n",encode_a_st.position_l,num);
+	while (1) {		
 
+		// printk("encode_a : pos %d , rpm = %s \r\n",encode_a_st.position_l,num);
 		static int16_t s_speed_a_s = 100;
 		motor_set(g_motor_a_pst, s_speed_a_s);
 		motor_set(g_motor_b_pst, s_speed_a_s);

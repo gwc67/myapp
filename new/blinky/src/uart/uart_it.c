@@ -88,6 +88,7 @@ int uart_it_init_rt(struct uart_it_t* me, const struct uart_it_cfg_t* cfg_pst, s
     me->tx_ring_pst = tx_ring_pst;
     me->tx_busy_b = false;
     me->base.ops = &uart_it_ops_st;
+    //将这个设备绑定的父类的指针同时传入到那个回调函数中
     return uart_irq_callback_user_data_set(cfg_pst->uart_device_pst, s_uart_isr,me);
     
 }
