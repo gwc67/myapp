@@ -195,7 +195,6 @@
 				#gpio-cells = < 0x2 >;        /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:223 */
 				reg = < 0x40020400 0x400 >;   /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:224 */
 				clocks = < &rcc 0x30 0x2 >;   /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:225 */
-				phandle = < 0x20 >;           /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:24 */
 			};
 
 			/* node '/soc/pin-controller@40020000/gpio@40020800' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:228 */
@@ -205,7 +204,7 @@
 				#gpio-cells = < 0x2 >;        /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:231 */
 				reg = < 0x40020800 0x400 >;   /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:232 */
 				clocks = < &rcc 0x30 0x4 >;   /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:233 */
-				phandle = < 0x22 >;           /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:65 */
+				phandle = < 0x21 >;           /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:65 */
 			};
 
 			/* node '/soc/pin-controller@40020000/gpio@40020c00' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:236 */
@@ -224,7 +223,7 @@
 				#gpio-cells = < 0x2 >;        /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:247 */
 				reg = < 0x40021000 0x400 >;   /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:248 */
 				clocks = < &rcc 0x30 0x10 >;  /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:249 */
-				phandle = < 0x21 >;           /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:31 */
+				phandle = < 0x20 >;           /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:31 */
 			};
 
 			/* node '/soc/pin-controller@40020000/gpio@40021400' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:252 */
@@ -1476,7 +1475,7 @@
 
 		/* node '/leds/led_0' defined in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:23 */
 		led0: led_0 {
-			gpios = < &gpiob 0x8 0x0 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:24 */
+			gpios = < &gpioa 0x8 0x0 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:24 */
 			status = "okay";            /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:102 */
 		};
 	};

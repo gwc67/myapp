@@ -17,13 +17,13 @@
 #include "encode/encode.h"
 #include "menu/menu.h"
 #include "ano.h"
-#include "mess/value_to_str.h"
 #include "motor/tb6612.h"
 #include "mpu6050/ahrs_madgwick.h"
 #include "mpu6050/euler.h"
 #include "zephyr/kernel/thread.h"
 #include "zephyr/kernel/thread_stack.h"
 #include "zephyr/syscalls/kernel.h"
+
 
 
 /* 1ms 任务：euler_update() 做 AHRS 解算，可能有浮点运算 */
@@ -85,8 +85,6 @@ static void s_task_10ms_low(void *p1,void *p2,void *p3)
 static void s_task_100ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {		
-
-		// printk("encode_a : pos %d , rpm = %s \r\n",encode_a_st.position_l,num);
 		static int16_t s_speed_a_s = 100;
 		motor_set(g_motor_a_pst, s_speed_a_s);
 		motor_set(g_motor_b_pst, s_speed_a_s);
@@ -99,7 +97,7 @@ static void s_task_100ms_high(void *p1,void *p2,void *p3)
 
 int main(void)
 {
-
+	
 	k_thread_create(&s_thread_1ms_high, s_stack_1ms_high, sizeof(s_stack_1ms_high), s_task_1ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(2), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_1ms_low,  s_stack_1ms_low , sizeof(s_stack_1ms_low) , s_task_1ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(5), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_10ms_high, s_stack_10ms_high, sizeof(s_stack_10ms_high), s_task_10ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(4), 0, K_NO_WAIT);

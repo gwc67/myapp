@@ -1,6 +1,8 @@
 #include "tb6612.h"
+#include "key.h"
 #include "zephyr/init.h"
 #include "zephyr/sys/util.h"
+#include <stdbool.h>
 #include <sys/errno.h>
 #include <zephyr/drivers/pwm.h>
 #include <zephyr/drivers/gpio.h>
@@ -9,6 +11,31 @@
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(tb6612, LOG_LEVEL_INF);
+
+static bool s_runflag_b = false;
+
+static const struct gpio_dt_spec led_motor_st =GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
+
+
+static void motor_key_callback(enum key_id_e key_id_em,enum key_event_e event_em)
+{
+    switch (key_id_em) {
+        case KEY_0_em:
+        {
+            if (event_em == KEY_EVENT_DOUBLE_em) {
+                s_runflag_b ^= 1;
+                gpio_pin_set_dt(&led_motor_st, s_runflag_b);
+            }
+        }
+        break; 
+        default:
+        break;       
+    }
+}
+
+KEY_SUBSCRIBE_DEFINE(motor_key,motor_key_callback,"motor");
+
+
 
 #define PWM_PERIOD_NS   20000000  /* 20ms = 50Hz */
 
@@ -23,12 +50,6 @@ struct motor_t {
     struct motor_base_t base;
     const struct motor_cfg_t* cfg_pst;
 };
-
-/* 静态定义 GPIO spec（编译期初始化） */
-// static const struct gpio_dt_spec motor_a_in1 = GPIO_DT_SPEC_GET(DT_NODELABEL(ain1),gpios);
-// static const struct gpio_dt_spec motor_b_in1 = GPIO_DT_SPEC_GET(DT_NODELABEL(bin1),gpios);
-// static const struct gpio_dt_spec motor_a_in2 = GPIO_DT_SPEC_GET(DT_NODELABEL(ain2),gpios);
-// static const struct gpio_dt_spec motor_b_in2 = GPIO_DT_SPEC_GET(DT_NODELABEL(bin2),gpios);
 
 static struct motor_t s_motor_a_st;
 struct motor_base_t* g_motor_a_pst;
@@ -78,8 +99,11 @@ int tb6612_board_init(void)
     int ret;
 
     /* 获取 PWM 设备 */
+    ret = gpio_pin_configure_dt(&led_motor_st, GPIO_OUTPUT_INACTIVE);
 
-    /* 返回的是结构体的值 GPIO_DT_SPEC_GET(DT_NODELABEL(ain1), gpios) */
+    if (ret) return ret;
+
+/* 返回的是结构体的值 GPIO_DT_SPEC_GET(DT_NODELABEL(ain1), gpios) */
     static const struct motor_cfg_t motor_a_cfg_st = {
         .pwm_dev_pst = DEVICE_DT_GET(DT_NODELABEL(pwm2)),
         .pwm_channel_ul = 1,
@@ -121,15 +145,15 @@ int motor_set(struct motor_base_t* base, int16_t speed)
 
     uint32_t pulse_ns_ul;
 
-
+    
     if (speed > 1000) speed = 1000;
     if (speed < -1000) speed = -1000;
 
-    if (speed > 0) {
+    if (speed > 0 && s_runflag_b) {
         gpio_pin_set_dt(&me->cfg_pst->motor_in1_st, 1);
         gpio_pin_set_dt(&me->cfg_pst->motor_in2_st, 0);
         pulse_ns_ul = (PWM_PERIOD_NS / 1000) * speed;
-    } else if (speed < 0) {
+    } else if (speed < 0 &&s_runflag_b) {
         gpio_pin_set_dt(&me->cfg_pst->motor_in1_st, 0);
         gpio_pin_set_dt(&me->cfg_pst->motor_in2_st, 1);
         pulse_ns_ul = (PWM_PERIOD_NS / 1000) * (-speed);
@@ -153,3 +177,10 @@ int motor_brake(struct motor_base_t* base)
 
     return pwm_set(me->cfg_pst->pwm_dev_pst, me->cfg_pst->pwm_channel_ul, PWM_PERIOD_NS, 0, 0);
 }
+
+
+
+
+
+
+
