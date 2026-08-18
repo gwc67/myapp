@@ -31,6 +31,7 @@ target_sources(app PRIVATE
     src/mess/value_to_str.c
     src/encode/encode.c
     src/motor/tb6612.c
+    src/key/key.c
 )
 
 target_include_directories(app PRIVATE
@@ -44,4 +45,5 @@ target_include_directories(app PRIVATE
     src/mess
     src/encode
     src/motor
+    src/key
 )

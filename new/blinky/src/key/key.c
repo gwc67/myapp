@@ -48,8 +48,8 @@ static void emit_event(enum key_id_e key_id_em, enum key_event_e key_event_em)
 
     //通过while轮询进行操作所有的订阅者
     while (current_subscriber_pst) {
-        if (current_subscriber_pst->callback) {
-            current_subscriber_pst->callback(key_id_em,key_event_em);
+        if (current_subscriber_pst->callback_pst) {
+            current_subscriber_pst->callback_pst(key_id_em,key_event_em);
         }
         current_subscriber_pst = current_subscriber_pst->next_pst;      //执行完自动注册下一个
     }

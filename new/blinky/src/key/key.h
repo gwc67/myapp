@@ -22,10 +22,11 @@ typedef  void (* key_event_callback_t)(enum key_id_e key_id_em,enum key_event_e 
 
 //外部其实
 
-struct key_subscriber_t{
-    struct key_subscriber_t* next_pst;
-    key_event_callback_t callback;
-    const char* name; /* 调试用 */
+/* key_event.h */
+struct key_subscriber_t {
+    struct key_subscriber_t *next_pst;
+    key_event_callback_t callback_pst;   /* 改成 _pst 后缀 */
+    const char *name_pst;                 /* 改成 _pst 后缀 */
 };
 
 void key_event_subscribe(struct key_subscriber_t* sub_pst);
