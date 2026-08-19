@@ -4,12 +4,17 @@
 #include "encode.h"
 #include "euler.h"
 #include "uart_base.h"
+#include "zephyr/drivers/gpio.h"
 #include "zephyr/init.h"
 #include <stdint.h>
 #include <string.h>
 #include "uarts.h"
 
 #define SIMULINK_DATA_TX 0x02
+
+#define SIMULINK_PID_RX  0x03
+
+static const struct gpio_dt_spec led0 = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 
 static int s_ano_device_com_init(void)
 {
@@ -56,7 +61,12 @@ void com_receive_anl(uint8_t* data_puc,uint8_t len_uc)
         check_back_st.ac_uc = check_sum2;
         ano_set_check_back(g_com_ano_pst,&check_back_st);
     }
-    
+    else if(*(data_puc + 2) == SIMULINK_PID_RX)
+    {
+        // uart_transmit(g_uart2_pst, "pid_adjust\r\n",13 );
+        gpio_pin_toggle_dt(&led0);
+
+    }
 
 }
 

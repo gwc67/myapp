@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'blinky'.
  *
- * Model version                  : 1.2
+ * Model version                  : 1.34
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Tue Aug 18 15:28:20 2026
+ * C/C++ source code generated on : Wed Aug 19 21:44:33 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Intel->x86-64 (Windows64)
@@ -44,6 +44,7 @@
  * Fixed width word size data types:                                     *
  *   int8_T, int16_T, int32_T     - signed 8, 16, or 32 bit integers     *
  *   uint8_T, uint16_T, uint32_T  - unsigned 8, 16, or 32 bit integers   *
+ *   real32_T, real64_T           - 32 and 64 bit floating point numbers *
  *=======================================================================*/
 typedef signed char int8_T;
 typedef unsigned char uint8_T;
@@ -53,11 +54,15 @@ typedef int int32_T;
 typedef unsigned int uint32_T;
 typedef long long int64_T;
 typedef unsigned long long uint64_T;
+typedef float real32_T;
+typedef double real64_T;
 
 /*===========================================================================*
  * Generic type definitions: boolean_T, char_T, byte_T, int_T, uint_T,       *
- *                           ulong_T, ulonglong_T.                           *
+ *                           real_T, time_T, ulong_T, ulonglong_T.           *
  *===========================================================================*/
+typedef double real_T;
+typedef double time_T;
 typedef unsigned char boolean_T;
 typedef int int_T;
 typedef unsigned int uint_T;

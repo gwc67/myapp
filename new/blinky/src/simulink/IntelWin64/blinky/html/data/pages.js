@@ -1,0 +1,1 @@
+var PagesHeading = 'Content'; var reportPages = [["摘要","blinky_survey.html"],["子系统报告","blinky_subsystems.html"],["代码接口报告","blinky_interface.html"],["可追溯性报告","blinky_trace.html"],["静态代码度量报告","blinky_metrics.html"],["代码替换报告","blinky_replacements.html"],["代码生成器假设","blinky_coderassumptions.html"]];

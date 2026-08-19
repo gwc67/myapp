@@ -1,0 +1,1 @@
+var modelInfo = {model:"blinky"};var modelHierarchy=[{model:"blinky",relativePath:"_internal.html",parent:"null"},];var AddCode = true;var ProtectedModel = false;

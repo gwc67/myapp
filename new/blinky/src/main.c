@@ -54,7 +54,7 @@ static void s_task_1ms_high(void *p1,void *p2,void *p3)
 	while (1) {
 		ano_check_data(g_com_ano_pst);
 		blinky_step();
-		gpio_pin_set_dt(&led0, led_output);
+		// gpio_pin_set_dt(&led0, led_output);
 		k_msleep(1);
 	}
 }
