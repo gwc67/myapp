@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.2
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Tue Aug 18 14:34:33 2026
+ * C/C++ source code generated on : Tue Aug 18 15:28:20 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Intel->x86-64 (Windows64)
@@ -78,7 +78,7 @@ int_T main(int_T argc, const char *argv[])
   blinky_initialize();
 
   /* Attach rt_OneStep to a timer or interrupt service routine with
-   * period 0.2 seconds (base rate of the model) here.
+   * period 0.001 seconds (base rate of the model) here.
    * The call syntax for rt_OneStep is
    *
    *  rt_OneStep();

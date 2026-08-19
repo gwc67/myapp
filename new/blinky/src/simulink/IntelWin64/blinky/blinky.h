@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.2
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Tue Aug 18 14:34:33 2026
+ * C/C++ source code generated on : Tue Aug 18 15:28:20 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Intel->x86-64 (Windows64)
@@ -36,15 +36,10 @@ typedef struct tag_RTM RT_MODEL;
 
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
+  uint16_T temporalCounter_i1;         /* '<Root>/led_state' */
   uint8_T is_active_c3_blinky;         /* '<Root>/led_state' */
   uint8_T is_c3_blinky;                /* '<Root>/led_state' */
-  uint8_T temporalCounter_i1;          /* '<Root>/led_state' */
 } DW;
-
-/* External outputs (root outports fed by signals with default storage) */
-typedef struct {
-  uint8_T led_output;                  /* '<Root>/led_output' */
-} ExtY;
 
 /* Real-time Model Data Structure */
 struct tag_RTM {
@@ -54,8 +49,15 @@ struct tag_RTM {
 /* Block signals and states (default storage) */
 extern DW rtDW;
 
-/* External outputs (root outports fed by signals with default storage) */
-extern ExtY rtY;
+/*
+ * Exported Global Signals
+ *
+ * Note: Exported global signals are block signals with an exported global
+ * storage class designation.  Code generation will declare the memory for
+ * these signals and export their symbols.
+ *
+ */
+extern uint8_T led_output;             /* '<Root>/led_output' */
 
 /* Model entry point functions */
 extern void blinky_initialize(void);

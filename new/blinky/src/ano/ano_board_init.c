@@ -23,7 +23,7 @@ int ano_board_init(void)
     static const struct ano_cfg_t s_com_cfg_st = {
         .private_pst = &s_com_private_st,
         .rx_buffer_puc = s_com_rx_buffer_pst,
-        .ring_buf_base_ppst = &g_ut3_rx_ring_pst,
+        .ring_buf_base_ppst = &g_ut2_rx_ring_pst,
     };
 
     result = ano_device_init_noraml(&s_com_st, &s_com_frame_st, &s_com_cfg_st);

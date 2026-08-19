@@ -127,17 +127,25 @@ static void s_draw_encoder(struct menu_node_t* self)
     cfb_print(s_oled_pst, self->base.name, 0, 0);
     cfb_framebuffer_set_font(s_oled_pst, 0);
 
-    struct encoder_data_t encoder_data_st = {0};
-    encoder_get_data(ENCODE_ID_A_em,&encoder_data_st);
+    struct encoder_data_t encoder_data_a_st = {0};
+    struct encoder_data_t encoder_data_b_st = {0};
+    encoder_get_data(g_encoder_a_pst,&encoder_data_a_st);
     
     
 
-    float_to_str(num, sizeof(num), encoder_data_st.rpm_f, 2);
+    float_to_str(num, sizeof(num), encoder_data_a_st.rpm_f, 2);
     snprintf(buf, sizeof(buf), "v_a:%s", num);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 0, 20);
 
-    snprintf(buf, sizeof(buf), "p_a:%d", encoder_data_st.position_l);   /* ✅ num 和 buf 分开 */
+    snprintf(buf, sizeof(buf), "p_a:%d", encoder_data_a_st.position_l);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 64, 20);
+
+    float_to_str(num, sizeof(num), encoder_data_b_st.rpm_f, 2);
+    snprintf(buf, sizeof(buf), "v_b:%s", num);   /* ✅ num 和 buf 分开 */
+    cfb_print(s_oled_pst, buf, 0, 30);
+
+    snprintf(buf, sizeof(buf), "p_b:%d", encoder_data_b_st.position_l);   /* ✅ num 和 buf 分开 */
+    cfb_print(s_oled_pst, buf, 64, 30);
 
     // float_to_str(num, sizeof(num), euler_st.yaw_db, 2);
     // snprintf(buf, sizeof(buf), "yaw:%s", num);   /* ✅ num 和 buf 分开 */

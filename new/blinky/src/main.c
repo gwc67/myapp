@@ -20,11 +20,14 @@
 #include "motor/tb6612.h"
 #include "mpu6050/ahrs_madgwick.h"
 #include "mpu6050/euler.h"
+#include "simulink/IntelWin64/blinky/blinky.h"
+#include "uarts.h"
+#include "zephyr/drivers/gpio.h"
 #include "zephyr/kernel/thread.h"
 #include "zephyr/kernel/thread_stack.h"
 #include "zephyr/syscalls/kernel.h"
 
-
+static const struct gpio_dt_spec led0 = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 
 /* 1ms 任务：euler_update() 做 AHRS 解算，可能有浮点运算 */
 static K_THREAD_STACK_DEFINE(s_stack_1ms_high, 2048);   /* 2KB 足够 */
@@ -50,6 +53,8 @@ static void s_task_1ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
 		ano_check_data(g_com_ano_pst);
+		blinky_step();
+		gpio_pin_set_dt(&led0, led_output);
 		k_msleep(1);
 	}
 }
@@ -69,6 +74,19 @@ static void s_task_10ms_high(void *p1,void *p2,void *p3)
 
 		euler_update();
 		encoder_update_all();
+		// struct euler_t euler_st = {0};
+		// euler_copy(&euler_st);
+		// struct encoder_data_t encoder_a_st = {0};
+		// struct encoder_data_t encoder_b_st = {0};
+		// encoder_get_data(ENCODE_ID_A_em, &encoder_a_st);
+		// encoder_get_data(ENCODE_ID_B_em, &encoder_b_st);
+
+		// uint8_t buf[6] = {1,2,3,4,5,6};
+
+
+		// uart_transmit(g_uart2_pst, buf, sizeof(buf));
+
+		
 		k_msleep(10);
 
 	}
@@ -76,6 +94,7 @@ static void s_task_10ms_high(void *p1,void *p2,void *p3)
 
 static void s_task_10ms_low(void *p1,void *p2,void *p3)
 {
+
 	while (1) {
 		menu_task_v();
 		k_msleep(10);
@@ -97,7 +116,7 @@ static void s_task_100ms_high(void *p1,void *p2,void *p3)
 
 int main(void)
 {
-	
+	blinky_initialize();
 	k_thread_create(&s_thread_1ms_high, s_stack_1ms_high, sizeof(s_stack_1ms_high), s_task_1ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(2), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_1ms_low,  s_stack_1ms_low , sizeof(s_stack_1ms_low) , s_task_1ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(5), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_10ms_high, s_stack_10ms_high, sizeof(s_stack_10ms_high), s_task_10ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(4), 0, K_NO_WAIT);

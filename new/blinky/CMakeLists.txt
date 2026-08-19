@@ -32,6 +32,7 @@ target_sources(app PRIVATE
     src/encode/encode.c
     src/motor/tb6612.c
     src/key/key.c
+    src/simulink/IntelWin64/blinky/blinky.c
 )
 
 target_include_directories(app PRIVATE
@@ -46,4 +47,5 @@ target_include_directories(app PRIVATE
     src/encode
     src/motor
     src/key
+    src/simulink/IntelWin64/blinky
 )
