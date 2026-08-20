@@ -9,6 +9,7 @@
  */
 
 #include "OLED_Menu.h"
+#include "blinky.h"
 #include "encode.h"
 #include "euler.h"
 #include "menu.h"
@@ -26,11 +27,14 @@ static const struct device *s_oled_pst =
  * 叶子 draw 函数
  * ================================================================ */
 
-static void s_draw_value(struct menu_node_t *self)
+static void s_draw_speed_a(struct menu_node_t *self)
 {
-    cfb_framebuffer_set_font(s_oled_pst, 0);
+    cfb_framebuffer_set_font(s_oled_pst, 1);
     cfb_print(s_oled_pst, self->base.name, 0, 0);
-    /* 底部值 + 编辑状态由 menu_task_v 统一绘制 */
+    cfb_framebuffer_set_font(s_oled_pst, 0);
+    if (self->data) {
+        rtU.speed_a_target = *(self->data);
+    }
 }
 
 static void s_draw_mpu6050(struct menu_node_t* self)
@@ -82,7 +86,7 @@ static void s_draw_euler(struct menu_node_t* self)
     cfb_framebuffer_set_font(s_oled_pst, 1);
     cfb_print(s_oled_pst, self->base.name, 0, 0);
     cfb_framebuffer_set_font(s_oled_pst, 0);
-    
+                   
     struct euler_t euler_st = {0};
     euler_copy(&euler_st);
 
@@ -103,15 +107,15 @@ static void s_draw_euler(struct menu_node_t* self)
  * 可编辑数据
  * ================================================================ */
 
-static int32_t s_test_value = 50;
+static int32_t s_speed_a_l = 0;
 
 /* ================================================================
  * 节点实例
  * ================================================================ */
 
 struct menu_node_t g_root;
-static struct menu_node_t g_menu_test;
-static struct menu_node_t g_item_value;
+static struct menu_node_t s_simulink_st;
+static struct menu_node_t s_speed_a_st;
 
 static struct menu_node_t g_mpu6050_raw_st;
 struct menu_base_t* g_mpu6050_raw_oled_pst;
@@ -121,7 +125,7 @@ struct menu_base_t* g_mpu6050_euler_oled_pst;
 
 static void s_draw_encoder(struct menu_node_t* self)
 {
-    char num[16];   /* 放数值 */
+    // char num[16];   /* 放数值 */
     char buf[32];   /* 放最终结果 */
     cfb_framebuffer_set_font(s_oled_pst, 1);
     cfb_print(s_oled_pst, self->base.name, 0, 0);
@@ -133,15 +137,15 @@ static void s_draw_encoder(struct menu_node_t* self)
     
     
 
-    float_to_str(num, sizeof(num), encoder_data_a_st.rpm_f, 2);
-    snprintf(buf, sizeof(buf), "v_a:%s", num);   /* ✅ num 和 buf 分开 */
+    // float_to_str(num, sizeof(num), encoder_data_a_st.rpm_f, 2);
+    snprintf(buf, sizeof(buf), "v_a:%d", encoder_data_a_st.rpm_l);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 0, 20);
 
     snprintf(buf, sizeof(buf), "p_a:%d", encoder_data_a_st.position_l);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 64, 20);
 
-    float_to_str(num, sizeof(num), encoder_data_b_st.rpm_f, 2);
-    snprintf(buf, sizeof(buf), "v_b:%s", num);   /* ✅ num 和 buf 分开 */
+    // float_to_str(num, sizeof(num), encoder_data_b_st.rpm_f, 2);
+    snprintf(buf, sizeof(buf), "v_b:%d",encoder_data_b_st.rpm_l );   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 0, 30);
 
     snprintf(buf, sizeof(buf), "p_b:%d", encoder_data_b_st.position_l);   /* ✅ num 和 buf 分开 */
@@ -161,15 +165,15 @@ struct menu_base_t* g_encode_oled_pst;
 static int s_build_menu_tree(void)
 {
     Create_Menu_Folder(NULL, g_root, "Main");
-    Create_Menu_Folder(&g_root, g_menu_test, "Test");
+    Create_Menu_Folder(&g_root, s_simulink_st, "simulink");
     g_mpu6050_raw_oled_pst = Create_Menu_Leaf(&g_root,g_mpu6050_raw_st, "mpu6050", s_draw_mpu6050);
     g_mpu6050_euler_oled_pst =  Create_Menu_Leaf(&g_root,g_mpu6050_euler_st, "euler", s_draw_euler);
-    g_encode_oled_pst =  Create_Menu_Leaf(&g_root,g_encode_st, "encoder", s_draw_encoder);
+    g_encode_oled_pst =  Create_Menu_Leaf(&s_simulink_st,g_encode_st, "encoder", s_draw_encoder);
     
-    Create_Menu_Leaf_Range(&g_menu_test, g_item_value,
-                           "Value", s_draw_value,
-                           &s_test_value, 0, 100);
-    menu_set_default_int(&g_item_value, 50);
+    Create_Menu_Leaf_Range(&s_simulink_st, s_speed_a_st,
+                           "speed_a", s_draw_speed_a,
+                           &s_speed_a_l, -1000, 1000);
+    menu_set_default_int(&s_speed_a_st, 0);
 
     return 0;
 }

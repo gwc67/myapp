@@ -95,8 +95,8 @@ CMAKE_ASM_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 // MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=Debug
 
-//Path to a program.
-CMAKE_CXX_COMPILER:FILEPATH=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++.exe
+//CXX compiler
+CMAKE_CXX_COMPILER:STRING=D:/Downloads/setup/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler

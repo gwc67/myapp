@@ -97,13 +97,12 @@ void com_add_send_data(uint8_t frame_num_uc,uint8_t *cnt_puc,uint8_t* data_puc)
             struct encoder_data_t encoder_data_st;
             encoder_get_data(g_encoder_a_pst, &encoder_data_st);
 
-            memcpy(data_puc + *cnt_puc,&encoder_data_st.rpm_f,sizeof(encoder_data_st.rpm_f));
-            *cnt_puc += sizeof(encoder_data_st.rpm_f);
+            memcpy(data_puc + *cnt_puc,&encoder_data_st.rpm_l,sizeof(encoder_data_st.rpm_l));
+            *cnt_puc += sizeof(encoder_data_st.rpm_l);
 
             encoder_get_data(g_encoder_b_pst, &encoder_data_st);
-            encoder_data_st.rpm_f = -encoder_data_st.rpm_f;
-            memcpy(data_puc + *cnt_puc,&encoder_data_st.rpm_f,sizeof(encoder_data_st.rpm_f));
-            *cnt_puc += sizeof(encoder_data_st.rpm_f);
+            memcpy(data_puc + *cnt_puc,&encoder_data_st.rpm_l,sizeof(encoder_data_st.rpm_l));
+            *cnt_puc += sizeof(encoder_data_st.rpm_l);
             
             data_puc[(*cnt_puc)++] = '\r';
             data_puc[(*cnt_puc)++] = '\n';

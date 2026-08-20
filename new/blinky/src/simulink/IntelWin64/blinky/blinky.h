@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.34
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Wed Aug 19 21:44:33 2026
+ * C/C++ source code generated on : Thu Aug 20 12:12:22 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Intel->x86-64 (Windows64)
@@ -31,22 +31,29 @@
 #define rtmSetErrorStatus(rtm, val)    ((rtm)->errorStatus = (val))
 #endif
 
+/* Exported data define */
+
+/* Definition for custom storage class: Define */
+#define SPEED_Kd                       0.0F                      /* Referenced by: '<S31>/Derivative Gain' */
+#define SPEED_Ki                       1.0F                      /* Referenced by: '<S35>/Integral Gain' */
+#define SPEED_Kp                       6.0F                      /* Referenced by: '<S43>/Proportional Gain' */
+
 /* Forward declaration for rtModel */
 typedef struct tag_RTM RT_MODEL;
 
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
-  real32_T Filter_DSTATE;              /* '<S33>/Filter' */
   real32_T Integrator_DSTATE;          /* '<S38>/Integrator' */
+  real32_T Filter_DSTATE;              /* '<S33>/Filter' */
   real32_T Filter_PREV_U;              /* '<S33>/Filter' */
-  real32_T Integrator_PREV_U;          /* '<S38>/Integrator' */
   uint32_T FunctionCallSubsystem_PREV_T;/* '<Root>/Function-Call Subsystem' */
+  int8_T Integrator_PrevResetState;    /* '<S38>/Integrator' */
+  int8_T Filter_PrevResetState;        /* '<S33>/Filter' */
   uint8_T task_10ms_count;             /* '<Root>/Chart' */
   uint8_T task_5ms_count;              /* '<Root>/Chart' */
   uint8_T task_50ms_count;             /* '<Root>/Chart' */
   uint8_T task_20ms_count;             /* '<Root>/Chart' */
   uint8_T Filter_SYSTEM_ENABLE;        /* '<S33>/Filter' */
-  uint8_T Integrator_SYSTEM_ENABLE;    /* '<S38>/Integrator' */
   boolean_T FunctionCallSubsystem_RESET_ELA;/* '<Root>/Function-Call Subsystem' */
 } DW;
 
@@ -54,11 +61,12 @@ typedef struct {
 typedef struct {
   real32_T motor_a_actual_speed;       /* '<Root>/motor_a_actual_speed' */
   real32_T speed_a_target;             /* '<Root>/speed_a_target' */
+  uint8_T running_flag;                /* '<Root>/running_flag' */
 } ExtU;
 
 /* External outputs (root outports fed by signals with default storage) */
 typedef struct {
-  real32_T motor_a_pwm;                /* '<Root>/motor_a_pwm' */
+  int16_T motor_a_pwm;                 /* '<Root>/motor_a_pwm' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -97,8 +105,6 @@ extern RT_MODEL *const rtM;
  * Block '<S2>/Scope2' : Unused code path elimination
  * Block '<Root>/Scope2' : Unused code path elimination
  * Block '<S2>/Data Type Conversion' : Eliminate redundant data type conversion
- * Block '<S35>/Integral Gain' : Eliminated nontunable gain of 1
- * Block '<S43>/Proportional Gain' : Eliminated nontunable gain of 1
  */
 
 /*-
@@ -159,7 +165,7 @@ extern RT_MODEL *const rtM;
  * '<S41>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/N Gain/Internal Parameters'
  * '<S42>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/P Copy/Disabled'
  * '<S43>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Parallel P Gain/Internal Parameters'
- * '<S44>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Reset Signal/Disabled'
+ * '<S44>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Reset Signal/External Reset'
  * '<S45>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Saturation/Passthrough'
  * '<S46>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Saturation Fdbk/Disabled'
  * '<S47>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Sum/Sum_PID'

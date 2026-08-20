@@ -8,12 +8,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/display/cfb.h>
 #include <zephyr/sys/printk.h>
 #include "ano/ano_base.h"
-#include "ano/ano_device/ano_device_com.h"
 #include "encode/encode.h"
 #include "menu/menu.h"
 #include "ano.h"
@@ -21,13 +21,12 @@
 #include "mpu6050/ahrs_madgwick.h"
 #include "mpu6050/euler.h"
 #include "simulink/IntelWin64/blinky/blinky.h"
-#include "uarts.h"
-#include "zephyr/drivers/gpio.h"
+#include "uart_base.h"
 #include "zephyr/kernel/thread.h"
 #include "zephyr/kernel/thread_stack.h"
 #include "zephyr/syscalls/kernel.h"
-
-static const struct gpio_dt_spec led0 = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
+#include "uarts.h"
+// static const struct gpio_dt_spec led0 = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 
 /* 1ms 任务：euler_update() 做 AHRS 解算，可能有浮点运算 */
 static K_THREAD_STACK_DEFINE(s_stack_1ms_high, 2048);   /* 2KB 足够 */
@@ -53,8 +52,11 @@ static void s_task_1ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
 		ano_check_data(g_com_ano_pst);
+		struct encoder_data_t speed_a_st = {0};
+		encoder_get_data(g_encoder_a_pst, &speed_a_st);
+		rtU.motor_a_actual_speed = speed_a_st.rpm_l;
 		blinky_step();
-		// gpio_pin_set_dt(&led0, led_output);
+		motor_set(g_motor_a_pst, rtY.motor_a_pwm);
 		k_msleep(1);
 	}
 }
@@ -63,31 +65,24 @@ static void s_task_1ms_low(void *p1,void *p2,void *p3)
 {
 	while (1) {
 		
-		com_check_to_send();
+		// com_check_to_send();
 		k_msleep(1);
 	}
 }
 
-static void s_task_10ms_high(void *p1,void *p2,void *p3)
+static void s_task_5ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
 
+		char buf[128];
 		euler_update();
 		encoder_update_all();
-		// struct euler_t euler_st = {0};
-		// euler_copy(&euler_st);
-		// struct encoder_data_t encoder_a_st = {0};
-		// struct encoder_data_t encoder_b_st = {0};
-		// encoder_get_data(ENCODE_ID_A_em, &encoder_a_st);
-		// encoder_get_data(ENCODE_ID_B_em, &encoder_b_st);
-
-		// uint8_t buf[6] = {1,2,3,4,5,6};
-
-
-		// uart_transmit(g_uart2_pst, buf, sizeof(buf));
-
 		
-		k_msleep(10);
+		struct encoder_data_t data_temp_st;
+		encoder_get_data(g_encoder_a_pst,&data_temp_st);
+		snprintf(buf,sizeof(buf),"%d,%d,%d\n",(int32_t)rtU.motor_a_actual_speed,(int32_t)rtU.speed_a_target,(int32_t)rtY.motor_a_pwm);
+		uart_transmit(g_uart2_pst, buf, strlen(buf));
+		k_msleep(5);
 
 	}
 }
@@ -104,9 +99,6 @@ static void s_task_10ms_low(void *p1,void *p2,void *p3)
 static void s_task_100ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {		
-		static int16_t s_speed_a_s = 100;
-		motor_set(g_motor_a_pst, s_speed_a_s);
-		motor_set(g_motor_b_pst, s_speed_a_s);
 		k_msleep(1000);
 	}
 }
@@ -119,7 +111,7 @@ int main(void)
 	blinky_initialize();
 	k_thread_create(&s_thread_1ms_high, s_stack_1ms_high, sizeof(s_stack_1ms_high), s_task_1ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(2), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_1ms_low,  s_stack_1ms_low , sizeof(s_stack_1ms_low) , s_task_1ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(5), 0, K_NO_WAIT);
-	k_thread_create(&s_thread_10ms_high, s_stack_10ms_high, sizeof(s_stack_10ms_high), s_task_10ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(4), 0, K_NO_WAIT);
+	k_thread_create(&s_thread_10ms_high, s_stack_10ms_high, sizeof(s_stack_10ms_high), s_task_5ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(4), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_10ms_low,  s_stack_10ms_low , sizeof(s_stack_10ms_low) , s_task_10ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(10), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_100ms_high,  s_stack_100ms_high , sizeof(s_stack_100ms_high) , s_task_100ms_high , NULL, NULL, NULL, K_PRIO_PREEMPT(11), 0, K_NO_WAIT);
 	while (1) {

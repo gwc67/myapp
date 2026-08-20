@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.34
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Wed Aug 19 21:44:33 2026
+ * C/C++ source code generated on : Thu Aug 20 12:12:22 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Intel->x86-64 (Windows64)
@@ -39,11 +39,11 @@ static void task_5ms_high(void);
 static void task_5ms_high(void)
 {
   real32_T Filter;
-  real32_T Integrator;
   real32_T rtb_FilterCoefficient;
   real32_T rtb_Sum2;
-  real32_T u0;
   uint32_T FunctionCallSubsystem_ELAPS_T;
+  int16_T rtb_Switch;
+  boolean_T rtb_LogicalOperator;
   if (rtDW.task_5ms_count == 1) {
     /* Outputs for Function Call SubSystem: '<Root>/Function-Call Subsystem' */
     if (rtDW.FunctionCallSubsystem_RESET_ELA) {
@@ -62,10 +62,23 @@ static void task_5ms_high(void)
      */
     rtb_Sum2 = rtU.speed_a_target - rtU.motor_a_actual_speed;
 
+    /* Logic: '<S2>/Logical Operator' incorporates:
+     *  Inport: '<Root>/running_flag'
+     */
+    rtb_LogicalOperator = (rtU.running_flag == 0);
+
+    /* DiscreteIntegrator: '<S38>/Integrator' */
+    if (rtb_LogicalOperator || (rtDW.Integrator_PrevResetState != 0)) {
+      rtDW.Integrator_DSTATE = 0.0F;
+    }
+
     /* DiscreteIntegrator: '<S33>/Filter' */
     if (rtDW.Filter_SYSTEM_ENABLE != 0) {
       /* DiscreteIntegrator: '<S33>/Filter' */
       Filter = rtDW.Filter_DSTATE;
+    } else if (rtb_LogicalOperator || (rtDW.Filter_PrevResetState != 0)) {
+      /* DiscreteIntegrator: '<S33>/Filter' */
+      Filter = 0.0F;
     } else {
       /* DiscreteIntegrator: '<S33>/Filter' */
       Filter = 0.001F * (real32_T)FunctionCallSubsystem_ELAPS_T
@@ -78,45 +91,52 @@ static void task_5ms_high(void)
      *  Gain: '<S31>/Derivative Gain'
      *  Sum: '<S33>/SumD'
      */
-    rtb_FilterCoefficient = (0.0F - Filter) * 100.0F;
+    rtb_FilterCoefficient = (SPEED_Kd * rtb_Sum2 - Filter) * 100.0F;
 
-    /* DiscreteIntegrator: '<S38>/Integrator' */
-    if (rtDW.Integrator_SYSTEM_ENABLE != 0) {
-      /* DiscreteIntegrator: '<S38>/Integrator' */
-      Integrator = rtDW.Integrator_DSTATE;
-    } else {
-      /* DiscreteIntegrator: '<S38>/Integrator' */
-      Integrator = 0.001F * (real32_T)FunctionCallSubsystem_ELAPS_T
-        * rtDW.Integrator_PREV_U + rtDW.Integrator_DSTATE;
-    }
-
-    /* End of DiscreteIntegrator: '<S38>/Integrator' */
-
-    /* Abs: '<S2>/Abs' incorporates:
+    /* Switch: '<S2>/Switch' incorporates:
+     *  Constant: '<S2>/Constant'
+     *  DataTypeConversion: '<S2>/Data Type Conversion1'
+     *  DiscreteIntegrator: '<S38>/Integrator'
+     *  Gain: '<S43>/Proportional Gain'
+     *  Inport: '<Root>/running_flag'
      *  Sum: '<S47>/Sum'
      */
-    u0 = fabsf((rtb_Sum2 + Integrator) + rtb_FilterCoefficient);
+    if (rtU.running_flag > 0) {
+      rtb_Switch = (int16_T)floorf((SPEED_Kp * rtb_Sum2 + rtDW.Integrator_DSTATE)
+        + rtb_FilterCoefficient);
+    } else {
+      rtb_Switch = 0;
+    }
+
+    /* End of Switch: '<S2>/Switch' */
 
     /* Saturate: '<S2>/Saturation' */
-    if (u0 > 1000.0F) {
+    if (rtb_Switch > 1000) {
       /* Outport: '<Root>/motor_a_pwm' */
-      rtY.motor_a_pwm = 1000.0F;
+      rtY.motor_a_pwm = 1000;
+    } else if (rtb_Switch < -1000) {
+      /* Outport: '<Root>/motor_a_pwm' */
+      rtY.motor_a_pwm = -1000;
     } else {
       /* Outport: '<Root>/motor_a_pwm' */
-      rtY.motor_a_pwm = u0;
+      rtY.motor_a_pwm = rtb_Switch;
     }
 
     /* End of Saturate: '<S2>/Saturation' */
 
-    /* Update for DiscreteIntegrator: '<S33>/Filter' */
+    /* Update for DiscreteIntegrator: '<S38>/Integrator' incorporates:
+     *  Gain: '<S35>/Integral Gain'
+     */
+    rtDW.Integrator_DSTATE += SPEED_Ki * rtb_Sum2;
+    rtDW.Integrator_PrevResetState = (int8_T)rtb_LogicalOperator;
+
+    /* Update for DiscreteIntegrator: '<S33>/Filter' incorporates:
+     *  DiscreteIntegrator: '<S38>/Integrator'
+     */
     rtDW.Filter_SYSTEM_ENABLE = 0U;
     rtDW.Filter_DSTATE = Filter;
+    rtDW.Filter_PrevResetState = (int8_T)rtb_LogicalOperator;
     rtDW.Filter_PREV_U = rtb_FilterCoefficient;
-
-    /* Update for DiscreteIntegrator: '<S38>/Integrator' */
-    rtDW.Integrator_SYSTEM_ENABLE = 0U;
-    rtDW.Integrator_DSTATE = Integrator;
-    rtDW.Integrator_PREV_U = rtb_Sum2;
 
     /* End of Outputs for SubSystem: '<Root>/Function-Call Subsystem' */
   }
@@ -195,9 +215,6 @@ void blinky_initialize(void)
 
   /* Enable for DiscreteIntegrator: '<S33>/Filter' */
   rtDW.Filter_SYSTEM_ENABLE = 1U;
-
-  /* Enable for DiscreteIntegrator: '<S38>/Integrator' */
-  rtDW.Integrator_SYSTEM_ENABLE = 1U;
 }
 
 /*

@@ -12,7 +12,7 @@
 #include "simulink/IntelWin64/blinky/blinky.h"
 LOG_MODULE_REGISTER(tb6612, LOG_LEVEL_INF);
 
-static bool s_runflag_b = false;
+
 
 static const struct gpio_dt_spec led_motor_st =GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 
@@ -23,8 +23,8 @@ static void motor_key_callback(enum key_id_e key_id_em,enum key_event_e event_em
         case KEY_0_em:
         {
             if (event_em == KEY_EVENT_DOUBLE_em) {
-                s_runflag_b ^= 1;
-                gpio_pin_set_dt(&led_motor_st, s_runflag_b);
+                 rtU.running_flag^= 1;
+                gpio_pin_set_dt(&led_motor_st, rtU.running_flag);
             }
         }
         break; 
@@ -149,11 +149,11 @@ int motor_set(struct motor_base_t* base, int16_t speed)
     if (speed > 1000) speed = 1000;
     if (speed < -1000) speed = -1000;
 
-    if (speed > 0 && s_runflag_b) {
+    if (speed > 0) {
         gpio_pin_set_dt(&me->cfg_pst->motor_in1_st, 1);
         gpio_pin_set_dt(&me->cfg_pst->motor_in2_st, 0);
         pulse_ns_ul = (PWM_PERIOD_NS / 1000) * speed;
-    } else if (speed < 0 &&s_runflag_b) {
+    } else if (speed < 0) {
         gpio_pin_set_dt(&me->cfg_pst->motor_in1_st, 0);
         gpio_pin_set_dt(&me->cfg_pst->motor_in2_st, 1);
         pulse_ns_ul = (PWM_PERIOD_NS / 1000) * (-speed);

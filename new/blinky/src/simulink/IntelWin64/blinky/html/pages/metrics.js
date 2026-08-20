@@ -5,21 +5,21 @@ function CodeMetrics() {
 	 this.metricsArray.var["blinky.c:rtM_"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\IntelWin64\\blinky\\blinky.c",
 	size: 16};
 	 this.metricsArray.var["rtDW"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\IntelWin64\\blinky\\blinky.c",
-	size: 28};
+	size: 24};
 	 this.metricsArray.var["rtU"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\IntelWin64\\blinky\\blinky.c",
-	size: 8};
+	size: 12};
 	 this.metricsArray.var["rtY"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\IntelWin64\\blinky\\blinky.c",
-	size: 4};
+	size: 2};
 	 this.metricsArray.fcn["blinky.c:task_5ms_high"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\IntelWin64\\blinky\\blinky.c",
-	stack: 24,
-	stackTotal: 24};
+	stack: 19,
+	stackTotal: 19};
 	 this.metricsArray.fcn["blinky_initialize"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\IntelWin64\\blinky\\blinky.c",
 	stack: 0,
 	stackTotal: 0};
 	 this.metricsArray.fcn["blinky_step"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\IntelWin64\\blinky\\blinky.c",
 	stack: 4,
-	stackTotal: 28};
-	 this.metricsArray.fcn["fabsf"] = {file: "D:\\Downloads\\app3\\matlab_2\\polyspace\\verifier\\cxx\\include\\include-libc\\bits\\mathcalls.h",
+	stackTotal: 23};
+	 this.metricsArray.fcn["floorf"] = {file: "D:\\Downloads\\app3\\matlab_2\\polyspace\\verifier\\cxx\\include\\include-libc\\bits\\mathcalls.h",
 	stack: 0,
 	stackTotal: 0};
 	 this.getMetrics = function(token) { 
@@ -32,6 +32,6 @@ function CodeMetrics() {
 			 data.type = "var";
 		 }
 	 return data; }; 
-	 this.codeMetricsSummary = '<a href="javascript:void(0)" onclick="return postParentWindowMessage({message:\'gotoReportPage\', pageName:\'blinky_metrics\'});">Global Memory: 56(bytes) Maximum Stack: 24(bytes)</a>';
+	 this.codeMetricsSummary = '<a href="javascript:void(0)" onclick="return postParentWindowMessage({message:\'gotoReportPage\', pageName:\'blinky_metrics\'});">Global Memory: 54(bytes) Maximum Stack: 19(bytes)</a>';
 	}
 CodeMetrics.instance = new CodeMetrics();

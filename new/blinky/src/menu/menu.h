@@ -150,11 +150,13 @@ bool menu_leaf_is_editing(void);
 static inline void menu_set_default_int(struct menu_node_t *n, int32_t val)
 {
     n->data_default = val;
+    *n->data = val;
 }
 
 static inline void menu_set_default_float(struct menu_node_t *n, float val)
 {
     n->data_f_default = val;
+    *n->data_f = val;
 }
 
 /* 恢复默认值 (长按 ENTER 触发) */

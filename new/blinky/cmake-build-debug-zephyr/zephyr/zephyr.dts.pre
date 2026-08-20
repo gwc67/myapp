@@ -3323,6 +3323,7 @@
 / {
  leds {
   compatible = "gpio-leds";
+
   led0: led_0 {
    gpios = <&gpioa 8 (0 << 0)>;
   };
@@ -3330,25 +3331,26 @@
 
  keys {
   compatible = "gpio-keys";
-  key0: key_0{
+
+  key0: key_0 {
    gpios = <&gpioe 0 ((1 << 4) | (1 << 0))>;
    label = "KEY0";
    zephyr,code = <11>;
   };
 
-  key1: key_1{
+  key1: key_1 {
    gpios = <&gpioe 1 ((1 << 4) | (1 << 0))>;
    label = "KEY1";
    zephyr,code = <2>;
   };
 
-  key2: key_2{
+  key2: key_2 {
    gpios = <&gpioe 2 ((1 << 4) | (1 << 0))>;
    label = "KEY2";
    zephyr,code = <3>;
   };
 
-  key3: key_3{
+  key3: key_3 {
    gpios = <&gpioe 3 ((1 << 4) | (1 << 0))>;
    label = "KEY3";
    zephyr,code = <4>;
@@ -3361,6 +3363,7 @@
 
  motor_a_gpios: motor_a_gpios {
   compatible = "gpio-leds";
+
 
 
   ain1: ain1 {
@@ -3376,14 +3379,14 @@
 
  motor_b_gpios: motor_b_gpios {
   compatible = "gpio-leds";
-  bin1: bin1{
+
+  bin1: bin1 {
    gpios = <&gpioc 2 (0 << 0)>;
   };
 
-  bin2: bin2{
+  bin2: bin2 {
    gpios = <&gpioc 3 (0 << 0)>;
   };
-
  };
 
 
@@ -3393,6 +3396,7 @@
   encodera = &qdec_e1;
   encoderb = &qdec_e2;
  };
+
  chosen {
   zephyr,sram = &sram0;
   zephyr,flash = &flash0;
@@ -3491,23 +3495,20 @@
  };
 };
 
-
 &timers2 {
-    status = "okay";
-    st,prescaler = <84>;
+ status = "okay";
+ st,prescaler = <84>;
 
-    pwm2: pwm {
+ pwm2: pwm {
 
-        compatible = "st,stm32-pwm";
-        status = "okay";
-        pinctrl-0 = <&tim2_ch1_pa0 &tim2_ch2_pa1>;
-        pinctrl-names = "default";
+  compatible = "st,stm32-pwm";
+  status = "okay";
+  pinctrl-0 = <&tim2_ch1_pa0 &tim2_ch2_pa1>;
+  pinctrl-names = "default";
 
-        #pwm-cells = <3>;
-    };
+  #pwm-cells = <3>;
+ };
 };
-
-
 
 
 &timers3 {
@@ -3533,15 +3534,15 @@
 &timers4 {
  status = "okay";
  st,prescaler = <0>;
+
  qdec_e2: qdec {
   compatible = "st,stm32-qdec";
   status = "okay";
-  pinctrl-0 = < &tim4_ch1_pd12 &tim4_ch2_pd13>;
+  pinctrl-0 = <&tim4_ch1_pd12 &tim4_ch2_pd13>;
   pinctrl-names = "default";
   st,input-filter-level = <15>;
   st,counts-per-revolution = <44>;
   st,encoder-mode = <3>;
-
  };
 };
 # 0 "<command-line>" 2

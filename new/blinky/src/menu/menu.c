@@ -21,7 +21,7 @@
 
 #include "menu.h"
 #include "menu_input.h"
-
+ 
 /* ================================================================
  * 静态变量
  * ================================================================ */
@@ -164,7 +164,8 @@ struct menu_base_t *menu_create_item(struct menu_node_t *parent,
     me->step_idx = 1;
     me->data_min = 0;
     me->data_max = 0;
-
+    *me->data = 0;
+    *me->data_f = 0.0f;
     /* INIT_LIST_HEAD(&me->list); -- Zephyr 下暂不需要 */
 
     if (parent) {
