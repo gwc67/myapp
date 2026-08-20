@@ -162,16 +162,28 @@ void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'ju
 <p>
 周期性入口函数实现以固定采样率发生的模型行为。对于基于速率的模型，代码生成器为模型中使用的每个速率生成一个周期性入口函数。在函数调用(导出函数)模型中，指定采样率的 Function Call Subsystem 模块表示周期函数。
 </p>
-<div id="fcn_blinky_step">
+<div id="fcn_blinky_step0">
 <h4 class="function">
-blinky_step
+blinky_step0
 </h4>
 <span class="description">
 生成代码的输出入口函数. 必须周期性调用，每 0.001 秒调用一次. 
 </span>
 <div class="programlisting">
 <code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
-void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step'})" class="fcn">blinky_step</a>(void)</code>
+void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step0'})" class="fcn">blinky_step0</a>(void)</code>
+</div>
+</div>
+<div id="fcn_blinky_step1">
+<h4 class="function">
+blinky_step1
+</h4>
+<span class="description">
+生成代码的输出入口函数. 必须周期性调用，每 0.005 秒调用一次. 
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step1'})" class="fcn">blinky_step1</a>(void)</code>
 </div>
 </div>
 </section>

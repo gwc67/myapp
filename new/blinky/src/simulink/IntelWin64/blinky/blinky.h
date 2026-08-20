@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'blinky'.
  *
- * Model version                  : 1.34
+ * Model version                  : 1.35
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Thu Aug 20 12:12:22 2026
+ * C/C++ source code generated on : Thu Aug 20 15:37:58 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Intel->x86-64 (Windows64)
@@ -34,27 +34,19 @@
 /* Exported data define */
 
 /* Definition for custom storage class: Define */
-#define SPEED_Kd                       0.0F                      /* Referenced by: '<S31>/Derivative Gain' */
-#define SPEED_Ki                       1.0F                      /* Referenced by: '<S35>/Integral Gain' */
-#define SPEED_Kp                       6.0F                      /* Referenced by: '<S43>/Proportional Gain' */
+#define SPEED_Kd                       0.0F                      /* Referenced by: '<S30>/Derivative Gain' */
+#define SPEED_Ki                       1.0F                      /* Referenced by: '<S34>/Integral Gain' */
+#define SPEED_Kp                       6.0F                      /* Referenced by: '<S42>/Proportional Gain' */
 
 /* Forward declaration for rtModel */
 typedef struct tag_RTM RT_MODEL;
 
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
-  real32_T Integrator_DSTATE;          /* '<S38>/Integrator' */
-  real32_T Filter_DSTATE;              /* '<S33>/Filter' */
-  real32_T Filter_PREV_U;              /* '<S33>/Filter' */
-  uint32_T FunctionCallSubsystem_PREV_T;/* '<Root>/Function-Call Subsystem' */
-  int8_T Integrator_PrevResetState;    /* '<S38>/Integrator' */
-  int8_T Filter_PrevResetState;        /* '<S33>/Filter' */
-  uint8_T task_10ms_count;             /* '<Root>/Chart' */
-  uint8_T task_5ms_count;              /* '<Root>/Chart' */
-  uint8_T task_50ms_count;             /* '<Root>/Chart' */
-  uint8_T task_20ms_count;             /* '<Root>/Chart' */
-  uint8_T Filter_SYSTEM_ENABLE;        /* '<S33>/Filter' */
-  boolean_T FunctionCallSubsystem_RESET_ELA;/* '<Root>/Function-Call Subsystem' */
+  real32_T Integrator_DSTATE;          /* '<S37>/Integrator' */
+  real32_T Filter_DSTATE;              /* '<S32>/Filter' */
+  int8_T Integrator_PrevResetState;    /* '<S37>/Integrator' */
+  int8_T Filter_PrevResetState;        /* '<S32>/Filter' */
 } DW;
 
 /* External inputs (root inport signals with default storage) */
@@ -72,15 +64,6 @@ typedef struct {
 /* Real-time Model Data Structure */
 struct tag_RTM {
   const char_T * volatile errorStatus;
-
-  /*
-   * Timing:
-   * The following substructure contains information regarding
-   * the timing information for the model.
-   */
-  struct {
-    uint32_T clockTick0;
-  } Timing;
 };
 
 /* Block signals and states (default storage) */
@@ -94,7 +77,8 @@ extern ExtY rtY;
 
 /* Model entry point functions */
 extern void blinky_initialize(void);
-extern void blinky_step(void);
+extern void blinky_step0(void);        /* Sample time: [0.001s, 0.0s] */
+extern void blinky_step1(void);        /* Sample time: [0.005s, 0.0s] */
 
 /* Real-time Model object */
 extern RT_MODEL *const rtM;
@@ -102,9 +86,9 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S2>/Scope2' : Unused code path elimination
- * Block '<Root>/Scope2' : Unused code path elimination
- * Block '<S2>/Data Type Conversion' : Eliminate redundant data type conversion
+ * Block '<Root>/Scope4' : Unused code path elimination
+ * Block '<S1>/Scope2' : Unused code path elimination
+ * Block '<S1>/Data Type Conversion' : Eliminate redundant data type conversion
  */
 
 /*-
@@ -122,61 +106,60 @@ extern RT_MODEL *const rtM;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'blinky'
- * '<S1>'   : 'blinky/Chart'
- * '<S2>'   : 'blinky/Function-Call Subsystem'
- * '<S3>'   : 'blinky/Function-Call Subsystem/Discrete PID Controller1'
- * '<S4>'   : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Anti-windup'
- * '<S5>'   : 'blinky/Function-Call Subsystem/Discrete PID Controller1/D Gain'
- * '<S6>'   : 'blinky/Function-Call Subsystem/Discrete PID Controller1/External Derivative'
- * '<S7>'   : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Filter'
- * '<S8>'   : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Filter ICs'
- * '<S9>'   : 'blinky/Function-Call Subsystem/Discrete PID Controller1/I Gain'
- * '<S10>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Ideal P Gain'
- * '<S11>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Ideal P Gain Fdbk'
- * '<S12>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Integrator'
- * '<S13>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Integrator ICs'
- * '<S14>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/N Copy'
- * '<S15>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/N Gain'
- * '<S16>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/P Copy'
- * '<S17>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Parallel P Gain'
- * '<S18>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Reset Signal'
- * '<S19>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Saturation'
- * '<S20>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Saturation Fdbk'
- * '<S21>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Sum'
- * '<S22>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Sum Fdbk'
- * '<S23>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Tracking Mode'
- * '<S24>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Tracking Mode Sum'
- * '<S25>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Tsamp - Integral'
- * '<S26>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Tsamp - Ngain'
- * '<S27>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/postSat Signal'
- * '<S28>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/preInt Signal'
- * '<S29>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/preSat Signal'
- * '<S30>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Anti-windup/Passthrough'
- * '<S31>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/D Gain/Internal Parameters'
- * '<S32>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/External Derivative/Error'
- * '<S33>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Filter/Disc. Forward Euler Filter'
- * '<S34>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Filter ICs/Internal IC - Filter'
- * '<S35>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/I Gain/Internal Parameters'
- * '<S36>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Ideal P Gain/Passthrough'
- * '<S37>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Ideal P Gain Fdbk/Disabled'
- * '<S38>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Integrator/Discrete'
- * '<S39>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Integrator ICs/Internal IC'
- * '<S40>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/N Copy/Disabled'
- * '<S41>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/N Gain/Internal Parameters'
- * '<S42>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/P Copy/Disabled'
- * '<S43>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Parallel P Gain/Internal Parameters'
- * '<S44>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Reset Signal/External Reset'
- * '<S45>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Saturation/Passthrough'
- * '<S46>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Saturation Fdbk/Disabled'
- * '<S47>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Sum/Sum_PID'
- * '<S48>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Sum Fdbk/Disabled'
- * '<S49>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Tracking Mode/Disabled'
- * '<S50>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Tracking Mode Sum/Passthrough'
- * '<S51>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Tsamp - Integral/TsSignalSpecification'
- * '<S52>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/Tsamp - Ngain/Passthrough'
- * '<S53>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/postSat Signal/Forward_Path'
- * '<S54>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/preInt Signal/Internal PreInt'
- * '<S55>'  : 'blinky/Function-Call Subsystem/Discrete PID Controller1/preSat Signal/Forward_Path'
+ * '<S1>'   : 'blinky/task_5ms'
+ * '<S2>'   : 'blinky/task_5ms/Discrete PID Controller1'
+ * '<S3>'   : 'blinky/task_5ms/Discrete PID Controller1/Anti-windup'
+ * '<S4>'   : 'blinky/task_5ms/Discrete PID Controller1/D Gain'
+ * '<S5>'   : 'blinky/task_5ms/Discrete PID Controller1/External Derivative'
+ * '<S6>'   : 'blinky/task_5ms/Discrete PID Controller1/Filter'
+ * '<S7>'   : 'blinky/task_5ms/Discrete PID Controller1/Filter ICs'
+ * '<S8>'   : 'blinky/task_5ms/Discrete PID Controller1/I Gain'
+ * '<S9>'   : 'blinky/task_5ms/Discrete PID Controller1/Ideal P Gain'
+ * '<S10>'  : 'blinky/task_5ms/Discrete PID Controller1/Ideal P Gain Fdbk'
+ * '<S11>'  : 'blinky/task_5ms/Discrete PID Controller1/Integrator'
+ * '<S12>'  : 'blinky/task_5ms/Discrete PID Controller1/Integrator ICs'
+ * '<S13>'  : 'blinky/task_5ms/Discrete PID Controller1/N Copy'
+ * '<S14>'  : 'blinky/task_5ms/Discrete PID Controller1/N Gain'
+ * '<S15>'  : 'blinky/task_5ms/Discrete PID Controller1/P Copy'
+ * '<S16>'  : 'blinky/task_5ms/Discrete PID Controller1/Parallel P Gain'
+ * '<S17>'  : 'blinky/task_5ms/Discrete PID Controller1/Reset Signal'
+ * '<S18>'  : 'blinky/task_5ms/Discrete PID Controller1/Saturation'
+ * '<S19>'  : 'blinky/task_5ms/Discrete PID Controller1/Saturation Fdbk'
+ * '<S20>'  : 'blinky/task_5ms/Discrete PID Controller1/Sum'
+ * '<S21>'  : 'blinky/task_5ms/Discrete PID Controller1/Sum Fdbk'
+ * '<S22>'  : 'blinky/task_5ms/Discrete PID Controller1/Tracking Mode'
+ * '<S23>'  : 'blinky/task_5ms/Discrete PID Controller1/Tracking Mode Sum'
+ * '<S24>'  : 'blinky/task_5ms/Discrete PID Controller1/Tsamp - Integral'
+ * '<S25>'  : 'blinky/task_5ms/Discrete PID Controller1/Tsamp - Ngain'
+ * '<S26>'  : 'blinky/task_5ms/Discrete PID Controller1/postSat Signal'
+ * '<S27>'  : 'blinky/task_5ms/Discrete PID Controller1/preInt Signal'
+ * '<S28>'  : 'blinky/task_5ms/Discrete PID Controller1/preSat Signal'
+ * '<S29>'  : 'blinky/task_5ms/Discrete PID Controller1/Anti-windup/Passthrough'
+ * '<S30>'  : 'blinky/task_5ms/Discrete PID Controller1/D Gain/Internal Parameters'
+ * '<S31>'  : 'blinky/task_5ms/Discrete PID Controller1/External Derivative/Error'
+ * '<S32>'  : 'blinky/task_5ms/Discrete PID Controller1/Filter/Disc. Forward Euler Filter'
+ * '<S33>'  : 'blinky/task_5ms/Discrete PID Controller1/Filter ICs/Internal IC - Filter'
+ * '<S34>'  : 'blinky/task_5ms/Discrete PID Controller1/I Gain/Internal Parameters'
+ * '<S35>'  : 'blinky/task_5ms/Discrete PID Controller1/Ideal P Gain/Passthrough'
+ * '<S36>'  : 'blinky/task_5ms/Discrete PID Controller1/Ideal P Gain Fdbk/Disabled'
+ * '<S37>'  : 'blinky/task_5ms/Discrete PID Controller1/Integrator/Discrete'
+ * '<S38>'  : 'blinky/task_5ms/Discrete PID Controller1/Integrator ICs/Internal IC'
+ * '<S39>'  : 'blinky/task_5ms/Discrete PID Controller1/N Copy/Disabled'
+ * '<S40>'  : 'blinky/task_5ms/Discrete PID Controller1/N Gain/Internal Parameters'
+ * '<S41>'  : 'blinky/task_5ms/Discrete PID Controller1/P Copy/Disabled'
+ * '<S42>'  : 'blinky/task_5ms/Discrete PID Controller1/Parallel P Gain/Internal Parameters'
+ * '<S43>'  : 'blinky/task_5ms/Discrete PID Controller1/Reset Signal/External Reset'
+ * '<S44>'  : 'blinky/task_5ms/Discrete PID Controller1/Saturation/Passthrough'
+ * '<S45>'  : 'blinky/task_5ms/Discrete PID Controller1/Saturation Fdbk/Disabled'
+ * '<S46>'  : 'blinky/task_5ms/Discrete PID Controller1/Sum/Sum_PID'
+ * '<S47>'  : 'blinky/task_5ms/Discrete PID Controller1/Sum Fdbk/Disabled'
+ * '<S48>'  : 'blinky/task_5ms/Discrete PID Controller1/Tracking Mode/Disabled'
+ * '<S49>'  : 'blinky/task_5ms/Discrete PID Controller1/Tracking Mode Sum/Passthrough'
+ * '<S50>'  : 'blinky/task_5ms/Discrete PID Controller1/Tsamp - Integral/TsSignalSpecification'
+ * '<S51>'  : 'blinky/task_5ms/Discrete PID Controller1/Tsamp - Ngain/Passthrough'
+ * '<S52>'  : 'blinky/task_5ms/Discrete PID Controller1/postSat Signal/Forward_Path'
+ * '<S53>'  : 'blinky/task_5ms/Discrete PID Controller1/preInt Signal/Internal PreInt'
+ * '<S54>'  : 'blinky/task_5ms/Discrete PID Controller1/preSat Signal/Forward_Path'
  */
 #endif                                 /* blinky_h_ */
 
