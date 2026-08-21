@@ -92,27 +92,38 @@ void euler_update(void)
 
     // double dt_db = (double)(now_ms_ul - s_last_tick_ul) / 1000;
 
-    rtU.ax = acc_st.x_db;
-    rtU.ay = acc_st.y_db;
-    rtU.az = acc_st.z_db;
+    // rtU.ax = acc_st.x_db;
+    // rtU.ay = acc_st.y_db;
+    // rtU.az = acc_st.z_db;
 
-    rtU.gx = gyro_st.x_db;
-    rtU.gy = gyro_st.y_db;
-    rtU.gz = gyro_st.z_db;
+    // rtU.gx = gyro_st.x_db;
+    // rtU.gy = gyro_st.y_db;
+    // rtU.gz = gyro_st.z_db;
+
+    rtU.gyro[0] = gyro_st.x_db;
+    rtU.gyro[1] = gyro_st.y_db;
+    rtU.accx = acc_st.x_db;
+    rtU.accy = acc_st.y_db;
+    rtU.accz = acc_st.z_db;
     
 
     // s_last_tick_ul = now_ms_ul;
     // double roll_sqrt_db = sqrt(acc_st.x_db * acc_st.x_db + acc_st.z_db * acc_st.z_db);
 
-    // //采用ZYX 旋转计算，加速度这个只能够计算静态
+    // // //采用ZYX 旋转计算，加速度这个只能够计算静态
     // if (roll_sqrt_db != 0.0) {
-    //     roll_db = atan(acc_st.y_db / roll_sqrt_db) * RAD_TO_DEG;
+    //     roll_db = atan(acc_st.y_db / roll_sqrt_db);
     // }
     // else {
     //     roll_db = 0.0;
     // }
 
-    // pitch_db = atan2(-acc_st.x_db , acc_st.z_db) * RAD_TO_DEG;
+    // pitch_db = atan2(-acc_st.x_db , acc_st.z_db);
+
+    
+    // rtU.angle_acc[0] = pitch_db;
+    // rtU.angle_acc[1] = roll_db;
+
 
     // if ((pitch_db < -90 && s_euler_st.pitch_db > 90) || (pitch_db > 90 && s_euler_st.pitch_db < -90)) {
     //     s_K_pitch_st.angle_db = pitch_db;

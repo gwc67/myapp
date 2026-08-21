@@ -11,7 +11,6 @@
 #include "OLED_Menu.h"
 #include "blinky.h"
 #include "encode.h"
-#include "euler.h"
 #include "menu.h"
 #include "mess/value_to_str.h"
 #include <stdio.h>
@@ -99,9 +98,9 @@ static void s_draw_euler(struct menu_node_t* self)
     snprintf(buf, sizeof(buf), "roll:%s", num);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 64, 20);
 
-    float_to_str(num, sizeof(num), rtY.Heading * RAD_TO_DEG, 2);
-    snprintf(buf, sizeof(buf), "yaw:%s", num);   /* ✅ num 和 buf 分开 */
-    cfb_print(s_oled_pst, buf, 0, 30);
+    // float_to_str(num, sizeof(num), rtY.Heading * RAD_TO_DEG, 2);
+    // snprintf(buf, sizeof(buf), "yaw:%s", num);   /* ✅ num 和 buf 分开 */
+    // cfb_print(s_oled_pst, buf, 0, 30);
 
 }
 /* ================================================================

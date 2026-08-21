@@ -92,7 +92,7 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 
 		char num[10];
 		char buf[128];
-		float_to_str(num, sizeof(num), rtY.pitch * RAD_TO_DEG , 2);
+		float_to_str(num, sizeof(num), rtY.pitch , 2);
 		snprintf(buf,sizeof(buf),"%d,%d,%d,%s\n",(int32_t)rtU.motor_a_actual_speed,(int32_t)rtU.speed_a_target,(int32_t)rtY.motor_a_pwm,num);
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		menu_task_v();

@@ -51,6 +51,7 @@ find_library(FOUND_LIBM m NO_SYSTEM_ENVIRONMENT_PATH PATHS ${CMAKE_C_IMPLICIT_LI
 
 # Definition of target "blinky".
 add_executable(blinky  ${START_DIR}/ARMCortex-M/blinky/blinky.c
+    ${START_DIR}/ARMCortex-M/blinky/blinky_data.c
     ${START_DIR}/ARMCortex-M/blinky/rtmodel.c
     ${MATLAB_ROOT}/rtw/c/src/common/rt_main.c)
 

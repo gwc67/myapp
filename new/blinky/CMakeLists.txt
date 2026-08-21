@@ -34,6 +34,7 @@ target_sources(app PRIVATE
     src/key/key.c
     src/simulink/ARMCortex-M/blinky/blinky.c
     src/simulink/ARMCortex-M/blinky/rtmodel.c
+    src/simulink/ARMCortex-M/blinky/blinky_data.c
     
     
 )
