@@ -76,7 +76,10 @@ static void s_task_5ms_high(void *p1,void *p2,void *p3)
 		encoder_get_data(g_encoder_a_pst, &speed_a_st);
 		rtU.motor_a_actual_speed = speed_a_st.rpm_l;
 		motor_set(g_motor_a_pst, rtY.motor_a_pwm);
+
+		//matlab 生成的pid调用
 		blinky_step1();
+		
 		k_msleep(5);
 
 	}
