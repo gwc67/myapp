@@ -22,7 +22,7 @@ const ConstP rtConstP = {
   /* Expression: p.R{1}
    * Referenced by: '<S57>/R1'
    */
-  { 0.054772255750516613, 0.0, 0.0, 0.054772255750516613 },
+  { 0.10, 0.0, 0.0, 0.10 },
 
   /* Expression: p.Q
    * Referenced by: '<S57>/Q'
