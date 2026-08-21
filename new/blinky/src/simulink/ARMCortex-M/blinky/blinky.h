@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.59
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Fri Aug 21 19:38:48 2026
+ * C/C++ source code generated on : Fri Aug 21 19:44:16 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -103,12 +103,15 @@ typedef struct {
 
 /* Constant parameters (default storage) */
 typedef struct {
-  /* Pooled Parameter (Mixed Expressions)
-   * Referenced by:
-   *   '<S57>/Q'
-   *   '<S57>/R1'
+  /* Expression: p.R{1}
+   * Referenced by: '<S57>/R1'
    */
-  real_T pooled1[4];
+  real_T R1_Value[4];
+
+  /* Expression: p.Q
+   * Referenced by: '<S57>/Q'
+   */
+  real_T Q_Value[4];
 } ConstP;
 
 /* External inputs (root inport signals with default storage) */

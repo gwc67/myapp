@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.59
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Fri Aug 21 19:38:48 2026
+ * C/C++ source code generated on : Fri Aug 21 19:44:16 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -439,7 +439,7 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   /* x 就是一开始状态转移函数定义的状态向量 */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
-  qrFactor(rtDW.b_dHdx, rtDW.P_i, rtConstP.pooled1, rtDW.Sy);
+  qrFactor(rtDW.b_dHdx, rtDW.P_i, rtConstP.R1_Value, rtDW.Sy);
   for (i = 0; i < 2; i++) {
     /* Start for MATLABSystem: '<S58>/MATLAB System' incorporates:
      *  DataStoreRead: '<S58>/Data Store ReadP'
@@ -534,10 +534,10 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
     /* Start for MATLABSystem: '<S58>/MATLAB System' incorporates:
      *  Constant: '<S57>/R1'
      */
-    rtDW.epsilon = rtConstP.pooled1[i];
+    rtDW.epsilon = rtConstP.R1_Value[i];
     rtDW.A_b = rtDW.K[0] * rtDW.epsilon;
     rtDW.A_p = rtDW.K[1] * rtDW.epsilon;
-    rtDW.epsilon = rtConstP.pooled1[i + 1];
+    rtDW.epsilon = rtConstP.R1_Value[i + 1];
     rtDW.Sy[i] = rtDW.K[2] * rtDW.epsilon + rtDW.A_b;
     rtDW.Sy[i + 1] = rtDW.K[3] * rtDW.epsilon + rtDW.A_p;
 
@@ -650,7 +650,7 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    *  Constant: '<S57>/Q'
    *  DataStoreWrite: '<S60>/Data Store WriteP'
    */
-  qrFactor(rtDW.b_dHdx, rtDW.K, rtConstP.pooled1, rtDW.P_i);
+  qrFactor(rtDW.b_dHdx, rtDW.K, rtConstP.Q_Value, rtDW.P_i);
 
   /* DataStoreWrite: '<S60>/Data Store WriteX' incorporates:
    *  MATLABSystem: '<S60>/MATLAB System'

@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.59
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Fri Aug 21 19:38:48 2026
+ * C/C++ source code generated on : Fri Aug 21 19:44:16 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -19,12 +19,15 @@
 
 /* Constant parameters (default storage) */
 const ConstP rtConstP = {
-  /* Pooled Parameter (Mixed Expressions)
-   * Referenced by:
-   *   '<S57>/Q'
-   *   '<S57>/R1'
+  /* Expression: p.R{1}
+   * Referenced by: '<S57>/R1'
    */
-  { 0.054772255750516613, 0.0, 0.0, 0.054772255750516613 }
+  { 0.054772255750516613, 0.0, 0.0, 0.054772255750516613 },
+
+  /* Expression: p.Q
+   * Referenced by: '<S57>/Q'
+   */
+  { 0.04, 0.0, 0.0, 0.04 }
 };
 
 /*

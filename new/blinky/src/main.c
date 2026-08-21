@@ -74,11 +74,15 @@ static void s_task_5ms_high(void *p1,void *p2,void *p3)
 
 		euler_update();
 		encoder_update_all();
+		
 		struct encoder_data_t speed_a_st = {0};
 		encoder_get_data(g_encoder_a_pst, &speed_a_st);
+		//matlab控制逻辑
 		rtU.motor_a_actual_speed = speed_a_st.rpm_l;
-		motor_set(g_motor_a_pst, rtY.motor_a_pwm);
 		blinky_step(1);
+
+		motor_set(g_motor_a_pst, rtY.motor_a_pwm);
+
 		k_msleep(5);
 
 	}
