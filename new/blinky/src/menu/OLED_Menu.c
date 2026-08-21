@@ -23,6 +23,7 @@
 static const struct device *s_oled_pst =
     DEVICE_DT_GET(DT_NODELABEL(ssd1306));
 
+#define RAD_TO_DEG 57.295779513082320876798154814105
 /* ================================================================
  * 叶子 draw 函数
  * ================================================================ */
@@ -87,18 +88,18 @@ static void s_draw_euler(struct menu_node_t* self)
     cfb_print(s_oled_pst, self->base.name, 0, 0);
     cfb_framebuffer_set_font(s_oled_pst, 0);
                    
-    struct euler_t euler_st = {0};
-    euler_copy(&euler_st);
+    // struct euler_t euler_st = {0};
+    // euler_copy(&euler_st);
 
-    float_to_str(num, sizeof(num), euler_st.pitch_db, 2);
+    float_to_str(num, sizeof(num), rtY.pitch * RAD_TO_DEG, 2);
     snprintf(buf, sizeof(buf), "pitch:%s", num);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 0, 20);
 
-    float_to_str(num, sizeof(num), euler_st.roll_db, 2);
+    float_to_str(num, sizeof(num), rtY.roll * RAD_TO_DEG, 2);
     snprintf(buf, sizeof(buf), "roll:%s", num);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 64, 20);
 
-    float_to_str(num, sizeof(num), euler_st.yaw_db, 2);
+    float_to_str(num, sizeof(num), rtY.Heading * RAD_TO_DEG, 2);
     snprintf(buf, sizeof(buf), "yaw:%s", num);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 0, 30);
 

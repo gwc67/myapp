@@ -1,0 +1,3293 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="rtwreport.css" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><script language="JavaScript" type="text/javascript" src="rtwshrink.js"></script><title>
+静态代码度量报告
+</title>
+
+</head>
+<body onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdCodeMetrics'); else local_onload();}} catch(err) {};">
+<h1>
+静态代码度量报告
+</h1>
+<div>
+<script>function postParentWindowMessage(message) {window.parent.postMessage(message, "*");}</script><p>
+静态代码度量报告提供生成代码的统计量。度量是通过使用在<b>配置参数 > 硬件实现</b>窗格的 '设备详细信息' 部分中指定的 C 数据类型对生成的代码进行静态分析来估计的: <b>char</b> 8, <b>short</b> 16, <b>int</b> 32, <b>long</b> 32, <b>float</b> 32, <b>double</b> 64, <b>pointer</b> 32 bits。如果模型包含 Variant 模块，则静态代码度量报告不包含非活动变体的数据。 由于目标特定的编译器和平台设置，实际的目标代码度量可能会有所不同。 有关提高代码效率的选项，请咨询<b>代码生成顾问</b><a name="MATLAB_link" style="text-decoration: none" href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'helpview(\'ecoder\', \'code_gen_advisor\')'})">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADhElEQVQ4T2WTe0yTBxTFz/fRIn2AqS1LC4gplIcFYYkTxjTpiMQRJo50KhYmexkkIWwsTMtIFCWMAZuFoc7nXNiWbLhibdMtA4oL7hFskI7KoxOGLbRCulEeK5Ty9WsXMRDn7p8355zc3PwOgaenuI8pkW7MO7RtY9GuaJbEF4DfMO62tA+4WieVSbqn5cSTi6jGUdnp3YK6otSwDEYQSbioAB4JeEwCbq8vcM00a6i/7aqaUib2rfnWA5LPjR/WFkRejOEFsz8d9UE37oGXpkHSfoTSfsjj2XhbyoZpyuPKuzzy+sSp7fpHIasBz9SNZPSWxHSFhQZzXjYsYnZuGY3Pc5AVtQEEAvjJ6oGy8y9s3hSCm/lCmBxLrqzSK5mLunIzgVMBsiV71lCWzsuUdbhx1+rG4CE+ojlBqNRPgiQInM6JhGOeQkLjKOTPhaPtoBAV6kG96npNHiFssGSOlscZ9HaKVKj/xr4YEtr9IpzpcuB9zTSw4kfbUTEO7hBgZ/09/Gal0XMsHtGbyBXpca2MeK3dfukreWSxXDcDjdmNcCYFRSwTavM8Hs74IYsNwY2jEix5KGw/2Q/nAgOlOSKcK4hGuqqvgWi+47pVtoOXmXbJjrt2D+CngYVlgKKRFcdCe2k8Vrw0Xm0w4baNApgbkJMchu+PJaLgG4uGqP3F2VG1M3zPC83j6P1zEQjCqpnj88JckwIBJwh7ThpxZ8IH8EMBD41XUrm4WSHFgdYhNfFSq/XDH4u2VB1pteFzgxPgkAAVQDjLj5GPnsXX3ZMov/YAEPEAkgRcS6iWR6A6X4yEyh9OENwTvyfdq9hqnHZ62Rm1w0Aw4/EVHi8U29iw2BdhmiEAbsjqQ9nLbgydSYdjhZ7bVViXvcpBic5x5UJuxBHltzY0ahwAi4FYAQMDtakwjs1jd/0wAkwmMLOAprckKM8TI/fjzi/1LVdLHpN4vD/iuzfjevYnciXV1634RGeHj6Jw/g0xzA8WcFYzAb6AhWpFDMr2idHSM2F5t7KpEL3N/esoc9/pSP6sUNp2OC1KOjblQdvPDzF43wWCCCBtKx/5skiI+CFQ3bIOKeu+eM/XXdO1jvJaMdjF7aLsFOEHZXtTFC9u4QrW9jSArvvz003qX7Wd2u4LMKoG/lem/9Q0V5WUtJknSxCyRQE/yOGpf5x/jNmMsM31Y+ys90ntv6Qkblq/pPiXAAAAAElFTkSuQmCC" title="打开代码生成顾问帮助" style="border:none;cursor:pointer;max-width:100%;" alt="help.png">
+
+</img>
+
+</a>
+。
+</p>
+
+</div>
+<div id="table_of_contents">
+<h3>
+目录
+</h3>
+<ol>
+<li>
+<a href="#sec_file_info" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_001_control'), 'rtwIdCodeMetrics_table_001')">
+文件信息
+</a>
+
+</li>
+<li>
+<a href="#sec_globalvar_info" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_002_control'), 'rtwIdCodeMetrics_table_002')">
+全局变量
+</a>
+
+</li>
+<li>
+<a href="#sec_localstatic_info" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_003_control'), 'rtwIdCodeMetrics_table_003')">
+局部静态变量
+</a>
+
+</li>
+<li>
+<a href="#sec_fcn_info" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_025_control'), 'rtwIdCodeMetrics_table_025')">
+函数信息
+</a>
+
+</li>
+
+</ol>
+
+</div>
+<h3 name="sec_文件信息" id="sec_file_info">
+1. 文件信息 <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_001_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_001', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_001" id="rtwIdCodeMetrics_table_001" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" border="0">
+<tr>
+<td align="left" valign="top">
+<p>
+<span name="button_fileInfo_summary_table" id="button_fileInfo_summary_table" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'fileInfo_summary_table', true)"><span class="shrink-button">[-]</span></span> 摘要
+</p>
+<table width="50%" cellpadding="0" name="fileInfo_summary_table" id="fileInfo_summary_table" border="0">
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="除 ert_main.c 外的源文件数。">.c 文件的数量</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+2
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="头文件的数量。">.h 文件的数量</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+5
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span title="不包括注释和空行的代码行数">代码行数</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+799
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="包括源代码、注释和空行的代码行数。">行数</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+1,370
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<p>
+<span name="button_fileInfo_detail_table" id="button_fileInfo_detail_table" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'fileInfo_detail_table', true)"><span class="shrink-button">[-]</span></span> 文件详细信息
+</p>
+<table width="100%" cellpadding="2" name="fileInfo_detail_table" id="fileInfo_detail_table" border="1">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="按代码行数降序排列的文件。">文件名</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="不包括注释和空行的代码行数。">代码行数</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="包括源代码、注释和空行的代码行数。">行数</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="文件的时间戳">生成时间</span>
+</b>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" class="code2code" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.c'})">
+blinky.c
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+575
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+820
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+08/21/2026  2:09 PM
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" class="code2code" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})">
+blinky.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+102
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+242
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+08/21/2026  2:09 PM
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" class="code2code" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_types.h'})">
+blinky_types.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+57
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+101
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+08/21/2026  2:09 PM
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" class="code2code" onclick="postParentWindowMessage({message:'jumpToCode',location:'rtwtypes.h'})">
+rtwtypes.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+38
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+97
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+08/21/2026  2:09 PM
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" class="code2code" onclick="postParentWindowMessage({message:'jumpToCode',location:'rtmodel.c'})">
+rtmodel.c
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+43
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+08/21/2026  2:09 PM
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" class="code2code" onclick="postParentWindowMessage({message:'jumpToCode',location:'rtmodel.h'})">
+rtmodel.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+38
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+08/21/2026  2:09 PM
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" class="code2code" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_private.h'})">
+blinky_private.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+29
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+08/21/2026  2:09 PM
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+<h3 name="sec_全局变量" id="sec_globalvar_info">
+2. 全局变量 <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_002_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_002', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_002" id="rtwIdCodeMetrics_table_002" border="0">
+<tr>
+<td align="left" valign="top">
+在生成的代码中定义的全局变量。
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table" id="globalvarInfo_table" border="1">
+<tr style="background-color: #ffffff">
+<td width="100%" align="left" valign="top" style="border-style: none">
+<table class="treeTable" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="按最大字节数排序的全局变量。">全局变量</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="全局变量大小(以字节为单位)。">大小(字节)</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="此全局变量的潜在读写总次数">读/写数</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="函数中的最大潜在读写次数">函数中的读/写次数</span>
+</b>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub3" id="button_globalvarInfo_table_sub3" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub3', true)"><span class="shrink-button">[+]</span></span> <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'rtDW'})">
+rtDW
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+1504
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+702<span style="font-family:Courier">&#160;</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+601<span style="font-family:Courier">&#160;</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub3" id="globalvarInfo_table_sub3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub3_sub3" id="button_globalvarInfo_table_sub3_sub3" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub3_sub3', true)"><span class="shrink-button">[+]</span></span> obj</span></td>
+<td align="right" width="22.22%">480</td>
+<td align="right" width="22.22%">51<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">26<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub3_sub3" id="globalvarInfo_table_sub3_sub3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; isInitialized</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">7<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">6<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; TunablePropsChanged</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">9<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">8<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; AccelerometerNoise</span></td>
+<td align="right" width="22.22%">8</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; GyroscopeNoise</span></td>
+<td align="right" width="22.22%">8</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; GyroscopeDriftNoise</span></td>
+<td align="right" width="22.22%">8</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; LinearAccelerationNoise</span></td>
+<td align="right" width="22.22%">8</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; LinearAccelerationDecayFactor</span></td>
+<td align="right" width="22.22%">8</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pQw</span></td>
+<td align="right" width="22.22%">324</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pQv</span></td>
+<td align="right" width="22.22%">36</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub3_sub3_sub13" id="button_globalvarInfo_table_sub3_sub3_sub13" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub3_sub3_sub13', true)"><span class="shrink-button">[+]</span></span> pOrientPost</span></td>
+<td align="right" width="22.22%">16</td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub3_sub3_sub13" id="globalvarInfo_table_sub3_sub3_sub13" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; a</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; c</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; d</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pFirstTime</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub3_sub3_sub13_sub19" id="button_globalvarInfo_table_sub3_sub3_sub13_sub19" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub3_sub3_sub13_sub19', true)"><span class="shrink-button">[+]</span></span> pRefSys</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub3_sub3_sub13_sub19" id="globalvarInfo_table_sub3_sub3_sub13_sub19" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; __dummy</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pSensorPeriod</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pKalmanPeriod</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pGyroOffset</span></td>
+<td align="right" width="22.22%">12</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pLinAccelPost</span></td>
+<td align="right" width="22.22%">12</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pInputPrototype</span></td>
+<td align="right" width="22.22%">12</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; y</span></td>
+<td align="right" width="22.22%">8</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Ppost</span></td>
+<td align="right" width="22.22%">324</td>
+<td align="right" width="22.22%">13<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">13<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; H</span></td>
+<td align="right" width="22.22%">108</td>
+<td align="right" width="22.22%">32<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">32<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; y_m</span></td>
+<td align="right" width="22.22%">108</td>
+<td align="right" width="22.22%">15<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">15<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; y_c</span></td>
+<td align="right" width="22.22%">108</td>
+<td align="right" width="22.22%">6<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">6<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; y_tmp</span></td>
+<td align="right" width="22.22%">108</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b_I</span></td>
+<td align="right" width="22.22%">36</td>
+<td align="right" width="22.22%">11<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">11<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Rpost</span></td>
+<td align="right" width="22.22%">36</td>
+<td align="right" width="22.22%">65<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">65<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; h1</span></td>
+<td align="right" width="22.22%">36</td>
+<td align="right" width="22.22%">37<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">37<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; fv</span></td>
+<td align="right" width="22.22%">12</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; VectorConcatenate1</span></td>
+<td align="right" width="22.22%">12</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; VectorConcatenate2</span></td>
+<td align="right" width="22.22%">12</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Reast</span></td>
+<td align="right" width="22.22%">12</td>
+<td align="right" width="22.22%">24<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">24<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; accelIn</span></td>
+<td align="right" width="22.22%">12</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Integrator_DSTATE</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Filter_DSTATE</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; accelMeasNoiseVar</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; FilterCoefficient</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; e_b</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">14<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">14<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; e_c</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">10<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">10<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; e_d</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">8<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">8<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; deltaq_c</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">20<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">20<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; deltaq_d</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">11<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">11<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; n</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">19<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">19<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; maxval</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">23<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">23<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; a21</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">22<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">22<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; h1_k</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">18<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">18<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Rpost_c</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">10<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">10<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pGyroOffsetIn_idx_0</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pLinAccelPostIn_idx_1</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pGyroOffsetIn_idx_1</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; i</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">11<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">11<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; r1</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">21<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">21<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; r3</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">26<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">26<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; rtemp</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">115<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">115<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; xpageoffset</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">75<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">75<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Integrator_PrevResetState</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Filter_PrevResetState</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub65" id="button_globalvarInfo_table_sub65" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub65', true)"><span class="shrink-button">[+]</span></span> <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'rtU'})">
+rtU
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+36
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+10<span style="font-family:Courier">&#160;</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+10<span style="font-family:Courier">&#160;</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub65" id="globalvarInfo_table_sub65" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; motor_a_actual_speed</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; speed_a_target</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; running_flag</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; gx</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; gy</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; ax</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; ay</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; az</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; gz</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub75" id="button_globalvarInfo_table_sub75" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub75', true)"><span class="shrink-button">[+]</span></span> <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'rtY'})">
+rtY
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+6<span style="font-family:Courier">&#160;</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+6<span style="font-family:Courier">&#160;</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub75" id="globalvarInfo_table_sub75" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; motor_a_pwm</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; roll</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; pitch</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Heading</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub80" id="button_globalvarInfo_table_sub80" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub80', true)"><span class="shrink-button">[+]</span></span> <a title="rtM_ 是 blinky.c 中的静态全局变量。" href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'rtM_'})">
+rtM_
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<span title="全局变量不直接在任何函数中使用。">0</span><span style="font-family:Courier">*</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<span title="全局变量不直接在任何函数中使用。">0</span><span style="font-family:Courier">*</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub80" id="globalvarInfo_table_sub80" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; errorStatus</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub80_sub81" id="button_globalvarInfo_table_sub80_sub81" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub80_sub81', true)"><span class="shrink-button">[+]</span></span> Timing</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub80_sub81" id="globalvarInfo_table_sub80_sub81" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub80_sub81_sub82" id="button_globalvarInfo_table_sub80_sub81_sub82" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'globalvarInfo_table_sub80_sub81_sub82', true)"><span class="shrink-button">[+]</span></span> TaskCounters</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub80_sub81_sub82" id="globalvarInfo_table_sub80_sub81_sub82" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; TID</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; cLimit</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">0<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>合计</b>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>1,564</b>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>718<span style="font-family:Courier">&#160;</span></b>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+ 
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+* 全局变量不直接在任何函数中使用。
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+<h3 name="sec_局部静态变量" id="sec_localstatic_info">
+3. 局部静态变量 <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_003_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_003', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_003" id="rtwIdCodeMetrics_table_003" border="0">
+<tr>
+<td align="left" valign="top">
+<span> 局部静态变量在函数内定义，且仅可在定义它们的函数内访问。这些变量在程序的整个持续时间内保持所赋的值。局部静态变量的总大小为<b> 336 字节</b>。 </span>
+</td>
+
+</tr>
+
+</table>
+<h3 name="sec_函数信息" id="sec_fcn_info">
+4. 函数信息 <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_025_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_025', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_025" id="rtwIdCodeMetrics_table_025" border="0">
+<tr>
+<td align="left" valign="top">
+以调用树格式或表格式查看函数度量。 自身堆栈数值包括函数的局部非静态变量大小、输入参数和返回变量的大小。 累积堆栈数值包括函数的估计堆栈大小加上函数调用的子例程的最大累积堆栈大小。
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="fcnInfo_calltree" id="fcnInfo_calltree" border="0">
+<tr>
+<td align="left" valign="top">
+视图:调用树 | <a href="javascript:if (rtwSwitchView) rtwSwitchView(window.document,'fcnInfo_calltree', 'fcnInfo_table')" title="按字母顺序排序的函数列表。第二列包括函数的调用方。">
+表
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="1">
+<tr style="background-color: #ffffff">
+<td width="100%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="0" cellspacing="0" class="treeTable" id="fcnTreeView" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="按最大累积堆栈大小排序的函数名称。">函数名称</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="函数的估计堆栈大小加上其子例程的最大累积堆栈大小。">累积堆栈大小(字节)</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="函数中局部变量、输入参数和返回变量的大小。">自身堆栈大小(字节)</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="不包括注释和空行的代码行数。">代码行数</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="包括源代码、注释和空行的代码行数。">行数</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="圈复杂度">复杂度</span>
+</b>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="border-style: none" width="100%" cellpadding="0" cellspacing="0" name="" id="" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_4" id="button_4" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '4', true)"><span class="shrink-button">[+]</span></span>&#160;<b><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step'})">
+blinky_step
+</a>
+</b></span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+108
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_5" id="button_5" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '5', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step1'})">
+blinky_step1
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+104
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+84
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+191
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+19
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="5" id="5" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_6" id="button_6" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '6', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'imufilter_stepImpl'})" title="imufilter_stepImpl 是 blinky.c 中的静态函数。">
+imufilter_stepImpl
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+101
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+41
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+285
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+344
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+27
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="6" id="6" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_7" id="button_7" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '7', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternionBase_rotmat'})" title="quaternionBase_rotmat 是 blinky.c 中的静态函数。">
+quaternionBase_rotmat
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+60
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+60
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+31
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+37
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="7" id="7" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+sqrtf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="6" id="6" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_9" id="button_9" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '9', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternion_quaternion'})" title="quaternion_quaternion 是 blinky.c 中的静态函数。">
+quaternion_quaternion
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+36
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+36
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+62
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+76
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="9" id="9" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+sqrtf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="6" id="6" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_11" id="button_11" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '11', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternion_quaternion_o'})" title="quaternion_quaternion_o 是 blinky.c 中的静态函数。">
+quaternion_quaternion_o
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+17
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+24
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="11" id="11" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+sqrtf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="11" id="11" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+sinf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="11" id="11" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+cosf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="6" id="6" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+sqrtf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="6" id="6" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+fabsf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="6" id="6" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+memset
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="5" id="5" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+floorf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="5" id="5" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+atan2f
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="5" id="5" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+asinf
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step0'})">
+blinky_step0
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="border-style: none" width="100%" cellpadding="0" cellspacing="0" name="" id="" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_22" id="button_22" title="点击以收缩或展开树" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '22', true)"><span class="shrink-button">[+]</span></span>&#160;<b><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_initialize'})">
+blinky_initialize
+</a>
+</b></span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+48
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+76
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="22" id="22" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+memcpy
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="border-style: none" width="100%" cellpadding="0" cellspacing="0" name="" id="" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<b><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_terminate'})">
+blinky_terminate
+</a>
+</b></span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="fcnInfo_table" id="fcnInfo_table" style="display: none" border="0">
+<tr>
+<td align="left" valign="top">
+视图: <a href="javascript:if (rtwSwitchView) rtwSwitchView(window.document,'fcnInfo_table', 'fcnInfo_calltree')" title="以调用树格式浏览调用图。">
+调用树
+</a>
+ | 表
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" class="treeTable" id="fcnTableView" border="1">
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="按字母顺序排序的函数名称">函数名称</span>
+</b>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="调用对应的第一列中函数的函数列表。调用点的数量包括在括号中。">调用方(调用点数)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="函数的估计堆栈大小加上其子例程的最大累积堆栈大小。">累积堆栈大小(字节)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="函数中局部变量、输入参数和返回变量的大小。">自身堆栈大小(字节)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="不包括注释和空行的代码行数。">代码行数</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="包括源代码、注释和空行的代码行数。">行数</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="圈复杂度">复杂度</span>
+</b>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+asinf
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky_step1 有 asinf 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step1'})">
+blinky_step1
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+atan2f
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky_step1 有 atan2f 的 2 个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step1'})">
+blinky_step1
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'imufilter_stepImpl'})" title="imufilter_stepImpl 是 blinky.c 中的静态函数。">
+imufilter_stepImpl
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky_step1 有 blinky.c:imufilter_stepImpl 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step1'})">
+blinky_step1
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+101
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+41
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+285
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+344
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+27
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternionBase_rotmat'})" title="quaternionBase_rotmat 是 blinky.c 中的静态函数。">
+quaternionBase_rotmat
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:imufilter_stepImpl 有 blinky.c:quaternionBase_rotmat 的 2 个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'imufilter_stepImpl'})" title="imufilter_stepImpl 是 blinky.c 中的静态函数。">
+imufilter_stepImpl
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+60
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+60
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+31
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+37
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternion_quaternion'})" title="quaternion_quaternion 是 blinky.c 中的静态函数。">
+quaternion_quaternion
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:imufilter_stepImpl 有 blinky.c:quaternion_quaternion 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'imufilter_stepImpl'})" title="imufilter_stepImpl 是 blinky.c 中的静态函数。">
+imufilter_stepImpl
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+36
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+36
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+62
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+76
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+8
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternion_quaternion_o'})" title="quaternion_quaternion_o 是 blinky.c 中的静态函数。">
+quaternion_quaternion_o
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:imufilter_stepImpl 有 blinky.c:quaternion_quaternion_o 的 2 个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'imufilter_stepImpl'})" title="imufilter_stepImpl 是 blinky.c 中的静态函数。">
+imufilter_stepImpl
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+17
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+24
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_initialize'})">
+blinky_initialize
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+&#160;
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+48
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+76
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step'})">
+blinky_step
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+&#160;
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+108
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step0'})">
+blinky_step0
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky_step 有 blinky_step0 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step'})">
+blinky_step
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step1'})">
+blinky_step1
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky_step 有 blinky_step1 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step'})">
+blinky_step
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+104
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+84
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+191
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+19
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_terminate'})">
+blinky_terminate
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+&#160;
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+cosf
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:quaternion_quaternion_o 有 cosf 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternion_quaternion_o'})" title="quaternion_quaternion_o 是 blinky.c 中的静态函数。">
+quaternion_quaternion_o
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+fabsf
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:imufilter_stepImpl 有 fabsf 的 5 个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'imufilter_stepImpl'})" title="imufilter_stepImpl 是 blinky.c 中的静态函数。">
+imufilter_stepImpl
+</a>
+ (5)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+floorf
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky_step1 有 floorf 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step1'})">
+blinky_step1
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+memcpy
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky_initialize 有 memcpy 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_initialize'})">
+blinky_initialize
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+memset
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:imufilter_stepImpl 有 memset 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'imufilter_stepImpl'})" title="imufilter_stepImpl 是 blinky.c 中的静态函数。">
+imufilter_stepImpl
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+sinf
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:quaternion_quaternion_o 有 sinf 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternion_quaternion_o'})" title="quaternion_quaternion_o 是 blinky.c 中的静态函数。">
+quaternion_quaternion_o
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+sqrtf
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:quaternion_quaternion 有 sqrtf 的 4 个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternion_quaternion'})" title="quaternion_quaternion 是 blinky.c 中的静态函数。">
+quaternion_quaternion
+</a>
+ (4)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:quaternion_quaternion_o 有 sqrtf 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternion_quaternion_o'})" title="quaternion_quaternion_o 是 blinky.c 中的静态函数。">
+quaternion_quaternion_o
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:quaternionBase_rotmat 有 sqrtf 的一个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'quaternionBase_rotmat'})" title="quaternionBase_rotmat 是 blinky.c 中的静态函数。">
+quaternionBase_rotmat
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="blinky.c:imufilter_stepImpl 有 sqrtf 的 2 个调用点。"><a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'imufilter_stepImpl'})" title="imufilter_stepImpl 是 blinky.c 中的静态函数。">
+imufilter_stepImpl
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="找不到此函数的定义。">不可用</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>

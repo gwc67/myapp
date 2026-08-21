@@ -9,7 +9,7 @@
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
-#include "simulink/IntelWin64/blinky/blinky.h"
+#include "simulink/ARMCortex-M/blinky/blinky.h"
 LOG_MODULE_REGISTER(tb6612, LOG_LEVEL_INF);
 
 

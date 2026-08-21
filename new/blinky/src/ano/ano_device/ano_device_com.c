@@ -20,7 +20,7 @@ static int s_ano_device_com_init(void)
 {
     ano_set_send_id(g_com_ano_pst, 0x00, 0);
     ano_set_send_id(g_com_ano_pst, 0x01, 20);
-    ano_set_send_id(g_com_ano_pst, SIMULINK_DATA_TX, 10);
+    // ano_set_send_id(g_com_ano_pst, SIMULINK_DATA_TX, 10);
     return 0;
 }
 
@@ -89,23 +89,23 @@ void com_add_send_data(uint8_t frame_num_uc,uint8_t *cnt_puc,uint8_t* data_puc)
         break;
         case SIMULINK_DATA_TX:
         {
-            struct euler_t euler_st;
-            euler_copy(&euler_st);
-            memcpy(data_puc + *cnt_puc,&euler_st.pitch_db,sizeof(euler_st.pitch_db));
-            *cnt_puc += sizeof(euler_st.pitch_db);
+            // struct euler_t euler_st;
+            // euler_copy(&euler_st);
+            // memcpy(data_puc + *cnt_puc,&euler_st.pitch_db,sizeof(euler_st.pitch_db));
+            // *cnt_puc += sizeof(euler_st.pitch_db);
 
-            struct encoder_data_t encoder_data_st;
-            encoder_get_data(g_encoder_a_pst, &encoder_data_st);
+            // struct encoder_data_t encoder_data_st;
+            // encoder_get_data(g_encoder_a_pst, &encoder_data_st);
 
-            memcpy(data_puc + *cnt_puc,&encoder_data_st.rpm_l,sizeof(encoder_data_st.rpm_l));
-            *cnt_puc += sizeof(encoder_data_st.rpm_l);
+            // memcpy(data_puc + *cnt_puc,&encoder_data_st.rpm_l,sizeof(encoder_data_st.rpm_l));
+            // *cnt_puc += sizeof(encoder_data_st.rpm_l);
 
-            encoder_get_data(g_encoder_b_pst, &encoder_data_st);
-            memcpy(data_puc + *cnt_puc,&encoder_data_st.rpm_l,sizeof(encoder_data_st.rpm_l));
-            *cnt_puc += sizeof(encoder_data_st.rpm_l);
+            // encoder_get_data(g_encoder_b_pst, &encoder_data_st);
+            // memcpy(data_puc + *cnt_puc,&encoder_data_st.rpm_l,sizeof(encoder_data_st.rpm_l));
+            // *cnt_puc += sizeof(encoder_data_st.rpm_l);
             
-            data_puc[(*cnt_puc)++] = '\r';
-            data_puc[(*cnt_puc)++] = '\n';
+            // data_puc[(*cnt_puc)++] = '\r';
+            // data_puc[(*cnt_puc)++] = '\n';
         }
         break;
         default:
@@ -124,6 +124,6 @@ void com_check_to_send(void)
     ano_ck_back_check(g_com_ano_pst);
     ano_check_to_send(g_com_ano_pst, 0x00);
     ano_check_to_send(g_com_ano_pst, 0xe0);
-    ano_check_to_send(g_com_ano_pst, SIMULINK_DATA_TX);
+    // ano_check_to_send(g_com_ano_pst, SIMULINK_DATA_TX);
     // ano_check_to_send(g_com_ano_pst, 0x01);
 }

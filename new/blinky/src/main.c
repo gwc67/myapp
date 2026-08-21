@@ -13,6 +13,7 @@
 #include <zephyr/device.h>
 #include <zephyr/display/cfb.h>
 #include <zephyr/sys/printk.h>
+#include "OLED_Menu.h"
 #include "ano/ano_base.h"
 #include "encode/encode.h"
 #include "menu/menu.h"
@@ -20,14 +21,16 @@
 #include "motor/tb6612.h"
 #include "mpu6050/ahrs_madgwick.h"
 #include "mpu6050/euler.h"
-#include "simulink/IntelWin64/blinky/blinky.h"
+#include "simulink/ARMCortex-M/blinky/blinky.h"
+#include "simulink/ARMCortex-M/blinky/rtmodel.h"
 #include "uart_base.h"
+#include "value_to_str.h"
 #include "zephyr/kernel/thread.h"
 #include "zephyr/kernel/thread_stack.h"
 #include "zephyr/syscalls/kernel.h"
 #include "uarts.h"
 // static const struct gpio_dt_spec led0 = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
-
+#define RAD_TO_DEG 57.295779513082320876798154814105
 /* 1ms 任务：euler_update() 做 AHRS 解算，可能有浮点运算 */
 static K_THREAD_STACK_DEFINE(s_stack_1ms_high, 2048);   /* 2KB 足够 */
 
@@ -71,15 +74,11 @@ static void s_task_5ms_high(void *p1,void *p2,void *p3)
 
 		euler_update();
 		encoder_update_all();
-
 		struct encoder_data_t speed_a_st = {0};
 		encoder_get_data(g_encoder_a_pst, &speed_a_st);
 		rtU.motor_a_actual_speed = speed_a_st.rpm_l;
 		motor_set(g_motor_a_pst, rtY.motor_a_pwm);
-
-		//matlab 生成的pid调用
-		blinky_step1();
-		
+		blinky_step(1);
 		k_msleep(5);
 
 	}
@@ -89,8 +88,12 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 {
 
 	while (1) {
+    	menu_request_refresh(g_mpu6050_euler_oled_pst);
+
+		char num[10];
 		char buf[128];
-		snprintf(buf,sizeof(buf),"%d,%d,%d\n",(int32_t)rtU.motor_a_actual_speed,(int32_t)rtU.speed_a_target,(int32_t)rtY.motor_a_pwm);
+		float_to_str(num, sizeof(num), rtY.pitch * RAD_TO_DEG , 2);
+		snprintf(buf,sizeof(buf),"%d,%d,%d,%s\n",(int32_t)rtU.motor_a_actual_speed,(int32_t)rtU.speed_a_target,(int32_t)rtY.motor_a_pwm,num);
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		menu_task_v();
 		k_msleep(5);

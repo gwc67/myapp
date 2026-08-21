@@ -4,6 +4,7 @@
 #include "zephyr/drivers/sensor.h"
 #include "zephyr/init.h"
 #include "zephyr/syscalls/sensor.h"
+#include <math.h>
 #include <sys/errno.h>
 
 
@@ -47,9 +48,9 @@ int mpu6050_get_gyro(struct mpu6050_vec3_t *out)
         out->y_db = sensor_value_to_double(&buf[1]);
         out->z_db = sensor_value_to_double(&buf[2]);;
 
-        // out->x_db += 0.06;
-        // out->y_db += 0.01;
-        // out->z_db += 0.04;  //零漂
+        out->x_db += 0.05;
+        out->y_db += 0.01;
+        out->z_db += 0.04;  //零漂
     }
     return ret;
 }
