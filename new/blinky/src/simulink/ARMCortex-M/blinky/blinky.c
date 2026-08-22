@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.63
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Aug 22 18:40:24 2026
+ * C/C++ source code generated on : Sat Aug 22 20:14:05 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -21,7 +21,7 @@
 #include <string.h>
 
 /* Exported block parameters */
-real_T BALANCE_KD = -1.0;               /* Variable: BALANCE_KD
+real_T BALANCE_KD = 1.0;               /* Variable: BALANCE_KD
                                         * Referenced by: '<S34>/Derivative Gain'
                                         */
 real_T BALANCE_KP = 20.0;              /* Variable: BALANCE_KP
@@ -406,13 +406,13 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    *  DataStoreRead: '<S60>/Data Store ReadP'
    *  DataStoreRead: '<S60>/Data Store ReadX'
    */
-  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
+  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[0]));
 
-  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
+  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.b_dHdx[0] = ((rtDW.x[0] + rtDW.epsilon) - rtDW.x[0]) / rtDW.epsilon;
@@ -420,13 +420,13 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[1]));
 
-  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
+  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.b_dHdx[2] = 0.0 / rtDW.epsilon;
   rtDW.b_dHdx[3] = ((rtDW.x[1] + rtDW.epsilon) - rtDW.x[1]) / rtDW.epsilon;
 
-  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
+  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   qrFactor(rtDW.b_dHdx, rtDW.P_i, rtConstP.R1_Value, rtDW.Sy);
@@ -619,8 +619,8 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   /* Start for MATLABSystem: '<S62>/MATLAB System' incorporates:
    *  Inport: '<Root>/gyro'
    */
-  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
-  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
+  /*  x = [pitch; roll]  (2¡Á1) */
+  /*  u = [gx; gy]       (2¡Á1) */
   rtDW.K_idx_2 = rtU.gyro[1] * 0.005;
 
   /* MATLABSystem: '<S62>/MATLAB System' incorporates:
@@ -638,22 +638,22 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    */
   rtDW.z_idx_1 = rtDW.rtb_DataTypeConversion2_idx_0 + rtDW.x[1];
 
-  /*  2ï¿½ï¿½1 */
+  /*  2¡Á1 */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[0]));
 
-  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
-  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
-  /*  2ï¿½ï¿½1 */
+  /*  x = [pitch; roll]  (2¡Á1) */
+  /*  u = [gx; gy]       (2¡Á1) */
+  /*  2¡Á1 */
   rtDW.b_dHdx[0] = (((rtDW.x[0] + rtDW.epsilon) + rtDW.K_idx_2) - rtDW.z_idx_0) /
     rtDW.epsilon;
   rtDW.b_dHdx[1] = (rtDW.z_idx_1 - rtDW.z_idx_1) / rtDW.epsilon;
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[1]));
 
-  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
-  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
-  /*  2ï¿½ï¿½1 */
+  /*  x = [pitch; roll]  (2¡Á1) */
+  /*  u = [gx; gy]       (2¡Á1) */
+  /*  2¡Á1 */
   rtDW.b_dHdx[2] = (rtDW.z_idx_0 - rtDW.z_idx_0) / rtDW.epsilon;
   rtDW.b_dHdx[3] = (((rtDW.x[1] + rtDW.epsilon) +
                      rtDW.rtb_DataTypeConversion2_idx_0) - rtDW.z_idx_1) /
@@ -661,9 +661,9 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
 
   /* End of Outputs for SubSystem: '<S59>/Predict' */
   /* End of Outputs for SubSystem: '<Root>/task_5ms' */
-  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
-  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
-  /*  2ï¿½ï¿½1 */
+  /*  x = [pitch; roll]  (2¡Á1) */
+  /*  u = [gx; gy]       (2¡Á1) */
+  /*  2¡Á1 */
   for (i = 0; i < 4; i++) {
     /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
     /* Outputs for Atomic SubSystem: '<S59>/Predict' */
