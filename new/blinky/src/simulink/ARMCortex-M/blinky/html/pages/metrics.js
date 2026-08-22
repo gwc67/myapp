@@ -2,12 +2,16 @@ function CodeMetrics() {
 	 this.metricsArray = {};
 	 this.metricsArray.var = new Array();
 	 this.metricsArray.fcn = new Array();
-	 this.metricsArray.var["blinky.c:rtM_"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
+	 this.metricsArray.var["BALANCE_KD"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
 	size: 8};
+	 this.metricsArray.var["BALANCE_KP"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
+	size: 8};
+	 this.metricsArray.var["blinky.c:rtM_"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
+	size: 12};
 	 this.metricsArray.var["rtDW"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
-	size: 640};
+	size: 632};
 	 this.metricsArray.var["rtU"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
-	size: 48};
+	size: 40};
 	 this.metricsArray.var["rtY"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
 	size: 24};
 	 this.metricsArray.fcn["atan2f"] = {file: "D:\\Downloads\\app3\\matlab_2\\polyspace\\verifier\\cxx\\include\\include-libc\\bits\\mathcalls.h",
@@ -33,20 +37,20 @@ function CodeMetrics() {
 	stackTotal: 0};
 	 this.metricsArray.fcn["blinky_step"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\rtmodel.c",
 	stack: 4,
-	stackTotal: 120};
+	stackTotal: 115};
 	 this.metricsArray.fcn["blinky_step0"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
 	stack: 0,
 	stackTotal: 0};
 	 this.metricsArray.fcn["blinky_step1"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
-	stack: 19,
-	stackTotal: 116};
+	stack: 14,
+	stackTotal: 111};
 	 this.metricsArray.fcn["blinky_terminate"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
 	stack: 0,
 	stackTotal: 0};
 	 this.metricsArray.fcn["fabs"] = {file: "D:\\Downloads\\app3\\matlab_2\\polyspace\\verifier\\cxx\\include\\include-libc\\bits\\mathcalls.h",
 	stack: 0,
 	stackTotal: 0};
-	 this.metricsArray.fcn["floorf"] = {file: "D:\\Downloads\\app3\\matlab_2\\polyspace\\verifier\\cxx\\include\\include-libc\\bits\\mathcalls.h",
+	 this.metricsArray.fcn["floor"] = {file: "D:\\Downloads\\app3\\matlab_2\\polyspace\\verifier\\cxx\\include\\include-libc\\bits\\mathcalls.h",
 	stack: 0,
 	stackTotal: 0};
 	 this.metricsArray.fcn["fmax"] = {file: "D:\\Downloads\\app3\\matlab_2\\polyspace\\verifier\\cxx\\include\\include-libc\\bits\\mathcalls.h",
@@ -71,6 +75,6 @@ function CodeMetrics() {
 			 data.type = "var";
 		 }
 	 return data; }; 
-	 this.codeMetricsSummary = '<a href="javascript:void(0)" onclick="return postParentWindowMessage({message:\'gotoReportPage\', pageName:\'blinky_metrics\'});">Global Memory: 720(bytes) Maximum Stack: 57(bytes)</a>';
+	 this.codeMetricsSummary = '<a href="javascript:void(0)" onclick="return postParentWindowMessage({message:\'gotoReportPage\', pageName:\'blinky_metrics\'});">Global Memory: 724(bytes) Maximum Stack: 57(bytes)</a>';
 	}
 CodeMetrics.instance = new CodeMetrics();

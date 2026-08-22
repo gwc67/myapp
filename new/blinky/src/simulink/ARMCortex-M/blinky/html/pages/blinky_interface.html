@@ -229,39 +229,7 @@ void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'ju
 <h3>
 3.1 输入端口
 </h3>
-输入是基于模型根级输入端口的存储类设定在代码中生成的变量。<div id="fcn_rtU.motor_a_actual_speed">
-<h4 class="function">
-rtU.motor_a_actual_speed
-</h4>
-<span class="description">
-<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:97\')'})"  name="code2model" class="code2model">&lt;Root&gt;/motor_a_actual_speed</a> 的输入数据
-</span>
-<div class="programlisting">
-<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
-struct {
-  ...
-  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootmotor_a_actual_speed,blinky.h'})">motor_a_actual_speed</a>;
-  ...
-} rtU;</code>
-</div>
-</div>
-<div id="fcn_rtU.speed_a_target">
-<h4 class="function">
-rtU.speed_a_target
-</h4>
-<span class="description">
-<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:103\')'})"  name="code2model" class="code2model">&lt;Root&gt;/speed_a_target</a> 的输入数据
-</span>
-<div class="programlisting">
-<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
-struct {
-  ...
-  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootspeed_a_target,blinky.h'})">speed_a_target</a>;
-  ...
-} rtU;</code>
-</div>
-</div>
-<div id="fcn_rtU.running_flag">
+输入是基于模型根级输入端口的存储类设定在代码中生成的变量。<div id="fcn_rtU.running_flag">
 <h4 class="function">
 rtU.running_flag
 </h4>
@@ -346,23 +314,7 @@ struct {
 <h3>
 3.2 输出端口
 </h3>
-输出是基于模型根级输出端口的存储类设定在代码中生成的变量。<div id="fcn_rtY.motor_a_pwm">
-<h4 class="function">
-rtY.motor_a_pwm
-</h4>
-<span class="description">
-<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:99\')'})"  name="code2model" class="code2model">&lt;Root&gt;/motor_a_pwm</a> 的输出数据
-</span>
-<div class="programlisting">
-<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
-struct {
-  ...
-  int16_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootmotor_a_pwm,blinky.h'})">motor_a_pwm</a>;
-  ...
-} rtY;</code>
-</div>
-</div>
-<div id="fcn_rtY.roll">
+输出是基于模型根级输出端口的存储类设定在代码中生成的变量。<div id="fcn_rtY.roll">
 <h4 class="function">
 rtY.roll
 </h4>
@@ -394,14 +346,67 @@ struct {
 } rtY;</code>
 </div>
 </div>
+<div id="fcn_rtY.motor_a_pwm">
+<h4 class="function">
+rtY.motor_a_pwm
+</h4>
+<span class="description">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:407\')'})"  name="code2model" class="code2model">&lt;Root&gt;/motor_a_pwm</a> 的输出数据
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+struct {
+  ...
+  int16_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootmotor_a_pwm,blinky.h'})">motor_a_pwm</a>;
+  ...
+} rtY;</code>
+</div>
+</div>
+<div id="fcn_rtY.motor_b_pwm">
+<h4 class="function">
+rtY.motor_b_pwm
+</h4>
+<span class="description">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:408\')'})"  name="code2model" class="code2model">&lt;Root&gt;/motor_b_pwm</a> 的输出数据
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+struct {
+  ...
+  int16_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootmotor_b_pwm,blinky.h'})">motor_b_pwm</a>;
+  ...
+} rtY;</code>
+</div>
+</div>
 </section>
 <section id="sec_interface_parameters">
 <h3>
 3.3 参数
 </h3>
-参数是生成的代码中的变量，表示模型参数和模型参数参量。当模型代码在目标环境中执行时，将基于存储类设定生成变量并该变量标记为可调或不可调。<p>
-模型中没有接口或可调参数。
-</p>
+参数是生成的代码中的变量，表示模型参数和模型参数参量。当模型代码在目标环境中执行时，将基于存储类设定生成变量并该变量标记为可调或不可调。<div id="fcn_BALANCE_KD">
+<h4 class="function">
+BALANCE_KD
+</h4>
+<span class="description">
+BALANCE_KD 的参数
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+extern real_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'BALANCE_KD,blinky.h'})">BALANCE_KD</a>;</code>
+</div>
+</div>
+<div id="fcn_BALANCE_KP">
+<h4 class="function">
+BALANCE_KP
+</h4>
+<span class="description">
+BALANCE_KP 的参数
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+extern real_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'BALANCE_KP,blinky.h'})">BALANCE_KP</a>;</code>
+</div>
+</div>
 </section>
 <section id="sec_data_stores">
 <h3>

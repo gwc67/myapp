@@ -32,9 +32,9 @@ static void s_draw_speed_a(struct menu_node_t *self)
     cfb_framebuffer_set_font(s_oled_pst, 1);
     cfb_print(s_oled_pst, self->base.name, 0, 0);
     cfb_framebuffer_set_font(s_oled_pst, 0);
-    if (self->data) {
-        rtU.speed_a_target = *(self->data);
-    }
+    // if (self->data) {
+    //     rtU.speed_a_target = *(self->data);
+    // }
 }
 
 static void s_draw_mpu6050(struct menu_node_t* self)

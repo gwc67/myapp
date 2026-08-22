@@ -54,6 +54,7 @@ static struct k_thread s_thread_100ms_high;
 static void s_task_1ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
+		blinky_step(0);
 		ano_check_data(g_com_ano_pst);
 		k_msleep(1);
 	}
@@ -75,13 +76,14 @@ static void s_task_5ms_high(void *p1,void *p2,void *p3)
 		euler_update();
 		encoder_update_all();
 		
-		struct encoder_data_t speed_a_st = {0};
-		encoder_get_data(g_encoder_a_pst, &speed_a_st);
+		// struct encoder_data_t speed_a_st = {0};
+		// encoder_get_data(g_encoder_a_pst, &speed_a_st);
 		//matlab控制逻辑
-		rtU.motor_a_actual_speed = speed_a_st.rpm_l;
+		// rtU.motor_a_actual_speed = speed_a_st.rpm_l;
 		blinky_step(1);
 
 		motor_set(g_motor_a_pst, rtY.motor_a_pwm);
+		motor_set(g_motor_b_pst, rtY.motor_b_pwm);
 
 		k_msleep(5);
 
@@ -94,10 +96,11 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 	while (1) {
     	menu_request_refresh(g_mpu6050_euler_oled_pst);
 
-		char num[10];
+		char float_num[10];
 		char buf[128];
-		float_to_str(num, sizeof(num), rtY.pitch , 2);
-		snprintf(buf,sizeof(buf),"%d,%d,%d,%s\n",(int32_t)rtU.motor_a_actual_speed,(int32_t)rtU.speed_a_target,(int32_t)rtY.motor_a_pwm,num);
+		float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
+		// snprintf(buf,sizeof(buf),"%d,%d,%d,%s\n",(int32_t)rtU.motor_a_actual_speed,(int32_t)rtU.speed_a_target,(int32_t)rtY.motor_a_pwm,num);
+		snprintf(buf,sizeof(buf),"%d,%d,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num);
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		menu_task_v();
 		k_msleep(5);

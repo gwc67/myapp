@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'blinky'.
  *
- * Model version                  : 1.59
+ * Model version                  : 1.63
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Fri Aug 21 19:44:16 2026
+ * C/C++ source code generated on : Fri Aug 21 21:50:39 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -50,14 +50,14 @@
 /* Exported data define */
 
 /* Definition for custom storage class: Define */
-#define SPEED_Kd                       0.0F                      /* Referenced by: '<S32>/Derivative Gain' */
-#define SPEED_Ki                       1.0F                      /* Referenced by: '<S36>/Integral Gain' */
-#define SPEED_Kp                       6.0F                      /* Referenced by: '<S44>/Proportional Gain' */
+#define BALANCE_OFFSET                 0.0                       /* Referenced by: '<S4>/BALANCE_OFFSET' */
+#define PWM_MAX                        500                       /* Referenced by: '<S4>/Saturation' */
+#define PWM_MIN                        -500                      /* Referenced by: '<S4>/Saturation' */
 
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
-  real_T P_i[4];                       /* '<S57>/DataStoreMemory - P' */
-  real_T x[2];                         /* '<S57>/DataStoreMemory - x' */
+  real_T P_i[4];                       /* '<S6>/DataStoreMemory - P' */
+  real_T x[2];                         /* '<S6>/DataStoreMemory - x' */
   real_T M[8];
   real_T Sy[4];
   real_T b_dHdx[4];
@@ -71,12 +71,12 @@ typedef struct {
   real_T b_tau_k[2];
   real_T work_c[2];
   real_T epsilon;
+  real_T Gain1;                        /* '<S2>/Gain1' */
   real_T rtb_DataTypeConversion2_idx_1;
-  real_T rtb_DataTypeConversion2_idx_0;
   real_T z_idx_1;
   real_T z_idx_0;
-  real_T K_idx_0;
-  real_T K_idx_2;
+  real_T K_idx_1;
+  real_T K_idx_3;
   real_T A_b;
   real_T A_p;
   real_T b_atmp;
@@ -94,30 +94,27 @@ typedef struct {
   real_T A_pp;
   real_T S_l;
   real_T a;
-  real32_T Integrator_DSTATE;          /* '<S39>/Integrator' */
-  real32_T Filter_DSTATE;              /* '<S34>/Filter' */
-  real32_T Sum2;                       /* '<S1>/Sum2' */
-  int8_T Integrator_PrevResetState;    /* '<S39>/Integrator' */
-  int8_T Filter_PrevResetState;        /* '<S34>/Filter' */
+  int16_T UnitDelay;                   /* '<Root>/Unit Delay' */
+  int16_T UnitDelay1;                  /* '<Root>/Unit Delay1' */
+  int16_T UnitDelay_DSTATE;            /* '<Root>/Unit Delay' */
+  int16_T UnitDelay1_DSTATE;           /* '<Root>/Unit Delay1' */
 } DW;
 
 /* Constant parameters (default storage) */
 typedef struct {
   /* Expression: p.R{1}
-   * Referenced by: '<S57>/R1'
+   * Referenced by: '<S6>/R1'
    */
   real_T R1_Value[4];
 
   /* Expression: p.Q
-   * Referenced by: '<S57>/Q'
+   * Referenced by: '<S6>/Q'
    */
   real_T Q_Value[4];
 } ConstP;
 
 /* External inputs (root inport signals with default storage) */
 typedef struct {
-  real32_T motor_a_actual_speed;       /* '<Root>/motor_a_actual_speed' */
-  real32_T speed_a_target;             /* '<Root>/speed_a_target' */
   uint8_T running_flag;                /* '<Root>/running_flag' */
   real_T gyro[2];                      /* '<Root>/gyro' */
   real32_T accx;                       /* '<Root>/accx' */
@@ -127,9 +124,10 @@ typedef struct {
 
 /* External outputs (root outports fed by signals with default storage) */
 typedef struct {
-  int16_T motor_a_pwm;                 /* '<Root>/motor_a_pwm' */
   real_T roll;                         /* '<Root>/roll' */
   real_T pitch;                        /* '<Root>/pitch' */
+  int16_T motor_a_pwm;                 /* '<Root>/motor_a_pwm' */
+  int16_T motor_b_pwm;                 /* '<Root>/motor_b_pwm' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -146,6 +144,10 @@ struct tag_RTM {
       uint8_T TID[2];
       uint8_T cLimit[2];
     } TaskCounters;
+
+    struct {
+      uint8_T TID0_1;
+    } RateInteraction;
   } Timing;
 };
 
@@ -161,6 +163,21 @@ extern ExtY rtY;
 /* Constant parameters (default storage) */
 extern const ConstP rtConstP;
 
+/*
+ * Exported Global Parameters
+ *
+ * Note: Exported global parameters are tunable parameters with an exported
+ * global storage class designation.  Code generation will declare the memory for
+ * these parameters and exports their symbols.
+ *
+ */
+extern real_T BALANCE_KD;              /* Variable: BALANCE_KD
+                                        * Referenced by: '<S4>/BALANCE_KD'
+                                        */
+extern real_T BALANCE_KP;              /* Variable: BALANCE_KP
+                                        * Referenced by: '<S4>/BALANCE_KP'
+                                        */
+
 /* Model entry point functions */
 extern void blinky_initialize(void);
 extern void blinky_step0(void);        /* Sample time: [0.001s, 0.0s] */
@@ -173,17 +190,14 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<Root>/Scope4' : Unused code path elimination
- * Block '<S1>/Scope2' : Unused code path elimination
- * Block '<S57>/checkMeasurementFcn1Signals' : Unused code path elimination
- * Block '<S57>/checkStateTransitionFcnSignals' : Unused code path elimination
- * Block '<S1>/Data Type Conversion' : Eliminate redundant data type conversion
- * Block '<S57>/DataTypeConversion_Enable1' : Eliminate redundant data type conversion
- * Block '<S57>/DataTypeConversion_Q' : Eliminate redundant data type conversion
- * Block '<S57>/DataTypeConversion_R1' : Eliminate redundant data type conversion
- * Block '<S57>/DataTypeConversion_uMeas1' : Eliminate redundant data type conversion
- * Block '<S57>/DataTypeConversion_uState' : Eliminate redundant data type conversion
- * Block '<S57>/DataTypeConversion_y1' : Eliminate redundant data type conversion
+ * Block '<S6>/checkMeasurementFcn1Signals' : Unused code path elimination
+ * Block '<S6>/checkStateTransitionFcnSignals' : Unused code path elimination
+ * Block '<S6>/DataTypeConversion_Enable1' : Eliminate redundant data type conversion
+ * Block '<S6>/DataTypeConversion_Q' : Eliminate redundant data type conversion
+ * Block '<S6>/DataTypeConversion_R1' : Eliminate redundant data type conversion
+ * Block '<S6>/DataTypeConversion_uMeas1' : Eliminate redundant data type conversion
+ * Block '<S6>/DataTypeConversion_uState' : Eliminate redundant data type conversion
+ * Block '<S6>/DataTypeConversion_y1' : Eliminate redundant data type conversion
  */
 
 /*-
@@ -201,67 +215,16 @@ extern RT_MODEL *const rtM;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'blinky'
- * '<S1>'   : 'blinky/task_5ms'
- * '<S2>'   : 'blinky/task_5ms/Discrete PID Controller1'
+ * '<S1>'   : 'blinky/task_1ms'
+ * '<S2>'   : 'blinky/task_5ms'
  * '<S3>'   : 'blinky/task_5ms/MATLAB Function3'
- * '<S4>'   : 'blinky/task_5ms/kalman_system'
- * '<S5>'   : 'blinky/task_5ms/Discrete PID Controller1/Anti-windup'
- * '<S6>'   : 'blinky/task_5ms/Discrete PID Controller1/D Gain'
- * '<S7>'   : 'blinky/task_5ms/Discrete PID Controller1/External Derivative'
- * '<S8>'   : 'blinky/task_5ms/Discrete PID Controller1/Filter'
- * '<S9>'   : 'blinky/task_5ms/Discrete PID Controller1/Filter ICs'
- * '<S10>'  : 'blinky/task_5ms/Discrete PID Controller1/I Gain'
- * '<S11>'  : 'blinky/task_5ms/Discrete PID Controller1/Ideal P Gain'
- * '<S12>'  : 'blinky/task_5ms/Discrete PID Controller1/Ideal P Gain Fdbk'
- * '<S13>'  : 'blinky/task_5ms/Discrete PID Controller1/Integrator'
- * '<S14>'  : 'blinky/task_5ms/Discrete PID Controller1/Integrator ICs'
- * '<S15>'  : 'blinky/task_5ms/Discrete PID Controller1/N Copy'
- * '<S16>'  : 'blinky/task_5ms/Discrete PID Controller1/N Gain'
- * '<S17>'  : 'blinky/task_5ms/Discrete PID Controller1/P Copy'
- * '<S18>'  : 'blinky/task_5ms/Discrete PID Controller1/Parallel P Gain'
- * '<S19>'  : 'blinky/task_5ms/Discrete PID Controller1/Reset Signal'
- * '<S20>'  : 'blinky/task_5ms/Discrete PID Controller1/Saturation'
- * '<S21>'  : 'blinky/task_5ms/Discrete PID Controller1/Saturation Fdbk'
- * '<S22>'  : 'blinky/task_5ms/Discrete PID Controller1/Sum'
- * '<S23>'  : 'blinky/task_5ms/Discrete PID Controller1/Sum Fdbk'
- * '<S24>'  : 'blinky/task_5ms/Discrete PID Controller1/Tracking Mode'
- * '<S25>'  : 'blinky/task_5ms/Discrete PID Controller1/Tracking Mode Sum'
- * '<S26>'  : 'blinky/task_5ms/Discrete PID Controller1/Tsamp - Integral'
- * '<S27>'  : 'blinky/task_5ms/Discrete PID Controller1/Tsamp - Ngain'
- * '<S28>'  : 'blinky/task_5ms/Discrete PID Controller1/postSat Signal'
- * '<S29>'  : 'blinky/task_5ms/Discrete PID Controller1/preInt Signal'
- * '<S30>'  : 'blinky/task_5ms/Discrete PID Controller1/preSat Signal'
- * '<S31>'  : 'blinky/task_5ms/Discrete PID Controller1/Anti-windup/Passthrough'
- * '<S32>'  : 'blinky/task_5ms/Discrete PID Controller1/D Gain/Internal Parameters'
- * '<S33>'  : 'blinky/task_5ms/Discrete PID Controller1/External Derivative/Error'
- * '<S34>'  : 'blinky/task_5ms/Discrete PID Controller1/Filter/Disc. Forward Euler Filter'
- * '<S35>'  : 'blinky/task_5ms/Discrete PID Controller1/Filter ICs/Internal IC - Filter'
- * '<S36>'  : 'blinky/task_5ms/Discrete PID Controller1/I Gain/Internal Parameters'
- * '<S37>'  : 'blinky/task_5ms/Discrete PID Controller1/Ideal P Gain/Passthrough'
- * '<S38>'  : 'blinky/task_5ms/Discrete PID Controller1/Ideal P Gain Fdbk/Disabled'
- * '<S39>'  : 'blinky/task_5ms/Discrete PID Controller1/Integrator/Discrete'
- * '<S40>'  : 'blinky/task_5ms/Discrete PID Controller1/Integrator ICs/Internal IC'
- * '<S41>'  : 'blinky/task_5ms/Discrete PID Controller1/N Copy/Disabled'
- * '<S42>'  : 'blinky/task_5ms/Discrete PID Controller1/N Gain/Internal Parameters'
- * '<S43>'  : 'blinky/task_5ms/Discrete PID Controller1/P Copy/Disabled'
- * '<S44>'  : 'blinky/task_5ms/Discrete PID Controller1/Parallel P Gain/Internal Parameters'
- * '<S45>'  : 'blinky/task_5ms/Discrete PID Controller1/Reset Signal/External Reset'
- * '<S46>'  : 'blinky/task_5ms/Discrete PID Controller1/Saturation/Passthrough'
- * '<S47>'  : 'blinky/task_5ms/Discrete PID Controller1/Saturation Fdbk/Disabled'
- * '<S48>'  : 'blinky/task_5ms/Discrete PID Controller1/Sum/Sum_PID'
- * '<S49>'  : 'blinky/task_5ms/Discrete PID Controller1/Sum Fdbk/Disabled'
- * '<S50>'  : 'blinky/task_5ms/Discrete PID Controller1/Tracking Mode/Disabled'
- * '<S51>'  : 'blinky/task_5ms/Discrete PID Controller1/Tracking Mode Sum/Passthrough'
- * '<S52>'  : 'blinky/task_5ms/Discrete PID Controller1/Tsamp - Integral/TsSignalSpecification'
- * '<S53>'  : 'blinky/task_5ms/Discrete PID Controller1/Tsamp - Ngain/Passthrough'
- * '<S54>'  : 'blinky/task_5ms/Discrete PID Controller1/postSat Signal/Forward_Path'
- * '<S55>'  : 'blinky/task_5ms/Discrete PID Controller1/preInt Signal/Internal PreInt'
- * '<S56>'  : 'blinky/task_5ms/Discrete PID Controller1/preSat Signal/Forward_Path'
- * '<S57>'  : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2'
- * '<S58>'  : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2/Correct1'
- * '<S59>'  : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2/Output'
- * '<S60>'  : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2/Predict'
- * '<S61>'  : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2/Output/MATLAB Function'
+ * '<S4>'   : 'blinky/task_5ms/Subsystem'
+ * '<S5>'   : 'blinky/task_5ms/kalman_system'
+ * '<S6>'   : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2'
+ * '<S7>'   : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2/Correct1'
+ * '<S8>'   : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2/Output'
+ * '<S9>'   : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2/Predict'
+ * '<S10>'  : 'blinky/task_5ms/kalman_system/Extended Kalman Filter2/Output/MATLAB Function'
  */
 #endif                                 /* blinky_h_ */
 
