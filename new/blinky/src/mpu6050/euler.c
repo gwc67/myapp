@@ -10,7 +10,7 @@
 #define RAD_TO_DEG 57.295779513082320876798154814105
 
 // float pitch_pre_f ;
-float angle_acc_f;
+// float angle_acc_f;
 // float angle_gryo_f;
 // static struct euler_t s_euler_st = {0};
 
@@ -109,7 +109,7 @@ void euler_update(void)
     rtU.accz = acc_st.z_db;
     
 
-    angle_acc_f = -atan2(acc_st.x_db, acc_st.z_db) * RAD_TO_DEG;   //往前倾的时候x,z 都是正的
+    // angle_acc_f = -atan2(acc_st.x_db, acc_st.z_db) * RAD_TO_DEG;   //往前倾的时候x,z 都是正的
     // angle_gryo_f = pitch_pre_f + gyro_st.y_db * 0.001 * RAD_TO_DEG; //gyro.y_db 却是负的，因此这样
 
     // float Alpha = 0.05;

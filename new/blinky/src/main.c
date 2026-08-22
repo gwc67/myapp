@@ -102,14 +102,14 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		char bal_kp_pc[10];
 		char bal_kd_pc[10];
 
-		char angle_acc_pc[10];
+		// char angle_acc_pc[10];
 
 		char buf[128];
 		float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
 		float_to_str(bal_kp_pc, sizeof(bal_kp_pc), BALANCE_KP , 2);
 		float_to_str(bal_kd_pc, sizeof(bal_kd_pc), BALANCE_KD , 2);
-		float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
-		snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,angle_acc_pc);
+		// float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
+		snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc);
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 
 		menu_task_v();
