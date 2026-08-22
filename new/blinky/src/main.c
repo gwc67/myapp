@@ -9,6 +9,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/_intsup.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/display/cfb.h>
@@ -101,19 +102,15 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		char bal_kp_pc[10];
 		char bal_kd_pc[10];
 
+		char angle_acc_pc[10];
+
 		char buf[128];
 		float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
 		float_to_str(bal_kp_pc, sizeof(bal_kp_pc), BALANCE_KP , 2);
 		float_to_str(bal_kd_pc, sizeof(bal_kd_pc), BALANCE_KD , 2);
-		// snprintf(buf,sizeof(buf),"%d,%d,%d,%s\n",(int32_t)rtU.motor_a_actual_speed,(int32_t)rtU.speed_a_target,(int32_t)rtY.motor_a_pwm,num);
-		snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc);
-
-		// float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
-		// snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc);
+		float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
+		snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,angle_acc_pc);
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
-
-		// snprintf(buf,sizeof(buf),"%s\n",bal_kd_pc);
-		// uart_transmit(g_uart2_pst, buf, strlen(buf));
 
 		menu_task_v();
 		k_msleep(5);

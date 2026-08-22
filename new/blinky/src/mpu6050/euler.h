@@ -22,7 +22,7 @@
 
 // void euler_copy(struct euler_t* out);
 void euler_update(void);
-
+extern float angle_acc_f;
 
 
 #endif

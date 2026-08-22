@@ -42,7 +42,7 @@ static void  dispatch_line(char* line_pc)
         str_to_float(line_pc, values_pf, 4);
         BALANCE_KP = (double)values_pf[0];
     }
-    else if (strncmp(line_pc, "bal_kd:", 6)) {
+    else if (strncmp(line_pc, "bal_kd:", 6) == 0) {
         str_to_float(line_pc, values_pf, 4);
         BALANCE_KD = (double)values_pf[0];
     }
