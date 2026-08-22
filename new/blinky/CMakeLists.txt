@@ -35,7 +35,7 @@ target_sources(app PRIVATE
     src/simulink/ARMCortex-M/blinky/blinky.c
     src/simulink/ARMCortex-M/blinky/rtmodel.c
     src/simulink/ARMCortex-M/blinky/blinky_data.c
-    
+    src/debug/debug.c
     
 )
 
@@ -52,4 +52,5 @@ target_include_directories(app PRIVATE
     src/motor
     src/key
     src/simulink/ARMCortex-M/blinky
+    src/debug
 )

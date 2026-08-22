@@ -11961,7 +11961,7 @@
 #define DT_N_S_soc_S_serial_40004400_P_interrupts_IDX_1_EXISTS 1
 #define DT_N_S_soc_S_serial_40004400_P_interrupts_IDX_1 0
 #define DT_N_S_soc_S_serial_40004400_P_interrupts_EXISTS 1
-#define DT_N_S_soc_S_serial_40004400_P_current_speed 9600
+#define DT_N_S_soc_S_serial_40004400_P_current_speed 115200
 #define DT_N_S_soc_S_serial_40004400_P_current_speed_EXISTS 1
 #define DT_N_S_soc_S_serial_40004400_P_stop_bits "1"
 #define DT_N_S_soc_S_serial_40004400_P_stop_bits_STRING_UNQUOTED 1

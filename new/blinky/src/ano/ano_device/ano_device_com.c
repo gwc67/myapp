@@ -1,6 +1,7 @@
 #include "ano_device_com.h"
 #include "ano.h"
 #include "ano_base.h"
+#include "blinky.h"
 #include "encode.h"
 #include "euler.h"
 #include "uart_base.h"
@@ -63,9 +64,9 @@ void com_receive_anl(uint8_t* data_puc,uint8_t len_uc)
     }
     else if(*(data_puc + 2) == SIMULINK_PID_RX)
     {
-        // uart_transmit(g_uart2_pst, "pid_adjust\r\n",13 );
         gpio_pin_toggle_dt(&led0);
-
+        BALANCE_KP = *(int32_t*)(data_puc + 4) / 1000.0;
+        BALANCE_KD = *(int32_t*)(data_puc + 12) / 1000.0;
     }
 
 }

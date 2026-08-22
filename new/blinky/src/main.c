@@ -15,6 +15,7 @@
 #include <zephyr/sys/printk.h>
 #include "OLED_Menu.h"
 #include "ano/ano_base.h"
+#include "debug/debug.h"
 #include "encode/encode.h"
 #include "menu/menu.h"
 #include "ano.h"
@@ -55,7 +56,7 @@ static void s_task_1ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
 		blinky_step(0);
-		ano_check_data(g_com_ano_pst);
+		// ano_check_data(g_com_ano_pst);
 		k_msleep(1);
 	}
 }
@@ -97,11 +98,23 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
     	menu_request_refresh(g_mpu6050_euler_oled_pst);
 
 		char float_num[10];
+		char bal_kp_pc[10];
+		char bal_kd_pc[10];
+
 		char buf[128];
 		float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
+		float_to_str(bal_kp_pc, sizeof(bal_kp_pc), BALANCE_KP , 2);
+		float_to_str(bal_kd_pc, sizeof(bal_kd_pc), BALANCE_KD , 2);
 		// snprintf(buf,sizeof(buf),"%d,%d,%d,%s\n",(int32_t)rtU.motor_a_actual_speed,(int32_t)rtU.speed_a_target,(int32_t)rtY.motor_a_pwm,num);
-		snprintf(buf,sizeof(buf),"%d,%d,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num);
+		snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc);
+
+		// float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
+		// snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc);
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
+
+		// snprintf(buf,sizeof(buf),"%s\n",bal_kd_pc);
+		// uart_transmit(g_uart2_pst, buf, strlen(buf));
+
 		menu_task_v();
 		k_msleep(5);
 	}
@@ -110,7 +123,8 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 static void s_task_100ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {		
-		k_msleep(1000);
+		debug_par_check();
+		k_msleep(100);
 	}
 }
 

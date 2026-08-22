@@ -598,7 +598,7 @@ set_target_properties(${DEVICETREE_TARGET}
     "DT_NODELABEL|usart2" "/soc/serial@40004400"
     "DT_PROP|/soc/serial@40004400|reg" "1073759232;1024"
     "DT_PROP|/soc/serial@40004400|interrupts" "38;0"
-    "DT_PROP|/soc/serial@40004400|current-speed" "9600"
+    "DT_PROP|/soc/serial@40004400|current-speed" "115200"
     "DT_PROP|/soc/serial@40004400|stop-bits" "1"
     "DT_PROP|/soc/serial@40004400|data-bits" "8"
     "DT_PROP|/soc/serial@40004400|single-wire" "False"
