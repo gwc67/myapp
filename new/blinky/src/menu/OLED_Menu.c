@@ -90,11 +90,11 @@ static void s_draw_euler(struct menu_node_t* self)
     // struct euler_t euler_st = {0};
     // euler_copy(&euler_st);
 
-    float_to_str(num, sizeof(num), rtY.pitch * RAD_TO_DEG, 2);
+    float_to_str(num, sizeof(num), rtY.pitch , 2);
     snprintf(buf, sizeof(buf), "pitch:%s", num);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 0, 20);
 
-    float_to_str(num, sizeof(num), rtY.roll * RAD_TO_DEG, 2);
+    float_to_str(num, sizeof(num), rtY.roll , 2);
     snprintf(buf, sizeof(buf), "roll:%s", num);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 64, 20);
 
