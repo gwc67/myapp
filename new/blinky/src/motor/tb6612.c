@@ -23,8 +23,9 @@ static void motor_key_callback(enum key_id_e key_id_em,enum key_event_e event_em
         case KEY_0_em:
         {
             if (event_em == KEY_EVENT_DOUBLE_em) {
-                 rtU.running_flag^= 1;
-                gpio_pin_set_dt(&led_motor_st, rtU.running_flag);
+                 rtU.running_flag_1 ^= 1;
+                 rtU.running_flag_2 ^= 1;   
+                gpio_pin_set_dt(&led_motor_st, rtU.running_flag_1);
             }
         }
         break; 

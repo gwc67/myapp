@@ -66,7 +66,7 @@ target_compile_features(blinky PUBLIC c_std_99)
 
 # Specify compiler preprocessor definitions for target "blinky".
 target_compile_definitions(blinky PRIVATE -DMODEL=blinky
-    -DNUMST=2
+    -DNUMST=3
     -DNCSTATES=0
     -DHAVESTDIO
     -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0

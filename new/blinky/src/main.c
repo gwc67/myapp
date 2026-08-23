@@ -15,11 +15,9 @@
 #include <zephyr/display/cfb.h>
 #include <zephyr/sys/printk.h>
 #include "OLED_Menu.h"
-#include "ano/ano_base.h"
 #include "debug/debug.h"
 #include "encode/encode.h"
 #include "menu/menu.h"
-#include "ano.h"
 #include "motor/tb6612.h"
 #include "mpu6050/ahrs_madgwick.h"
 #include "mpu6050/euler.h"
@@ -37,7 +35,7 @@
 static K_THREAD_STACK_DEFINE(s_stack_1ms_high, 2048);   /* 2KB 足够 */
 
 /* 1ms 低优先级任务：简单任务 */
-static K_THREAD_STACK_DEFINE(s_stack_1ms_low, 1024);   /* 1KB */
+static K_THREAD_STACK_DEFINE(s_stack_10ms_high, 1024);   /* 1KB */
 
 /* 10ms 任务：ano_check_data + com_check_to_send + menu */
 static K_THREAD_STACK_DEFINE(s_stack_5ms_high, 1536); /* 1.5KB */
@@ -48,7 +46,7 @@ static K_THREAD_STACK_DEFINE(s_stack_5ms_low, 1024);    /* 1KB */
 static K_THREAD_STACK_DEFINE(s_stack_100ms_high, 512);    /* 1KB */
 
 static struct k_thread s_thread_1ms_high;
-static struct k_thread s_thread_1ms_low;
+static struct k_thread s_thread_10ms_high;
 static struct k_thread s_thread_5ms_high;
 static struct k_thread s_thread_5ms_low;
 static struct k_thread s_thread_100ms_high;
@@ -62,12 +60,18 @@ static void s_task_1ms_high(void *p1,void *p2,void *p3)
 	}
 }
 
-static void s_task_1ms_low(void *p1,void *p2,void *p3)
+static void s_task_10ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
-		
-		// com_check_to_send();
-		k_msleep(1);
+		struct encoder_data_t motor_a_st;
+		struct encoder_data_t motor_b_st;
+		encoder_get_data(g_encoder_a_pst, &motor_a_st);
+		encoder_get_data(g_encoder_b_pst, &motor_b_st);
+		rtU.motor_a_speed = motor_a_st.rpm_l;
+		rtU.motor_b_speed = motor_b_st.rpm_l;
+		rtU.target_speed = 0;		
+		blinky_step(2);
+		k_msleep(10);
 	}
 }
 
@@ -101,15 +105,21 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		char float_num[10];
 		char bal_kp_pc[10];
 		char bal_kd_pc[10];
-
+		char spd_kp_pc[10];
+		char spd_ki_pc[10];
+		char gyroy_pc[10];
+		
 		// char angle_acc_pc[10];
 
 		char buf[128];
 		float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
 		float_to_str(bal_kp_pc, sizeof(bal_kp_pc), BALANCE_KP , 2);
 		float_to_str(bal_kd_pc, sizeof(bal_kd_pc), BALANCE_KD , 2);
+		float_to_str(spd_kp_pc, sizeof(spd_kp_pc), SPD_KP , 2);
+		float_to_str(spd_ki_pc, sizeof(spd_ki_pc), SPD_KI , 2);
+		float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyro[1] , 2);
 		// float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
-		snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc);
+		snprintf(buf,sizeof(buf),"%d,%d,%s,%s,%s,%s,%s,%d,%d,%s\n",rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,gyroy_pc);
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 
 		menu_task_v();
@@ -132,8 +142,8 @@ int main(void)
 {
 	blinky_initialize();
 	k_thread_create(&s_thread_1ms_high, s_stack_1ms_high, sizeof(s_stack_1ms_high), s_task_1ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(2), 0, K_NO_WAIT);
-	k_thread_create(&s_thread_1ms_low,  s_stack_1ms_low , sizeof(s_stack_1ms_low) , s_task_1ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(5), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_5ms_high, s_stack_5ms_high, sizeof(s_stack_5ms_high), s_task_5ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(4), 0, K_NO_WAIT);
+	k_thread_create(&s_thread_10ms_high,  s_stack_10ms_high , sizeof(s_stack_10ms_high) , s_task_10ms_high , NULL, NULL, NULL, K_PRIO_PREEMPT(5), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_5ms_low,  s_stack_5ms_low , sizeof(s_stack_5ms_low) , s_task_5ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(10), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_100ms_high,  s_stack_100ms_high , sizeof(s_stack_100ms_high) , s_task_100ms_high , NULL, NULL, NULL, K_PRIO_PREEMPT(11), 0, K_NO_WAIT);
 	while (1) {

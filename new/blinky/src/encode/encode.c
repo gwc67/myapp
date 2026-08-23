@@ -71,7 +71,7 @@ static int encoder_board_init(void)
 
     static const struct encoder_cfg_t encoder_cfg_b_st = {
         .encoder_device_pst = DEVICE_DT_GET(DT_ALIAS(encoderb)),
-        .reverse_b = true, /* 进行反转 */
+        .reverse_b = true, /* 不进行反转 */
     };
     ret = encoder_init(&s_encoder_b_st,&encoder_cfg_b_st,"encoder_b");
     g_encoder_b_pst = &s_encoder_b_st.base;
@@ -128,8 +128,11 @@ int encoder_read(struct encoder_base_t* base)
 
     int8_t dir_c = me->cfg_pst->reverse_b ? -1 : 1;
     
+
+    delta_l *= dir_c;
+    
     //计数器自增
-    me->data_st.position_l  += delta_l * dir_c;
+    me->data_st.position_l  += delta_l;
     me->last_raw_l = current_raw_l;
     me->last_tick_ul = current_tick_ul;
     
