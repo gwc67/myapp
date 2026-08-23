@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x8009825
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          2478224 (bytes into file)
+  Start of section headers:          2478292 (bytes into file)
   Flags:                             0x5000200, Version5 EABI, soft-float ABI
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -36,7 +36,7 @@ Section Headers:
   [12] input_callba[...] PROGBITS        0801a3f4 01a534 00000c 00   A  0   0  4
   [13] cfb_font_area     PROGBITS        0801a400 01a540 000018 00   A  0   0  4
   [14] tbss              NOBITS          0801a418 01a558 000004 00 WAT  0   0  4
-  [15] rodata            PROGBITS        0801a418 01a558 006164 00   A  0   0  8
+  [15] rodata            PROGBITS        0801a418 01a558 006168 00   A  0   0  8
   [16] .ramfunc          PROGBITS        20000000 020acc 000000 00   W  0   0  1
   [17] datas             PROGBITS        20000000 0206c0 000334 00  WA  0   0  8
   [18] device_states     PROGBITS        20000334 0209f4 000030 00  WA  0   0  1
@@ -47,20 +47,20 @@ Section Headers:
   [23] k_sem_area        PROGBITS        200003e8 020aa8 000020 00  WA  0   0  4
   [24] .comment          PROGBITS        00000000 020acc 00001f 01  MS  0   0  1
   [25] .debug_aranges    PROGBITS        00000000 020af0 003128 00      0   0  8
-  [26] .debug_info       PROGBITS        00000000 023c18 11c11b 00      0   0  1
-  [27] .debug_abbrev     PROGBITS        00000000 13fd33 018891 00      0   0  1
-  [28] .debug_line       PROGBITS        00000000 1585c4 059189 00      0   0  1
-  [29] .debug_frame      PROGBITS        00000000 1b1750 008544 00      0   0  4
-  [30] .debug_str        PROGBITS        00000000 1b9c94 014caf 01  MS  0   0  1
-  [31] .debug_loc        PROGBITS        00000000 1ce943 0641e4 00      0   0  1
-  [32] .debug_ranges     PROGBITS        00000000 232b27 009620 00      0   0  1
-  [33] .ARM.attributes   ARM_ATTRIBUTES  00000000 23c147 000032 00      0   0  1
-  [34] .last_section     PROGBITS        08020984 020ac8 000004 00  WA  0   0  4
-  [35] bss               NOBITS          20000408 020b08 002505 00  WA  0   0  8
+  [26] .debug_info       PROGBITS        00000000 023c18 11c175 00      0   0  1
+  [27] .debug_abbrev     PROGBITS        00000000 13fd8d 018891 00      0   0  1
+  [28] .debug_line       PROGBITS        00000000 15861e 05916a 00      0   0  1
+  [29] .debug_frame      PROGBITS        00000000 1b1788 008544 00      0   0  4
+  [30] .debug_str        PROGBITS        00000000 1b9ccc 014cbe 01  MS  0   0  1
+  [31] .debug_loc        PROGBITS        00000000 1ce98a 0641e4 00      0   0  1
+  [32] .debug_ranges     PROGBITS        00000000 232b6e 009620 00      0   0  1
+  [33] .ARM.attributes   ARM_ATTRIBUTES  00000000 23c18e 000032 00      0   0  1
+  [34] .last_section     PROGBITS        08020988 020ac8 000004 00  WA  0   0  4
+  [35] bss               NOBITS          20000408 020b08 00250d 00  WA  0   0  8
   [36] noinit            NOBITS          20002940 020b08 004904 00  WA  0   0 64
-  [37] .symtab           SYMTAB          00000000 23c17c 0136b0 10     38 3448  4
-  [38] .strtab           STRTAB          00000000 24f82c 00d67d 00      0   0  1
-  [39] .shstrtab         STRTAB          00000000 25cea9 0001e5 00      0   0  1
+  [37] .symtab           SYMTAB          00000000 23c1c0 0136b0 10     38 3448  4
+  [38] .strtab           STRTAB          00000000 24f870 00d67d 00      0   0  1
+  [39] .shstrtab         STRTAB          00000000 25ceed 0001e5 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
@@ -70,9 +70,9 @@ Key to Flags:
 Program Headers:
   Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
   ARM_EXIDX      0x019cbc 0x08019b7c 0x08019b7c 0x00008 0x00008 R   0x4
-  LOAD           0x000140 0x08000000 0x08000000 0x2057c 0x2057c RWE 0x40
-  LOAD           0x0206c0 0x20000000 0x0802057c 0x00408 0x00408 RW  0x8
-  LOAD           0x020ac8 0x08020984 0x08020984 0x00004 0x00004 RW  0x4
+  LOAD           0x000140 0x08000000 0x08000000 0x20580 0x20580 RWE 0x40
+  LOAD           0x0206c0 0x20000000 0x08020580 0x00408 0x00408 RW  0x8
+  LOAD           0x020ac8 0x08020988 0x08020988 0x00004 0x00004 RW  0x4
   LOAD           0x000000 0x20000408 0x20000408 0x00000 0x06e3c RW  0x40
   TLS            0x01a558 0x0801a418 0x0801a418 0x00000 0x00004 R   0x4
   GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x10

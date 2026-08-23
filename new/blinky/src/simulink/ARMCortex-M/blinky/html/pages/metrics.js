@@ -17,7 +17,7 @@ function CodeMetrics() {
 	 this.metricsArray.var["rtU"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
 	size: 56};
 	 this.metricsArray.var["rtY"] = {file: "D:\\Downloads\\zephyr_new\\myapp\\new\\blinky\\src\\simulink\\ARMCortex-M\\blinky\\blinky.c",
-	size: 24};
+	size: 32};
 	 this.metricsArray.fcn["atan2f"] = {file: "D:\\Downloads\\app3\\matlab_2\\polyspace\\verifier\\cxx\\include\\include-libc\\bits\\mathcalls.h",
 	stack: 0,
 	stackTotal: 0};
@@ -82,6 +82,6 @@ function CodeMetrics() {
 			 data.type = "var";
 		 }
 	 return data; }; 
-	 this.codeMetricsSummary = '<a href="javascript:void(0)" onclick="return postParentWindowMessage({message:\'gotoReportPage\', pageName:\'blinky_metrics\'});">Global Memory: 796(bytes) Maximum Stack: 57(bytes)</a>';
+	 this.codeMetricsSummary = '<a href="javascript:void(0)" onclick="return postParentWindowMessage({message:\'gotoReportPage\', pageName:\'blinky_metrics\'});">Global Memory: 804(bytes) Maximum Stack: 57(bytes)</a>';
 	}
 CodeMetrics.instance = new CodeMetrics();

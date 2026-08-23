@@ -343,6 +343,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["blinky:407"] = {rtwname: "<Root>/motor_a_pwm"};
 	this.rtwnameHashMap["<Root>/motor_b_pwm"] = {sid: "blinky:408"};
 	this.sidHashMap["blinky:408"] = {rtwname: "<Root>/motor_b_pwm"};
+	this.rtwnameHashMap["<Root>/angle_target"] = {sid: "blinky:472"};
+	this.sidHashMap["blinky:472"] = {rtwname: "<Root>/angle_target"};
 	this.rtwnameHashMap["<S1>/motor_a_speed"] = {sid: "blinky:431"};
 	this.sidHashMap["blinky:431"] = {rtwname: "<S1>/motor_a_speed"};
 	this.rtwnameHashMap["<S1>/motor_b_speed"] = {sid: "blinky:432"};

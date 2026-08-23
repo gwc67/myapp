@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.74
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sun Aug 23 21:11:47 2026
+ * C/C++ source code generated on : Sun Aug 23 21:18:34 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -142,6 +142,7 @@ typedef struct {
   real_T pitch;                        /* '<Root>/pitch' */
   int16_T motor_a_pwm;                 /* '<Root>/motor_a_pwm' */
   int16_T motor_b_pwm;                 /* '<Root>/motor_b_pwm' */
+  real_T angle_target;                 /* '<Root>/angle_target' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -161,7 +162,6 @@ struct tag_RTM {
 
     struct {
       uint8_T TID0_1;
-      uint8_T TID1_2;
     } RateInteraction;
   } Timing;
 };

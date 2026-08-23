@@ -181,7 +181,8 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		char gyroy_pc[10];
 		char time_pc[10];
 		char pitch_pc[10];
-		// char pwm_pc[10];
+		char target_angle_pc[10];
+
 		float_to_str(accx_pc, sizeof(accx_pc), rtU.accx , 2);
 		float_to_str(accy_pc, sizeof(accy_pc), rtU.accy, 2);
 		float_to_str(accz_pc, sizeof(accz_pc), rtU.accz , 2);
@@ -189,9 +190,9 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyroy , 2);
 		float_to_str(time_pc, sizeof(time_pc), k_uptime_get_32() * 0.001f , 3);
 		float_to_str(pitch_pc, sizeof(pitch_pc), rtY.pitch ,2);
-		// float_to_str(pwm_pc, sizeof(pwm_pc), rtY.motor_a_pwm ,2);
+		float_to_str(target_angle_pc, sizeof(target_angle_pc), rtY.angle_target ,2);
 
-		snprintf(buf, sizeof(buf), "%s,%s,%s,%s,%s,%s,%d,%d,%s,%d\n",time_pc,accx_pc,accy_pc,accz_pc,gyrox_pc,gyroy_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,pitch_pc,rtY.motor_a_pwm);
+		snprintf(buf, sizeof(buf), "%s,%s,%s,%s,%s,%s,%d,%d,%s,%d,%s\n",time_pc,accx_pc,accy_pc,accz_pc,gyrox_pc,gyroy_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,pitch_pc,rtY.motor_a_pwm,target_angle_pc);
 		
 #else
 		char float_num[10];

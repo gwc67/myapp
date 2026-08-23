@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.74
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sun Aug 23 21:11:47 2026
+ * C/C++ source code generated on : Sun Aug 23 21:18:34 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -21,16 +21,16 @@
 #include <string.h>
 
 /* Exported block parameters */
-real_T SPD_KI = 0.005;                 /* Variable: SPD_KI
+real_T SPD_KI = 0.0004;                 /* Variable: SPD_KI
                                         * Referenced by: '<S36>/Integral Gain'
                                         */
-real_T SPD_KP = 1.0;                   /* Variable: SPD_KP
+real_T SPD_KP = 0.55;                   /* Variable: SPD_KP
                                         * Referenced by: '<S44>/Proportional Gain'
                                         */
-real32_T BALANCE_KD = 5.0F;            /* Variable: BALANCE_KD
+real32_T BALANCE_KD = 338.9F;            /* Variable: BALANCE_KD
                                         * Referenced by: '<S89>/Derivative Gain'
                                         */
-real32_T BALANCE_KP = 20.0F;           /* Variable: BALANCE_KP
+real32_T BALANCE_KP = 72.0F;           /* Variable: BALANCE_KP
                                         * Referenced by: '<S101>/Proportional Gain'
                                         */
 
@@ -404,21 +404,6 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   real32_T u0;
   int16_T rtb_Switch;
 
-  /* Update the flag to indicate when data transfers from
-   *  Sample time: [0.005s, 0.0s] to Sample time: [0.01s, 0.0s]  */
-  (rtM->Timing.RateInteraction.TID1_2)++;
-  if ((rtM->Timing.RateInteraction.TID1_2) > 1) {
-    rtM->Timing.RateInteraction.TID1_2 = 0;
-  }
-
-  /* UnitDelay: '<Root>/Unit Delay2' */
-  if (rtM->Timing.RateInteraction.TID1_2 == 1) {
-    /* UnitDelay: '<Root>/Unit Delay2' */
-    rtDW.UnitDelay2 = rtDW.UnitDelay2_DSTATE;
-  }
-
-  /* End of UnitDelay: '<Root>/Unit Delay2' */
-
   /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
   /* Outputs for Enabled SubSystem: '<S114>/Correct1' incorporates:
    *  EnablePort: '<S115>/Enable'
@@ -428,13 +413,13 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    *  DataStoreRead: '<S115>/Data Store ReadP'
    *  DataStoreRead: '<S115>/Data Store ReadX'
    */
-  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
+  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[0]));
 
-  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
+  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.b_dHdx[0] = ((rtDW.x[0] + rtDW.epsilon) - rtDW.x[0]) / rtDW.epsilon;
@@ -442,13 +427,13 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[1]));
 
-  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
+  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.b_dHdx[2] = 0.0 / rtDW.epsilon;
   rtDW.b_dHdx[3] = ((rtDW.x[1] + rtDW.epsilon) - rtDW.x[1]) / rtDW.epsilon;
 
-  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
+  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   qrFactor(rtDW.b_dHdx, rtDW.P_i, rtConstP.R1_Value, rtDW.Sy);
@@ -646,8 +631,8 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    *  DataTypeConversion: '<S3>/Data Type Conversion3'
    *  Inport: '<Root>/gyroy'
    */
-  /*  x = [pitch; roll]  (2¡Á1) */
-  /*  u = [gx; gy]       (2¡Á1) */
+  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
+  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
   rtDW.K_idx_1 = rtU.gyroy * 0.005;
 
   /* MATLABSystem: '<S117>/MATLAB System' incorporates:
@@ -666,31 +651,31 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    */
   rtDW.z_idx_1 = rtDW.K_idx_3 + rtDW.x[1];
 
-  /*  2¡Á1 */
+  /*  2ï¿½ï¿½1 */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[0]));
 
-  /*  x = [pitch; roll]  (2¡Á1) */
-  /*  u = [gx; gy]       (2¡Á1) */
-  /*  2¡Á1 */
+  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
+  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
+  /*  2ï¿½ï¿½1 */
   rtDW.b_dHdx[0] = (((rtDW.x[0] + rtDW.epsilon) + rtDW.K_idx_1) - rtDW.z_idx_0) /
     rtDW.epsilon;
   rtDW.b_dHdx[1] = (rtDW.z_idx_1 - rtDW.z_idx_1) / rtDW.epsilon;
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[1]));
 
-  /*  x = [pitch; roll]  (2¡Á1) */
-  /*  u = [gx; gy]       (2¡Á1) */
-  /*  2¡Á1 */
+  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
+  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
+  /*  2ï¿½ï¿½1 */
   rtDW.b_dHdx[2] = (rtDW.z_idx_0 - rtDW.z_idx_0) / rtDW.epsilon;
   rtDW.b_dHdx[3] = (((rtDW.x[1] + rtDW.epsilon) + rtDW.K_idx_3) - rtDW.z_idx_1) /
     rtDW.epsilon;
 
   /* End of Outputs for SubSystem: '<S114>/Predict' */
   /* End of Outputs for SubSystem: '<Root>/task_5ms' */
-  /*  x = [pitch; roll]  (2¡Á1) */
-  /*  u = [gx; gy]       (2¡Á1) */
-  /*  2¡Á1 */
+  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
+  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
+  /*  2ï¿½ï¿½1 */
   for (i = 0; i < 4; i++) {
     /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
     /* Outputs for Atomic SubSystem: '<S114>/Predict' */
@@ -749,6 +734,12 @@ void blinky_step2(void)                /* Sample time: [0.01s, 0.0s] */
   real_T rtb_IntegralGain;
   real_T rtb_Sum_l;
   boolean_T rtb_NOT;
+
+  /* UnitDelay: '<Root>/Unit Delay2' */
+  rtDW.UnitDelay2 = rtDW.UnitDelay2_DSTATE;
+
+  /* Outport: '<Root>/angle_target' */
+  rtY.angle_target = rtDW.UnitDelay2;
 
   /* Outputs for Atomic SubSystem: '<Root>/task_10ms' */
   /* Sum: '<S1>/Sum' incorporates:

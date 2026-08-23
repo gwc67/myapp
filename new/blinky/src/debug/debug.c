@@ -2,6 +2,7 @@
 #include "blinky.h"
 #include "my_ring.h"
 #include <string.h>
+#include "uart_base.h"
 #include "value_to_str.h"
 #define LINE_BUF_SIZE 128
 
