@@ -257,18 +257,18 @@ struct {
 } rtU;</code>
 </div>
 </div>
-<div id="fcn_rtU.gyro">
+<div id="fcn_rtU.gyroy">
 <h4 class="function">
-rtU.gyro
+rtU.gyroy
 </h4>
 <span class="description">
-<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:346\')'})"  name="code2model" class="code2model">&lt;Root&gt;/gyro</a> 的输入数据
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:346\')'})"  name="code2model" class="code2model">&lt;Root&gt;/gyroy</a> 的输入数据
 </span>
 <div class="programlisting">
 <code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
 struct {
   ...
-  real_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootgyro,blinky.h'})">gyro</a>[2][1];
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootgyroy,blinky.h'})">gyroy</a>;
   ...
 } rtU;</code>
 </div>
@@ -385,6 +385,22 @@ struct {
 } rtU;</code>
 </div>
 </div>
+<div id="fcn_rtU.gyrox">
+<h4 class="function">
+rtU.gyrox
+</h4>
+<span class="description">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:459\')'})"  name="code2model" class="code2model">&lt;Root&gt;/gyrox</a> 的输入数据
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootgyrox,blinky.h'})">gyrox</a>;
+  ...
+} rtU;</code>
+</div>
+</div>
 </section>
 <section id="sec_outports">
 <h3>
@@ -459,31 +475,7 @@ struct {
 <h3>
 3.3 参数
 </h3>
-参数是生成的代码中的变量，表示模型参数和模型参数参量。当模型代码在目标环境中执行时，将基于存储类设定生成变量并该变量标记为可调或不可调。<div id="fcn_BALANCE_KD">
-<h4 class="function">
-BALANCE_KD
-</h4>
-<span class="description">
-BALANCE_KD 的参数
-</span>
-<div class="programlisting">
-<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
-extern real_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'BALANCE_KD,blinky.h'})">BALANCE_KD</a>;</code>
-</div>
-</div>
-<div id="fcn_BALANCE_KP">
-<h4 class="function">
-BALANCE_KP
-</h4>
-<span class="description">
-BALANCE_KP 的参数
-</span>
-<div class="programlisting">
-<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
-extern real_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'BALANCE_KP,blinky.h'})">BALANCE_KP</a>;</code>
-</div>
-</div>
-<div id="fcn_SPD_KI">
+参数是生成的代码中的变量，表示模型参数和模型参数参量。当模型代码在目标环境中执行时，将基于存储类设定生成变量并该变量标记为可调或不可调。<div id="fcn_SPD_KI">
 <h4 class="function">
 SPD_KI
 </h4>
@@ -505,6 +497,30 @@ SPD_KP 的参数
 <div class="programlisting">
 <code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
 extern real_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'SPD_KP,blinky.h'})">SPD_KP</a>;</code>
+</div>
+</div>
+<div id="fcn_BALANCE_KD">
+<h4 class="function">
+BALANCE_KD
+</h4>
+<span class="description">
+BALANCE_KD 的参数
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+extern real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'BALANCE_KD,blinky.h'})">BALANCE_KD</a>;</code>
+</div>
+</div>
+<div id="fcn_BALANCE_KP">
+<h4 class="function">
+BALANCE_KP
+</h4>
+<span class="description">
+BALANCE_KP 的参数
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+extern real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'BALANCE_KP,blinky.h'})">BALANCE_KP</a>;</code>
 </div>
 </div>
 </section>

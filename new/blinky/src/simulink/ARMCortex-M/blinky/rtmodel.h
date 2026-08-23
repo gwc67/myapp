@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'blinky'.
  *
- * Model version                  : 1.67
+ * Model version                  : 1.74
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sun Aug 23 08:47:29 2026
+ * C/C++ source code generated on : Sun Aug 23 21:11:47 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M

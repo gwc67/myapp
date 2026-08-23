@@ -15,7 +15,6 @@
 #include <zephyr/display/cfb.h>
 #include <zephyr/sys/printk.h>
 #include "OLED_Menu.h"
-#include "ano_base.h"
 #include "debug/debug.h"
 #include "encode/encode.h"
 #include "menu/menu.h"
@@ -141,7 +140,7 @@ static void s_task_10ms_high(void *p1,void *p2,void *p3)
 		rtU.motor_b_speed = motor_b_st.rpm_l;
 		rtU.target_speed = 0;		
 		blinky_step(2);
-		k_msleep(10);
+		k_msleep(9);
 	}
 }
 
@@ -171,30 +170,51 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 
 	while (1) {
     	menu_request_refresh(g_mpu6050_euler_oled_pst);
+		char buf[128];
 		
+#if SIMULINK_DEBUG
+
+		char accx_pc[10];
+		char accy_pc[10];
+		char accz_pc[10];
+		char gyrox_pc[10];
+		char gyroy_pc[10];
+		char time_pc[10];
+		char pitch_pc[10];
+		// char pwm_pc[10];
+		float_to_str(accx_pc, sizeof(accx_pc), rtU.accx , 2);
+		float_to_str(accy_pc, sizeof(accy_pc), rtU.accy, 2);
+		float_to_str(accz_pc, sizeof(accz_pc), rtU.accz , 2);
+		float_to_str(gyrox_pc, sizeof(gyrox_pc), rtU.gyrox , 2);
+		float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyroy , 2);
+		float_to_str(time_pc, sizeof(time_pc), k_uptime_get_32() * 0.001f , 3);
+		float_to_str(pitch_pc, sizeof(pitch_pc), rtY.pitch ,2);
+		// float_to_str(pwm_pc, sizeof(pwm_pc), rtY.motor_a_pwm ,2);
+
+		snprintf(buf, sizeof(buf), "%s,%s,%s,%s,%s,%s,%d,%d,%s,%d\n",time_pc,accx_pc,accy_pc,accz_pc,gyrox_pc,gyroy_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,pitch_pc,rtY.motor_a_pwm);
+		
+#else
 		char float_num[10];
 		char bal_kp_pc[10];
 		char bal_kd_pc[10];
 		char spd_kp_pc[10];
 		char spd_ki_pc[10];
 		char gyroy_pc[10];
+		char angle_acc_pc[10];
 		
-		// char angle_acc_pc[10];
-
-		char buf[128];
 		float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
 		float_to_str(bal_kp_pc, sizeof(bal_kp_pc), BALANCE_KP , 2);
 		float_to_str(bal_kd_pc, sizeof(bal_kd_pc), BALANCE_KD , 2);
 		float_to_str(spd_kp_pc, sizeof(spd_kp_pc), SPD_KP , 2);
 		float_to_str(spd_ki_pc, sizeof(spd_ki_pc), SPD_KI , 2);
-		float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyro[1] , 2);
-		// float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
+		float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyroy , 2);
+		float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
 		
-		snprintf(buf,sizeof(buf),"%d,%d,%d,%s,%s,%s,%s,%s,%d,%d,%s\n",k_uptime_get_32(),rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,gyroy_pc);
-		snprintf(buf,sizeof(buf),"%d\n",k_uptime_get_32());
+		// snprintf(buf,sizeof(buf),"%d,%d,%d,%s,%s,%s,%s,%s,%s,%s\n",k_uptime_get_32(),rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,gyroy_pc,angle_acc_pc);
+		snprintf(buf,sizeof(buf),"%d,%d,%d,%s,%s,%s,%s,%s,%d,%d,%s,%s\n",k_uptime_get_32(),rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,gyroy_pc,angle_acc_pc);
+#endif
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		
-
 		menu_task_v();
 		k_msleep(4);
 	}
