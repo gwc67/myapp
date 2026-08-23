@@ -242,3 +242,14 @@
 		st,encoder-mode = <3>;
 	};
 };
+
+&timers5 {
+	status = "okay";
+	st,prescaler = <83>;
+	st,countermode = <STM32_TIM_COUNTERMODE_UP>;
+
+	counter {
+		compatible = "st,stm32-counter";
+		status = "okay";
+	};
+};
