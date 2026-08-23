@@ -1,5 +1,7 @@
 SECTION_PROLOGUE(device_api_area,,SUBALIGN(4))
 {
+	Z_LINK_ITERABLE(counter_driver_api);
+	PLACE_SYMBOL_HERE(_counter_driver_api_ext_end);
 	Z_LINK_ITERABLE(dma_driver_api);
 	PLACE_SYMBOL_HERE(_dma_driver_api_ext_end);
 	Z_LINK_ITERABLE(gpio_driver_api);
@@ -52,8 +54,6 @@ SECTION_PROLOGUE(device_api_area,,SUBALIGN(4))
 	PLACE_SYMBOL_HERE(_comparator_driver_api_ext_end);
 	Z_LINK_ITERABLE(coredump_driver_api);
 	PLACE_SYMBOL_HERE(_coredump_driver_api_ext_end);
-	Z_LINK_ITERABLE(counter_driver_api);
-	PLACE_SYMBOL_HERE(_counter_driver_api_ext_end);
 	Z_LINK_ITERABLE(crc_driver_api);
 	PLACE_SYMBOL_HERE(_crc_driver_api_ext_end);
 	Z_LINK_ITERABLE(dac_driver_api);

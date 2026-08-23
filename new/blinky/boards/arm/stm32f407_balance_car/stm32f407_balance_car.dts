@@ -92,6 +92,7 @@
 		led0 = &led0;
 		encodera = &qdec_e1;
 		encoderb = &qdec_e2;
+		tim5 = &counter5;
 	};
 
 	chosen {
@@ -246,10 +247,11 @@
 &timers5 {
 	status = "okay";
 	st,prescaler = <83>;
-	st,countermode = <STM32_TIM_COUNTERMODE_UP>;
+	st,countermode = <0>;
 
-	counter {
+	counter5: counter {
 		compatible = "st,stm32-counter";
 		status = "okay";
+		label = "COUNTER_5";
 	};
 };

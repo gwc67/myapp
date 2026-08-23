@@ -79,6 +79,154 @@ uintptr_t z_mrsh_log_frontend_filter_set(uintptr_t arg1, uintptr_t arg2, uintptr
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
 __weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_is_counting_up(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_num_of_channels(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_frequency(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_frequency_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_us_to_ticks(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_us_to_ticks_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_ticks_to_us(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_ticks_to_us_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_ns_to_ticks(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_ns_to_ticks_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_ticks_to_ns(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_ticks_to_ns_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_max_top_value(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_start(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_stop(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_value(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_reset(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_value(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_channel_alarm(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_cancel_channel_alarm(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_top_value(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_pending_int(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_top_value(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_guard_period(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_guard_period(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_max_top_value_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_top_value_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_channel_alarm_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_top_value_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_guard_period_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_guard_period_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_value_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_value_64(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_enable_capture(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_disable_capture(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_set_calibration(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
+uintptr_t z_mrsh_counter_get_calibration(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
+         uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
+
+__weak ALIAS_OF(handler_no_syscall)
 uintptr_t z_mrsh_gpio_pin_interrupt_configure(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3,
          uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, void *ssf);
 
@@ -772,6 +920,43 @@ const _k_syscall_handler_t _k_syscall_table[K_SYSCALL_LIMIT] = {
 	[K_SYSCALL_LOG_BUFFERED_CNT] = z_mrsh_log_buffered_cnt,
 	[K_SYSCALL_LOG_FILTER_SET] = z_mrsh_log_filter_set,
 	[K_SYSCALL_LOG_FRONTEND_FILTER_SET] = z_mrsh_log_frontend_filter_set,
+	[K_SYSCALL_COUNTER_IS_COUNTING_UP] = z_mrsh_counter_is_counting_up,
+	[K_SYSCALL_COUNTER_GET_NUM_OF_CHANNELS] = z_mrsh_counter_get_num_of_channels,
+	[K_SYSCALL_COUNTER_GET_FREQUENCY] = z_mrsh_counter_get_frequency,
+	[K_SYSCALL_COUNTER_GET_FREQUENCY_64] = z_mrsh_counter_get_frequency_64,
+	[K_SYSCALL_COUNTER_US_TO_TICKS] = z_mrsh_counter_us_to_ticks,
+	[K_SYSCALL_COUNTER_US_TO_TICKS_64] = z_mrsh_counter_us_to_ticks_64,
+	[K_SYSCALL_COUNTER_TICKS_TO_US] = z_mrsh_counter_ticks_to_us,
+	[K_SYSCALL_COUNTER_TICKS_TO_US_64] = z_mrsh_counter_ticks_to_us_64,
+	[K_SYSCALL_COUNTER_NS_TO_TICKS] = z_mrsh_counter_ns_to_ticks,
+	[K_SYSCALL_COUNTER_NS_TO_TICKS_64] = z_mrsh_counter_ns_to_ticks_64,
+	[K_SYSCALL_COUNTER_TICKS_TO_NS] = z_mrsh_counter_ticks_to_ns,
+	[K_SYSCALL_COUNTER_TICKS_TO_NS_64] = z_mrsh_counter_ticks_to_ns_64,
+	[K_SYSCALL_COUNTER_GET_MAX_TOP_VALUE] = z_mrsh_counter_get_max_top_value,
+	[K_SYSCALL_COUNTER_START] = z_mrsh_counter_start,
+	[K_SYSCALL_COUNTER_STOP] = z_mrsh_counter_stop,
+	[K_SYSCALL_COUNTER_GET_VALUE] = z_mrsh_counter_get_value,
+	[K_SYSCALL_COUNTER_RESET] = z_mrsh_counter_reset,
+	[K_SYSCALL_COUNTER_SET_VALUE] = z_mrsh_counter_set_value,
+	[K_SYSCALL_COUNTER_SET_CHANNEL_ALARM] = z_mrsh_counter_set_channel_alarm,
+	[K_SYSCALL_COUNTER_CANCEL_CHANNEL_ALARM] = z_mrsh_counter_cancel_channel_alarm,
+	[K_SYSCALL_COUNTER_SET_TOP_VALUE] = z_mrsh_counter_set_top_value,
+	[K_SYSCALL_COUNTER_GET_PENDING_INT] = z_mrsh_counter_get_pending_int,
+	[K_SYSCALL_COUNTER_GET_TOP_VALUE] = z_mrsh_counter_get_top_value,
+	[K_SYSCALL_COUNTER_SET_GUARD_PERIOD] = z_mrsh_counter_set_guard_period,
+	[K_SYSCALL_COUNTER_GET_GUARD_PERIOD] = z_mrsh_counter_get_guard_period,
+	[K_SYSCALL_COUNTER_GET_MAX_TOP_VALUE_64] = z_mrsh_counter_get_max_top_value_64,
+	[K_SYSCALL_COUNTER_SET_TOP_VALUE_64] = z_mrsh_counter_set_top_value_64,
+	[K_SYSCALL_COUNTER_SET_CHANNEL_ALARM_64] = z_mrsh_counter_set_channel_alarm_64,
+	[K_SYSCALL_COUNTER_GET_TOP_VALUE_64] = z_mrsh_counter_get_top_value_64,
+	[K_SYSCALL_COUNTER_SET_GUARD_PERIOD_64] = z_mrsh_counter_set_guard_period_64,
+	[K_SYSCALL_COUNTER_GET_GUARD_PERIOD_64] = z_mrsh_counter_get_guard_period_64,
+	[K_SYSCALL_COUNTER_GET_VALUE_64] = z_mrsh_counter_get_value_64,
+	[K_SYSCALL_COUNTER_SET_VALUE_64] = z_mrsh_counter_set_value_64,
+	[K_SYSCALL_COUNTER_ENABLE_CAPTURE] = z_mrsh_counter_enable_capture,
+	[K_SYSCALL_COUNTER_DISABLE_CAPTURE] = z_mrsh_counter_disable_capture,
+	[K_SYSCALL_COUNTER_SET_CALIBRATION] = z_mrsh_counter_set_calibration,
+	[K_SYSCALL_COUNTER_GET_CALIBRATION] = z_mrsh_counter_get_calibration,
 	[K_SYSCALL_GPIO_PIN_INTERRUPT_CONFIGURE] = z_mrsh_gpio_pin_interrupt_configure,
 	[K_SYSCALL_GPIO_PIN_CONFIGURE] = z_mrsh_gpio_pin_configure,
 	[K_SYSCALL_GPIO_PORT_GET_DIRECTION] = z_mrsh_gpio_port_get_direction,

@@ -49,7 +49,7 @@ FILL(0x00);
 . += 0x0 - (. - __rom_start_address);
 . = ALIGN(4);
 . = ALIGN( 1 << LOG2CEIL(4 * 32) );
-. = ALIGN( 1 << LOG2CEIL(4 * (16 + 48)) );
+. = ALIGN( 1 << LOG2CEIL(4 * (16 + 51)) );
 _vector_start = .;
 KEEP(*(.exc_vector_table))
 KEEP(*(".exc_vector_table.*"))
@@ -116,6 +116,8 @@ __device_deps_end = .;
  } > FLASH
 device_api_area : SUBALIGN(4)
 {
+ _counter_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._counter_driver_api.static.*))); _counter_driver_api_list_end = .;;
+ _counter_driver_api_ext_end = .;
  _dma_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._dma_driver_api.static.*))); _dma_driver_api_list_end = .;;
  _dma_driver_api_ext_end = .;
  _gpio_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._gpio_driver_api.static.*))); _gpio_driver_api_list_end = .;;
@@ -168,8 +170,6 @@ device_api_area : SUBALIGN(4)
  _comparator_driver_api_ext_end = .;
  _coredump_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._coredump_driver_api.static.*))); _coredump_driver_api_list_end = .;;
  _coredump_driver_api_ext_end = .;
- _counter_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._counter_driver_api.static.*))); _counter_driver_api_list_end = .;;
- _counter_driver_api_ext_end = .;
  _crc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._crc_driver_api.static.*))); _crc_driver_api_list_end = .;;
  _crc_driver_api_ext_end = .;
  _dac_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._dac_driver_api.static.*))); _dac_driver_api_list_end = .;;

@@ -186,6 +186,9 @@ D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/console/CMakeFiles/drivers__console.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/console/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/console/CMakeFiles/rebuild_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/counter/CMakeFiles/drivers__counter.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/counter/CMakeFiles/edit_cache.dir
+D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/counter/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/drivers__display.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/blinky/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/rebuild_cache.dir

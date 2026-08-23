@@ -10,10 +10,10 @@
 		zephyr,flash-controller = &flash;     /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:26 */
 		zephyr,system-timer-companion = &rtc; /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:27 */
 		zephyr,entropy = &rng;                /* in zephyr\dts\arm\st\f4\stm32f405.dtsi:13 */
-		zephyr,sram = &sram0;                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:98 */
-		zephyr,flash = &flash0;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:99 */
-		zephyr,display = &ssd1306;            /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:100 */
-		zephyr,console = &usart2;             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:101 */
+		zephyr,sram = &sram0;                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:99 */
+		zephyr,flash = &flash0;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:100 */
+		zephyr,display = &ssd1306;            /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:101 */
+		zephyr,console = &usart2;             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:102 */
 	};
 
 	/* node '/aliases' defined in zephyr\dts\common\skeleton.dtsi:15 */
@@ -21,6 +21,7 @@
 		led0 = &led0;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:92 */
 		encodera = &qdec_e1; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:93 */
 		encoderb = &qdec_e2; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:94 */
+		tim5 = &counter5;    /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:95 */
 	};
 
 	/* node '/soc' defined in zephyr\dts\arm\armv7-m.dtsi:6 */
@@ -123,11 +124,11 @@
 			#clock-cells = < 0x2 >;          /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:180 */
 			reg = < 0x40023800 0x400 >;      /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:181 */
 			compatible = "st,stm32-rcc";     /* in zephyr\dts\arm\st\f4\stm32f405.dtsi:20 */
-			clocks = < &pll >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:128 */
-			clock-frequency = < 0xa037a00 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:129 */
-			ahb-prescaler = < 0x1 >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:130 */
-			apb1-prescaler = < 0x4 >;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:131 */
-			apb2-prescaler = < 0x2 >;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:132 */
+			clocks = < &pll >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:129 */
+			clock-frequency = < 0xa037a00 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:130 */
+			ahb-prescaler = < 0x1 >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:131 */
+			apb1-prescaler = < 0x4 >;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:132 */
+			apb2-prescaler = < 0x2 >;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:133 */
 			phandle = < 0x3 >;               /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:195 */
 
 			/* node '/soc/rcc@40023800/reset-controller' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:183 */
@@ -267,7 +268,7 @@
 				pinmux = < 0x2c4 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:974 */
 				bias-pull-up;       /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:975 */
 				drive-open-drain;   /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:976 */
-				phandle = < 0x7 >;  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:137 */
+				phandle = < 0x7 >;  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:138 */
 			};
 
 			/* node '/soc/pin-controller@40020000/i2c2_scl_pb10' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:985 */
@@ -275,7 +276,7 @@
 				pinmux = < 0x344 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:986 */
 				bias-pull-up;       /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:987 */
 				drive-open-drain;   /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:988 */
-				phandle = < 0x9 >;  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:182 */
+				phandle = < 0x9 >;  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:183 */
 			};
 
 			/* node '/soc/pin-controller@40020000/i2c1_sda_pb7' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1005 */
@@ -283,7 +284,7 @@
 				pinmux = < 0x2e4 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1006 */
 				bias-pull-up;       /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1007 */
 				drive-open-drain;   /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1008 */
-				phandle = < 0x8 >;  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:137 */
+				phandle = < 0x8 >;  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:138 */
 			};
 
 			/* node '/soc/pin-controller@40020000/i2c2_sda_pb11' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1017 */
@@ -291,69 +292,69 @@
 				pinmux = < 0x364 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1018 */
 				bias-pull-up;       /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1019 */
 				drive-open-drain;   /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1020 */
-				phandle = < 0xa >;  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:182 */
+				phandle = < 0xa >;  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:183 */
 			};
 
 			/* node '/soc/pin-controller@40020000/tim2_ch1_pa0' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1499 */
 			tim2_ch1_pa0: tim2_ch1_pa0 {
 				pinmux = < 0x1 >;  /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1500 */
-				phandle = < 0xc >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:203 */
+				phandle = < 0xc >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:204 */
 			};
 
 			/* node '/soc/pin-controller@40020000/tim2_ch2_pa1' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1503 */
 			tim2_ch2_pa1: tim2_ch2_pa1 {
 				pinmux = < 0x21 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1504 */
-				phandle = < 0xd >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:203 */
+				phandle = < 0xd >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:204 */
 			};
 
 			/* node '/soc/pin-controller@40020000/tim3_ch1_pa6' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1547 */
 			tim3_ch1_pa6: tim3_ch1_pa6 {
 				pinmux = < 0xc2 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1548 */
-				phandle = < 0xe >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:218 */
+				phandle = < 0xe >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:219 */
 			};
 
 			/* node '/soc/pin-controller@40020000/tim3_ch2_pa7' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1551 */
 			tim3_ch2_pa7: tim3_ch2_pa7 {
 				pinmux = < 0xe2 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1552 */
-				phandle = < 0xf >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:218 */
+				phandle = < 0xf >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:219 */
 			};
 
 			/* node '/soc/pin-controller@40020000/tim4_ch1_pd12' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1611 */
 			tim4_ch1_pd12: tim4_ch1_pd12 {
 				pinmux = < 0x782 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1612 */
-				phandle = < 0x10 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:238 */
+				phandle = < 0x10 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:239 */
 			};
 
 			/* node '/soc/pin-controller@40020000/tim4_ch2_pd13' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1615 */
 			tim4_ch2_pd13: tim4_ch2_pd13 {
 				pinmux = < 0x7a2 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1616 */
-				phandle = < 0x11 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:238 */
+				phandle = < 0x11 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:239 */
 			};
 
 			/* node '/soc/pin-controller@40020000/usart2_rx_pa3' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1787 */
 			usart2_rx_pa3: usart2_rx_pa3 {
 				pinmux = < 0x67 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1788 */
-				phandle = < 0x6 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:163 */
+				phandle = < 0x6 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:164 */
 			};
 
 			/* node '/soc/pin-controller@40020000/usart3_rx_pd9' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1803 */
 			usart3_rx_pd9: usart3_rx_pd9 {
 				pinmux = < 0x727 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1804 */
-				phandle = < 0x14 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:173 */
+				phandle = < 0x14 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:174 */
 			};
 
 			/* node '/soc/pin-controller@40020000/usart2_tx_pa2' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1839 */
 			usart2_tx_pa2: usart2_tx_pa2 {
 				pinmux = < 0x47 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1840 */
 				bias-pull-up;      /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1841 */
-				phandle = < 0x5 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:163 */
+				phandle = < 0x5 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:164 */
 			};
 
 			/* node '/soc/pin-controller@40020000/usart3_tx_pd8' defined in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1859 */
 			usart3_tx_pd8: usart3_tx_pd8 {
 				pinmux = < 0x707 >; /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1860 */
 				bias-pull-up;       /* in modules\hal\stm32\dts\st\f4\stm32f407z(e-g)tx-pinctrl.dtsi:1861 */
-				phandle = < 0x13 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:173 */
+				phandle = < 0x13 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:174 */
 			};
 		};
 
@@ -392,10 +393,10 @@
 			clocks = < &rcc 0x40 0x20000 >;                /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:303 */
 			resets = < &rctl 0x411 >;                      /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:304 */
 			interrupts = < 0x26 0x0 >;                     /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:305 */
-			pinctrl-0 = < &usart2_tx_pa2 &usart2_rx_pa3 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:163 */
-			pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:164 */
-			current-speed = < 0x1c200 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:165 */
-			status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:169 */
+			pinctrl-0 = < &usart2_tx_pa2 &usart2_rx_pa3 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:164 */
+			pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:165 */
+			current-speed = < 0x1c200 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:166 */
+			status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:170 */
 		};
 
 		/* node '/soc/serial@40011400' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:309 */
@@ -420,25 +421,25 @@
 			             < 0x20 0x0 >;                   /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:325 */
 			interrupt-names = "event",
 			                  "error";                   /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:326 */
-			clock-frequency = < 0x61a80 >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:136 */
-			pinctrl-0 = < &i2c1_scl_pb6 &i2c1_sda_pb7 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:137 */
-			pinctrl-names = "default";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:138 */
-			status = "okay";                             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:139 */
+			clock-frequency = < 0x61a80 >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:137 */
+			pinctrl-0 = < &i2c1_scl_pb6 &i2c1_sda_pb7 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:138 */
+			pinctrl-names = "default";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:139 */
+			status = "okay";                             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:140 */
 			phandle = < 0x1d >;                          /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:708 */
 
-			/* node '/soc/i2c@40005400/ssd1306@3c' defined in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:141 */
+			/* node '/soc/i2c@40005400/ssd1306@3c' defined in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:142 */
 			ssd1306: ssd1306@3c {
-				compatible = "solomon,ssd1306"; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:142 */
-				reg = < 0x3c >;                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:143 */
-				width = < 0x80 >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:144 */
-				height = < 0x40 >;              /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:145 */
-				segment-offset = < 0x0 >;       /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:147 */
-				page-offset = < 0x0 >;          /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:148 */
-				display-offset = < 0x0 >;       /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:149 */
-				multiplex-ratio = < 0x3f >;     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:150 */
-				segment-remap;                  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:152 */
-				com-invdir;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:153 */
-				prechargep = < 0x22 >;          /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:154 */
+				compatible = "solomon,ssd1306"; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:143 */
+				reg = < 0x3c >;                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:144 */
+				width = < 0x80 >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:145 */
+				height = < 0x40 >;              /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:146 */
+				segment-offset = < 0x0 >;       /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:148 */
+				page-offset = < 0x0 >;          /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:149 */
+				display-offset = < 0x0 >;       /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:150 */
+				multiplex-ratio = < 0x3f >;     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:151 */
+				segment-remap;                  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:153 */
+				com-invdir;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:154 */
+				prechargep = < 0x22 >;          /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:155 */
 			};
 		};
 
@@ -453,20 +454,20 @@
 			             < 0x22 0x0 >;                     /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:337 */
 			interrupt-names = "event",
 			                  "error";                     /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:338 */
-			status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:180 */
-			clock-frequency = < 0x61a80 >;                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:181 */
-			pinctrl-0 = < &i2c2_scl_pb10 &i2c2_sda_pb11 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:182 */
-			pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:183 */
+			status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:181 */
+			clock-frequency = < 0x61a80 >;                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:182 */
+			pinctrl-0 = < &i2c2_scl_pb10 &i2c2_sda_pb11 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:183 */
+			pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:184 */
 			phandle = < 0x1e >;                            /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:716 */
 
-			/* node '/soc/i2c@40005800/mpu6050@68' defined in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:185 */
+			/* node '/soc/i2c@40005800/mpu6050@68' defined in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:186 */
 			mpu6050: mpu6050@68 {
-				compatible = "invensense,mpu6050"; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:186 */
-				reg = < 0x68 >;                    /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:187 */
-				status = "okay";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:188 */
-				accel-fs = < 0x2 >;                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:189 */
-				gyro-fs = < 0xfa >;                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:190 */
-				smplrt-div = < 0x0 >;              /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:191 */
+				compatible = "invensense,mpu6050"; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:187 */
+				reg = < 0x68 >;                    /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:188 */
+				status = "okay";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:189 */
+				accel-fs = < 0x2 >;                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:190 */
+				gyro-fs = < 0xfa >;                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:191 */
+				smplrt-div = < 0x0 >;              /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:192 */
 			};
 		};
 
@@ -561,16 +562,16 @@
 			resets = < &rctl 0x400 >;       /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:413 */
 			interrupts = < 0x1c 0x0 >;      /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:414 */
 			interrupt-names = "global";     /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:415 */
-			status = "okay";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:196 */
-			st,prescaler = < 0x54 >;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:197 */
+			status = "okay";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:197 */
+			st,prescaler = < 0x54 >;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:198 */
 
 			/* node '/soc/timers@40000000/pwm' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:419 */
 			pwm2: pwm {
-				compatible = "st,stm32-pwm";                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:201 */
-				status = "okay";                             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:202 */
-				pinctrl-0 = < &tim2_ch1_pa0 &tim2_ch2_pa1 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:203 */
-				pinctrl-names = "default";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:204 */
-				#pwm-cells = < 0x3 >;                        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:206 */
+				compatible = "st,stm32-pwm";                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:202 */
+				status = "okay";                             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:203 */
+				pinctrl-0 = < &tim2_ch1_pa0 &tim2_ch2_pa1 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:204 */
+				pinctrl-names = "default";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:205 */
+				#pwm-cells = < 0x3 >;                        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:207 */
 			};
 
 			/* node '/soc/timers@40000000/counter' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:425 */
@@ -596,8 +597,8 @@
 			resets = < &rctl 0x401 >;       /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:442 */
 			interrupts = < 0x1d 0x0 >;      /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:443 */
 			interrupt-names = "global";     /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:444 */
-			status = "okay";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:212 */
-			st,prescaler = < 0x0 >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:213 */
+			status = "okay";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:213 */
+			st,prescaler = < 0x0 >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:214 */
 
 			/* node '/soc/timers@40000400/pwm' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:448 */
 			pwm {
@@ -614,13 +615,13 @@
 
 			/* node '/soc/timers@40000400/qdec' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:459 */
 			qdec_e1: qdec {
-				compatible = "st,stm32-qdec";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:216 */
-				status = "okay";                             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:217 */
-				pinctrl-0 = < &tim3_ch1_pa6 &tim3_ch2_pa7 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:218 */
-				pinctrl-names = "default";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:219 */
-				st,input-filter-level = < 0xf >;             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:221 */
-				st,counts-per-revolution = < 0x2c >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:223 */
-				st,encoder-mode = < 0x3 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:225 */
+				compatible = "st,stm32-qdec";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:217 */
+				status = "okay";                             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:218 */
+				pinctrl-0 = < &tim3_ch1_pa6 &tim3_ch2_pa7 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:219 */
+				pinctrl-names = "default";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:220 */
+				st,input-filter-level = < 0xf >;             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:222 */
+				st,counts-per-revolution = < 0x2c >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:224 */
+				st,encoder-mode = < 0x3 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:226 */
 			};
 		};
 
@@ -633,8 +634,8 @@
 			resets = < &rctl 0x402 >;       /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:471 */
 			interrupts = < 0x1e 0x0 >;      /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:472 */
 			interrupt-names = "global";     /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:473 */
-			status = "okay";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:232 */
-			st,prescaler = < 0x0 >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:233 */
+			status = "okay";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:233 */
+			st,prescaler = < 0x0 >;         /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:234 */
 
 			/* node '/soc/timers@40000800/pwm' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:477 */
 			pwm {
@@ -651,13 +652,13 @@
 
 			/* node '/soc/timers@40000800/qdec' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:488 */
 			qdec_e2: qdec {
-				compatible = "st,stm32-qdec";                  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:236 */
-				status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:237 */
-				pinctrl-0 = < &tim4_ch1_pd12 &tim4_ch2_pd13 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:238 */
-				pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:239 */
-				st,input-filter-level = < 0xf >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:240 */
-				st,counts-per-revolution = < 0x2c >;           /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:241 */
-				st,encoder-mode = < 0x3 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:242 */
+				compatible = "st,stm32-qdec";                  /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:237 */
+				status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:238 */
+				pinctrl-0 = < &tim4_ch1_pd12 &tim4_ch2_pd13 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:239 */
+				pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:240 */
+				st,input-filter-level = < 0xf >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:241 */
+				st,counts-per-revolution = < 0x2c >;           /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:242 */
+				st,encoder-mode = < 0x3 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:243 */
 			};
 		};
 
@@ -670,8 +671,9 @@
 			resets = < &rctl 0x403 >;       /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:500 */
 			interrupts = < 0x32 0x0 >;      /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:501 */
 			interrupt-names = "global";     /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:502 */
-			st,prescaler = < 0x0 >;         /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:503 */
-			status = "disabled";            /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:504 */
+			status = "okay";                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:248 */
+			st,prescaler = < 0x53 >;        /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:249 */
+			st,countermode = < 0x0 >;       /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:250 */
 
 			/* node '/soc/timers@40000c00/pwm' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:506 */
 			pwm {
@@ -681,9 +683,10 @@
 			};
 
 			/* node '/soc/timers@40000c00/counter' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:512 */
-			counter {
-				compatible = "st,stm32-counter"; /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:513 */
-				status = "disabled";             /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:514 */
+			counter5: counter {
+				compatible = "st,stm32-counter"; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:253 */
+				status = "okay";                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:254 */
+				label = "COUNTER_5";             /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:255 */
 			};
 
 			/* node '/soc/timers@40000c00/qdec' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:517 */
@@ -825,7 +828,7 @@
 			             < 0x11 0x0 >,
 			             < 0x2f 0x0 >;       /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:631 */
 			clocks = < &rcc 0x30 0x200000 >; /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:632 */
-			status = "okay";                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:159 */
+			status = "okay";                 /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:160 */
 			phandle = < 0x12 >;              /* in zephyr\dts\arm\st\f4\stm32f401.dtsi:61 */
 		};
 
@@ -932,10 +935,10 @@
 			clocks = < &rcc 0x40 0x40000 >;                /* in zephyr\dts\arm\st\f4\stm32f405.dtsi:54 */
 			resets = < &rctl 0x412 >;                      /* in zephyr\dts\arm\st\f4\stm32f405.dtsi:55 */
 			interrupts = < 0x27 0x0 >;                     /* in zephyr\dts\arm\st\f4\stm32f405.dtsi:56 */
-			pinctrl-0 = < &usart3_tx_pd8 &usart3_rx_pd9 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:173 */
-			pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:174 */
-			current-speed = < 0x7a120 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:175 */
-			status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:176 */
+			pinctrl-0 = < &usart3_tx_pd8 &usart3_rx_pd9 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:174 */
+			pinctrl-names = "default";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:175 */
+			current-speed = < 0x7a120 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:176 */
+			status = "okay";                               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:177 */
 		};
 
 		/* node '/soc/serial@40004c00' defined in zephyr\dts\arm\st\f4\stm32f405.dtsi:60 */
@@ -1305,9 +1308,9 @@
 		clk_hse: clk-hse {
 			#clock-cells = < 0x0 >;            /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:64 */
 			compatible = "st,stm32-hse-clock"; /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:65 */
-			clock-frequency = < 0x7a1200 >;    /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:114 */
-			status = "okay";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:115 */
-			phandle = < 0x17 >;                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:123 */
+			clock-frequency = < 0x7a1200 >;    /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:115 */
+			status = "okay";                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:116 */
+			phandle = < 0x17 >;                /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:124 */
 		};
 
 		/* node '/clocks/clk-hsi' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:69 */
@@ -1331,20 +1334,20 @@
 			#clock-cells = < 0x0 >;       /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:84 */
 			compatible = "fixed-clock";   /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:85 */
 			clock-frequency = < 0x7d00 >; /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:86 */
-			status = "okay";              /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:110 */
+			status = "okay";              /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:111 */
 		};
 
 		/* node '/clocks/pll' defined in zephyr\dts\arm\st\f4\stm32f4.dtsi:90 */
 		pll: pll {
 			#clock-cells = < 0x0 >;              /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:91 */
 			compatible = "st,stm32fx-pll-clock"; /* in zephyr\dts\arm\st\f4\stm32f4.dtsi:92 */
-			div-m = < 0x8 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:119 */
-			mul-n = < 0x150 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:120 */
-			div-p = < 0x2 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:121 */
-			div-q = < 0x7 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:122 */
-			clocks = < &clk_hse >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:123 */
-			status = "okay";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:124 */
-			phandle = < 0x2 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:128 */
+			div-m = < 0x8 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:120 */
+			mul-n = < 0x150 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:121 */
+			div-p = < 0x2 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:122 */
+			div-q = < 0x7 >;                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:123 */
+			clocks = < &clk_hse >;               /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:124 */
+			status = "okay";                     /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:125 */
+			phandle = < 0x2 >;                   /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:129 */
 		};
 
 		/* node '/clocks/plli2s' defined in zephyr\dts\arm\st\f4\stm32f401.dtsi:11 */
@@ -1476,7 +1479,7 @@
 		/* node '/leds/led_0' defined in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:24 */
 		led0: led_0 {
 			gpios = < &gpioa 0x8 0x0 >; /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:25 */
-			status = "okay";            /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:106 */
+			status = "okay";            /* in ..\myapp\new\blinky\boards\arm\stm32f407_balance_car\stm32f407_balance_car.dts:107 */
 		};
 	};
 

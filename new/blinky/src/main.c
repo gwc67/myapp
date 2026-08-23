@@ -15,6 +15,7 @@
 #include <zephyr/display/cfb.h>
 #include <zephyr/sys/printk.h>
 #include "OLED_Menu.h"
+#include "ano_base.h"
 #include "debug/debug.h"
 #include "encode/encode.h"
 #include "menu/menu.h"
@@ -25,10 +26,13 @@
 #include "simulink/ARMCortex-M/blinky/rtmodel.h"
 #include "uart_base.h"
 #include "value_to_str.h"
+#include "zephyr/drivers/counter.h"
 #include "zephyr/kernel/thread.h"
 #include "zephyr/kernel/thread_stack.h"
 #include "zephyr/syscalls/kernel.h"
 #include "uarts.h"
+
+
 // static const struct gpio_dt_spec led0 = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 #define RAD_TO_DEG 57.295779513082320876798154814105
 /* 1ms 任务：euler_update() 做 AHRS 解算，可能有浮点运算 */
@@ -51,33 +55,78 @@ static struct k_thread s_thread_5ms_high;
 static struct k_thread s_thread_5ms_low;
 static struct k_thread s_thread_100ms_high;
 
+//信号量定义
+static K_SEM_DEFINE(tim5_sem, 0, 1);
+
+
+static const struct device *tim5_dev_pst;
+
+static void my_1ms_isr(const struct device *dev,void* user_data);
+
+
+static void my_1ms_isr(const struct device *dev,void* user_data)
+{
+	k_sem_give(&tim5_sem);
+}
+
+int tim5_1ms_init(void)
+{
+	int ret;
+    struct counter_top_cfg top_cfg;
+    uint32_t freq;
+    uint32_t ticks;
+
+    /* 1. 获取设备 */
+    tim5_dev_pst = DEVICE_DT_GET(DT_ALIAS(tim5));
+    
+    /* 2. 检查设备是否就绪 —— 这是必须的！ */
+    if (!device_is_ready(tim5_dev_pst)) {
+        printk("TIM5 device not ready!\n");
+        return -ENODEV;
+    }
+
+	freq = counter_get_frequency(tim5_dev_pst);
+	printk("TIM5 frequency: %u Hz\n", freq);
+
+	ticks = counter_us_to_ticks(tim5_dev_pst, 1000);  /* 1000us = 1ms */
+    printk("TIM5 1ms ticks: %u\n", ticks);
+
+    /* 5. 配置 top value（非 const，因为 ticks 是动态计算的） */
+
+    top_cfg.ticks = ticks;
+    top_cfg.callback = my_1ms_isr;
+    top_cfg.user_data = NULL;
+    top_cfg.flags = 0;  /* 默认：计数器归零，触发回调 */
+
+	
+    ret = counter_start(tim5_dev_pst);
+    if (ret) {
+        printk("counter_start failed: %d\n", ret);
+        return ret;
+    }
+
+    /* 7. 设置 top value —— 这会产生周期中断！ */
+    ret = counter_set_top_value(tim5_dev_pst, &top_cfg);
+    if (ret) {
+        printk("counter_set_top_value failed: %d\n", ret);
+        return ret;
+    }
+
+    printk("TIM5 1ms periodic interrupt started\n");
+    return 0;
+}
+
+SYS_INIT(tim5_1ms_init, APPLICATION, 10);
+
+
+
 static void s_task_1ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
+
+		k_sem_take(&tim5_sem, K_FOREVER);
 		blinky_step(0);
 		// ano_check_data(g_com_ano_pst);
-		// char float_num[10];
-		// char bal_kp_pc[10];
-		// char bal_kd_pc[10];
-		// char spd_kp_pc[10];
-		// char spd_ki_pc[10];
-		// char gyroy_pc[10];
-		
-		// char angle_acc_pc[10];
-
-		char buf[128];
-		// float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
-		// float_to_str(bal_kp_pc, sizeof(bal_kp_pc), BALANCE_KP , 2);
-		// float_to_str(bal_kd_pc, sizeof(bal_kd_pc), BALANCE_KD , 2);
-		// float_to_str(spd_kp_pc, sizeof(spd_kp_pc), SPD_KP , 2);
-		// float_to_str(spd_ki_pc, sizeof(spd_ki_pc), SPD_KI , 2);
-		// float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyro[1] , 2);
-		// float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
-		
-		// snprintf(buf,sizeof(buf),"%d,%d,%d,%s,%s,%s,%s,%s,%d,%d,%s\n",k_uptime_get_32(),rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,gyroy_pc);
-		snprintf(buf,sizeof(buf),"%d\n",k_uptime_get_32());
-		uart_transmit(g_uart2_pst, buf, strlen(buf));
-		k_msleep(1);
 	}
 }
 
@@ -123,6 +172,27 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 	while (1) {
     	menu_request_refresh(g_mpu6050_euler_oled_pst);
 		
+		char float_num[10];
+		char bal_kp_pc[10];
+		char bal_kd_pc[10];
+		char spd_kp_pc[10];
+		char spd_ki_pc[10];
+		char gyroy_pc[10];
+		
+		// char angle_acc_pc[10];
+
+		char buf[128];
+		float_to_str(float_num, sizeof(float_num), rtY.pitch , 2);
+		float_to_str(bal_kp_pc, sizeof(bal_kp_pc), BALANCE_KP , 2);
+		float_to_str(bal_kd_pc, sizeof(bal_kd_pc), BALANCE_KD , 2);
+		float_to_str(spd_kp_pc, sizeof(spd_kp_pc), SPD_KP , 2);
+		float_to_str(spd_ki_pc, sizeof(spd_ki_pc), SPD_KI , 2);
+		float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyro[1] , 2);
+		// float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
+		
+		snprintf(buf,sizeof(buf),"%d,%d,%d,%s,%s,%s,%s,%s,%d,%d,%s\n",k_uptime_get_32(),rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,gyroy_pc);
+		snprintf(buf,sizeof(buf),"%d\n",k_uptime_get_32());
+		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		
 
 		menu_task_v();

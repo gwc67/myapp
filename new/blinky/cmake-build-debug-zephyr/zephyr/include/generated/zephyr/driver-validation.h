@@ -4,6 +4,8 @@
 		(K_SYSCALL_OBJ(ptr, K_OBJ_DRIVER_##driver_upper_case) || \
 		 K_SYSCALL_DRIVER_OP(ptr, driver_lower_case##_driver_api, op))
                 
+#define K_SYSCALL_DRIVER_COUNTER(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, counter, COUNTER)
+
 #define K_SYSCALL_DRIVER_DMA(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, dma, DMA)
 
 #define K_SYSCALL_DRIVER_GPIO(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, gpio, GPIO)
@@ -51,8 +53,6 @@
 #define K_SYSCALL_DRIVER_COMPARATOR(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, comparator, COMPARATOR)
 
 #define K_SYSCALL_DRIVER_COREDUMP(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, coredump, COREDUMP)
-
-#define K_SYSCALL_DRIVER_COUNTER(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, counter, COUNTER)
 
 #define K_SYSCALL_DRIVER_CRC(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, crc, CRC)
 

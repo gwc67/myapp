@@ -11,6 +11,7 @@
         "websocket_context"
     ],
     "__subsystem": [
+        "counter_driver_api",
         "dma_driver_api",
         "gpio_driver_api",
         "i2c_driver_api",
@@ -35,7 +36,6 @@
         "clock_monitor_driver_api",
         "comparator_driver_api",
         "coredump_driver_api",
-        "counter_driver_api",
         "crc_driver_api",
         "dac_driver_api",
         "dai_driver_api",

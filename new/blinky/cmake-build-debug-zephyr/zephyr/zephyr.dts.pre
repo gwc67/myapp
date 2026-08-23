@@ -3395,6 +3395,7 @@
   led0 = &led0;
   encodera = &qdec_e1;
   encoderb = &qdec_e2;
+  tim5 = &counter5;
  };
 
  chosen {
@@ -3543,6 +3544,18 @@
   st,input-filter-level = <15>;
   st,counts-per-revolution = <44>;
   st,encoder-mode = <3>;
+ };
+};
+
+&timers5 {
+ status = "okay";
+ st,prescaler = <83>;
+ st,countermode = <0>;
+
+ counter5: counter {
+  compatible = "st,stm32-counter";
+  status = "okay";
+  label = "COUNTER_5";
  };
 };
 # 0 "<command-line>" 2
