@@ -4,6 +4,7 @@
 #include <string.h>
 #include "uart_base.h"
 #include "value_to_str.h"
+#include "uarts.h"
 #define LINE_BUF_SIZE 128
 
 
@@ -38,6 +39,7 @@ void debug_par_check(void)
 static void  dispatch_line(char* line_pc)
 {
     float values_pf[4] = {0};
+    
     if(strncmp(line_pc, "bal_kp:",6) == 0)
     {
         str_to_float(line_pc, values_pf, 4);
@@ -54,5 +56,19 @@ static void  dispatch_line(char* line_pc)
     else if (strncmp(line_pc, "spd_ki:", 6) == 0) {
         str_to_float(line_pc, values_pf, 4);
         SPD_KI = (double)values_pf[0];
+    }
+    else if (strncmp(line_pc, "tar_spd:", 7) == 0) {
+        str_to_float(line_pc, values_pf, 4);
+        rtU.target_speed = (double)values_pf[0];
+    }
+    else if(strncmp(line_pc,"turn_kp:",7) == 0)
+    {
+        str_to_float(line_pc, values_pf, 4);
+        TURN_KP = values_pf[0];
+    }
+    else if(strncmp(line_pc,"turn_kd:",7) == 0)
+    {
+        str_to_float(line_pc, values_pf, 4);
+        TURN_KD = values_pf[0];
     }
 }

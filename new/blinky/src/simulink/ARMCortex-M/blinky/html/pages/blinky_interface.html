@@ -207,6 +207,18 @@ blinky_step2
 void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step2'})" class="fcn">blinky_step2</a>(void)</code>
 </div>
 </div>
+<div id="fcn_blinky_step3">
+<h4 class="function">
+blinky_step3
+</h4>
+<span class="description">
+生成代码的输出入口函数. 必须周期性调用，每 0.02 秒调用一次. 
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky_step3'})" class="fcn">blinky_step3</a>(void)</code>
+</div>
+</div>
 </section>
 <section id="sec_aperiodic_functions">
 <h3>
@@ -241,23 +253,7 @@ void <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'ju
 <h3>
 3.1 输入端口
 </h3>
-输入是基于模型根级输入端口的存储类设定在代码中生成的变量。<div id="fcn_rtU.running_flag_1">
-<h4 class="function">
-rtU.running_flag_1
-</h4>
-<span class="description">
-<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:107\')'})"  name="code2model" class="code2model">&lt;Root&gt;/running_flag_1</a> 的输入数据
-</span>
-<div class="programlisting">
-<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
-struct {
-  ...
-  uint8_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootrunning_flag_1,blinky.h'})">running_flag_1</a>;
-  ...
-} rtU;</code>
-</div>
-</div>
-<div id="fcn_rtU.gyroy">
+输入是基于模型根级输入端口的存储类设定在代码中生成的变量。<div id="fcn_rtU.gyroy">
 <h4 class="function">
 rtU.gyroy
 </h4>
@@ -369,22 +365,6 @@ struct {
 } rtU;</code>
 </div>
 </div>
-<div id="fcn_rtU.running_flag_2">
-<h4 class="function">
-rtU.running_flag_2
-</h4>
-<span class="description">
-<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:452\')'})"  name="code2model" class="code2model">&lt;Root&gt;/running_flag_2</a> 的输入数据
-</span>
-<div class="programlisting">
-<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
-struct {
-  ...
-  uint8_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootrunning_flag_2,blinky.h'})">running_flag_2</a>;
-  ...
-} rtU;</code>
-</div>
-</div>
 <div id="fcn_rtU.gyrox">
 <h4 class="function">
 rtU.gyrox
@@ -397,6 +377,54 @@ rtU.gyrox
 struct {
   ...
   real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootgyrox,blinky.h'})">gyrox</a>;
+  ...
+} rtU;</code>
+</div>
+</div>
+<div id="fcn_rtU.running_flag">
+<h4 class="function">
+rtU.running_flag
+</h4>
+<span class="description">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:477\')'})"  name="code2model" class="code2model">&lt;Root&gt;/running_flag</a> 的输入数据
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+struct {
+  ...
+  uint8_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootrunning_flag,blinky.h'})">running_flag</a>;
+  ...
+} rtU;</code>
+</div>
+</div>
+<div id="fcn_rtU.gyroz">
+<h4 class="function">
+rtU.gyroz
+</h4>
+<span class="description">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:485\')'})"  name="code2model" class="code2model">&lt;Root&gt;/gyroz</a> 的输入数据
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootgyroz,blinky.h'})">gyroz</a>;
+  ...
+} rtU;</code>
+</div>
+</div>
+<div id="fcn_rtU.turn_target">
+<h4 class="function">
+rtU.turn_target
+</h4>
+<span class="description">
+<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'legacyMCall', expr:'coder.internal.code2model(\'blinky:487\')'})"  name="code2model" class="code2model">&lt;Root&gt;/turn_target</a> 的输入数据
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+struct {
+  ...
+  real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'Rootturn_target,blinky.h'})">turn_target</a>;
   ...
 } rtU;</code>
 </div>
@@ -537,6 +565,30 @@ BALANCE_KP 的参数
 <div class="programlisting">
 <code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
 extern real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'BALANCE_KP,blinky.h'})">BALANCE_KP</a>;</code>
+</div>
+</div>
+<div id="fcn_TURN_KD">
+<h4 class="function">
+TURN_KD
+</h4>
+<span class="description">
+TURN_KD 的参数
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+extern real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'TURN_KD,blinky.h'})">TURN_KD</a>;</code>
+</div>
+</div>
+<div id="fcn_TURN_KP">
+<h4 class="function">
+TURN_KP
+</h4>
+<span class="description">
+TURN_KP 的参数
+</span>
+<div class="programlisting">
+<code class="usage"><span class="include">#include "<a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToCode',location:'blinky.h'})" class="include">blinky.h</a>"</span>
+extern real32_T <a href="javascript: void(0)" onclick="postParentWindowMessage({message:'jumpToDeclaration',location:'TURN_KP,blinky.h'})">TURN_KP</a>;</code>
 </div>
 </div>
 </section>

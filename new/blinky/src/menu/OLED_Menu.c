@@ -32,9 +32,14 @@ static void s_draw_speed_a(struct menu_node_t *self)
     cfb_framebuffer_set_font(s_oled_pst, 1);
     cfb_print(s_oled_pst, self->base.name, 0, 0);
     cfb_framebuffer_set_font(s_oled_pst, 0);
-    // if (self->data) {
-    //     rtU.speed_a_target = *(self->data);
-    // }
+    char target_speed_pc[10];
+    
+    
+    if (self->data) {
+        rtU.target_speed = *(self->data);
+    }
+    float_to_str(target_speed_pc, sizeof(target_speed_pc),rtU.target_speed, 2);
+    cfb_print(s_oled_pst, target_speed_pc, 20, 30);
 }
 
 static void s_draw_mpu6050(struct menu_node_t* self)
@@ -134,6 +139,7 @@ static void s_draw_encoder(struct menu_node_t* self)
     struct encoder_data_t encoder_data_a_st = {0};
     struct encoder_data_t encoder_data_b_st = {0};
     encoder_get_data(g_encoder_a_pst,&encoder_data_a_st);
+    encoder_get_data(g_encoder_b_pst,&encoder_data_b_st);
     
     
 
@@ -172,7 +178,7 @@ static int s_build_menu_tree(void)
     
     Create_Menu_Leaf_Range(&s_simulink_st, s_speed_a_st,
                            "speed_a", s_draw_speed_a,
-                           &s_speed_a_l, -1000, 1000);
+                           &s_speed_a_l, -50, 50);
     menu_set_default_int(&s_speed_a_st, 0);
 
     return 0;
