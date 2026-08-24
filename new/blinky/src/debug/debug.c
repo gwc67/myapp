@@ -1,6 +1,7 @@
 #include "debug.h"
 #include "blinky.h"
 #include "my_ring.h"
+#include <stdint.h>
 #include <string.h>
 #include "uart_base.h"
 #include "value_to_str.h"
@@ -39,7 +40,7 @@ void debug_par_check(void)
 static void  dispatch_line(char* line_pc)
 {
     float values_pf[4] = {0};
-    
+    // int16_t values_s = 0;
     if(strncmp(line_pc, "bal_kp:",6) == 0)
     {
         str_to_float(line_pc, values_pf, 4);
@@ -71,4 +72,11 @@ static void  dispatch_line(char* line_pc)
         str_to_float(line_pc, values_pf, 4);
         TURN_KD = values_pf[0];
     }
+    // else if(strncmp(line_pc,"PWM:",4) == 0)
+    // {
+    //     str_to_int16(line_pc,&values_s,1);
+    //     PWM_MAX = values_s;
+
+    // }
+    
 }

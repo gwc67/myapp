@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.75
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Mon Aug 24 11:16:00 2026
+ * C/C++ source code generated on : Mon Aug 24 11:34:11 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -51,8 +51,8 @@
 
 /* Definition for custom storage class: Define */
 #define BALANCE_OFFSET                 0.0                       /* Referenced by: '<S113>/BALANCE_OFFSET' */
-#define PWM_MAX                        700                       /* Referenced by: '<S113>/Saturation' */
-#define PWM_MIN                        -700                      /* Referenced by: '<S113>/Saturation' */
+#define PWM_MAX                        800                       /* Referenced by: '<S113>/Saturation' */
+#define PWM_MIN                        -800                      /* Referenced by: '<S113>/Saturation' */
 
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {

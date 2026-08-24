@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.75
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Mon Aug 24 11:16:00 2026
+ * C/C++ source code generated on : Mon Aug 24 11:34:11 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -21,16 +21,16 @@
 #include <string.h>
 
 /* Exported block parameters */
-real_T SPD_KI = 0.0004;                /* Variable: SPD_KI
+real_T SPD_KI = 0.00010;                /* Variable: SPD_KI
                                         * Referenced by: '<S37>/Integral Gain'
                                         */
-real_T SPD_KP = 0.55;                  /* Variable: SPD_KP
+real_T SPD_KP = 0.478;                  /* Variabble: SPD_KP
                                         * Referenced by: '<S45>/Proportional Gain'
                                         */
-real32_T BALANCE_KD = 338.9F;          /* Variable: BALANCE_KD
+real32_T BALANCE_KD = 327.2F;          /* Variable: BALANCE_KD
                                         * Referenced by: '<S143>/Derivative Gain'
                                         */
-real32_T BALANCE_KP = 72.0F;           /* Variable: BALANCE_KP
+real32_T BALANCE_KP = 80.0F;           /* Variable: BALANCE_KP
                                         * Referenced by: '<S155>/Proportional Gain'
                                         */
 real32_T TURN_KD = 0.1F;               /* Variable: TURN_KD
@@ -434,13 +434,13 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    *  DataStoreRead: '<S169>/Data Store ReadP'
    *  DataStoreRead: '<S169>/Data Store ReadX'
    */
-  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
+  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[0]));
 
-  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
+  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.b_dHdx[0] = ((rtDW.x[0] + rtDW.epsilon) - rtDW.x[0]) / rtDW.epsilon;
@@ -448,13 +448,13 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[1]));
 
-  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
+  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   rtDW.b_dHdx[2] = 0.0 / rtDW.epsilon;
   rtDW.b_dHdx[3] = ((rtDW.x[1] + rtDW.epsilon) - rtDW.x[1]) / rtDW.epsilon;
 
-  /* x ¾ÍÊÇÒ»¿ªÊ¼×´Ì¬×ªÒÆº¯Êý¶¨ÒåµÄ×´Ì¬ÏòÁ¿ */
+  /* x ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼×´Ì¬×ªï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ */
   /* x = [picth;roll]; */
   /*  u = [pitch_acc;roll_acc] */
   qrFactor(rtDW.b_dHdx, rtDW.P_i, rtConstP.R1_Value, rtDW.Sy);
@@ -624,10 +624,10 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
           BALANCE_KP + rtDW.Integrator_DSTATE_n) + rtDW.FilterCoefficient_c;
 
     /* Saturate: '<S157>/Saturation' */
-    if (u0 > 800.0F) {
-      u0 = 800.0F;
-    } else if (u0 < -800.0F) {
-      u0 = -800.0F;
+    if (u0 > 1000.0F) {
+      u0 = 1000.0F;
+    } else if (u0 < -1000.0F) {
+      u0 = -1000.0F;
     }
 
     rtb_Switch = (int16_T)floorf(u0);
@@ -651,8 +651,8 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    *  DataTypeConversion: '<S4>/Data Type Conversion3'
    *  Inport: '<Root>/gyroy'
    */
-  /*  x = [pitch; roll]  (2¡Á1) */
-  /*  u = [gx; gy]       (2¡Á1) */
+  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
+  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
   rtDW.K_idx_1 = rtU.gyroy * 0.005;
 
   /* MATLABSystem: '<S171>/MATLAB System' incorporates:
@@ -671,31 +671,31 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    */
   rtDW.z_idx_1 = rtDW.K_idx_3 + rtDW.x[1];
 
-  /*  2¡Á1 */
+  /*  2ï¿½ï¿½1 */
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[0]));
 
-  /*  x = [pitch; roll]  (2¡Á1) */
-  /*  u = [gx; gy]       (2¡Á1) */
-  /*  2¡Á1 */
+  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
+  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
+  /*  2ï¿½ï¿½1 */
   rtDW.b_dHdx[0] = (((rtDW.x[0] + rtDW.epsilon) + rtDW.K_idx_1) - rtDW.z_idx_0) /
     rtDW.epsilon;
   rtDW.b_dHdx[1] = (rtDW.z_idx_1 - rtDW.z_idx_1) / rtDW.epsilon;
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
                       (rtDW.x[1]));
 
-  /*  x = [pitch; roll]  (2¡Á1) */
-  /*  u = [gx; gy]       (2¡Á1) */
-  /*  2¡Á1 */
+  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
+  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
+  /*  2ï¿½ï¿½1 */
   rtDW.b_dHdx[2] = (rtDW.z_idx_0 - rtDW.z_idx_0) / rtDW.epsilon;
   rtDW.b_dHdx[3] = (((rtDW.x[1] + rtDW.epsilon) + rtDW.K_idx_3) - rtDW.z_idx_1) /
     rtDW.epsilon;
 
   /* End of Outputs for SubSystem: '<S168>/Predict' */
   /* End of Outputs for SubSystem: '<Root>/task_5ms' */
-  /*  x = [pitch; roll]  (2¡Á1) */
-  /*  u = [gx; gy]       (2¡Á1) */
-  /*  2¡Á1 */
+  /*  x = [pitch; roll]  (2ï¿½ï¿½1) */
+  /*  u = [gx; gy]       (2ï¿½ï¿½1) */
+  /*  2ï¿½ï¿½1 */
   for (i = 0; i < 4; i++) {
     /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
     /* Outputs for Atomic SubSystem: '<S168>/Predict' */

@@ -194,3 +194,42 @@ uint8_t str_to_float(const char *str, float *array_pf, uint8_t arr_size_uc)
 
     return count;
 }
+
+uint8_t str_to_int16(const char *str, int16_t *array_ps, uint8_t arr_size_uc)
+{
+    if (str == NULL || array_ps == NULL || arr_size_uc == 0) {
+        return 0;
+    }
+
+    uint8_t count = 0;
+    
+    while (*str != '\0' && count < arr_size_uc) 
+    {
+
+        while (*str != '\0' && *str != '-' && *str != '+' && (*str < '0' || *str > '9')) {
+            str++;
+        }
+        if (*str == '\0') break;
+
+
+        int32_t sign = 1;
+        if (*str == '-') { sign = -1; str++; }
+        else if (*str == '+') { str++; }
+
+
+        if (*str < '0' || *str > '9') continue;
+
+        int32_t val = 0;
+        while (*str >= '0' && *str <= '9') {
+            val = val * 10 + (*str - '0');
+            str++;
+        }
+        val *= sign;
+
+        if (val > INT16_MAX) val = INT16_MAX;       // 32767
+        else if (val < INT16_MIN) val = INT16_MIN;  // -32768
+
+        array_ps[count++] = (int16_t)val;
+    }
+    return count;
+}
