@@ -7,55 +7,11 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   6 \
+    NumChartData   0 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
-    }\
-    ChartData {\
-      Name         "AHRSEKF"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "blinky:303:85-92"\
-    }\
-    ChartData {\
-      Name         "AHRSEKF_not_empty"\
-      Description  "EmlPersistentSentinel"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "blinky:303:85-92"\
-    }\
-    ChartData {\
-      Name         "Ji"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "D:\Downloads\zephyr_new\myapp\new\blinky\src\simulink\EKF\AttitudeEKF.m:1417-1419"\
-      Dimensions   [3,3]\
-    }\
-    ChartData {\
-      Name         "Ji_not_empty"\
-      Description  "EmlPersistentSentinel"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "D:\Downloads\zephyr_new\myapp\new\blinky\src\simulink\EKF\AttitudeEKF.m:1417-1419"\
-    }\
-    ChartData {\
-      Name         "Q"\
-      Description  "EmlPersistent"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "D:\Downloads\zephyr_new\myapp\new\blinky\src\simulink\EKF\AttitudeEKF.m:3947-3948"\
-      Dimensions   [12,12]\
-    }\
-    ChartData {\
-      Name         "Q_not_empty"\
-      Description  "EmlPersistentSentinel"\
-      SFName       ""\
-      Path         ""\
-      SrcLocation  "D:\Downloads\zephyr_new\myapp\new\blinky\src\simulink\EKF\AttitudeEKF.m:3947-3948"\
     }\
   }
   %return ChartDataElements

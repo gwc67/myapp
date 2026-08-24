@@ -3,9 +3,7 @@
 #include "my_ring.h"
 #include <stdint.h>
 #include <string.h>
-#include "uart_base.h"
 #include "value_to_str.h"
-#include "uarts.h"
 #define LINE_BUF_SIZE 128
 
 
