@@ -1,0 +1,2 @@
+time,pwma,pwmb,pitch,motor_a_speed,motor_b_speed,target_speed,target_angle,running_success_flag
+0,800,800,-54.900002,52,60,40,8.67,1

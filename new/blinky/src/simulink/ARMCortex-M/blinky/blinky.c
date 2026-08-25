@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.75
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Tue Aug 25 09:35:54 2026
+ * C/C++ source code generated on : Tue Aug 25 14:04:59 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -21,6 +21,9 @@
 #include <string.h>
 
 /* Exported block parameters */
+real_T SPD_KD = 0.0;                   /* Variable: SPD_KD
+                                        * Referenced by: '<S34>/Derivative Gain'
+                                        */
 real_T SPD_KI = 0.0001;                /* Variable: SPD_KI
                                         * Referenced by: '<S38>/Integral Gain'
                                         */
@@ -792,7 +795,7 @@ void blinky_step2(void)                /* Sample time: [0.01s, 0.0s] */
    *  Gain: '<S34>/Derivative Gain'
    *  Sum: '<S36>/SumD'
    */
-  rtb_FilterCoefficient = (0.0 - rtDW.Filter_DSTATE) * 100.0;
+  rtb_FilterCoefficient = (SPD_KD * rtb_Sum_l - rtDW.Filter_DSTATE) * 100.0;
 
   /* Sum: '<S50>/Sum' incorporates:
    *  DiscreteIntegrator: '<S41>/Integrator'

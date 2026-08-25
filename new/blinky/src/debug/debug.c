@@ -72,6 +72,11 @@ static void  dispatch_line(char* line_pc)
         str_to_float(line_pc, values_pf, 4);
         TURN_KD = values_pf[0];
     }
+    else if(strncmp(line_pc,"spd_kd:",7) == 0)
+    {
+        str_to_float(line_pc, values_pf, 4);
+        SPD_KD =(double)values_pf[0];
+    }
     // else if(strncmp(line_pc,"bal_kff:",6) == 0)
     // str_to_float(line_pc,values_pf,4);
     // {

@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.75
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Tue Aug 25 09:35:54 2026
+ * C/C++ source code generated on : Tue Aug 25 14:04:59 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -202,6 +202,9 @@ extern const ConstP rtConstP;
  * these parameters and exports their symbols.
  *
  */
+extern real_T SPD_KD;                  /* Variable: SPD_KD
+                                        * Referenced by: '<S34>/Derivative Gain'
+                                        */
 extern real_T SPD_KI;                  /* Variable: SPD_KI
                                         * Referenced by: '<S38>/Integral Gain'
                                         */
