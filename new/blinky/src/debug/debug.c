@@ -4,11 +4,13 @@
 #include <stdint.h>
 #include <string.h>
 #include "value_to_str.h"
+#include "zephyr/drivers/gpio.h"
 #define LINE_BUF_SIZE 128
 
 
 static void  dispatch_line(char* line_pc);
 
+static const struct gpio_dt_spec led_motor_st =GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 
 
 void debug_par_check(void)
@@ -70,11 +72,15 @@ static void  dispatch_line(char* line_pc)
         str_to_float(line_pc, values_pf, 4);
         TURN_KD = values_pf[0];
     }
-    // else if(strncmp(line_pc,"PWM:",4) == 0)
+    // else if(strncmp(line_pc,"bal_kff:",6) == 0)
+    // str_to_float(line_pc,values_pf,4);
     // {
-    //     str_to_int16(line_pc,&values_s,1);
-    //     PWM_MAX = values_s;
-
+        // BAL_KFF = (double)values_pf[0];
     // }
+    else if (strncmp(line_pc, "convert: ", 8) == 0) {
+        rtU.running_flag ^=1;
+        gpio_pin_set_dt(&led_motor_st, rtU.running_flag);
+
+    }
     
 }

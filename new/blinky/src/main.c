@@ -149,11 +149,6 @@ static void s_task_5ms_high(void *p1,void *p2,void *p3)
 
 		euler_update();
 		encoder_update_all();
-		
-		// struct encoder_data_t speed_a_st = {0};
-		// encoder_get_data(g_encoder_a_pst, &speed_a_st);
-		//matlab控制逻辑
-		// rtU.motor_a_actual_speed = speed_a_st.rpm_l;
 		blinky_step(1);
 
 		motor_set(g_motor_a_pst, rtY.motor_a_pwm);
@@ -216,8 +211,8 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		// float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyroy , 2);
 		// float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
 		// snprintf(buf,sizeof(buf),"%d,%d,%d,%s,%s,%s,%s,%s,%s,%s\n",k_uptime_get_32(),rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,gyroy_pc,angle_acc_pc);
-		snprintf(buf,sizeof(buf),"%s,%d,%d,%s,%d,%d,%s,%s\n",time_pc,rtY.motor_a_pwm,rtY.motor_b_pwm,pitch_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,target_speed_pc,pitch_target_pc);
-#endif
+		snprintf(buf,sizeof(buf),"%s,%d,%d,%s,%d,%d,%s,%s,%d\n",time_pc,rtY.motor_a_pwm,rtY.motor_b_pwm,pitch_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,target_speed_pc,pitch_target_pc,rtY.running_success_flag);
+		#endif
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		
 		menu_task_v();

@@ -156,10 +156,6 @@ static void s_draw_encoder(struct menu_node_t* self)
 
     snprintf(buf, sizeof(buf), "p_b:%d", encoder_data_b_st.position_l);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 64, 30);
-
-    // float_to_str(num, sizeof(num), euler_st.yaw_db, 2);
-    // snprintf(buf, sizeof(buf), "yaw:%s", num);   /* ✅ num 和 buf 分开 */
-    // cfb_print(s_oled_pst, buf, 0, 30);
     
 }
 static struct menu_node_t g_encode_st;
