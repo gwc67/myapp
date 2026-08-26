@@ -40,7 +40,7 @@ void debug_par_check(void)
 static void  dispatch_line(char* line_pc)
 {
     float values_pf[4] = {0};
-    // int16_t values_s = 0;
+    // int16_t values_ps[4] = {0};
     if(strncmp(line_pc, "bal_kp:",6) == 0)
     {
         str_to_float(line_pc, values_pf, 4);
@@ -86,5 +86,9 @@ static void  dispatch_line(char* line_pc)
         rtU.running_flag ^=1;
         gpio_pin_set_dt(&led_motor_st, rtU.running_flag);
     }
-    
+    else if (strncmp(line_pc, "turn_tar:", 9) == 0) {
+        str_to_float(line_pc, values_pf, 4);
+        rtU.turn_target =  (double)values_pf[0];
+        rtU.target_speed = (double)values_pf[1];
+    }
 }
