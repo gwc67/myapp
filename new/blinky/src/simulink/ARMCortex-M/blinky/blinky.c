@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.75
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Tue Aug 25 14:04:59 2026
+ * C/C++ source code generated on : Wed Aug 26 13:29:51 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -24,16 +24,16 @@
 real_T SPD_KD = 0.0;                   /* Variable: SPD_KD
                                         * Referenced by: '<S34>/Derivative Gain'
                                         */
-real_T SPD_KI = 0.0001;                /* Variable: SPD_KI
+real_T SPD_KI = 0.0012;                /* Variable: SPD_KI
                                         * Referenced by: '<S38>/Integral Gain'
                                         */
-real_T SPD_KP = 0.478;                 /* Variable: SPD_KP
+real_T SPD_KP = 0.465;                 /* Variable: SPD_KP
                                         * Referenced by: '<S46>/Proportional Gain'
                                         */
-real32_T BALANCE_KD = 327.2F;          /* Variable: BALANCE_KD
+real32_T BALANCE_KD = 300.0F;          /* Variable: BALANCE_KD
                                         * Referenced by: '<S144>/Derivative Gain'
                                         */
-real32_T BALANCE_KP = 80.0F;           /* Variable: BALANCE_KP
+real32_T BALANCE_KP = 70.0F;           /* Variable: BALANCE_KP
                                         * Referenced by: '<S156>/Proportional Gain'
                                         */
 real32_T TURN_KD = 0.1F;               /* Variable: TURN_KD

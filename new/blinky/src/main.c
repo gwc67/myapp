@@ -46,12 +46,15 @@ static K_THREAD_STACK_DEFINE(s_stack_5ms_high, 2048); /* 1.5KB */
 /* 10ms 低优先级任务 */
 static K_THREAD_STACK_DEFINE(s_stack_5ms_low, 1024);    /* 1KB */
 
+static K_THREAD_STACK_DEFINE(s_stack_20ms_high, 1024);    /* 1KB */
+
 static K_THREAD_STACK_DEFINE(s_stack_100ms_high, 1024);    /* 1KB */
 
 static struct k_thread s_thread_1ms_high;
 static struct k_thread s_thread_10ms_high;
 static struct k_thread s_thread_5ms_high;
 static struct k_thread s_thread_5ms_low;
+static struct k_thread s_thread_20ms_high;
 static struct k_thread s_thread_100ms_high;
 
 //信号量定义
@@ -220,6 +223,15 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 	}
 }
 
+static void s_task_20_ms_high(void* p1,void *p2,void* p3)
+{
+	while (1) {
+
+		blinky_step3();
+		k_msleep(19);
+	}
+}
+
 static void s_task_100ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {		
@@ -238,6 +250,7 @@ int main(void)
 	k_thread_create(&s_thread_1ms_high, s_stack_1ms_high, sizeof(s_stack_1ms_high), s_task_1ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(2), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_5ms_high, s_stack_5ms_high, sizeof(s_stack_5ms_high), s_task_5ms_high, NULL, NULL, NULL, K_PRIO_PREEMPT(4), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_10ms_high,  s_stack_10ms_high , sizeof(s_stack_10ms_high) , s_task_10ms_high , NULL, NULL, NULL, K_PRIO_PREEMPT(5), 0, K_NO_WAIT);
+	k_thread_create(&s_thread_20ms_high,  s_stack_20ms_high , sizeof(s_stack_20ms_high) , s_task_20_ms_high , NULL, NULL, NULL, K_PRIO_PREEMPT(6), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_5ms_low,  s_stack_5ms_low , sizeof(s_stack_5ms_low) , s_task_5ms_low , NULL, NULL, NULL, K_PRIO_PREEMPT(10), 0, K_NO_WAIT);
 	k_thread_create(&s_thread_100ms_high,  s_stack_100ms_high , sizeof(s_stack_100ms_high) , s_task_100ms_high , NULL, NULL, NULL, K_PRIO_PREEMPT(11), 0, K_NO_WAIT);
 	while (1) {

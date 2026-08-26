@@ -85,7 +85,6 @@ static void  dispatch_line(char* line_pc)
     else if (strncmp(line_pc, "convert: ", 8) == 0) {
         rtU.running_flag ^=1;
         gpio_pin_set_dt(&led_motor_st, rtU.running_flag);
-
     }
     
 }

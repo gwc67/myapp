@@ -1,5 +1,5 @@
 function compare_groups_6(root_path)
-% COMPARE_GROUPS_7 对比多组实验数据，按target_speed分组合并
+% COMPARE_GROUPS_6 对比多组实验数据，按target_speed分组合并
 % 简化版：
 %   1. 只导出 tar_[speed].csv 一个总文件
 %   2. 跳过输出文件夹group_*避免重复扫描
@@ -18,10 +18,12 @@ function compare_groups_6(root_path)
     col_motor_b = 6;
     col_target_speed = 7;
     col_target_angle = 8;
+    % col_running_flag = 9;      % 新增：明确标注第9列
+    col_angle_error = 10;      % 修复：从9改为10
 
     % 要对比的列
-    compare_cols = [col_pwma, col_pwmb, col_pitch, col_motor_a, col_motor_b, col_target_angle];
-    compare_names = {'pwma', 'pwmb', 'pitch', 'motor_a_speed', 'motor_b_speed', 'target_angle'};
+    compare_cols = [col_pwma, col_pwmb, col_pitch, col_motor_a, col_motor_b, col_target_angle,col_angle_error];
+    compare_names = {'pwma', 'pwmb', 'pitch', 'motor_a_speed', 'motor_b_speed', 'target_angle','angle_error'};
 
     target_round = @(x) round(x);
 
