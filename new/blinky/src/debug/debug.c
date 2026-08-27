@@ -44,23 +44,23 @@ static void  dispatch_line(char* line_pc)
     if(strncmp(line_pc, "bal_kp:",6) == 0)
     {
         str_to_float(line_pc, values_pf, 4);
-        BALANCE_KP = (double)values_pf[0];
+        BALANCE_KP = values_pf[0];
     }
     else if (strncmp(line_pc, "bal_kd:", 6) == 0) {
         str_to_float(line_pc, values_pf, 4);
-        BALANCE_KD = (double)values_pf[0];
+        BALANCE_KD = values_pf[0];
     }
     else if (strncmp(line_pc, "spd_kp:", 6) == 0) {
         str_to_float(line_pc, values_pf, 4);
-        SPD_KP = (double)values_pf[0];
+        SPD_KP = values_pf[0];
     }
     else if (strncmp(line_pc, "spd_ki:", 6) == 0) {
         str_to_float(line_pc, values_pf, 4);
-        SPD_KI = (double)values_pf[0];
+        SPD_KI = values_pf[0];
     }
     else if (strncmp(line_pc, "tar_spd:", 7) == 0) {
         str_to_float(line_pc, values_pf, 4);
-        rtU.target_speed = (double)values_pf[0];
+        rtU.target_speed = values_pf[0];
     }
     else if(strncmp(line_pc,"turn_kp:",7) == 0)
     {
@@ -75,7 +75,7 @@ static void  dispatch_line(char* line_pc)
     else if(strncmp(line_pc,"spd_kd:",7) == 0)
     {
         str_to_float(line_pc, values_pf, 4);
-        SPD_KD =(double)values_pf[0];
+        SPD_KD  = values_pf[0];
     }
     // else if(strncmp(line_pc,"bal_kff:",6) == 0)
     // str_to_float(line_pc,values_pf,4);
@@ -88,7 +88,7 @@ static void  dispatch_line(char* line_pc)
     }
     else if (strncmp(line_pc, "turn_tar:", 9) == 0) {
         str_to_float(line_pc, values_pf, 4);
-        rtU.turn_target =  (double)values_pf[0];
-        rtU.target_speed = (double)values_pf[1];
+        rtU.turn_target = values_pf[0];
+        rtU.target_speed =values_pf[1];
     }
 }

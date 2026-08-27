@@ -128,6 +128,14 @@ static void s_task_1ms_high(void *p1,void *p2,void *p3)
 
 		k_sem_take(&tim5_sem, K_FOREVER);
 		blinky_step(0);
+		static uint32_t s_last_tick_ul = 0;
+		uint32_t current_tick_ul = k_uptime_get_32();
+		
+
+		if (current_tick_ul != s_last_tick_ul) {
+			s_last_tick_ul = current_tick_ul;
+			motor_set(g_motor_b_pst, rtY.motor_b_pwm);
+		}
 		// ano_check_data(g_com_ano_pst);
 	}
 }
@@ -150,12 +158,24 @@ static void s_task_5ms_high(void *p1,void *p2,void *p3)
 {
 	while (1) {
 
+		
 		euler_update();
 		encoder_update_all();
 		blinky_step(1);
 
 		motor_set(g_motor_a_pst, rtY.motor_a_pwm);
 		motor_set(g_motor_b_pst, rtY.motor_b_pwm);
+
+		static uint32_t s_last_tick_ul = 0;
+		uint32_t current_tick_ul = k_uptime_get_32();
+		
+
+		if (current_tick_ul != s_last_tick_ul) {
+			s_last_tick_ul = current_tick_ul;
+			motor_set(g_motor_b_pst, rtY.motor_b_pwm);
+		}
+		
+
 
 		k_msleep(4);
 
