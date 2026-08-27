@@ -11,14 +11,6 @@
 %function GlobalMachineInitializer(block) void
   %openfile tmpFcnBuf
   %<DumpMachineInitializer(block)>\
-  %if FILE_EXISTS("sharedTrackingLibrary_rtw.tlc")
-    %generatefile "machineSource" "sharedTrackingLibrary_rtw.tlc"
-    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
-  %endif
-  %if FILE_EXISTS("fuzwiz_rtw.tlc")
-    %generatefile "machineSource" "fuzwiz_rtw.tlc"
-    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
-  %endif
   %closefile tmpFcnBuf
   %return tmpFcnBuf              
 %endfunction %% GlobalMachineInitializer
@@ -34,10 +26,6 @@
 %function GlobalMachineTerminator(block) void
   %openfile tmpFcnBuf
   %<DumpMachineTerminator(block)>\
-  %generatefile "machineSource" "sharedTrackingLibrary_rtw.tlc"
-  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
-  %generatefile "machineSource" "fuzwiz_rtw.tlc"
-  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
   %closefile tmpFcnBuf
   %return tmpFcnBuf              
 %endfunction %% GlobalMachineTerminator

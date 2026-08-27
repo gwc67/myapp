@@ -41,7 +41,7 @@ static K_THREAD_STACK_DEFINE(s_stack_1ms_high, 2048);   /* 2KB 足够 */
 static K_THREAD_STACK_DEFINE(s_stack_10ms_high, 2048);   /* 1KB */
 
 /* 10ms 任务：ano_check_data + com_check_to_send + menu */
-static K_THREAD_STACK_DEFINE(s_stack_5ms_high, 2048); /* 1.5KB */
+static K_THREAD_STACK_DEFINE(s_stack_5ms_high, 4096); /* 1.5KB */
 
 /* 10ms 低优先级任务 */
 static K_THREAD_STACK_DEFINE(s_stack_5ms_low, 1024);    /* 1KB */

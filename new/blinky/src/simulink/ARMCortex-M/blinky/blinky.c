@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'blinky'.
  *
- * Model version                  : 1.75
+ * Model version                  : 1.76
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Wed Aug 26 19:16:10 2026
+ * C/C++ source code generated on : Thu Aug 27 11:11:38 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -21,6 +21,14 @@
 #include <string.h>
 
 /* Exported block parameters */
+real_T BALANCE_KD = 1.0;               /* Variable: BALANCE_KD
+                                        * Referenced by: '<S114>/Constant1'
+                                        */
+real_T BALANCE_KP = 35.0;              /* Variable: BALANCE_KP
+                                        * Referenced by:
+                                        *   '<S114>/Constant3'
+                                        *   '<S114>/bal_kp'
+                                        */
 real_T SPD_KD = 0.0;                   /* Variable: SPD_KD
                                         * Referenced by: '<S34>/Derivative Gain'
                                         */
@@ -29,12 +37,6 @@ real_T SPD_KI = 0.0012;                /* Variable: SPD_KI
                                         */
 real_T SPD_KP = 0.465;                 /* Variable: SPD_KP
                                         * Referenced by: '<S46>/Proportional Gain'
-                                        */
-real32_T BALANCE_KD = 300.0F;          /* Variable: BALANCE_KD
-                                        * Referenced by: '<S144>/Derivative Gain'
-                                        */
-real32_T BALANCE_KP = 70.0F;           /* Variable: BALANCE_KP
-                                        * Referenced by: '<S156>/Proportional Gain'
                                         */
 real32_T TURN_KD = 1.0F;               /* Variable: TURN_KD
                                         * Referenced by: '<S87>/Derivative Gain'
@@ -63,13 +65,15 @@ static void qrFactor(const real_T A[4], const real_T S[4], const real_T Ns[4],
                      real_T b_S[4]);
 static void trisolve(const real_T A[4], real_T B_0[4]);
 static void trisolve_o(const real_T A[4], real_T B_2[4]);
+static real_T trimf(real_T x, const real_T params[3]);
+static void trimf_b(const real_T x[101], const real_T params[3], real_T y[101]);
 static real_T xnrm2(int32_T n, const real_T x[8], int32_T ix0)
 {
   real_T y;
   int32_T k;
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' incorporates:
-   *  MATLABSystem: '<S172>/MATLAB System'
+  /* Start for MATLABSystem: '<S123>/MATLAB System' incorporates:
+   *  MATLABSystem: '<S125>/MATLAB System'
    */
   y = 0.0;
   if (n >= 1) {
@@ -95,7 +99,7 @@ static real_T xnrm2(int32_T n, const real_T x[8], int32_T ix0)
     }
   }
 
-  /* End of Start for MATLABSystem: '<S170>/MATLAB System' */
+  /* End of Start for MATLABSystem: '<S123>/MATLAB System' */
   return y;
 }
 
@@ -133,20 +137,20 @@ static void qrFactor(const real_T A[4], const real_T S[4], const real_T Ns[4],
   int32_T lastv;
   boolean_T exitg2;
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' incorporates:
-   *  MATLABSystem: '<S172>/MATLAB System'
+  /* Start for MATLABSystem: '<S123>/MATLAB System' incorporates:
+   *  MATLABSystem: '<S125>/MATLAB System'
    */
   rtDW.b_atmp = S[1];
   rtDW.xnorm = S[0];
   rtDW.S = S[3];
-  rtDW.S_g = S[2];
+  rtDW.S_f = S[2];
   for (i = 0; i < 2; i++) {
-    rtDW.A_c = A[i + 2];
-    rtDW.A_f = A[i];
+    rtDW.A_p = A[i + 2];
+    rtDW.A_c = A[i];
     M_tmp = i << 2;
-    rtDW.M[M_tmp] = rtDW.A_c * rtDW.b_atmp + rtDW.xnorm * rtDW.A_f;
+    rtDW.M[M_tmp] = rtDW.A_p * rtDW.b_atmp + rtDW.xnorm * rtDW.A_c;
     rtDW.M[M_tmp + 2] = Ns[i];
-    rtDW.M[M_tmp + 1] = rtDW.A_c * rtDW.S + rtDW.S_g * rtDW.A_f;
+    rtDW.M[M_tmp + 1] = rtDW.A_p * rtDW.S + rtDW.S_f * rtDW.A_c;
     rtDW.M[M_tmp + 3] = Ns[i + 2];
     rtDW.b_tau[i] = 0.0;
     rtDW.work[i] = 0.0;
@@ -289,8 +293,8 @@ static void qrFactor(const real_T A[4], const real_T S[4], const real_T Ns[4],
 
   for (ii = 0; ii < 2; ii++) {
     for (M_tmp = 0; M_tmp <= ii; M_tmp++) {
-      /* Start for MATLABSystem: '<S170>/MATLAB System' incorporates:
-       *  MATLABSystem: '<S172>/MATLAB System'
+      /* Start for MATLABSystem: '<S123>/MATLAB System' incorporates:
+       *  MATLABSystem: '<S125>/MATLAB System'
        */
       rtDW.b_R[M_tmp + (ii << 1)] = rtDW.M[(ii << 2) + M_tmp];
     }
@@ -300,8 +304,8 @@ static void qrFactor(const real_T A[4], const real_T S[4], const real_T Ns[4],
     }
   }
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' incorporates:
-   *  MATLABSystem: '<S172>/MATLAB System'
+  /* Start for MATLABSystem: '<S123>/MATLAB System' incorporates:
+   *  MATLABSystem: '<S125>/MATLAB System'
    */
   b_S[0] = rtDW.b_R[0];
   b_S[1] = rtDW.b_R[2];
@@ -315,7 +319,7 @@ static void trisolve(const real_T A[4], real_T B_0[4])
   int32_T b_k;
   int32_T i;
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' */
+  /* Start for MATLABSystem: '<S123>/MATLAB System' */
   for (b_j = 0; b_j < 2; b_j++) {
     int32_T jBcol;
     jBcol = (b_j << 1) - 1;
@@ -337,7 +341,7 @@ static void trisolve(const real_T A[4], real_T B_0[4])
     }
   }
 
-  /* End of Start for MATLABSystem: '<S170>/MATLAB System' */
+  /* End of Start for MATLABSystem: '<S123>/MATLAB System' */
 }
 
 static void trisolve_o(const real_T A[4], real_T B_2[4])
@@ -346,7 +350,7 @@ static void trisolve_o(const real_T A[4], real_T B_2[4])
   int32_T b_j;
   int32_T k;
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' */
+  /* Start for MATLABSystem: '<S123>/MATLAB System' */
   for (b_j = 0; b_j < 2; b_j++) {
     int32_T jBcol;
     jBcol = b_j << 1;
@@ -366,12 +370,68 @@ static void trisolve_o(const real_T A[4], real_T B_2[4])
     }
   }
 
-  /* End of Start for MATLABSystem: '<S170>/MATLAB System' */
+  /* End of Start for MATLABSystem: '<S123>/MATLAB System' */
+}
+
+/* Function for MATLAB Function: '<S118>/Evaluate Rule Antecedents' */
+static real_T trimf(real_T x, const real_T params[3])
+{
+  real_T y;
+  y = 0.0;
+  if ((params[0] != params[1]) && (params[0] < x) && (x < params[1])) {
+    y = 1.0 / (params[1] - params[0]) * (x - params[0]);
+  }
+
+  if ((params[1] != params[2]) && (params[1] < x) && (x < params[2])) {
+    y = 1.0 / (params[2] - params[1]) * (params[2] - x);
+  }
+
+  if (x == params[1]) {
+    y = 1.0;
+  }
+
+  return y;
+}
+
+/* Function for MATLAB Function: '<S118>/Evaluate Rule Consequents' */
+static void trimf_b(const real_T x[101], const real_T params[3], real_T y[101])
+{
+  real_T a;
+  real_T b;
+  real_T c;
+  int32_T i;
+  a = params[0];
+  b = params[1];
+  c = params[2];
+  for (i = 0; i < 101; i++) {
+    real_T x_0;
+    y[i] = 0.0;
+    if (a != b) {
+      x_0 = x[i];
+      if ((a < x_0) && (x_0 < b)) {
+        y[i] = 1.0 / (b - a) * (x_0 - a);
+      }
+    }
+
+    if (b != c) {
+      x_0 = x[i];
+      if ((b < x_0) && (x_0 < c)) {
+        y[i] = 1.0 / (c - b) * (c - x_0);
+      }
+    }
+
+    if (x[i] == b) {
+      y[i] = 1.0;
+    }
+  }
 }
 
 /* Model step function for TID0 */
 void blinky_step0(void)                /* Sample time: [0.001s, 0.0s] */
 {
+  int16_T rtb_Switch1;
+  uint8_T rtb_running_success_flag;
+
   /* Update the flag to indicate when data transfers from
    *  Sample time: [0.001s, 0.0s] to Sample time: [0.005s, 0.0s]  */
   (rtM->Timing.RateInteraction.TID0_1)++;
@@ -379,29 +439,101 @@ void blinky_step0(void)                /* Sample time: [0.001s, 0.0s] */
     rtM->Timing.RateInteraction.TID0_1 = 0;
   }
 
-  /* UnitDelay: '<Root>/Unit Delay' */
-  if (rtM->Timing.RateInteraction.TID0_1 == 1) {
-    /* UnitDelay: '<Root>/Unit Delay' */
-    rtDW.UnitDelay = rtDW.UnitDelay_DSTATE;
-
-    /* UnitDelay: '<Root>/Unit Delay1' */
-    rtDW.UnitDelay1 = rtDW.UnitDelay1_DSTATE;
-  }
-
-  /* End of UnitDelay: '<Root>/Unit Delay' */
-
-  /* Outputs for Atomic SubSystem: '<Root>/task_1ms' */
   /* Outport: '<Root>/motor_a_pwm' incorporates:
-   *  SignalConversion generated from: '<S3>/motor_a'
+   *  UnitDelay: '<Root>/Unit Delay'
    */
-  rtY.motor_a_pwm = rtDW.UnitDelay;
+  rtY.motor_a_pwm = rtDW.UnitDelay_DSTATE;
 
   /* Outport: '<Root>/motor_b_pwm' incorporates:
-   *  SignalConversion generated from: '<S3>/motor_b'
+   *  UnitDelay: '<Root>/Unit Delay1'
    */
-  rtY.motor_b_pwm = rtDW.UnitDelay1;
+  rtY.motor_b_pwm = rtDW.UnitDelay1_DSTATE;
 
-  /* End of Outputs for SubSystem: '<Root>/task_1ms' */
+  /* UnitDelay: '<Root>/Unit Delay3' */
+  if (rtM->Timing.RateInteraction.TID0_1 == 1) {
+    /* UnitDelay: '<Root>/Unit Delay3' */
+    rtDW.UnitDelay3 = rtDW.UnitDelay3_DSTATE;
+  }
+
+  /* End of UnitDelay: '<Root>/Unit Delay3' */
+
+  /* Chart: '<Root>/output_flag' incorporates:
+   *  Inport: '<Root>/running_flag'
+   */
+  rtb_running_success_flag = (uint8_T)((rtU.running_flag > 0) &&
+    (rtDW.UnitDelay3 > pitch_min) && (rtDW.UnitDelay3 < pitch_max));
+
+  /* Outport: '<Root>/running_success_flag' */
+  rtY.running_success_flag = rtb_running_success_flag;
+
+  /* UnitDelay: '<Root>/Unit Delay5' */
+  rtDW.UnitDelay5 = rtDW.UnitDelay5_DSTATE;
+
+  /* UnitDelay: '<Root>/Unit Delay6' */
+  rtDW.UnitDelay6 = rtDW.UnitDelay6_DSTATE;
+
+  /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
+  /* DiscreteIntegrator: '<S114>/Discrete-Time Integrator' incorporates:
+   *  Logic: '<S114>/NOT'
+   *  UnitDelay: '<Root>/Unit Delay4'
+   */
+  if (rtDW.UnitDelay4_DSTATE == 0) {
+    rtDW.DiscreteTimeIntegrator_DSTATE = 0.0F;
+
+    /* Switch: '<S114>/Switch1' incorporates:
+     *  Constant: '<S114>/Constant4'
+     */
+    rtb_Switch1 = 0;
+  } else {
+    /* Switch: '<S114>/Switch1' incorporates:
+     *  DataTypeConversion: '<S114>/Data Type Conversion7'
+     *  Product: '<S114>/Product2'
+     *  Sum: '<S114>/Add'
+     */
+    rtb_Switch1 = (int16_T)floor((rtDW.DiscreteTimeIntegrator_DSTATE * rtDW.Add2
+      + rtDW.Product1) + rtDW.Product);
+  }
+
+  /* End of DiscreteIntegrator: '<S114>/Discrete-Time Integrator' */
+
+  /* Saturate: '<S114>/Saturation1' */
+  if (rtb_Switch1 > ((int16_T)PWM_MAX)) {
+    rtb_Switch1 = ((int16_T)PWM_MAX);
+  } else if (rtb_Switch1 < ((int16_T)PWM_MIN)) {
+    rtb_Switch1 = ((int16_T)PWM_MIN);
+  }
+
+  /* End of Saturate: '<S114>/Saturation1' */
+
+  /* Update for DiscreteIntegrator: '<S114>/Discrete-Time Integrator' */
+  rtDW.DiscreteTimeIntegrator_DSTATE += 0.001F * rtDW.DataTypeConversion4;
+  if (rtDW.DiscreteTimeIntegrator_DSTATE > 200.0F) {
+    rtDW.DiscreteTimeIntegrator_DSTATE = 200.0F;
+  } else if (rtDW.DiscreteTimeIntegrator_DSTATE < -200.0F) {
+    rtDW.DiscreteTimeIntegrator_DSTATE = -200.0F;
+  }
+
+  /* End of Update for DiscreteIntegrator: '<S114>/Discrete-Time Integrator' */
+  /* End of Outputs for SubSystem: '<Root>/task_5ms' */
+
+  /* Update for UnitDelay: '<Root>/Unit Delay' incorporates:
+   *  Sum: '<Root>/motor_a'
+   */
+  rtDW.UnitDelay_DSTATE = (int16_T)(rtb_Switch1 - rtDW.DataTypeConversion);
+
+  /* Update for UnitDelay: '<Root>/Unit Delay1' incorporates:
+   *  Sum: '<Root>/motor_b'
+   */
+  rtDW.UnitDelay1_DSTATE = (int16_T)(rtb_Switch1 + rtDW.DataTypeConversion);
+
+  /* Update for UnitDelay: '<Root>/Unit Delay4' */
+  rtDW.UnitDelay4_DSTATE = rtb_running_success_flag;
+
+  /* Update for UnitDelay: '<Root>/Unit Delay5' */
+  rtDW.UnitDelay5_DSTATE = rtb_running_success_flag;
+
+  /* Update for UnitDelay: '<Root>/Unit Delay6' */
+  rtDW.UnitDelay6_DSTATE = rtb_running_success_flag;
 }
 
 /* Model step function for TID1 */
@@ -410,17 +542,41 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   int32_T A_tmp;
   int32_T b_i;
   int32_T i;
-  real32_T u0;
-  int16_T rtb_Switch;
+  int32_T rtb_DataTypeConversion2_idx_0_t;
+  static const real_T h[3] = { -1.713, -0.5713, 0.5715 };
+
+  static const real_T g[3] = { 0.5715, 1.713, 2.857 };
+
+  static const real_T f[3] = { -4.0, -2.857, -1.713 };
+
+  static const real_T e[3] = { -2.857, -1.713, -0.5713 };
+
+  static const real_T d[3] = { -0.5713, 0.5715, 1.713 };
+
+  static const real_T c[3] = { 1.713, 2.857, 4.0 };
+
+  static const int8_T b[98] = { 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 5, 5,
+    5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 6, 6, 6, 6, 6, 6, 6, 3, 3, 3, 3, 3, 3, 3,
+    7, 7, 7, 7, 7, 7, 7, 1, 4, 5, 2, 6, 3, 7, 1, 4, 5, 2, 6, 3, 7, 1, 4, 5, 2, 6,
+    3, 7, 1, 4, 5, 2, 6, 3, 7, 1, 4, 5, 2, 6, 3, 7, 1, 4, 5, 2, 6, 3, 7, 1, 4, 5,
+    2, 6, 3, 3 };
+
+  static const int8_T b_0[147] = { 7, 7, 3, 3, 6, 2, 2, 7, 7, 3, 6, 6, 2, 5, 3,
+    3, 3, 6, 2, 5, 5, 3, 3, 6, 2, 5, 1, 1, 6, 6, 2, 5, 5, 1, 1, 6, 2, 5, 1, 1, 1,
+    4, 2, 2, 1, 1, 1, 4, 4, 1, 1, 4, 4, 5, 2, 2, 1, 1, 4, 5, 5, 2, 2, 1, 4, 5, 5,
+    2, 6, 6, 4, 4, 5, 2, 6, 3, 3, 4, 5, 2, 6, 6, 3, 7, 2, 2, 6, 6, 3, 7, 7, 2, 2,
+    6, 3, 3, 7, 7, 6, 5, 1, 1, 1, 4, 6, 6, 5, 1, 4, 4, 5, 2, 2, 5, 4, 4, 5, 5, 2,
+    2, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 7, 5, 6, 6, 6, 6, 7, 7, 3, 3, 3, 6,
+    6, 7 };
 
   /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
-  /* Outputs for Enabled SubSystem: '<S169>/Correct1' incorporates:
-   *  EnablePort: '<S170>/Enable'
+  /* Outputs for Enabled SubSystem: '<S122>/Correct1' incorporates:
+   *  EnablePort: '<S123>/Enable'
    */
-  /* MATLABSystem: '<S170>/MATLAB System' incorporates:
-   *  Constant: '<S169>/R1'
-   *  DataStoreRead: '<S170>/Data Store ReadP'
-   *  DataStoreRead: '<S170>/Data Store ReadX'
+  /* MATLABSystem: '<S123>/MATLAB System' incorporates:
+   *  Constant: '<S122>/R1'
+   *  DataStoreRead: '<S123>/Data Store ReadP'
+   *  DataStoreRead: '<S123>/Data Store ReadX'
    */
   /* x 就是一开始状态转移函数定义的状态向量 */
   /* x = [picth;roll]; */
@@ -447,47 +603,47 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   /*  u = [pitch_acc;roll_acc] */
   qrFactor(rtDW.b_dHdx, rtDW.P_i, rtConstP.R1_Value, rtDW.Sy);
   for (i = 0; i < 2; i++) {
-    /* Start for MATLABSystem: '<S170>/MATLAB System' incorporates:
-     *  DataStoreRead: '<S170>/Data Store ReadP'
+    /* Start for MATLABSystem: '<S123>/MATLAB System' incorporates:
+     *  DataStoreRead: '<S123>/Data Store ReadP'
      */
     rtDW.epsilon = rtDW.P_i[i];
-    rtDW.Gain1 = rtDW.P_i[0] * rtDW.epsilon;
-    rtDW.K_idx_1 = rtDW.P_i[1] * rtDW.epsilon;
+    rtDW.rtb_DataTypeConversion2_idx_1 = rtDW.P_i[0] * rtDW.epsilon;
+    rtDW.area = rtDW.P_i[1] * rtDW.epsilon;
     b_i = i << 1;
     rtDW.A[b_i] = 0.0;
     rtDW.epsilon = rtDW.P_i[i + 2];
-    rtDW.K[b_i] = rtDW.P_i[2] * rtDW.epsilon + rtDW.Gain1;
-    rtDW.K[b_i + 1] = rtDW.P_i[3] * rtDW.epsilon + rtDW.K_idx_1;
+    rtDW.K[b_i] = rtDW.P_i[2] * rtDW.epsilon +
+      rtDW.rtb_DataTypeConversion2_idx_1;
+    rtDW.K[b_i + 1] = rtDW.P_i[3] * rtDW.epsilon + rtDW.area;
     rtDW.A[b_i + 1] = 0.0;
   }
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' */
+  /* Start for MATLABSystem: '<S123>/MATLAB System' */
   rtDW.epsilon = rtDW.K[0];
-  rtDW.Gain1 = rtDW.K[1];
-  rtDW.K_idx_1 = rtDW.K[2];
-  rtDW.z_idx_0 = rtDW.K[3];
+  rtDW.rtb_DataTypeConversion2_idx_1 = rtDW.K[1];
+  rtDW.area = rtDW.K[2];
+  rtDW.Gain1 = rtDW.K[3];
   for (i = 0; i < 2; i++) {
-    rtDW.K_idx_3 = rtDW.b_dHdx[i];
+    rtDW.TSamp = rtDW.b_dHdx[i];
     b_i = i << 1;
-    rtDW.z_idx_1 = rtDW.epsilon * rtDW.K_idx_3 + rtDW.A[b_i];
-    rtDW.rtb_DataTypeConversion2_idx_1 = rtDW.A[b_i + 1] + rtDW.Gain1 *
-      rtDW.K_idx_3;
-    rtDW.K_idx_3 = rtDW.b_dHdx[i + 2];
-    rtDW.A[b_i] = rtDW.K_idx_1 * rtDW.K_idx_3 + rtDW.z_idx_1;
-    rtDW.A[b_i + 1] = rtDW.z_idx_0 * rtDW.K_idx_3 +
-      rtDW.rtb_DataTypeConversion2_idx_1;
+    rtDW.TSamp_f = rtDW.epsilon * rtDW.TSamp + rtDW.A[b_i];
+    rtDW.K_idx_3 = rtDW.A[b_i + 1] + rtDW.rtb_DataTypeConversion2_idx_1 *
+      rtDW.TSamp;
+    rtDW.TSamp = rtDW.b_dHdx[i + 2];
+    rtDW.A[b_i] = rtDW.area * rtDW.TSamp + rtDW.TSamp_f;
+    rtDW.A[b_i + 1] = rtDW.Gain1 * rtDW.TSamp + rtDW.K_idx_3;
   }
 
-  /* MATLABSystem: '<S170>/MATLAB System' */
+  /* MATLABSystem: '<S123>/MATLAB System' */
   rtDW.K[0] = rtDW.A[0];
   rtDW.K[1] = rtDW.A[2];
   rtDW.K[2] = rtDW.A[1];
   rtDW.K[3] = rtDW.A[3];
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' */
+  /* Start for MATLABSystem: '<S123>/MATLAB System' */
   trisolve(rtDW.Sy, rtDW.K);
 
-  /* MATLABSystem: '<S170>/MATLAB System' */
+  /* MATLABSystem: '<S123>/MATLAB System' */
   rtDW.A[0] = rtDW.Sy[0];
   rtDW.A[1] = rtDW.Sy[2];
   rtDW.A[2] = rtDW.Sy[1];
@@ -497,17 +653,17 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   rtDW.Sy[2] = rtDW.K[2];
   rtDW.Sy[3] = rtDW.K[3];
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' */
+  /* Start for MATLABSystem: '<S123>/MATLAB System' */
   trisolve_o(rtDW.A, rtDW.Sy);
 
-  /* MATLABSystem: '<S170>/MATLAB System' */
+  /* MATLABSystem: '<S123>/MATLAB System' */
   rtDW.K[0] = rtDW.Sy[0];
   rtDW.K[1] = rtDW.Sy[2];
   rtDW.K[2] = rtDW.Sy[1];
   rtDW.K[3] = rtDW.Sy[3];
 
-  /* Start for MATLABSystem: '<S170>/MATLAB System' incorporates:
-   *  DataStoreRead: '<S170>/Data Store ReadX'
+  /* Start for MATLABSystem: '<S123>/MATLAB System' incorporates:
+   *  DataStoreRead: '<S123>/Data Store ReadX'
    *  DataTypeConversion: '<S5>/Data Type Conversion2'
    *  Inport: '<Root>/accx'
    *  Inport: '<Root>/accy'
@@ -515,147 +671,545 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
    *  MATLAB Function: '<S5>/MATLAB Function3'
    * */
   rtDW.Gain1 = -rtDW.Sy[0];
-  rtDW.K_idx_1 = -rtDW.Sy[2];
-  rtDW.z_idx_0 = -rtDW.Sy[1];
+  rtDW.TSamp = -rtDW.Sy[2];
+  rtDW.TSamp_f = -rtDW.Sy[1];
   rtDW.K_idx_3 = -rtDW.Sy[3];
-  rtDW.z_idx_1 = atan2f(-rtU.accx, sqrtf(rtU.accy * rtU.accy + rtU.accz *
-    rtU.accz)) - rtDW.x[0];
+  rtDW.area = atan2f(-rtU.accx, sqrtf(rtU.accy * rtU.accy + rtU.accz * rtU.accz))
+    - rtDW.x[0];
   rtDW.rtb_DataTypeConversion2_idx_1 = atan2f(rtU.accy, rtU.accz) - rtDW.x[1];
   for (b_i = 0; b_i < 2; b_i++) {
-    /* MATLABSystem: '<S170>/MATLAB System' incorporates:
-     *  Constant: '<S169>/R1'
+    /* MATLABSystem: '<S123>/MATLAB System' incorporates:
+     *  Constant: '<S122>/R1'
      */
     i = b_i << 1;
     rtDW.epsilon = rtDW.b_dHdx[i];
-    rtDW.A_b = rtDW.Gain1 * rtDW.epsilon;
-    rtDW.A_p = rtDW.K_idx_1 * rtDW.epsilon;
+    rtDW.z_idx_1 = rtDW.Gain1 * rtDW.epsilon;
+    rtDW.A_b = rtDW.TSamp * rtDW.epsilon;
     rtDW.epsilon = rtDW.b_dHdx[i + 1];
-    rtDW.A[i] = rtDW.z_idx_0 * rtDW.epsilon + rtDW.A_b;
-    rtDW.A[i + 1] = rtDW.K_idx_3 * rtDW.epsilon + rtDW.A_p;
+    rtDW.A[i] = rtDW.TSamp_f * rtDW.epsilon + rtDW.z_idx_1;
+    rtDW.A[i + 1] = rtDW.K_idx_3 * rtDW.epsilon + rtDW.A_b;
     A_tmp = i + b_i;
     rtDW.A[A_tmp]++;
 
-    /* Start for MATLABSystem: '<S170>/MATLAB System' incorporates:
-     *  Constant: '<S169>/R1'
+    /* Start for MATLABSystem: '<S123>/MATLAB System' incorporates:
+     *  Constant: '<S122>/R1'
      */
     rtDW.epsilon = rtConstP.R1_Value[i];
-    rtDW.A_b = rtDW.K[0] * rtDW.epsilon;
-    rtDW.A_p = rtDW.K[1] * rtDW.epsilon;
+    rtDW.z_idx_1 = rtDW.K[0] * rtDW.epsilon;
+    rtDW.A_b = rtDW.K[1] * rtDW.epsilon;
     rtDW.epsilon = rtConstP.R1_Value[i + 1];
-    rtDW.Sy[i] = rtDW.K[2] * rtDW.epsilon + rtDW.A_b;
-    rtDW.Sy[i + 1] = rtDW.K[3] * rtDW.epsilon + rtDW.A_p;
+    rtDW.Sy[i] = rtDW.K[2] * rtDW.epsilon + rtDW.z_idx_1;
+    rtDW.Sy[i + 1] = rtDW.K[3] * rtDW.epsilon + rtDW.A_b;
 
-    /* DataStoreWrite: '<S170>/Data Store WriteX' incorporates:
-     *  DataStoreRead: '<S170>/Data Store ReadX'
-     *  MATLABSystem: '<S170>/MATLAB System'
+    /* DataStoreWrite: '<S123>/Data Store WriteX' incorporates:
+     *  DataStoreRead: '<S123>/Data Store ReadX'
+     *  MATLABSystem: '<S123>/MATLAB System'
      * */
     rtDW.x[b_i] += rtDW.K[b_i + 2] * rtDW.rtb_DataTypeConversion2_idx_1 +
-      rtDW.K[b_i] * rtDW.z_idx_1;
+      rtDW.K[b_i] * rtDW.area;
   }
 
-  /* End of Outputs for SubSystem: '<S169>/Correct1' */
+  /* End of Outputs for SubSystem: '<S122>/Correct1' */
   /* End of Outputs for SubSystem: '<Root>/task_5ms' */
   for (i = 0; i < 4; i++) {
     /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
-    /* Outputs for Enabled SubSystem: '<S169>/Correct1' incorporates:
-     *  EnablePort: '<S170>/Enable'
+    /* Outputs for Enabled SubSystem: '<S122>/Correct1' incorporates:
+     *  EnablePort: '<S123>/Enable'
      */
-    /* DataStoreRead: '<S170>/Data Store ReadP' */
+    /* DataStoreRead: '<S123>/Data Store ReadP' */
     rtDW.K[i] = rtDW.P_i[i];
 
-    /* End of Outputs for SubSystem: '<S169>/Correct1' */
+    /* End of Outputs for SubSystem: '<S122>/Correct1' */
     /* End of Outputs for SubSystem: '<Root>/task_5ms' */
   }
 
   /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
-  /* Outputs for Enabled SubSystem: '<S169>/Correct1' incorporates:
-   *  EnablePort: '<S170>/Enable'
+  /* Outputs for Enabled SubSystem: '<S122>/Correct1' incorporates:
+   *  EnablePort: '<S123>/Enable'
    */
-  /* Start for MATLABSystem: '<S170>/MATLAB System' incorporates:
-   *  DataStoreWrite: '<S170>/Data Store WriteP'
+  /* Start for MATLABSystem: '<S123>/MATLAB System' incorporates:
+   *  DataStoreWrite: '<S123>/Data Store WriteP'
    */
   qrFactor(rtDW.A, rtDW.K, rtDW.Sy, rtDW.P_i);
 
-  /* End of Outputs for SubSystem: '<S169>/Correct1' */
+  /* End of Outputs for SubSystem: '<S122>/Correct1' */
 
   /* Outport: '<Root>/roll' incorporates:
-   *  DataStoreRead: '<S171>/Data Store Read'
+   *  DataStoreRead: '<S124>/Data Store Read'
    *  Gain: '<S5>/Gain'
    */
   rtY.roll = 57.295779513082323 * rtDW.x[1];
 
   /* Gain: '<S5>/Gain1' incorporates:
-   *  DataStoreRead: '<S171>/Data Store Read'
+   *  DataStoreRead: '<S124>/Data Store Read'
    */
   rtDW.Gain1 = 57.295779513082323 * rtDW.x[0];
 
-  /* Gain: '<S154>/Filter Coefficient' incorporates:
-   *  DiscreteIntegrator: '<S146>/Filter'
-   */
-  rtDW.FilterCoefficient_c = 100.0F * rtDW.Filter_DSTATE_i;
+  /* Sum: '<S114>/Sum2' */
+  rtDW.epsilon = rtDW.UnitDelay2 - rtDW.Gain1;
 
-  /* Switch: '<S114>/Switch' incorporates:
-   *  Constant: '<S114>/Constant'
-   *  DataTypeConversion: '<S114>/Data Type Conversion2'
-   *  Saturate: '<S158>/Saturation'
-   */
-  if (rtDW.UnitDelay5 > 0) {
-    /* Sum: '<S160>/Sum' incorporates:
-     *  Constant: '<S114>/BALANCE_OFFSET'
-     *  DataTypeConversion: '<S114>/Data Type Conversion1'
-     *  DiscreteIntegrator: '<S151>/Integrator'
-     *  Gain: '<S156>/Proportional Gain'
-     *  Sum: '<S114>/Sum'
-     *  Sum: '<S114>/Sum1'
-     */
-    u0 = ((real32_T)(rtDW.UnitDelay2 - (rtDW.Gain1 - BALANCE_OFFSET)) *
-          BALANCE_KP + rtDW.Integrator_DSTATE_n) + rtDW.FilterCoefficient_c;
+  /* SampleTimeMath: '<S117>/TSamp'
+   *
+   * About '<S117>/TSamp':
+   *  y = u * K where K = 1 / ( w * Ts )
+   *   */
+  rtDW.TSamp = rtDW.epsilon * 200.0;
 
-    /* Saturate: '<S158>/Saturation' */
-    if (u0 > 1000.0F) {
-      u0 = 1000.0F;
-    } else if (u0 < -1000.0F) {
-      u0 = -1000.0F;
+  /* Outputs for Atomic SubSystem: '<S114>/Fuzzy Logic  Controller' */
+  /* SignalConversion generated from: '<S120>/ SFunction ' incorporates:
+   *  Gain: '<S114>/gain'
+   *  Gain: '<S114>/gain2'
+   *  MATLAB Function: '<S118>/Evaluate Rule Antecedents'
+   *  Sum: '<S117>/Diff'
+   *  UnitDelay: '<S117>/UD'
+   *
+   * Block description for '<S117>/Diff':
+   *
+   *  Add in CPU
+   *
+   * Block description for '<S117>/UD':
+   *
+   *  Store in Global RAM
+   */
+  rtDW.area = e_factor * rtDW.epsilon;
+  rtDW.rtb_DataTypeConversion2_idx_1 = (rtDW.TSamp - rtDW.UD_DSTATE) * ec_factor;
+
+  /* MATLAB Function: '<S118>/Evaluate Rule Antecedents' */
+  rtDW.TSamp_f = 0.0;
+  rtDW.dv2[0] = -4.5;
+  rtDW.dv2[1] = -3.5;
+  rtDW.dv2[2] = -2.5;
+  rtDW.inputMFCache[0] = trimf(rtDW.area, rtDW.dv2);
+  rtDW.dv2[0] = -1.5;
+  rtDW.dv2[1] = -0.5;
+  rtDW.dv2[2] = 0.5;
+  rtDW.inputMFCache[1] = trimf(rtDW.area, rtDW.dv2);
+  rtDW.dv2[0] = 0.5;
+  rtDW.dv2[1] = 1.5;
+  rtDW.dv2[2] = 2.5;
+  rtDW.inputMFCache[2] = trimf(rtDW.area, rtDW.dv2);
+  rtDW.dv2[0] = -3.5;
+  rtDW.dv2[1] = -2.5;
+  rtDW.dv2[2] = -1.5;
+  rtDW.inputMFCache[3] = trimf(rtDW.area, rtDW.dv2);
+  rtDW.dv2[0] = -2.5;
+  rtDW.dv2[1] = -1.5;
+  rtDW.dv2[2] = -0.5;
+  rtDW.inputMFCache[4] = trimf(rtDW.area, rtDW.dv2);
+  rtDW.dv2[0] = -0.5;
+  rtDW.dv2[1] = 0.5;
+  rtDW.dv2[2] = 1.5;
+  rtDW.inputMFCache[5] = trimf(rtDW.area, rtDW.dv2);
+  rtDW.dv2[0] = 1.5;
+  rtDW.dv2[1] = 2.5;
+  rtDW.dv2[2] = 3.5;
+  rtDW.inputMFCache[6] = trimf(rtDW.area, rtDW.dv2);
+  rtDW.dv2[0] = -5.143;
+  rtDW.dv2[1] = -4.0;
+  rtDW.dv2[2] = -2.857;
+  rtDW.inputMFCache[7] = trimf(rtDW.rtb_DataTypeConversion2_idx_1, rtDW.dv2);
+  rtDW.inputMFCache[8] = trimf(rtDW.rtb_DataTypeConversion2_idx_1, h);
+  rtDW.inputMFCache[9] = trimf(rtDW.rtb_DataTypeConversion2_idx_1, g);
+  rtDW.inputMFCache[10] = trimf(rtDW.rtb_DataTypeConversion2_idx_1, f);
+  rtDW.inputMFCache[11] = trimf(rtDW.rtb_DataTypeConversion2_idx_1, e);
+  rtDW.inputMFCache[12] = trimf(rtDW.rtb_DataTypeConversion2_idx_1, d);
+  rtDW.inputMFCache[13] = trimf(rtDW.rtb_DataTypeConversion2_idx_1, c);
+  for (b_i = 0; b_i < 49; b_i++) {
+    rtDW.rtb_DataTypeConversion2_idx_1 = rtDW.inputMFCache[b[b_i] - 1];
+    if (rtDW.rtb_DataTypeConversion2_idx_1 < 1.0) {
+      rtDW.area = rtDW.rtb_DataTypeConversion2_idx_1;
+    } else {
+      rtDW.area = 1.0;
     }
 
-    rtb_Switch = (int16_T)floorf(u0);
+    rtDW.rtb_DataTypeConversion2_idx_1 = rtDW.inputMFCache[b[b_i + 49] + 6];
+    if (rtDW.area > rtDW.rtb_DataTypeConversion2_idx_1) {
+      rtDW.area = rtDW.rtb_DataTypeConversion2_idx_1;
+    }
+
+    rtDW.antecedentOutputs[b_i] = rtDW.area;
+    rtDW.TSamp_f += rtDW.area;
+  }
+
+  /* MATLAB Function: '<S118>/Evaluate Rule Consequents' incorporates:
+   *  Constant: '<S118>/Output Sample Points'
+   */
+  memset(&rtDW.aggregatedOutputs[0], 0, 303U * sizeof(real_T));
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i];
+  }
+
+  rtDW.dv2[0] = 0.0;
+  rtDW.dv2[1] = 1.0;
+  rtDW.dv2[2] = 2.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i];
+  }
+
+  rtDW.dv2[0] = 2.0;
+  rtDW.dv2[1] = 3.0;
+  rtDW.dv2[2] = 4.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 1] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i];
+  }
+
+  rtDW.dv2[0] = 4.0;
+  rtDW.dv2[1] = 5.0;
+  rtDW.dv2[2] = 6.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 2] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i];
+  }
+
+  rtDW.dv2[0] = -1.0;
+  rtDW.dv2[1] = 0.0;
+  rtDW.dv2[2] = 1.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 3] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i];
+  }
+
+  rtDW.dv2[0] = 1.0;
+  rtDW.dv2[1] = 2.0;
+  rtDW.dv2[2] = 3.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 4] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i];
+  }
+
+  rtDW.dv2[0] = 3.0;
+  rtDW.dv2[1] = 4.0;
+  rtDW.dv2[2] = 5.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 5] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i];
+  }
+
+  rtDW.dv2[0] = 5.0;
+  rtDW.dv2[1] = 6.0;
+  rtDW.dv2[2] = 7.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 6] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 1];
+  }
+
+  rtDW.dv2[0] = -1.0;
+  rtDW.dv2[1] = 0.0;
+  rtDW.dv2[2] = 1.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 7] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 1];
+  }
+
+  rtDW.dv2[0] = 2.0;
+  rtDW.dv2[1] = 3.0;
+  rtDW.dv2[2] = 4.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 8] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 1];
+  }
+
+  rtDW.dv2[0] = 4.0;
+  rtDW.dv2[1] = 5.0;
+  rtDW.dv2[2] = 6.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 9] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 1];
+  }
+
+  rtDW.dv2[0] = 0.0;
+  rtDW.dv2[1] = 1.0;
+  rtDW.dv2[2] = 2.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 10] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 1];
+  }
+
+  rtDW.dv2[0] = 1.0;
+  rtDW.dv2[1] = 2.0;
+  rtDW.dv2[2] = 3.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 11] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 1];
+  }
+
+  rtDW.dv2[0] = 3.0;
+  rtDW.dv2[1] = 4.0;
+  rtDW.dv2[2] = 5.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 12] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 1];
+  }
+
+  rtDW.dv2[0] = 5.0;
+  rtDW.dv2[1] = 6.0;
+  rtDW.dv2[2] = 7.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 13] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 2];
+  }
+
+  rtDW.dv2[0] = -1.0;
+  rtDW.dv2[1] = 0.0;
+  rtDW.dv2[2] = 1.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 14] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 2];
+  }
+
+  rtDW.dv2[0] = 2.0;
+  rtDW.dv2[1] = 3.0;
+  rtDW.dv2[2] = 4.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 15] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 2];
+  }
+
+  rtDW.dv2[0] = 4.0;
+  rtDW.dv2[1] = 5.0;
+  rtDW.dv2[2] = 6.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 16] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 2];
+  }
+
+  rtDW.dv2[0] = 0.0;
+  rtDW.dv2[1] = 1.0;
+  rtDW.dv2[2] = 2.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 17] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 2];
+  }
+
+  rtDW.dv2[0] = 1.0;
+  rtDW.dv2[1] = 2.0;
+  rtDW.dv2[2] = 3.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 18] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 2];
+  }
+
+  rtDW.dv2[0] = 3.0;
+  rtDW.dv2[1] = 4.0;
+  rtDW.dv2[2] = 5.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 19] = rtDW.dv1[i];
+  }
+
+  for (i = 0; i < 101; i++) {
+    rtDW.dv[i] = rtConstP.OutputSamplePoints_Value[3 * i + 2];
+  }
+
+  rtDW.dv2[0] = 5.0;
+  rtDW.dv2[1] = 6.0;
+  rtDW.dv2[2] = 7.0;
+  trimf_b(rtDW.dv, rtDW.dv2, rtDW.dv1);
+  for (i = 0; i < 101; i++) {
+    rtDW.outputMFCache[21 * i + 20] = rtDW.dv1[i];
+  }
+
+  for (A_tmp = 0; A_tmp < 3; A_tmp++) {
+    for (b_i = 0; b_i < 49; b_i++) {
+      for (i = 0; i < 101; i++) {
+        rtDW.area = rtDW.outputMFCache[((b_0[49 * A_tmp + b_i] + 7 * A_tmp) + 21
+          * i) - 1];
+        rtDW.rtb_DataTypeConversion2_idx_1 = rtDW.antecedentOutputs[b_i];
+        rtb_DataTypeConversion2_idx_0_t = 101 * A_tmp + i;
+        if (rtDW.area <= rtDW.rtb_DataTypeConversion2_idx_1) {
+          rtDW.rtb_DataTypeConversion2_idx_1 = rtDW.area;
+        }
+
+        if (rtDW.aggregatedOutputs[rtb_DataTypeConversion2_idx_0_t] <
+            rtDW.rtb_DataTypeConversion2_idx_1) {
+          rtDW.aggregatedOutputs[rtb_DataTypeConversion2_idx_0_t] =
+            rtDW.rtb_DataTypeConversion2_idx_1;
+        }
+      }
+    }
+  }
+
+  /* End of MATLAB Function: '<S118>/Evaluate Rule Consequents' */
+
+  /* MATLAB Function: '<S118>/Defuzzify Outputs' incorporates:
+   *  Constant: '<S118>/Output Sample Points'
+   *  MATLAB Function: '<S118>/Evaluate Rule Antecedents'
+   */
+  if (rtDW.TSamp_f == 0.0) {
+    rtDW.defuzzifiedOutputs[0] = 3.5;
+    rtDW.defuzzifiedOutputs[1] = 3.5;
+    rtDW.defuzzifiedOutputs[2] = 3.5;
   } else {
-    rtb_Switch = 0;
+    for (A_tmp = 0; A_tmp < 3; A_tmp++) {
+      rtDW.rtb_DataTypeConversion2_idx_1 = 0.0;
+      rtDW.area = 0.0;
+      for (i = 0; i < 101; i++) {
+        rtDW.area += rtDW.aggregatedOutputs[101 * A_tmp + i];
+      }
+
+      if (rtDW.area == 0.0) {
+        rtDW.defuzzifiedOutputs[A_tmp] =
+          (rtConstP.OutputSamplePoints_Value[A_tmp + 300] +
+           rtConstP.OutputSamplePoints_Value[A_tmp]) / 2.0;
+      } else {
+        for (b_i = 0; b_i < 101; b_i++) {
+          rtDW.rtb_DataTypeConversion2_idx_1 +=
+            rtConstP.OutputSamplePoints_Value[3 * b_i + A_tmp] *
+            rtDW.aggregatedOutputs[101 * A_tmp + b_i];
+        }
+
+        rtDW.defuzzifiedOutputs[A_tmp] = 1.0 / rtDW.area *
+          rtDW.rtb_DataTypeConversion2_idx_1;
+      }
+    }
   }
 
-  /* End of Switch: '<S114>/Switch' */
+  /* End of MATLAB Function: '<S118>/Defuzzify Outputs' */
+  /* End of Outputs for SubSystem: '<S114>/Fuzzy Logic  Controller' */
 
-  /* Saturate: '<S114>/Saturation' */
-  if (rtb_Switch > ((int16_T)PWM_MAX)) {
-    rtb_Switch = ((int16_T)PWM_MAX);
-  } else if (rtb_Switch < ((int16_T)PWM_MIN)) {
-    rtb_Switch = ((int16_T)PWM_MIN);
-  }
+  /* Sum: '<S114>/Add2' incorporates:
+   *  Gain: '<S114>/Gain1'
+   */
+  rtDW.Add2 = bal_ki_factor * rtDW.defuzzifiedOutputs[1];
 
-  /* End of Saturate: '<S114>/Saturation' */
+  /* DataTypeConversion: '<S114>/Data Type Conversion4' */
+  rtDW.DataTypeConversion4 = (real32_T)rtDW.epsilon;
 
-  /* Outputs for Atomic SubSystem: '<S169>/Predict' */
-  /* Start for MATLABSystem: '<S172>/MATLAB System' incorporates:
+  /* SampleTimeMath: '<S116>/TSamp' incorporates:
+   *  Gain: '<S114>/gain1'
+   *
+   * About '<S116>/TSamp':
+   *  y = u * K where K = 1 / ( w * Ts )
+   *   */
+  rtDW.TSamp_f = 0.005 * rtDW.epsilon * 200.0;
+
+  /* Product: '<S114>/Product' incorporates:
+   *  Constant: '<S114>/Constant1'
+   *  Gain: '<S114>/Gain2'
+   *  Sum: '<S114>/Add1'
+   *  Sum: '<S116>/Diff'
+   *  UnitDelay: '<S116>/UD'
+   *
+   * Block description for '<S116>/Diff':
+   *
+   *  Add in CPU
+   *
+   * Block description for '<S116>/UD':
+   *
+   *  Store in Global RAM
+   */
+  rtDW.Product = (bal_kd_factor * rtDW.defuzzifiedOutputs[2] + BALANCE_KD) *
+    (rtDW.TSamp_f - rtDW.UD_DSTATE_f);
+
+  /* Product: '<S114>/Product1' incorporates:
+   *  Constant: '<S114>/Constant3'
+   *  Gain: '<S114>/Gain'
+   *  Gain: '<S114>/bal_kp'
+   *  Sum: '<S114>/Add3'
+   */
+  rtDW.Product1 = (bal_kp_factor * rtDW.defuzzifiedOutputs[0] + BALANCE_KP) *
+    (BALANCE_KP * rtDW.epsilon);
+
+  /* Outputs for Atomic SubSystem: '<S122>/Predict' */
+  /* Start for MATLABSystem: '<S125>/MATLAB System' incorporates:
    *  DataTypeConversion: '<S5>/Data Type Conversion3'
    *  Inport: '<Root>/gyroy'
    */
   /*  x = [pitch; roll]  (2×1) */
   /*  u = [gx; gy]       (2×1) */
-  rtDW.K_idx_1 = rtU.gyroy * 0.005;
+  rtDW.rtb_DataTypeConversion2_idx_1 = rtU.gyroy * 0.005;
 
-  /* MATLABSystem: '<S172>/MATLAB System' incorporates:
-   *  DataStoreRead: '<S172>/Data Store ReadX'
+  /* MATLABSystem: '<S125>/MATLAB System' incorporates:
+   *  DataStoreRead: '<S125>/Data Store ReadX'
    */
-  rtDW.z_idx_0 = rtDW.K_idx_1 + rtDW.x[0];
+  rtDW.area = rtDW.rtb_DataTypeConversion2_idx_1 + rtDW.x[0];
 
-  /* Start for MATLABSystem: '<S172>/MATLAB System' incorporates:
+  /* Start for MATLABSystem: '<S125>/MATLAB System' incorporates:
    *  DataTypeConversion: '<S5>/Data Type Conversion3'
    *  Inport: '<Root>/gyrox'
    */
   rtDW.K_idx_3 = rtU.gyrox * 0.005;
 
-  /* MATLABSystem: '<S172>/MATLAB System' incorporates:
-   *  DataStoreRead: '<S172>/Data Store ReadX'
+  /* MATLABSystem: '<S125>/MATLAB System' incorporates:
+   *  DataStoreRead: '<S125>/Data Store ReadX'
    */
   rtDW.z_idx_1 = rtDW.K_idx_3 + rtDW.x[1];
 
@@ -666,7 +1220,8 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   /*  x = [pitch; roll]  (2×1) */
   /*  u = [gx; gy]       (2×1) */
   /*  2×1 */
-  rtDW.b_dHdx[0] = (((rtDW.x[0] + rtDW.epsilon) + rtDW.K_idx_1) - rtDW.z_idx_0) /
+  rtDW.b_dHdx[0] = (((rtDW.x[0] + rtDW.epsilon) +
+                     rtDW.rtb_DataTypeConversion2_idx_1) - rtDW.area) /
     rtDW.epsilon;
   rtDW.b_dHdx[1] = (rtDW.z_idx_1 - rtDW.z_idx_1) / rtDW.epsilon;
   rtDW.epsilon = fmax(1.4901161193847656E-8, 1.4901161193847656E-8 * fabs
@@ -675,73 +1230,64 @@ void blinky_step1(void)                /* Sample time: [0.005s, 0.0s] */
   /*  x = [pitch; roll]  (2×1) */
   /*  u = [gx; gy]       (2×1) */
   /*  2×1 */
-  rtDW.b_dHdx[2] = (rtDW.z_idx_0 - rtDW.z_idx_0) / rtDW.epsilon;
+  rtDW.b_dHdx[2] = (rtDW.area - rtDW.area) / rtDW.epsilon;
   rtDW.b_dHdx[3] = (((rtDW.x[1] + rtDW.epsilon) + rtDW.K_idx_3) - rtDW.z_idx_1) /
     rtDW.epsilon;
 
-  /* End of Outputs for SubSystem: '<S169>/Predict' */
+  /* End of Outputs for SubSystem: '<S122>/Predict' */
   /* End of Outputs for SubSystem: '<Root>/task_5ms' */
   /*  x = [pitch; roll]  (2×1) */
   /*  u = [gx; gy]       (2×1) */
   /*  2×1 */
   for (i = 0; i < 4; i++) {
     /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
-    /* Outputs for Atomic SubSystem: '<S169>/Predict' */
-    /* DataStoreRead: '<S172>/Data Store ReadP' */
+    /* Outputs for Atomic SubSystem: '<S122>/Predict' */
+    /* DataStoreRead: '<S125>/Data Store ReadP' */
     rtDW.K[i] = rtDW.P_i[i];
 
-    /* End of Outputs for SubSystem: '<S169>/Predict' */
+    /* End of Outputs for SubSystem: '<S122>/Predict' */
     /* End of Outputs for SubSystem: '<Root>/task_5ms' */
   }
 
   /* Outputs for Atomic SubSystem: '<Root>/task_5ms' */
-  /* Outputs for Atomic SubSystem: '<S169>/Predict' */
-  /* Start for MATLABSystem: '<S172>/MATLAB System' incorporates:
-   *  Constant: '<S169>/Q'
-   *  DataStoreWrite: '<S172>/Data Store WriteP'
+  /* Outputs for Atomic SubSystem: '<S122>/Predict' */
+  /* Start for MATLABSystem: '<S125>/MATLAB System' incorporates:
+   *  Constant: '<S122>/Q'
+   *  DataStoreWrite: '<S125>/Data Store WriteP'
    */
   qrFactor(rtDW.b_dHdx, rtDW.K, rtConstP.Q_Value, rtDW.P_i);
 
-  /* DataStoreWrite: '<S172>/Data Store WriteX' incorporates:
-   *  MATLABSystem: '<S172>/MATLAB System'
+  /* DataStoreWrite: '<S125>/Data Store WriteX' incorporates:
+   *  MATLABSystem: '<S125>/MATLAB System'
    * */
-  rtDW.x[0] = rtDW.z_idx_0;
+  rtDW.x[0] = rtDW.area;
   rtDW.x[1] = rtDW.z_idx_1;
 
-  /* End of Outputs for SubSystem: '<S169>/Predict' */
+  /* End of Outputs for SubSystem: '<S122>/Predict' */
 
-  /* Update for DiscreteIntegrator: '<S146>/Filter' incorporates:
-   *  Gain: '<S144>/Derivative Gain'
-   *  Inport: '<Root>/gyroy'
-   *  Sum: '<S146>/SumD'
-   *  UnaryMinus: '<S145>/Unary Minus'
+  /* Update for UnitDelay: '<S117>/UD'
+   *
+   * Block description for '<S117>/UD':
+   *
+   *  Store in Global RAM
    */
-  rtDW.Filter_DSTATE_i += (BALANCE_KD * -rtU.gyroy - rtDW.FilterCoefficient_c) *
-    0.005F;
+  rtDW.UD_DSTATE = rtDW.TSamp;
+
+  /* Update for UnitDelay: '<S116>/UD'
+   *
+   * Block description for '<S116>/UD':
+   *
+   *  Store in Global RAM
+   */
+  rtDW.UD_DSTATE_f = rtDW.TSamp_f;
 
   /* End of Outputs for SubSystem: '<Root>/task_5ms' */
 
   /* Outport: '<Root>/pitch' */
   rtY.pitch = rtDW.Gain1;
 
-  /* Chart: '<Root>/output_flag' incorporates:
-   *  Inport: '<Root>/running_flag'
-   */
-  rtDW.running_success_flag = (uint8_T)((rtU.running_flag > 0) && (rtDW.Gain1 >
-    pitch_min) && (rtDW.Gain1 < pitch_max));
-
-  /* Outport: '<Root>/running_success_flag' */
-  rtY.running_success_flag = rtDW.running_success_flag;
-
-  /* Update for UnitDelay: '<Root>/Unit Delay' incorporates:
-   *  Sum: '<Root>/motor_a'
-   */
-  rtDW.UnitDelay_DSTATE = (int16_T)(rtb_Switch - rtDW.DataTypeConversion);
-
-  /* Update for UnitDelay: '<Root>/Unit Delay1' incorporates:
-   *  Sum: '<Root>/motor_b'
-   */
-  rtDW.UnitDelay1_DSTATE = (int16_T)(rtb_Switch + rtDW.DataTypeConversion);
+  /* Update for UnitDelay: '<Root>/Unit Delay3' */
+  rtDW.UnitDelay3_DSTATE = rtDW.Gain1;
 }
 
 /* Model step function for TID2 */
@@ -749,7 +1295,7 @@ void blinky_step2(void)                /* Sample time: [0.01s, 0.0s] */
 {
   real_T rtb_FilterCoefficient;
   real_T rtb_IntegralGain;
-  real_T rtb_Sum_l;
+  real_T rtb_Sum;
   boolean_T rtb_NOT_c;
 
   /* UnitDelay: '<Root>/Unit Delay2' */
@@ -757,9 +1303,6 @@ void blinky_step2(void)                /* Sample time: [0.01s, 0.0s] */
 
   /* Outport: '<Root>/angle_target' */
   rtY.angle_target = rtDW.UnitDelay2;
-
-  /* UnitDelay: '<Root>/Unit Delay5' */
-  rtDW.UnitDelay5 = rtDW.UnitDelay5_DSTATE;
 
   /* Outputs for Atomic SubSystem: '<Root>/task_10ms' */
   /* Sum: '<S2>/Sum' incorporates:
@@ -770,12 +1313,10 @@ void blinky_step2(void)                /* Sample time: [0.01s, 0.0s] */
    *  Product: '<S2>/Divide'
    *  Sum: '<S2>/Add'
    */
-  rtb_Sum_l = (rtU.motor_a_speed + rtU.motor_b_speed) / 2.0 - rtU.target_speed;
+  rtb_Sum = (rtU.motor_a_speed + rtU.motor_b_speed) / 2.0 - rtU.target_speed;
 
-  /* Logic: '<S2>/NOT' incorporates:
-   *  UnitDelay: '<Root>/Unit Delay3'
-   */
-  rtb_NOT_c = (rtDW.UnitDelay3_DSTATE == 0);
+  /* Logic: '<S2>/NOT' */
+  rtb_NOT_c = (rtDW.UnitDelay5 == 0);
 
   /* DiscreteIntegrator: '<S36>/Filter' */
   if (rtb_NOT_c || (rtDW.Filter_PrevResetState_a != 0)) {
@@ -783,7 +1324,7 @@ void blinky_step2(void)                /* Sample time: [0.01s, 0.0s] */
   }
 
   /* Gain: '<S38>/Integral Gain' */
-  rtb_IntegralGain = SPD_KI * rtb_Sum_l;
+  rtb_IntegralGain = SPD_KI * rtb_Sum;
 
   /* DiscreteIntegrator: '<S41>/Integrator' */
   if (rtb_NOT_c || (rtDW.Integrator_PrevResetState != 0)) {
@@ -795,14 +1336,13 @@ void blinky_step2(void)                /* Sample time: [0.01s, 0.0s] */
    *  Gain: '<S34>/Derivative Gain'
    *  Sum: '<S36>/SumD'
    */
-  rtb_FilterCoefficient = (SPD_KD * rtb_Sum_l - rtDW.Filter_DSTATE) * 100.0;
+  rtb_FilterCoefficient = (SPD_KD * rtb_Sum - rtDW.Filter_DSTATE) * 100.0;
 
   /* Sum: '<S50>/Sum' incorporates:
    *  DiscreteIntegrator: '<S41>/Integrator'
    *  Gain: '<S46>/Proportional Gain'
    */
-  rtb_Sum_l = (SPD_KP * rtb_Sum_l + rtDW.Integrator_DSTATE) +
-    rtb_FilterCoefficient;
+  rtb_Sum = (SPD_KP * rtb_Sum + rtDW.Integrator_DSTATE) + rtb_FilterCoefficient;
 
   /* Update for DiscreteIntegrator: '<S36>/Filter' */
   rtDW.Filter_DSTATE += 0.01 * rtb_FilterCoefficient;
@@ -823,25 +1363,19 @@ void blinky_step2(void)                /* Sample time: [0.01s, 0.0s] */
   /* End of Update for DiscreteIntegrator: '<S41>/Integrator' */
 
   /* Saturate: '<S48>/Saturation' */
-  if (rtb_Sum_l > ANGLE_MAX) {
+  if (rtb_Sum > ANGLE_MAX) {
     /* Update for UnitDelay: '<Root>/Unit Delay2' */
     rtDW.UnitDelay2_DSTATE = ANGLE_MAX;
-  } else if (rtb_Sum_l < ANGLE_MIN) {
+  } else if (rtb_Sum < ANGLE_MIN) {
     /* Update for UnitDelay: '<Root>/Unit Delay2' */
     rtDW.UnitDelay2_DSTATE = ANGLE_MIN;
   } else {
     /* Update for UnitDelay: '<Root>/Unit Delay2' */
-    rtDW.UnitDelay2_DSTATE = rtb_Sum_l;
+    rtDW.UnitDelay2_DSTATE = rtb_Sum;
   }
 
   /* End of Saturate: '<S48>/Saturation' */
   /* End of Outputs for SubSystem: '<Root>/task_10ms' */
-
-  /* Update for UnitDelay: '<Root>/Unit Delay3' */
-  rtDW.UnitDelay3_DSTATE = rtDW.running_success_flag;
-
-  /* Update for UnitDelay: '<Root>/Unit Delay5' */
-  rtDW.UnitDelay5_DSTATE = rtDW.running_success_flag;
 }
 
 /* Model step function for TID3 */
@@ -849,16 +1383,14 @@ void blinky_step3(void)                /* Sample time: [0.02s, 0.0s] */
 {
   real32_T rtb_FilterCoefficient;
   real32_T u0;
-  boolean_T rtb_NOT;
+  boolean_T rtb_NOT_n;
 
   /* Outputs for Atomic SubSystem: '<Root>/task_20ms' */
-  /* Logic: '<S4>/NOT' incorporates:
-   *  UnitDelay: '<Root>/Unit Delay4'
-   */
-  rtb_NOT = (rtDW.UnitDelay4_DSTATE == 0);
+  /* Logic: '<S4>/NOT' */
+  rtb_NOT_n = (rtDW.UnitDelay6 == 0);
 
   /* DiscreteIntegrator: '<S89>/Filter' */
-  if (rtb_NOT || (rtDW.Filter_PrevResetState != 0)) {
+  if (rtb_NOT_n || (rtDW.Filter_PrevResetState != 0)) {
     rtDW.Filter_DSTATE_j = 0.0F;
   }
 
@@ -891,12 +1423,9 @@ void blinky_step3(void)                /* Sample time: [0.02s, 0.0s] */
    *  Sum: '<S89>/SumD'
    */
   rtDW.Filter_DSTATE_j += (TURN_KD * rtU.gyroz - rtb_FilterCoefficient) * 0.02F;
-  rtDW.Filter_PrevResetState = (int8_T)rtb_NOT;
+  rtDW.Filter_PrevResetState = (int8_T)rtb_NOT_n;
 
   /* End of Outputs for SubSystem: '<Root>/task_20ms' */
-
-  /* Update for UnitDelay: '<Root>/Unit Delay4' */
-  rtDW.UnitDelay4_DSTATE = rtDW.running_success_flag;
 }
 
 /* Model initialize function */
@@ -911,7 +1440,7 @@ void blinky_initialize(void)
   (rtM)->Timing.TaskCounters.cLimit[3] = 20;
 
   /* SystemInitialize for Atomic SubSystem: '<Root>/task_5ms' */
-  /* Start for DataStoreMemory: '<S169>/DataStoreMemory - P' */
+  /* Start for DataStoreMemory: '<S122>/DataStoreMemory - P' */
   rtDW.P_i[0] = 1.0;
   rtDW.P_i[1] = 0.0;
   rtDW.P_i[2] = 0.0;
