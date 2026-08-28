@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'blinky'.
  *
- * Model version                  : 1.79
+ * Model version                  : 1.80
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Fri Aug 28 17:40:41 2026
+ * C/C++ source code generated on : Fri Aug 28 21:09:53 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -21,14 +21,14 @@
 const ConstP rtConstP = {
   /* Pooled Parameter (Mixed Expressions)
    * Referenced by:
-   *   '<S117>/FISLookupTableIndex1'
-   *   '<S117>/FISLookupTableIndex2'
+   *   '<S116>/FISLookupTableIndex1'
+   *   '<S116>/FISLookupTableIndex2'
    */
   { -3.0F, -2.7F, -2.4F, -2.1F, -1.8F, -1.5F, -1.2F, -0.9F, -0.6F, -0.3F, 0.0F,
     0.3F, 0.6F, 0.9F, 1.2F, 1.5F, 1.8F, 2.1F, 2.4F, 2.7F, 3.0F },
 
   /* Computed Parameter: FISLookupTableData_Table
-   * Referenced by: '<S117>/FISLookupTableData'
+   * Referenced by: '<S116>/FISLookupTableData'
    */
   { 2.68615389F, 2.65964746F, 2.64410949F, 2.68137932F, 2.36698461F, 2.13371968F,
     2.02496362F, 1.99963641F, 1.99971426F, 1.99955142F, 1.99959183F, 1.66494048F,
@@ -285,12 +285,12 @@ const ConstP rtConstP = {
     2.58545446F, 0.0F },
 
   /* Expression: p.R{1}
-   * Referenced by: '<S118>/R1'
+   * Referenced by: '<S170>/R1'
    */
   { 0.1F, 0.0F, 0.0F, 0.1F },
 
   /* Expression: p.Q
-   * Referenced by: '<S118>/Q'
+   * Referenced by: '<S170>/Q'
    */
   { 0.001F, 0.0F, 0.0F, 0.001F }
 };
