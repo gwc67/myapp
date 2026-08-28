@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'blinky'.
  *
- * Model version                  : 1.76
+ * Model version                  : 1.79
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Thu Aug 27 13:27:30 2026
+ * C/C++ source code generated on : Fri Aug 28 17:40:41 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -56,11 +56,11 @@
 #define ANGLE_MIN                      -15.0F                    /* Referenced by: '<S47>/Saturation' */
 #define PWM_MAX                        800                       /* Referenced by: '<S113>/Saturation1' */
 #define PWM_MIN                        -800                      /* Referenced by: '<S113>/Saturation1' */
-#define bal_kd_factor                  1.0F                      /* Referenced by: '<S113>/Gain2' */
-#define bal_ki_factor                  1.0E-5F                   /* Referenced by: '<S113>/Gain1' */
-#define bal_kp_factor                  20.0F                     /* Referenced by: '<S113>/Gain' */
-#define e_factor                       0.1F                      /* Referenced by: '<S113>/gain' */
-#define ec_factor                      8.0E-5F                   /* Referenced by: '<S113>/gain2' */
+#define bal_e_max                      30.0F                     /* Referenced by: '<S113>/gain' */
+#define bal_ec_max                     200.0F                    /* Referenced by: '<S113>/gain2' */
+#define bal_kd_factor                  0.0F                      /* Referenced by: '<S113>/Gain2' */
+#define bal_ki_factor                  0.0F                      /* Referenced by: '<S113>/Gain1' */
+#define bal_kp_factor                  0.0F                      /* Referenced by: '<S113>/Gain' */
 #define pitch_max                      60.0F                     /* Referenced by: '<Root>/output_flag' */
 #define pitch_min                      -55.0F                    /* Referenced by: '<Root>/output_flag' */
 
@@ -86,19 +86,24 @@ typedef struct {
   real32_T UnitDelay2_DSTATE;          /* '<Root>/Unit Delay2' */
   real32_T UD_DSTATE;                  /* '<S116>/UD' */
   real32_T DiscreteTimeIntegrator_DSTATE;/* '<S113>/Discrete-Time Integrator' */
+  real32_T DiscreteFilter_states;      /* '<S113>/Discrete Filter' */
   real32_T UD_DSTATE_f;                /* '<S115>/UD' */
   real32_T Filter_DSTATE;              /* '<S88>/Filter' */
   real32_T Filter_DSTATE_n;            /* '<S35>/Filter' */
   real32_T Integrator_DSTATE;          /* '<S40>/Integrator' */
   real32_T epsilon;
   real32_T Gain1;                      /* '<S4>/Gain1' */
+  real32_T e;                          /* '<S113>/Sum2' */
+  real32_T gain;                       /* '<S113>/gain' */
   real32_T TSamp;                      /* '<S116>/TSamp' */
+  real32_T Diff;                       /* '<S116>/Diff' */
+  real32_T gain2;                      /* '<S113>/gain2' */
   real32_T TSamp_f;                    /* '<S115>/TSamp' */
+  real32_T DiscreteFilter_tmp;
   real32_T z_idx_1;
   real32_T rtb_FISLookupTableData_idx_2;
   real32_T rtb_FISLookupTableData_idx_1;
-  real32_T rtb_FISLookupTableData_idx_0;
-  real32_T K_idx_1;
+  real32_T z_idx_1_tmp;
   real32_T b_atmp;
   real32_T xnorm;
   real32_T b_atmp_b;
@@ -127,15 +132,12 @@ typedef struct {
 
 /* Constant parameters (default storage) */
 typedef struct {
-  /* Computed Parameter: FISLookupTableIndex1_Breakpoint
-   * Referenced by: '<S117>/FISLookupTableIndex1'
+  /* Pooled Parameter (Mixed Expressions)
+   * Referenced by:
+   *   '<S117>/FISLookupTableIndex1'
+   *   '<S117>/FISLookupTableIndex2'
    */
-  real32_T FISLookupTableIndex1_Breakpoint[21];
-
-  /* Computed Parameter: FISLookupTableIndex2_Breakpoint
-   * Referenced by: '<S117>/FISLookupTableIndex2'
-   */
-  real32_T FISLookupTableIndex2_Breakpoint[21];
+  real32_T pooled3[21];
 
   /* Computed Parameter: FISLookupTableData_Table
    * Referenced by: '<S117>/FISLookupTableData'
@@ -176,6 +178,9 @@ typedef struct {
   int16_T motor_b_pwm;                 /* '<Root>/motor_b_pwm' */
   real32_T angle_target;               /* '<Root>/angle_target' */
   uint8_T running_success_flag;        /* '<Root>/running_success_flag' */
+  real32_T e_factor;                   /* '<Root>/e_factor' */
+  real32_T ec_factor;                  /* '<Root>/ec_factor' */
+  real32_T ec_raw;                     /* '<Root>/ec_raw' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -219,9 +224,7 @@ extern real32_T BALANCE_KD;            /* Variable: BALANCE_KD
                                         * Referenced by: '<S113>/Constant1'
                                         */
 extern real32_T BALANCE_KP;            /* Variable: BALANCE_KP
-                                        * Referenced by:
-                                        *   '<S113>/Constant3'
-                                        *   '<S113>/bal_kp'
+                                        * Referenced by: '<S113>/Constant3'
                                         */
 extern real32_T SPD_KD;                /* Variable: SPD_KD
                                         * Referenced by: '<S33>/Derivative Gain'
@@ -256,6 +259,8 @@ extern RT_MODEL *const rtM;
  * Block '<S115>/Data Type Duplicate' : Unused code path elimination
  * Block '<S116>/Data Type Duplicate' : Unused code path elimination
  * Block '<S113>/Scope' : Unused code path elimination
+ * Block '<S113>/Scope1' : Unused code path elimination
+ * Block '<S113>/Scope2' : Unused code path elimination
  * Block '<S118>/checkMeasurementFcn1Signals' : Unused code path elimination
  * Block '<S118>/checkStateTransitionFcnSignals' : Unused code path elimination
  * Block '<S117>/InputConversion' : Eliminate redundant data type conversion

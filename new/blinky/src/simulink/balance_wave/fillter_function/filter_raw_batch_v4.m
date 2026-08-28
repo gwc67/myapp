@@ -15,7 +15,7 @@ function filter_raw_batch_v4(folder_path)
     %% ========== 预设标准列名和列顺序 ==========
     standard_col_names = {'time', 'pwma', 'pwmb', 'pitch', 'motor_a_speed', ...
                           'motor_b_speed', 'target_speed', 'target_angle', ...
-                          'running_success_flag', 'angle_error'};
+                          'running_success_flag', 'angle_error','e','ec'};
 
     flag_col = 9;           % running_success_flag (读取时的列号)
     time_col = 1;
@@ -28,6 +28,8 @@ function filter_raw_batch_v4(folder_path)
     SPEED_CHANGE_THRESHOLD = 0.5;  % target_speed变化阈值
     MIN_SAMPLES = 50;              % 最少样本数阈值
 
+    e_col = 11;
+    ec_col = 12;
     %% ========== 1. 检查输入文件夹 ==========
     if ~isfolder(folder_path)
         error('Folder not found: %s', folder_path);

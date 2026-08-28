@@ -216,25 +216,20 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		char pitch_target_pc[10];
 		char target_speed_pc[10];
 		char time_pc[10];
-		char turn_tar_pc[10];
-		// char bal_kd_pc[10];
-		// char spd_kp_pc[10];
-		// char spd_ki_pc[10];
-		// char gyroy_pc[10];
-		// char angle_acc_pc[10];
-		
+		char e_factor_pc[10];
+		char ec_factor_pc[10];
+		char ec_raw_pc[10];
+
 		float_to_str(pitch_pc, sizeof(pitch_pc), rtY.pitch , 2);
 		float_to_str(target_speed_pc, sizeof(target_speed_pc), rtU.target_speed , 2);
 		float_to_str(time_pc, sizeof(time_pc), k_uptime_get_32() * 0.001f , 3);
 		float_to_str(pitch_target_pc, sizeof(pitch_target_pc), rtY.angle_target , 2);
-		float_to_str(turn_tar_pc, sizeof(turn_tar_pc), rtU.turn_target , 2);
-		// float_to_str(bal_kd_pc, sizeof(bal_kd_pc), BALANCE_KD , 2);
-		// float_to_str(spd_kp_pc, sizeof(spd_kp_pc), SPD_KP , 2);
-		// float_to_str(spd_ki_pc, sizeof(spd_ki_pc), SPD_KI , 2);
-		// float_to_str(gyroy_pc, sizeof(gyroy_pc), rtU.gyroy , 2);
-		// float_to_str(angle_acc_pc, sizeof(angle_acc_pc), angle_acc_f , 2);
+		float_to_str(e_factor_pc, sizeof(e_factor_pc), rtY.e_factor , 2);
+		float_to_str(ec_factor_pc, sizeof(ec_factor_pc), rtY.ec_factor , 2);
+		float_to_str(ec_raw_pc, sizeof(ec_raw_pc), rtY.ec_raw , 2);
 		// snprintf(buf,sizeof(buf),"%d,%d,%d,%s,%s,%s,%s,%s,%s,%s\n",k_uptime_get_32(),rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,gyroy_pc,angle_acc_pc);
-		snprintf(buf,sizeof(buf),"%s,%d,%d,%s,%d,%d,%s,%s,%d,%s\n",time_pc,rtY.motor_a_pwm,rtY.motor_b_pwm,pitch_pc,(int32_t)rtU.motor_a_speed,(int32_t)rtU.motor_b_speed,target_speed_pc,pitch_target_pc,rtY.running_success_flag,turn_tar_pc);
+
+		snprintf(buf,sizeof(buf),"%s,%d,%s,%d,%s,%s,%d,%s,%s,%s\n",time_pc,rtY.motor_a_pwm,pitch_pc,(int32_t)rtU.motor_b_speed,target_speed_pc,pitch_target_pc,rtY.running_success_flag,e_factor_pc,ec_factor_pc,ec_raw_pc);
 		#endif
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		
