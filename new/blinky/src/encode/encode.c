@@ -137,7 +137,7 @@ int encoder_read(struct encoder_base_t* base)
     me->last_tick_ul = current_tick_ul;
     
     if (dt_ms > 0) {
-        me->data_st.rpm_l = 
+        me->data_st.rpm_f = 
         (float)delta_l / dt_ms * 10;}
 
     return 0;

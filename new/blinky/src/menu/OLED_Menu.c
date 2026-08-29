@@ -130,7 +130,7 @@ struct menu_base_t* g_mpu6050_euler_oled_pst;
 
 static void s_draw_encoder(struct menu_node_t* self)
 {
-    // char num[16];   /* 放数值 */
+    char num[10];   /* 放数值 */
     char buf[32];   /* 放最终结果 */
     cfb_framebuffer_set_font(s_oled_pst, 1);
     cfb_print(s_oled_pst, self->base.name, 0, 0);
@@ -143,15 +143,15 @@ static void s_draw_encoder(struct menu_node_t* self)
     
     
 
-    // float_to_str(num, sizeof(num), encoder_data_a_st.rpm_f, 2);
-    snprintf(buf, sizeof(buf), "v_a:%d", encoder_data_a_st.rpm_l);   /* ✅ num 和 buf 分开 */
+    float_to_str(num, sizeof(num), encoder_data_a_st.rpm_f, 2);
+    snprintf(buf, sizeof(buf), "v_a:%s",num);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 0, 20);
 
     snprintf(buf, sizeof(buf), "p_a:%d", encoder_data_a_st.position_l);   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 64, 20);
 
-    // float_to_str(num, sizeof(num), encoder_data_b_st.rpm_f, 2);
-    snprintf(buf, sizeof(buf), "v_b:%d",encoder_data_b_st.rpm_l );   /* ✅ num 和 buf 分开 */
+    float_to_str(num, sizeof(num), encoder_data_b_st.rpm_f, 2);
+    snprintf(buf, sizeof(buf), "v_b:%s",num );   /* ✅ num 和 buf 分开 */
     cfb_print(s_oled_pst, buf, 0, 30);
 
     snprintf(buf, sizeof(buf), "p_b:%d", encoder_data_b_st.position_l);   /* ✅ num 和 buf 分开 */

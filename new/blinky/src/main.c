@@ -147,8 +147,8 @@ static void s_task_10ms_high(void *p1,void *p2,void *p3)
 		struct encoder_data_t motor_b_st;
 		encoder_get_data(g_encoder_a_pst, &motor_a_st);
 		encoder_get_data(g_encoder_b_pst, &motor_b_st);
-		rtU.motor_a_speed = motor_a_st.rpm_l;
-		rtU.motor_b_speed = motor_b_st.rpm_l;	
+		rtU.motor_a_speed = motor_a_st.rpm_f;
+		rtU.motor_b_speed = motor_b_st.rpm_f;	
 		blinky_step(2);
 		k_msleep(9);
 	}
@@ -219,7 +219,9 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		char e_factor_pc[10];
 		char ec_factor_pc[10];
 		char ec_raw_pc[10];
-
+		char bal_kp_fuzzy_pc[10];
+		char bal_kd_fuzzy_pc[10];
+		char speed_pc[10];
 		float_to_str(pitch_pc, sizeof(pitch_pc), rtY.pitch , 2);
 		float_to_str(target_speed_pc, sizeof(target_speed_pc), rtU.target_speed , 2);
 		float_to_str(time_pc, sizeof(time_pc), k_uptime_get_32() * 0.001f , 3);
@@ -227,9 +229,11 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		float_to_str(e_factor_pc, sizeof(e_factor_pc), rtY.e_factor , 2);
 		float_to_str(ec_factor_pc, sizeof(ec_factor_pc), rtY.ec_factor , 2);
 		float_to_str(ec_raw_pc, sizeof(ec_raw_pc), rtY.ec_raw , 2);
-		// snprintf(buf,sizeof(buf),"%d,%d,%d,%s,%s,%s,%s,%s,%s,%s\n",k_uptime_get_32(),rtY.motor_a_pwm,rtY.motor_b_pwm,float_num,bal_kp_pc,bal_kd_pc,spd_kp_pc,spd_ki_pc,gyroy_pc,angle_acc_pc);
+		float_to_str(bal_kp_fuzzy_pc, sizeof(bal_kp_fuzzy_pc), rtY.bal_kp_fuzzy , 2);
+		float_to_str(bal_kd_fuzzy_pc, sizeof(bal_kd_fuzzy_pc),rtY.bal_kd_fuzzy , 2);
+		float_to_str(speed_pc, sizeof(speed_pc),rtY.speed_avg_f , 2);
 
-		snprintf(buf,sizeof(buf),"%s,%s,%s,%d,%d,%s,%d,%s,%s,%s\n",time_pc,pitch_pc,pitch_target_pc,rtY.motor_a_pwm,(int32_t)rtU.motor_b_speed,target_speed_pc,rtY.running_success_flag,e_factor_pc,ec_factor_pc,ec_raw_pc);
+		snprintf(buf,sizeof(buf),"%s,%s,%s,%d,%s,%s,%d,%s,%s,%s,%s,%s\n",time_pc,pitch_pc,pitch_target_pc,rtY.motor_a_pwm,speed_pc,target_speed_pc,rtY.running_success_flag,e_factor_pc,ec_factor_pc,ec_raw_pc,bal_kp_fuzzy_pc,bal_kd_fuzzy_pc);
 		#endif
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		

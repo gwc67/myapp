@@ -11,7 +11,7 @@ struct encoder_base_t
 struct encoder_data_t
 {
     int32_t position_l;  //当前位置，累计量
-    int32_t rpm_l;       //转速     
+    float rpm_f;       //转速     
 };
 
 int encoder_read(struct encoder_base_t* me);
