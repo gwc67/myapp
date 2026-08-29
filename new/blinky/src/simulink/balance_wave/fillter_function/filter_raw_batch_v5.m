@@ -11,7 +11,7 @@ function filter_raw_batch_v5(folder_path)
     %% ========== 1. 预设标准列名（修改这里即可添加新列）==========
     standard_col_names = {'time', 'pitch', 'target_angle', 'pwma', 'motor_a_speed', ...
                           'target_speed', ...
-                          'running_success_flag', 'e', 'ec','ec_raw'};
+                          'running_success_flag', 'e', 'ec','ec_raw','bal_kp_fuzzy','bal_kd_fuzzy'};
     
     % 自动计算列数
     num_standard_cols = length(standard_col_names);

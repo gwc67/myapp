@@ -44,73 +44,58 @@ static void  dispatch_line(char* line_pc)
     str_to_float(line_pc, values_pf, 4);
 
     if (strncmp(line_pc, "spd_kff:", 8) == 0) {
-        // str_to_float(line_pc, values_pf, 4);
         spd_kff = values_pf[0];
     }
-    else if (strncmp(line_pc, "bal_kp_factor:", 14) == 0 ) 
+    else if (strncmp(line_pc, "factor_bal_kp:", 14) == 0 ) 
     {
-        // str_to_float(line_pc, values_pf, 4);
         bal_kp_factor = values_pf[0];
     }
-    else if (strncmp(line_pc, "bal_ki_factor:", 14)== 0 ) 
+    else if (strncmp(line_pc, "factor_bal_ki:", 14)== 0 ) 
     {
         bal_ki_factor = values_pf[0];
     }
-    else if (strncmp(line_pc, "bal_kd_factor:", 14) == 0) 
+    else if (strncmp(line_pc, "factor_bal_kd:", 14) == 0) 
     {
-        // str_to_float(line_pc, values_pf, 4);
         bal_kd_factor = values_pf[0];
     }
     else if(strncmp(line_pc, "bal_kp:",6) == 0)
     {
-        // str_to_float(line_pc, values_pf, 4);
         BALANCE_KP = values_pf[0];
     }
+    else if (strncmp(line_pc, "bal_ki:", 6) == 0) {
+        BALANCE_KI = values_pf[0];
+    }
     else if (strncmp(line_pc, "bal_kd:", 6) == 0) {
-        // str_to_float(line_pc, values_pf, 4);
         BALANCE_KD = values_pf[0];
     }
     else if (strncmp(line_pc, "spd_kp:", 6) == 0) {
-        // str_to_float(line_pc, values_pf, 4);
         SPD_KP = values_pf[0];
     }
     else if (strncmp(line_pc, "spd_ki:", 6) == 0) {
-        // str_to_float(line_pc, values_pf, 4);
         SPD_KI = values_pf[0];
     }
     else if (strncmp(line_pc, "tar_spd:", 7) == 0) {
-        // str_to_float(line_pc, values_pf, 4);
         rtU.target_speed = values_pf[0];
     }
     else if(strncmp(line_pc,"turn_kp:",7) == 0)
     {
-        // str_to_float(line_pc, values_pf, 4);
         TURN_KP = values_pf[0];
     }
     else if(strncmp(line_pc,"turn_kd:",7) == 0)
     {
-        // str_to_float(line_pc, values_pf, 4);
         TURN_KD = values_pf[0];
     }
     else if(strncmp(line_pc,"spd_kd:",7) == 0)
     {
-        // str_to_float(line_pc, values_pf, 4);
         SPD_KD  = values_pf[0];
     }
-    // else if(strncmp(line_pc,"bal_kff:",6) == 0)
-    // str_to_float(line_pc,values_pf,4);
-    // {
-        // BAL_KFF = (double)values_pf[0];
-    // }
     else if (strncmp(line_pc, "convert:", 8) == 0) {
         rtU.running_flag ^=1;
         gpio_pin_set_dt(&led_motor_st, rtU.running_flag);
     }
     else if (strncmp(line_pc, "turn_tar:", 9) == 0) {
-        // str_to_float(line_pc, values_pf, 4);
         rtU.turn_target = values_pf[0];
         rtU.target_speed =values_pf[1];
     }
-    
 
 }

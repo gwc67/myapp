@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.81
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Aug 29 11:08:10 2026
+ * C/C++ source code generated on : Sat Aug 29 17:00:47 2026
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -56,7 +56,7 @@
 #define ANGLE_MIN                      -18.0F                    /* Referenced by: '<S2>/Saturation' */
 #define PWM_MAX                        800                       /* Referenced by: '<S113>/Saturation1' */
 #define PWM_MIN                        -800                      /* Referenced by: '<S113>/Saturation1' */
-#define bal_e_max                      2.5F                      /* Referenced by: '<S113>/gain' */
+#define bal_e_max                      30.0F                     /* Referenced by: '<S113>/gain' */
 #define bal_ec_max                     4.38F                     /* Referenced by: '<S113>/gain2' */
 #define pitch_max                      55.0F                     /* Referenced by: '<Root>/output_flag' */
 #define pitch_min                      -55.0F                    /* Referenced by: '<Root>/output_flag' */
@@ -91,25 +91,26 @@ typedef struct {
   real32_T e;                          /* '<S113>/Sum2' */
   real32_T gain;                       /* '<S113>/gain' */
   real32_T gain2;                      /* '<S113>/gain2' */
+  real32_T bal_ki_fuzzy;
   real32_T DiscreteFilter_tmp;
   real32_T z_idx_1;
   real32_T z_idx_0;
   real32_T rtb_FISLookupTableData_idx_2;
   real32_T rtb_FISLookupTableData_idx_0;
-  real32_T A_b;
+  real32_T z_idx_0_tmp;
   real32_T z_idx_1_tmp;
   real32_T b_atmp;
   real32_T xnorm;
-  real32_T b_atmp_p;
-  real32_T xnorm_c;
+  real32_T b_atmp_b;
+  real32_T xnorm_p;
   int32_T i;
   int32_T b_i;
   int32_T A_tmp;
   int32_T ii;
   int32_T knt;
   int32_T lastv;
-  int32_T ii_f;
-  int32_T knt_g;
+  int32_T ii_c;
+  int32_T knt_f;
   uint32_T bpIndex[3];
   int16_T DataTypeConversion;          /* '<S3>/Data Type Conversion' */
   int16_T UnitDelay_DSTATE;            /* '<Root>/Unit Delay' */
@@ -175,9 +176,11 @@ typedef struct {
   real32_T e_factor;                   /* '<Root>/e_factor' */
   real32_T ec_factor;                  /* '<Root>/ec_factor' */
   real32_T ec_raw;                     /* '<Root>/ec_raw' */
-  real32_T bal_kd_fuzzy;               /* '<Root>/bal_kd_fuzzy' */
-  real32_T bal_kp_fuzzy;               /* '<Root>/bal_kp_fuzzy' */
   real32_T speed_avg_f;                /* '<Root>/speed_avg_f' */
+  real32_T bal_kp_fuzzy;               /* '<Root>/bal_kp_fuzzy' */
+  real32_T bal_kd_fuzzy;               /* '<Root>/bal_kd_fuzzy' */
+  real32_T bal_integral_f;             /* '<Root>/bal_integral_f' */
+  real32_T bal_ki_fuzzy;               /* '<Root>/bal_ki_fuzzy' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -219,6 +222,9 @@ extern const ConstP rtConstP;
  */
 extern real32_T BALANCE_KD;            /* Variable: BALANCE_KD
                                         * Referenced by: '<S113>/Constant1'
+                                        */
+extern real32_T BALANCE_KI;            /* Variable: BALANCE_KI
+                                        * Referenced by: '<S113>/Constant2'
                                         */
 extern real32_T BALANCE_KP;            /* Variable: BALANCE_KP
                                         * Referenced by: '<S113>/Constant3'

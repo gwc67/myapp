@@ -187,7 +187,7 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 
 	while (1) {
     	menu_request_refresh(g_mpu6050_euler_oled_pst);
-		char buf[128];
+		char buf[150];
 		
 #if SIMULINK_DEBUG
 
@@ -220,7 +220,9 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		char ec_factor_pc[10];
 		char ec_raw_pc[10];
 		char bal_kp_fuzzy_pc[10];
+		char bal_ki_fuzzy_pc[10];
 		char bal_kd_fuzzy_pc[10];
+		char bal_integral_pc[10];
 		char speed_pc[10];
 		float_to_str(pitch_pc, sizeof(pitch_pc), rtY.pitch , 2);
 		float_to_str(target_speed_pc, sizeof(target_speed_pc), rtU.target_speed , 2);
@@ -230,10 +232,12 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		float_to_str(ec_factor_pc, sizeof(ec_factor_pc), rtY.ec_factor , 2);
 		float_to_str(ec_raw_pc, sizeof(ec_raw_pc), rtY.ec_raw , 2);
 		float_to_str(bal_kp_fuzzy_pc, sizeof(bal_kp_fuzzy_pc), rtY.bal_kp_fuzzy , 2);
+		float_to_str(bal_ki_fuzzy_pc, sizeof(bal_ki_fuzzy_pc),rtY.bal_ki_fuzzy, 2);
 		float_to_str(bal_kd_fuzzy_pc, sizeof(bal_kd_fuzzy_pc),rtY.bal_kd_fuzzy , 2);
 		float_to_str(speed_pc, sizeof(speed_pc),rtY.speed_avg_f , 2);
+		float_to_str(bal_integral_pc, sizeof(bal_integral_pc),rtY.bal_integral_f , 2);
 
-		snprintf(buf,sizeof(buf),"%s,%s,%s,%d,%s,%s,%d,%s,%s,%s,%s,%s\n",time_pc,pitch_pc,pitch_target_pc,rtY.motor_a_pwm,speed_pc,target_speed_pc,rtY.running_success_flag,e_factor_pc,ec_factor_pc,ec_raw_pc,bal_kp_fuzzy_pc,bal_kd_fuzzy_pc);
+		snprintf(buf,sizeof(buf),"%s,%s,%s,%d,%s,%s,%d,%s,%s,%s,%s,%s,%s,%s\n",time_pc,pitch_pc,pitch_target_pc,rtY.motor_a_pwm,speed_pc,target_speed_pc,rtY.running_success_flag,e_factor_pc,ec_factor_pc,ec_raw_pc,bal_kp_fuzzy_pc,bal_ki_fuzzy_pc,bal_kd_fuzzy_pc,bal_integral_pc);
 		#endif
 		uart_transmit(g_uart2_pst, buf, strlen(buf));
 		
