@@ -224,6 +224,7 @@ static void s_task_5ms_low(void *p1,void *p2,void *p3)
 		char bal_kd_fuzzy_pc[10];
 		char bal_integral_pc[10];
 		char speed_pc[10];
+
 		float_to_str(pitch_pc, sizeof(pitch_pc), rtY.pitch , 2);
 		float_to_str(target_speed_pc, sizeof(target_speed_pc), rtU.target_speed , 2);
 		float_to_str(time_pc, sizeof(time_pc), k_uptime_get_32() * 0.001f , 3);
