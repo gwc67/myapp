@@ -4936,115 +4936,9 @@
     "CONFIG_DISPLAY",
     "y",
     "bool",
-    "y",
-    "assign",
-    [
-      "D:/Downloads/zephyr_new/myapp/new/car_2026/prj.conf",
-      16
-    ]
-  ],
-  [
-    "CONFIG_DISPLAY_INIT_PRIORITY",
-    "y",
-    "int",
-    "85",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\display\\Kconfig",
-      15
-    ]
-  ],
-  [
-    "CONFIG_DISPLAY_COLOR_PALETTE",
-    "y",
-    "bool",
     null,
     "unset",
     null
-  ],
-  [
-    "CONFIG_DISPLAY_LOG_LEVEL_OFF",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_DISPLAY_LOG_LEVEL_ERR",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_DISPLAY_LOG_LEVEL_WRN",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_DISPLAY_LOG_LEVEL_INF",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_DISPLAY_LOG_LEVEL_DBG",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_DISPLAY_LOG_LEVEL_DEFAULT",
-    "y",
-    "bool",
-    "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\logging\\Kconfig.template.log_config",
-      5
-    ]
-  ],
-  [
-    "CONFIG_DISPLAY_LOG_LEVEL",
-    "n",
-    "int",
-    "3",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\logging\\Kconfig.template.log_config",
-      36
-    ]
-  ],
-  [
-    "CONFIG_SSD1306",
-    "y",
-    "bool",
-    "y",
-    "assign",
-    [
-      "D:/Downloads/zephyr_new/myapp/new/car_2026/prj.conf",
-      13
-    ]
-  ],
-  [
-    "CONFIG_SSD1306_DEFAULT_CONTRAST",
-    "y",
-    "int",
-    "128",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\drivers\\display\\Kconfig.ssd1306",
-      39
-    ]
   ],
   [
     "CONFIG_DMA",
@@ -5403,7 +5297,6 @@
     "y",
     "select",
     [
-      "SSD1306 && (DT_HAS_SOLOMON_SSD1306_ENABLED || DT_HAS_SOLOMON_SSD1306B_ENABLED || DT_HAS_SOLOMON_SSD1315_ENABLED || DT_HAS_SOLOMON_SSD1309_ENABLED || DT_HAS_SOLOMON_SSD1305_ENABLED || DT_HAS_SINOWEALTH_SH1106_ENABLED || DT_HAS_SINOWEALTH_SH1107_ENABLED || DT_HAS_CHIPWEALTH_CH1115_ENABLED || DT_HAS_CHIPWEALTH_CH1116_ENABLED) && DISPLAY",
       "MPU6050 && DT_HAS_INVENSENSE_MPU6050_ENABLED && SENSOR"
     ]
   ],
@@ -7947,85 +7840,9 @@
     "CONFIG_CHARACTER_FRAMEBUFFER",
     "y",
     "bool",
-    "y",
-    "assign",
-    [
-      "D:/Downloads/zephyr_new/myapp/new/car_2026/prj.conf",
-      19
-    ]
-  ],
-  [
-    "CONFIG_CHARACTER_FRAMEBUFFER_USE_DEFAULT_FONTS",
-    "y",
-    "bool",
-    "n",
-    "assign",
-    [
-      "D:/Downloads/zephyr_new/myapp/new/car_2026/prj.conf",
-      22
-    ]
-  ],
-  [
-    "CONFIG_CFB_LOG_LEVEL_OFF",
-    "y",
-    "bool",
     null,
     "unset",
     null
-  ],
-  [
-    "CONFIG_CFB_LOG_LEVEL_ERR",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_CFB_LOG_LEVEL_WRN",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_CFB_LOG_LEVEL_INF",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_CFB_LOG_LEVEL_DBG",
-    "y",
-    "bool",
-    null,
-    "unset",
-    null
-  ],
-  [
-    "CONFIG_CFB_LOG_LEVEL_DEFAULT",
-    "y",
-    "bool",
-    "y",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\logging\\Kconfig.template.log_config",
-      5
-    ]
-  ],
-  [
-    "CONFIG_CFB_LOG_LEVEL",
-    "n",
-    "int",
-    "3",
-    "default",
-    [
-      "D:\\Downloads\\zephyr_new\\zephyr_guanfang\\zephyr\\subsys\\logging\\Kconfig.template.log_config",
-      36
-    ]
   ],
   [
     "CONFIG_FILE_SYSTEM_LIB_LINK",

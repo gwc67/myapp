@@ -152,8 +152,6 @@ D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsy
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/usb/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/usb/common/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/usb/common/CMakeFiles/rebuild_cache.dir
-D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/fb/CMakeFiles/edit_cache.dir
-D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/fb/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/input/CMakeFiles/subsys__input.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/input/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/input/CMakeFiles/rebuild_cache.dir
@@ -189,9 +187,6 @@ D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drive
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/counter/CMakeFiles/drivers__counter.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/counter/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/counter/CMakeFiles/rebuild_cache.dir
-D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/drivers__display.dir
-D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/edit_cache.dir
-D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/display/CMakeFiles/rebuild_cache.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/dma/CMakeFiles/drivers__dma.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/dma/CMakeFiles/edit_cache.dir
 D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/drivers/dma/CMakeFiles/rebuild_cache.dir

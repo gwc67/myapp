@@ -144,11 +144,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/fb/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("D:/Downloads/zephyr_new/myapp/new/car_2026/cmake-build-debug-zephyr/zephyr/subsys/input/cmake_install.cmake")
 endif()
 
