@@ -1,0 +1,2 @@
+osource "D:/Downloads/zephyr_new/myapp/new/boards/shields/*/Kconfig.defconfig"
+osource "D:/Downloads/zephyr_new/myapp/new/car_2026/boards/shields/*/Kconfig.defconfig"
