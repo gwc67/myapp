@@ -1,7 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 cmake_minimum_required(VERSION 3.28.0)
-set(BOARD_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
+# Board 定义在 ${BOARD_ROOT}/boards/arm/stm32f407_balance_car,
+# 因此 BOARD_ROOT 要指向包含 'boards' 子目录的目录 (即本工程的上一级).
+get_filename_component(BOARD_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/.." ABSOLUTE)
 
 # 直接 cmake 构建 (不走 west) 时模块系统不会自动加载 hal_stm32,
 # 导致 board dts 里的 #include <st/f4/stm32f407z(e-g)tx-pinctrl.dtsi> 解析不到.
